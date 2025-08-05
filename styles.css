@@ -1,0 +1,39 @@
+:where([class^="ri-"])::before {
+  content: "\f3c2";
+}
+
+.hero-bg {
+  background-image: url('https://readdy.ai/api/search-image?query=Professional%20cyclist%20in%20bright%20cycling%20gear%20riding%20a%20road%20bike%20through%20a%20scenic%20mountain%20landscape%20at%20sunrise%2C%20dynamic%20action%20shot%20with%20motion%20blur%2C%20vibrant%20blue%20and%20green%20colors%2C%20clean%20white%20sky%20background%2C%20inspirational%20and%20energetic%20atmosphere%2C%20high%20contrast%20lighting%2C%20modern%20sports%20photography%20style&width=1920&height=1080&seq=hero001&orientation=landscape');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.gradient-overlay {
+  background: linear-gradient(135deg, rgba(30, 144, 255, 0.8) 0%, rgba(50, 205, 50, 0.6) 100%);
+}
+
+.scroll-indicator {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
