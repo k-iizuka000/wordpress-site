@@ -1,0 +1,63 @@
+# WordPress コアファイル（FTPでダウンロードした場合）
+/wordpress/wp-admin/
+/wordpress/wp-includes/
+/wordpress/index.php
+/wordpress/license.txt
+/wordpress/readme.html
+/wordpress/wp-*.php
+/wordpress/xmlrpc.php
+
+# 設定ファイル（機密情報）
+wp-config.php
+wp-config-local.php
+.htaccess
+
+# プラグイン（外部プラグインは除外、自作のみ管理）
+/wordpress/wp-content/plugins/*
+!/wordpress/wp-content/plugins/my-custom-*/
+
+# テーマ（外部テーマは除外、自作のみ管理）
+/wordpress/wp-content/themes/*
+!/wordpress/wp-content/themes/kenta-portfolio/
+
+# アップロードファイル・メディア
+/wordpress/wp-content/uploads/
+
+# キャッシュ・一時ファイル
+/wordpress/wp-content/cache/
+/wordpress/wp-content/advanced-cache.php
+/wordpress/wp-content/wp-cache-config.php
+/wordpress/wp-content/backup*/
+*.sql
+*.sql.gz
+
+# ログファイル
+*.log
+error_log
+debug.log
+
+# OS関連
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# エディタ・IDE
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Node.js（テーマ開発で使う場合）
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# その他
+.env
+.env.*
+*.bak
+*.tmp
+/temp/
