@@ -1,3 +1,4 @@
+<?php // WordPress Theme File ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -33,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
 </head>
 <body class="bg-white text-gray-800">
   <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
@@ -687,6 +688,6 @@
       </div>
     </div>
   </footer>
-  <script src="script.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/script.js"></script>
 </body>
 </html>

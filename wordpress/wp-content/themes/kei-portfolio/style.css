@@ -1,3 +1,10 @@
+/*
+Theme Name: kei aokiki
+Author: kei aokiki
+Description: ポートフォリオサイト用テーマ
+Version: 1.0
+*/
+
 :where([class^="ri-"])::before {
   content: "\f3c2";
 }
