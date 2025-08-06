@@ -31,7 +31,7 @@ mkdir wordpress
 
 ```bash
 # テーマ開発に集中する場合
-cd wp-theme/kenta-portfolio
+cd wp-theme/kei-portfolio
 git init
 git add .
 git commit -m "Initial theme commit"
