@@ -25,12 +25,15 @@ function kei_portfolio_pro_scripts() {
         null 
     );
 
-    // Tailwind CSS CDN
-    wp_enqueue_style( 
+    // Tailwind CSS CDN（修正: JavaScript版として読み込み）
+    // 修正前（2025-08-07）:
+    // wp_enqueue_style( 'tailwindcss', 'https://cdn.tailwindcss.com', array(), '3.4.0' );
+    wp_enqueue_script( 
         'tailwindcss', 
         'https://cdn.tailwindcss.com', 
         array(), 
-        '3.4.0' 
+        '3.4.0', 
+        false // headタグ内で読み込む
     );
     
     // Remix Icon - Reactで使用していたアイコンフォント
@@ -71,6 +74,55 @@ function kei_portfolio_pro_scripts() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'kei_portfolio_pro_scripts' );
+
+/**
+ * Tailwind CSS基本設定の追加（フェーズ2実装）
+ */
+function kei_portfolio_tailwind_config() {
+    ?>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    fontFamily: {
+                        'noto': ['Noto Sans JP', 'sans-serif'],
+                        'pacifico': ['Pacifico', 'cursive'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+    <?php
+}
+add_action( 'wp_head', 'kei_portfolio_tailwind_config', 5 );
 
 /**
  * Enqueue Contact Form Scripts
