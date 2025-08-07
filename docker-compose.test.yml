@@ -1,0 +1,261 @@
+version: '3.8'
+
+# ==========================================================================
+# WordPress テーマ kei-portfolio テスト環境
+# ==========================================================================
+
+services:
+  # テスト用 WordPress環境
+  wordpress-test:
+    build:
+      context: .
+      target: testing
+    container_name: kei-portfolio-test
+    volumes:
+      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
+      - ./tests:/var/www/html/tests:delegated
+      - test_coverage:/var/www/html/coverage
+    environment:
+      WORDPRESS_DB_HOST: db-test:3306
+      WORDPRESS_DB_NAME: kei_portfolio_test
+      WORDPRESS_DB_USER: wp_test_user
+      WORDPRESS_DB_PASSWORD: wp_test_password
+      WP_TESTS_DB_HOST: db-test:3306
+      WP_TESTS_DB_NAME: wp_test_suite
+      WP_TESTS_DB_USER: wp_test_user
+      WP_TESTS_DB_PASSWORD: wp_test_password
+      WP_TESTS_DOMAIN: localhost
+      WP_TESTS_EMAIL: admin@kei-portfolio-test.local
+      WP_TESTS_TITLE: "Kei Portfolio Test Site"
+      NODE_ENV: test
+      CI: true
+    depends_on:
+      - db-test
+    networks:
+      - kei-portfolio-test-network
+    command: ["./run-tests.sh", "all"]
+
+  # テスト用データベース
+  db-test:
+    image: mariadb:10.11
+    container_name: kei-portfolio-db-test
+    tmpfs:
+      - /var/lib/mysql:rw,noexec,nosuid,size=1024m
+    environment:
+      MYSQL_ROOT_PASSWORD: root_test_password
+      MYSQL_DATABASE: kei_portfolio_test
+      MYSQL_USER: wp_test_user
+      MYSQL_PASSWORD: wp_test_password
+    command: >
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --innodb-flush-log-at-trx-commit=0
+      --innodb-flush-method=O_DIRECT
+      --innodb-log-buffer-size=16M
+      --key-buffer-size=32M
+      --max-allowed-packet=256M
+      --max-connections=50
+      --skip-name-resolve
+    networks:
+      - kei-portfolio-test-network
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost", "-u", "root", "-proot_test_password"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # PHPUnit テスト実行
+  phpunit:
+    build:
+      context: .
+      target: testing
+    container_name: kei-portfolio-phpunit
+    volumes:
+      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
+      - test_coverage:/var/www/html/coverage
+    environment:
+      WP_TESTS_DB_HOST: db-test:3306
+      WP_TESTS_DB_NAME: wp_test_suite
+      WP_TESTS_DB_USER: wp_test_user
+      WP_TESTS_DB_PASSWORD: wp_test_password
+      WP_TESTS_DOMAIN: localhost
+      WP_TESTS_EMAIL: admin@kei-portfolio-test.local
+      WP_TESTS_TITLE: "Kei Portfolio Test Suite"
+    depends_on:
+      - db-test
+    networks:
+      - kei-portfolio-test-network
+    command: ["./run-tests.sh", "php"]
+    profiles:
+      - testing
+
+  # Jest テスト実行
+  jest:
+    image: node:18-alpine
+    container_name: kei-portfolio-jest
+    working_dir: /app
+    volumes:
+      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+      - test_coverage:/app/coverage
+    environment:
+      NODE_ENV: test
+      CI: true
+    command: npm run test:coverage
+    networks:
+      - kei-portfolio-test-network
+    profiles:
+      - testing
+
+  # ESLint 実行
+  eslint:
+    image: node:18-alpine
+    container_name: kei-portfolio-eslint
+    working_dir: /app
+    volumes:
+      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+    command: npm run lint:js
+    networks:
+      - kei-portfolio-test-network
+    profiles:
+      - linting
+
+  # Stylelint 実行
+  stylelint:
+    image: node:18-alpine
+    container_name: kei-portfolio-stylelint
+    working_dir: /app
+    volumes:
+      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+    command: npm run lint:css
+    networks:
+      - kei-portfolio-test-network
+    profiles:
+      - linting
+
+  # PHPCS 実行
+  phpcs:
+    build:
+      context: .
+      target: testing
+    container_name: kei-portfolio-phpcs
+    volumes:
+      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
+    working_dir: /var/www/html/wp-content/themes/kei-portfolio
+    command: ["composer", "run", "lint:php"]
+    networks:
+      - kei-portfolio-test-network
+    profiles:
+      - linting
+
+  # PHPStan 静的解析
+  phpstan:
+    build:
+      context: .
+      target: testing
+    container_name: kei-portfolio-phpstan
+    volumes:
+      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
+    working_dir: /var/www/html/wp-content/themes/kei-portfolio
+    command: ["composer", "run", "analyze"]
+    networks:
+      - kei-portfolio-test-network
+    profiles:
+      - analysis
+
+  # Lighthouse パフォーマンステスト
+  lighthouse:
+    image: femtopixel/google-lighthouse:latest
+    container_name: kei-portfolio-lighthouse
+    volumes:
+      - lighthouse_reports:/home/chrome/reports
+    command: >
+      lighthouse
+      --chrome-flags="--headless --no-sandbox --disable-gpu"
+      --output=html
+      --output=json
+      --output-path=/home/chrome/reports/lighthouse-report
+      --view
+      http://wordpress-test/
+    depends_on:
+      - wordpress-test
+    networks:
+      - kei-portfolio-test-network
+    profiles:
+      - performance
+
+  # axe-core アクセシビリティテスト
+  axe-test:
+    image: node:18-alpine
+    container_name: kei-portfolio-axe
+    working_dir: /app
+    volumes:
+      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+      - axe_reports:/app/reports
+    environment:
+      TEST_URL: http://wordpress-test/
+    command: npm run test:a11y
+    depends_on:
+      - wordpress-test
+    networks:
+      - kei-portfolio-test-network
+    profiles:
+      - accessibility
+
+  # pa11y アクセシビリティテスト
+  pa11y:
+    image: node:18-alpine
+    container_name: kei-portfolio-pa11y
+    working_dir: /app
+    volumes:
+      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+      - pa11y_reports:/app/reports
+    environment:
+      TEST_URL: http://wordpress-test/
+    command: npm run test:pa11y
+    depends_on:
+      - wordpress-test
+    networks:
+      - kei-portfolio-test-network
+    profiles:
+      - accessibility
+
+  # テストレポート集約サービス
+  test-reporter:
+    image: node:18-alpine
+    container_name: kei-portfolio-reports
+    working_dir: /app
+    volumes:
+      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+      - test_coverage:/app/coverage
+      - lighthouse_reports:/app/reports/lighthouse
+      - axe_reports:/app/reports/axe
+      - pa11y_reports:/app/reports/pa11y
+    command: npm run reports:merge
+    depends_on:
+      - phpunit
+      - jest
+      - lighthouse
+      - axe-test
+      - pa11y
+    networks:
+      - kei-portfolio-test-network
+    profiles:
+      - reporting
+
+volumes:
+  test_coverage:
+    driver: local
+  lighthouse_reports:
+    driver: local
+  axe_reports:
+    driver: local
+  pa11y_reports:
+    driver: local
+
+networks:
+  kei-portfolio-test-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/16

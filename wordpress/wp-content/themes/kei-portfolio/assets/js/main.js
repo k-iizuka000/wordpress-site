@@ -115,6 +115,16 @@ function validateForm(form) {
     return isValid;
 }
 
+// ブラウザ環境ではwindowオブジェクトに追加
+if (typeof window !== 'undefined') {
+    window.validateForm = validateForm;
+}
+
+// Node.js環境ではmodule.exportsでエクスポート
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { validateForm };
+}
+
 // お問い合わせフォーム処理
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('.wpcf7-form');

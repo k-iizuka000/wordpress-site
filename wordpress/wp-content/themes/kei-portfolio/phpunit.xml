@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+    bootstrap="tests/bootstrap.php"
+    backupGlobals="false"
+    backupStaticAttributes="false"
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    processIsolation="false"
+    stopOnFailure="false"
+    verbose="true"
+    testdox="true">
+
+    <!-- テストスイート定義 - テスト設計書に基づくグループ化 -->
+    <testsuites>
+        <testsuite name="all">
+            <directory>tests</directory>
+        </testsuite>
+        
+        <!-- グループ1: PHP構文チェック関連 (独立性: 完全独立) -->
+        <testsuite name="group1-php-syntax">
+            <file>tests/SyntaxTest.php</file>
+            <file>tests/PhpStandardTest.php</file>
+        </testsuite>
+        
+        <!-- グループ2: WordPress基本機能テスト (DB接続必要) -->
+        <testsuite name="group2-wp-core">
+            <file>tests/SetupTest.php</file>
+            <file>tests/FunctionsTest.php</file>
+            <file>tests/EnqueueTest.php</file>
+        </testsuite>
+        
+        <!-- グループ3: ページテンプレートテスト（前半） -->
+        <testsuite name="group3-templates-1">
+            <file>tests/TemplateTest.php</file>
+            <file>tests/PageTemplateTest.php</file>
+        </testsuite>
+        
+        <!-- グループ4: ページテンプレートテスト（後半） -->
+        <testsuite name="group4-templates-2">
+            <file>tests/TemplatePartsTest.php</file>
+            <file>tests/PageTemplatesTest2.php</file>
+        </testsuite>
+        
+        <!-- グループ5: カスタム投稿タイプとアーカイブ関連 -->
+        <testsuite name="group5-custom-posts">
+            <file>tests/CustomPostTypeTest.php</file>
+            <file>tests/ProjectMetaTest.php</file>
+            <file>tests/ArchiveTest.php</file>
+        </testsuite>
+        
+        <!-- グループ9: AJAX/API通信テスト (DB接続必要、モックサーバー使用可) -->
+        <testsuite name="group9-ajax-api">
+            <file>tests/AjaxTest.php</file>
+            <file>tests/ContactFormTest.php</file>
+            <file>tests/SecurityTest.php</file>
+        </testsuite>
+        
+        <!-- グループ10: セキュリティとパフォーマンステスト -->
+        <testsuite name="group10-security-performance">
+            <file>tests/SecurityTest.php</file>
+            <file>tests/PerformanceTest.php</file>
+        </testsuite>
+        
+        <!-- 独立実行可能なグループのエイリアス -->
+        <testsuite name="independent">
+            <file>tests/SyntaxTest.php</file>
+            <file>tests/PhpStandardTest.php</file>
+        </testsuite>
+        
+        <!-- 静的解析のみのテスト -->
+        <testsuite name="static-analysis">
+            <file>tests/SyntaxTest.php</file>
+            <file>tests/PhpStandardTest.php</file>
+        </testsuite>
+    </testsuites>
+
+    <!-- カバレッジ設定 -->
+    <coverage includeUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">.</directory>
+        </include>
+        <exclude>
+            <directory>vendor</directory>
+            <directory>node_modules</directory>
+            <directory>tests</directory>
+            <directory>coverage</directory>
+            <directory>assets</directory>
+            <file>functions.php</file>
+        </exclude>
+        <report>
+            <html outputDirectory="coverage/html"/>
+            <clover outputFile="coverage/clover.xml"/>
+            <text outputFile="php://stdout" showUncoveredFiles="true"/>
+        </report>
+    </coverage>
+
+    <!-- ログ設定 -->
+    <logging>
+        <junit outputFile="coverage/junit.xml"/>
+    </logging>
+
+    <!-- PHP設定 -->
+    <php>
+        <!-- WordPress テストスイート設定 -->
+        <const name="WP_TESTS_DOMAIN" value="localhost"/>
+        <const name="WP_TESTS_EMAIL" value="admin@kei-portfolio-test.local"/>
+        <const name="WP_TESTS_TITLE" value="Kei Portfolio Test"/>
+        <const name="WP_TESTS_FORCE_KNOWN_BUGS" value="true"/>
+        <const name="WP_TESTS_MULTISITE" value="false"/>
+        
+        <!-- データベース設定 -->
+        <env name="WP_TESTS_DB_HOST" value="db-test"/>
+        <env name="WP_TESTS_DB_NAME" value="wp_test_suite"/>
+        <env name="WP_TESTS_DB_USER" value="wp_test_user"/>
+        <env name="WP_TESTS_DB_PASSWORD" value="wp_test_password"/>
+        
+        <!-- WordPress設定 -->
+        <const name="WP_DEBUG" value="true"/>
+        <const name="WP_DEBUG_LOG" value="false"/>
+        <const name="WP_DEBUG_DISPLAY" value="true"/>
+        <const name="SCRIPT_DEBUG" value="true"/>
+        <const name="WP_TESTS_CONFIG_FILE_PATH" value="/tmp/wordpress-tests-lib/wp-tests-config.php"/>
+        
+        <!-- テーマ設定 -->
+        <const name="WP_DEFAULT_THEME" value="kei-portfolio"/>
+        <const name="THEME_ROOT" value="wp-content/themes"/>
+        
+        <!-- テスト環境設定 -->
+        <env name="TEST_ENV" value="true"/>
+        <env name="CI" value="false"/>
+        
+        <!-- PHPUnit設定 -->
+        <ini name="memory_limit" value="1024M"/>
+        <ini name="error_reporting" value="E_ALL"/>
+        <ini name="display_errors" value="On"/>
+        <ini name="display_startup_errors" value="On"/>
+    </php>
+
+    <!-- テストリスナー -->
+    <listeners>
+        <listener class="SpeedTrapListener">
+            <arguments>
+                <array>
+                    <element key="slowThreshold">
+                        <integer>500</integer>
+                    </element>
+                    <element key="reportLength">
+                        <integer>10</integer>
+                    </element>
+                </array>
+            </arguments>
+        </listener>
+    </listeners>
+
+    <!-- 拡張機能 -->
+    <extensions>
+        <!-- PHPUnit Polyfills -->
+        <extension class="Yoast\PHPUnitPolyfills\PHPUnitPolyfills"/>
+    </extensions>
+</phpunit>

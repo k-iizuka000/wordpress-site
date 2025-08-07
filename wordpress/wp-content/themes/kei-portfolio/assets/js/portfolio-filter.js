@@ -33,11 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             
-            // 結果なしメッセージの表示/非表示
-            if (visibleCount === 0) {
-                noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
+            // 結果なしメッセージの表示/非表示（要素が存在する場合のみ）
+            if (noResults) {
+                if (visibleCount === 0) {
+                    noResults.classList.remove('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                }
             }
         });
     });

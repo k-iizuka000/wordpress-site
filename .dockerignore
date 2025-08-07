@@ -1,0 +1,134 @@
+# ==========================================================================
+# .dockerignore - Docker化で除外するファイル・ディレクトリ
+# ==========================================================================
+
+# Git関連
+.git
+.gitignore
+.gitattributes
+.github/
+
+# IDEとエディタ関連
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS関連
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# ログファイル
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ランタイムデータ
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# 依存関係
+node_modules/
+vendor/
+composer.lock
+package-lock.json
+
+# ビルド出力
+dist/
+build/
+coverage/
+*.tgz
+*.tar.gz
+
+# テスト関連
+tests/
+phpunit.xml.dist
+jest.config.js
+.nyc_output/
+
+# 開発環境設定
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+docker-compose.override.yml
+
+# キャッシュ
+.npm
+.eslintcache
+.stylelintcache
+
+# 一時ファイル
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Dockerファイル（ビルドコンテキストに不要）
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# WordPress関連（必要に応じて調整）
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/upgrade/
+wp-content/w3tc-config/
+
+# セキュリティ関連
+*.pem
+*.key
+*.crt
+secrets/
+
+# ドキュメント
+README.md
+CHANGELOG.md
+LICENSE
+docs/
+learning/
+tasks/
+reviews/
+reports/
+
+# Linting設定ファイル
+.eslintrc*
+.stylelintrc*
+.prettierrc*
+phpcs.xml
+phpcs.xml.dist
+phpstan.neon
+phpstan-baseline.neon
+
+# パフォーマンステスト結果
+lighthouse-results/
+axe-results/
+pa11y-results/
+
+# Claude Code関連
+.claude/
+CLAUDE.md
+
+# エージェント関連
+*.agent.md
+
+# その他の不要ファイル
+*.backup
+*.bak
+*.old
+*.orig

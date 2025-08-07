@@ -1,0 +1,80 @@
+version: '3.8'
+
+# ==========================================================================
+# シンプル版WordPress テーマ kei-portfolio 開発環境
+# ビルドタイムアウト問題を解決するためのミニマル構成
+# ==========================================================================
+
+services:
+  # WordPress + Apache + PHP環境（シンプル版）
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile.optimized
+      target: development
+    container_name: kei-portfolio-dev
+    ports:
+      - "8090:80"
+    volumes:
+      # ホットリロード用のボリュームマウント
+      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:cached
+      - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads:delegated
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: kei_portfolio_dev
+      WORDPRESS_DB_USER: wp_user
+      WORDPRESS_DB_PASSWORD: wp_password
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_DEBUG_LOG: 1
+      WORDPRESS_DEBUG_DISPLAY: 0
+      WP_ENVIRONMENT_TYPE: development
+    depends_on:
+      - db
+    networks:
+      - kei-portfolio-network
+    restart: unless-stopped
+
+  # MariaDB データベース（軽量版）
+  db:
+    image: mariadb:10.11
+    container_name: kei-portfolio-db
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: kei_portfolio_dev
+      MYSQL_USER: wp_user
+      MYSQL_PASSWORD: wp_password
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+    networks:
+      - kei-portfolio-network
+    restart: unless-stopped
+
+  # phpMyAdmin (開発用データベース管理)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: kei-portfolio-pma
+    ports:
+      - "8091:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: wp_user
+      PMA_PASSWORD: wp_password
+      MYSQL_ROOT_PASSWORD: root_password
+    depends_on:
+      - db
+    networks:
+      - kei-portfolio-network
+    restart: unless-stopped
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  kei-portfolio-network:
+    driver: bridge

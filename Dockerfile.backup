@@ -1,0 +1,173 @@
+# ==========================================================================
+# WordPress テーマ kei-portfolio 用 マルチステージ Docker ビルド
+# ==========================================================================
+
+# --------------------------------------
+# Base Stage: 共通の基底イメージ
+# --------------------------------------
+FROM php:8.2-apache as base
+
+# システムパッケージの更新とインストール
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    libzip-dev \
+    libicu-dev \
+    libonig-dev \
+    libxml2-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libwebp-dev \
+    libavif-dev \
+    mariadb-client \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# PHP拡張のインストール
+RUN docker-php-ext-configure gd \
+    --with-freetype \
+    --with-jpeg \
+    --with-webp \
+    --with-avif \
+    && docker-php-ext-install -j$(nproc) \
+    pdo_mysql \
+    mysqli \
+    zip \
+    intl \
+    mbstring \
+    xml \
+    opcache \
+    gd
+
+# Apache設定
+RUN a2enmod rewrite headers expires deflate
+COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+
+# Composerのインストール
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# --------------------------------------
+# Node Stage: Node.js/npm 環境
+# --------------------------------------
+FROM node:18-alpine as node-stage
+
+WORKDIR /app
+
+# package.json と package-lock.json をコピー
+COPY package*.json ./
+
+# npm依存関係のインストール
+RUN npm ci --only=production --no-audit
+
+# ソースファイルをコピー
+COPY wordpress/wp-content/themes/kei-portfolio/ ./
+
+# アセットのビルド
+RUN npm run build
+
+# --------------------------------------
+# Development Stage: 開発環境
+# --------------------------------------
+FROM base as development
+
+# 開発用PHP設定
+RUN echo "error_reporting=E_ALL" >> /usr/local/etc/php/conf.d/development.ini \
+    && echo "display_errors=On" >> /usr/local/etc/php/conf.d/development.ini \
+    && echo "log_errors=On" >> /usr/local/etc/php/conf.d/development.ini \
+    && echo "xdebug.mode=develop,coverage,debug" >> /usr/local/etc/php/conf.d/development.ini
+
+# Node.js とnpmのインストール（開発用）
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs
+
+# WP-CLIのインストール
+RUN curl -O https://raw.githubusercontent.com/wp-cli/wp-cli/v2.8.1/wp-cli.phar \
+    && chmod +x wp-cli.phar \
+    && mv wp-cli.phar /usr/local/bin/wp
+
+# 作業ディレクトリの設定
+WORKDIR /var/www/html
+
+# WordPress本体のコピー
+COPY wordpress/ ./
+
+# テーマディレクトリの権限設定
+RUN chown -R www-data:www-data /var/www/html/wp-content/themes \
+    && chmod -R 755 /var/www/html/wp-content/themes
+
+EXPOSE 80
+
+# --------------------------------------
+# Testing Stage: テスト環境
+# --------------------------------------
+FROM development as testing
+
+# PHPUnitとテスト用パッケージのインストール
+WORKDIR /var/www/html/wp-content/themes/kei-portfolio
+
+# Composer依存関係のインストール
+COPY composer.json composer.lock ./
+RUN composer install --dev --no-interaction --no-progress --optimize-autoloader
+
+# NPMテスト依存関係のインストール
+COPY package.json package-lock.json ./
+RUN npm ci --include=dev
+
+# テスト設定ファイルのコピー
+COPY phpunit.xml ./
+COPY jest.config.js ./
+
+# テストスクリプトのコピー
+COPY run-tests.sh ./
+RUN chmod +x run-tests.sh
+
+# WordPress Test Suiteのセットアップ
+RUN bash -c 'source run-tests.sh && setup_wp_test_suite'
+
+# テスト実行のためのエントリーポイント
+ENTRYPOINT ["./run-tests.sh"]
+
+# --------------------------------------
+# Production Stage: 本番環境
+# --------------------------------------
+FROM base as production
+
+# 本番用PHP設定
+RUN echo "error_reporting=E_ERROR | E_WARNING | E_PARSE" >> /usr/local/etc/php/conf.d/production.ini \
+    && echo "display_errors=Off" >> /usr/local/etc/php/conf.d/production.ini \
+    && echo "log_errors=On" >> /usr/local/etc/php/conf.d/production.ini \
+    && echo "opcache.enable=1" >> /usr/local/etc/php/conf.d/production.ini \
+    && echo "opcache.memory_consumption=128" >> /usr/local/etc/php/conf.d/production.ini \
+    && echo "opcache.interned_strings_buffer=8" >> /usr/local/etc/php/conf.d/production.ini \
+    && echo "opcache.max_accelerated_files=4000" >> /usr/local/etc/php/conf.d/production.ini \
+    && echo "opcache.revalidate_freq=2" >> /usr/local/etc/php/conf.d/production.ini
+
+# WordPress本体のコピー
+WORKDIR /var/www/html
+COPY wordpress/ ./
+
+# Node.jsステージからビルド済みアセットをコピー
+COPY --from=node-stage /app/assets/ ./wp-content/themes/kei-portfolio/assets/
+
+# 本番環境用Composer依存関係のインストール
+WORKDIR /var/www/html/wp-content/themes/kei-portfolio
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --no-interaction --no-progress --optimize-autoloader
+
+# 権限設定
+WORKDIR /var/www/html
+RUN chown -R www-data:www-data /var/www/html \
+    && find /var/www/html -type d -exec chmod 755 {} \; \
+    && find /var/www/html -type f -exec chmod 644 {} \;
+
+EXPOSE 80
+
+# ヘルスチェック
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost/wp-admin/install.php || exit 1
+
+# --------------------------------------
+# デフォルトステージ
+# --------------------------------------
+FROM development

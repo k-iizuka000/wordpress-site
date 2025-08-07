@@ -1,0 +1,189 @@
+version: '3.8'
+
+# ==========================================================================
+# 最適化されたWordPress テーマ kei-portfolio 開発環境
+# ==========================================================================
+
+services:
+  # WordPress + Apache + PHP環境（最適化版）
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile.optimized
+      target: development
+      # ビルドタイムアウトを延長
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+    container_name: kei-portfolio-dev
+    ports:
+      - "8080:80"
+    volumes:
+      # ホットリロード用のボリュームマウント（パフォーマンス改善）
+      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:cached
+      - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads:delegated
+      - wordpress_data:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: kei_portfolio_dev
+      WORDPRESS_DB_USER: wp_user
+      WORDPRESS_DB_PASSWORD: wp_password
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_DEBUG_LOG: 1
+      WORDPRESS_DEBUG_DISPLAY: 0  # ログに出力、画面表示は無効
+      WP_ENVIRONMENT_TYPE: development
+      # パフォーマンス設定
+      WP_MEMORY_LIMIT: 256M
+      WP_MAX_MEMORY_LIMIT: 512M
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - kei-portfolio-network
+    restart: unless-stopped
+    # ヘルスチェック最適化
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 60s
+    # リソース制限
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+  # MariaDB データベース（軽量化）
+  db:
+    image: mariadb:10.11-jammy
+    container_name: kei-portfolio-db
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: kei_portfolio_dev
+      MYSQL_USER: wp_user
+      MYSQL_PASSWORD: wp_password
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+      # MariaDB最適化設定
+      MYSQL_INNODB_BUFFER_POOL_SIZE: 128M
+      MYSQL_INNODB_LOG_FILE_SIZE: 32M
+      MYSQL_INNODB_FLUSH_LOG_AT_TRX_COMMIT: 2
+      MYSQL_QUERY_CACHE_SIZE: 32M
+      MYSQL_QUERY_CACHE_TYPE: 1
+    networks:
+      - kei-portfolio-network
+    restart: unless-stopped
+    # ヘルスチェック
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost", "-u", "root", "-proot_password"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    # リソース制限
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
+
+  # Redis キャッシュ（軽量Alpine）
+  redis:
+    image: redis:7-alpine
+    container_name: kei-portfolio-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: >
+      redis-server
+      --maxmemory 64mb
+      --maxmemory-policy allkeys-lru
+      --appendonly yes
+      --appendfsync everysec
+    networks:
+      - kei-portfolio-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    # リソース制限
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+
+  # phpMyAdmin (開発用データベース管理)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2-apache
+    container_name: kei-portfolio-pma
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: wp_user
+      PMA_PASSWORD: wp_password
+      MYSQL_ROOT_PASSWORD: root_password
+      PMA_ABSOLUTE_URI: http://localhost:8081/
+      UPLOAD_LIMIT: 64M
+      MEMORY_LIMIT: 128M
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - kei-portfolio-network
+    restart: unless-stopped
+    # リソース制限
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+
+volumes:
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data/wordpress
+  db_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind  
+      device: ./data/mysql
+  redis_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data/redis
+
+networks:
+  kei-portfolio-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+    driver_opts:
+      com.docker.network.bridge.name: kei-portfolio-br

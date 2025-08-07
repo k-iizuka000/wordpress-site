@@ -24,6 +24,14 @@ function kei_portfolio_pro_scripts() {
         array(), 
         null 
     );
+
+    // Tailwind CSS CDN
+    wp_enqueue_style( 
+        'tailwindcss', 
+        'https://cdn.tailwindcss.com', 
+        array(), 
+        '3.4.0' 
+    );
     
     // Remix Icon - Reactで使用していたアイコンフォント
     wp_enqueue_style( 
