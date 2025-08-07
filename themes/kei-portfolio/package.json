@@ -1,0 +1,172 @@
+{
+  "name": "kei-portfolio-theme",
+  "version": "1.0.0",
+  "description": "Professional WordPress theme for Kei Aokiki's portfolio website",
+  "main": "assets/js/main.js",
+  "homepage": "https://kei-aokiki.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kei-aokiki/kei-portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kei-aokiki/kei-portfolio/issues"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "portfolio",
+    "responsive",
+    "modern"
+  ],
+  "author": {
+    "name": "Kei Aokiki",
+    "email": "contact@kei-aokiki.dev",
+    "url": "https://kei-aokiki.dev"
+  },
+  "license": "GPL-2.0-or-later",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "scripts": {
+    "dev": "webpack serve --mode development --config webpack.config.js",
+    "build": "webpack --mode production --config webpack.config.js",
+    "build:dev": "webpack --mode development --config webpack.config.js",
+    "watch": "webpack --mode development --config webpack.config.js --watch",
+    "clean": "rimraf assets/dist coverage reports",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --coverage --ci --reporters=default --reporters=jest-junit --watchAll=false",
+    "test:group6": "jest tests/js/main.test.js tests/js/navigation.test.js tests/js/portfolio-filter.test.js --coverage",
+    "test:group7": "jest tests/js/contact-form.test.js tests/js/technical-approach.test.js --coverage",
+    "test:main": "jest tests/js/main.test.js --coverage",
+    "test:navigation": "jest tests/js/navigation.test.js --coverage",
+    "test:portfolio-filter": "jest tests/js/portfolio-filter.test.js --coverage",
+    "test:contact-form": "jest tests/js/contact-form.test.js --coverage",
+    "test:technical-approach": "jest tests/js/technical-approach.test.js --coverage",
+    "test:a11y": "node scripts/axe-test.js",
+    "test:pa11y": "pa11y-ci --sitemap http://localhost:8080/sitemap.xml",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint assets/js/**/*.js --fix",
+    "lint:js-check": "eslint assets/js/**/*.js",
+    "lint:css": "stylelint assets/css/**/*.css --fix",
+    "lint:css-check": "stylelint assets/css/**/*.css",
+    "format": "prettier --write \"assets/**/*.{js,css,scss,json}\"",
+    "format:check": "prettier --check \"assets/**/*.{js,css,scss,json}\"",
+    "performance": "lighthouse http://localhost:8080 --output=html --output-path=./reports/lighthouse-report.html",
+    "audit": "npm audit && npm audit --audit-level=moderate",
+    "security": "audit-ci --config audit-ci.json",
+    "reports:merge": "node scripts/merge-reports.js",
+    "precommit": "lint-staged",
+    "prepare": "husky install",
+    "start": "npm run dev",
+    "ci": "npm run lint:js-check && npm run lint:css-check && npm run test:ci && npm run build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@testing-library/dom": "^9.3.0",
+    "@testing-library/jest-dom": "^6.1.0",
+    "@testing-library/user-event": "^14.5.0",
+    "@wordpress/env": "^8.7.0",
+    "@wordpress/eslint-plugin": "^17.2.0",
+    "@wordpress/scripts": "^26.15.0",
+    "@wordpress/stylelint-config": "^21.15.0",
+    "audit-ci": "^6.6.1",
+    "axe-core": "^4.8.0",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.8.0",
+    "css-minimizer-webpack-plugin": "^5.0.0",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "eslint-plugin-jsx-a11y": "^6.7.0",
+    "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-junit": "^16.0.0",
+    "lighthouse": "^11.2.0",
+    "lint-staged": "^15.0.0",
+    "mini-css-extract-plugin": "^2.7.0",
+    "pa11y": "^7.0.0",
+    "pa11y-ci": "^3.1.0",
+    "postcss": "^8.4.0",
+    "postcss-loader": "^7.3.0",
+    "postcss-preset-env": "^9.3.0",
+    "prettier": "^3.0.0",
+    "puppeteer": "^21.5.0",
+    "rimraf": "^5.0.0",
+    "sass": "^1.69.0",
+    "sass-loader": "^13.3.0",
+    "style-loader": "^3.3.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-prettier": "^9.0.0",
+    "stylelint-config-standard": "^34.0.0",
+    "terser-webpack-plugin": "^5.3.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.0",
+    "swiper": "^10.3.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/js/setup.js"
+    ],
+    "collectCoverageFrom": [
+      "assets/js/**/*.js",
+      "!assets/js/**/*.min.js",
+      "!assets/js/vendor/**"
+    ],
+    "coverageDirectory": "coverage/js",
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html",
+      "json"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": 70
+      }
+    },
+    "testMatch": [
+      "**/tests/js/**/*.test.js"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/assets/js/$1"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,scss}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test:ci"
+    }
+  }
+}
