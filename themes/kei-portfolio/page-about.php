@@ -5,7 +5,19 @@
  * @package Kei_Portfolio
  */
 
-get_header(); ?>
+get_header(); 
+
+// Portfolio_Dataクラスのインスタンスを取得
+$portfolio_data = Portfolio_Data::get_instance();
+$about_data = $portfolio_data->get_about_data();
+$summary_data = $portfolio_data->get_summary_data();
+$core_technologies = $portfolio_data->get_core_technologies();
+
+// エラーハンドリング
+$has_about = !is_wp_error($about_data);
+$has_summary = !is_wp_error($summary_data);
+$has_core_tech = !is_wp_error($core_technologies);
+?>
 
     <main id="main" class="site-main">
         <div class="max-w-6xl mx-auto px-4 py-12">
@@ -21,7 +33,11 @@ get_header(); ?>
                             <?php echo esc_html( get_the_title() ); ?>
                         </h1>
                         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                            10年以上のシステム開発経験を持つフルスタックエンジニア
+                            <?php if ($has_summary && isset($summary_data['totalExperience'])) : ?>
+                                <?php echo esc_html($summary_data['totalExperience']); ?>のシステム開発経験を持つフルスタックエンジニア
+                            <?php else : ?>
+                                10年以上のシステム開発経験を持つフルスタックエンジニア
+                            <?php endif; ?>
                         </p>
                     </header>
 
@@ -31,7 +47,11 @@ get_header(); ?>
                             <div class="space-y-6">
                                 <h2 class="text-3xl font-bold text-gray-800 mb-6">Profile</h2>
                                 <div class="prose prose-lg text-gray-700">
-                                    <?php the_content(); ?>
+                                    <?php if ($has_about && isset($about_data['description'])) : ?>
+                                        <p><?php echo wp_kses_post(nl2br(esc_html($about_data['description']))); ?></p>
+                                    <?php else : ?>
+                                        <?php the_content(); ?>
+                                    <?php endif; ?>
                                 </div>
                                 
                                 <!-- 基本情報 -->
@@ -48,8 +68,27 @@ get_header(); ?>
                                         </div>
                                         <div class="flex items-center space-x-3">
                                             <i class="ri-time-line text-blue-600"></i>
-                                            <span class="text-gray-700">経験年数: 10年以上</span>
+                                            <span class="text-gray-700">経験年数: 
+                                                <?php if ($has_summary && isset($summary_data['totalExperience'])) : ?>
+                                                    <?php echo esc_html($summary_data['totalExperience']); ?>
+                                                <?php else : ?>
+                                                    10年以上
+                                                <?php endif; ?>
+                                            </span>
                                         </div>
+                                        <?php if ($has_summary && isset($summary_data['highlights']) && !empty($summary_data['highlights'])) : ?>
+                                            <div class="mt-4 pt-4 border-t border-blue-200">
+                                                <h4 class="font-semibold text-gray-800 mb-2">強み・特徴</h4>
+                                                <ul class="space-y-1 text-sm text-gray-700">
+                                                    <?php foreach (array_slice($summary_data['highlights'], 0, 3) as $highlight) : ?>
+                                                        <li class="flex items-start space-x-2">
+                                                            <i class="ri-check-line text-blue-600 mt-0.5"></i>
+                                                            <span><?php echo esc_html($highlight); ?></span>
+                                                        </li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
@@ -114,6 +153,66 @@ get_header(); ?>
                             </div>
                         </div>
                     </section>
+
+                    <!-- コア技術セクション -->
+                    <?php if ($has_core_tech && !empty($core_technologies)) : ?>
+                    <section class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Core Technologies</h2>
+                        <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <?php foreach ($core_technologies as $tech) : 
+                                    if (!isset($tech['name']) || !isset($tech['years']) || !isset($tech['level'])) {
+                                        continue;
+                                    }
+                                    
+                                    // レベルに応じた進捗バーの幅とカラーを決定
+                                    $level = strtolower($tech['level']);
+                                    $progress_width = 50; // デフォルト
+                                    $color_class = 'blue';
+                                    
+                                    switch ($level) {
+                                        case 'エキスパート':
+                                        case 'expert':
+                                            $progress_width = 95;
+                                            $color_class = 'red';
+                                            break;
+                                        case '上級':
+                                        case 'advanced':
+                                            $progress_width = 80;
+                                            $color_class = 'blue';
+                                            break;
+                                        case '中級':
+                                        case 'intermediate':
+                                            $progress_width = 65;
+                                            $color_class = 'green';
+                                            break;
+                                        case '初級':
+                                        case 'beginner':
+                                            $progress_width = 40;
+                                            $color_class = 'gray';
+                                            break;
+                                    }
+                                    ?>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center justify-between">
+                                            <h3 class="text-lg font-semibold text-gray-800"><?php echo esc_html($tech['name']); ?></h3>
+                                            <div class="text-right">
+                                                <span class="text-sm font-medium text-<?php echo esc_attr($color_class); ?>-600 bg-<?php echo esc_attr($color_class); ?>-100 px-2 py-1 rounded">
+                                                    <?php echo esc_html($tech['level']); ?>
+                                                </span>
+                                                <div class="text-xs text-gray-500 mt-1"><?php echo esc_html($tech['years']); ?>年</div>
+                                            </div>
+                                        </div>
+                                        <div class="w-full bg-gray-200 rounded-full h-2" role="progressbar" aria-valuenow="<?php echo esc_attr($progress_width); ?>" aria-valuemin="0" aria-valuemax="100" aria-label="<?php echo esc_attr($tech['name']); ?> 習熟度">
+                                            <div class="bg-<?php echo esc_attr($color_class); ?>-600 h-2 rounded-full transition-all duration-1000 ease-out" 
+                                                 style="width: <?php echo esc_attr($progress_width); ?>%"></div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </section>
+                    <?php endif; ?>
 
                     <!-- CTA セクション -->
                     <section class="text-center bg-gradient-to-r from-blue-50 to-indigo-50 py-16 px-6 rounded-lg">

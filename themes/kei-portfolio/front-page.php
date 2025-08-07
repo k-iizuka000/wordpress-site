@@ -6,13 +6,26 @@
  * @package Kei_Portfolio
  */
 
-get_header(); ?>
+get_header(); 
+
+// Portfolio_Dataクラスのインスタンスを取得
+$portfolio_data = Portfolio_Data::get_instance();
+$summary_data = $portfolio_data->get_summary_data();
+$latest_projects = $portfolio_data->get_latest_projects();
+$in_progress_projects = $portfolio_data->get_in_progress_projects();
+$skills_data = $portfolio_data->get_skills_data();
+
+// エラーハンドリング
+$has_summary = !is_wp_error($summary_data);
+$has_projects = !is_wp_error($latest_projects);
+$has_in_progress = !is_wp_error($in_progress_projects);
+$has_skills = !is_wp_error($skills_data);
+?>
 
 <main class="min-h-screen">
     <!-- Hero Section -->
     <section 
-        class="relative h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-green-50 overflow-hidden"
-        style="background-image: url('https://readdy.ai/api/search-image?query=Professional%20cyclist%20in%20bright%20cycling%20gear%20riding%20a%20road%20bike%20on%20a%20scenic%20mountain%20road%20during%20golden%20hour%20with%20clear%20blue%20sky%20and%20green%20landscape%20in%20the%20background%2C%20showcasing%20freedom%20and%20speed%20with%20a%20modern%20minimalist%20aesthetic%20that%20would%20work%20well%20as%20a%20website%20hero%20background&width=1920&height=1080&seq=hero-cycling&orientation=landscape'); background-size: cover; background-position: center;"
+        class="relative h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-green-50 overflow-hidden hero-section"
     >
         <div class="absolute inset-0 bg-black/30"></div>
         
@@ -20,15 +33,26 @@ get_header(); ?>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div class="text-white lg:pr-8">
                     <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                        自動化で
+                        <?php if ($has_summary && isset($summary_data['totalExperience'])) : ?>
+                            <?php echo esc_html($summary_data['totalExperience']); ?>の経験で
+                        <?php else : ?>
+                            自動化で
+                        <?php endif; ?>
                         <span class="text-blue-300">未来</span>を
                         <br />
                         創るエンジニア
                     </h1>
                     <p class="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed">
-                        プログラミングの力で効率化を実現し、<br />
-                        ロードバイクのように爽快に駆け抜ける<br />
-                        開発体験をお届けします。
+                        <?php if ($has_summary && isset($summary_data['highlights']) && !empty($summary_data['highlights'])) : ?>
+                            <?php echo esc_html($summary_data['highlights'][0]); ?><br />
+                            <?php if (count($summary_data['highlights']) > 1) : ?>
+                                <?php echo esc_html($summary_data['highlights'][1]); ?>
+                            <?php endif; ?>
+                        <?php else : ?>
+                            プログラミングの力で効率化を実現し、<br />
+                            ロードバイクのように爽快に駆け抜ける<br />
+                            開発体験をお届けします。
+                        <?php endif; ?>
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="<?php echo esc_url(get_post_type_archive_link('project')); ?>" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 text-center whitespace-nowrap">
@@ -111,63 +135,71 @@ get_header(); ?>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
                 <?php
-                // スキルデータ - セキュリティを考慮してサニタイズ済み
-                $skills = array(
-                    array(
-                        'name' => 'Python', 
-                        'icon' => 'ri-code-line', 
-                        'color' => 'blue'
-                    ),
-                    array(
-                        'name' => 'JavaScript', 
-                        'icon' => 'ri-javascript-line', 
-                        'color' => 'yellow'
-                    ),
-                    array(
-                        'name' => 'React', 
-                        'icon' => 'ri-reactjs-line', 
-                        'color' => 'cyan'
-                    ),
-                    array(
-                        'name' => 'Node.js', 
-                        'icon' => 'ri-nodejs-line', 
-                        'color' => 'green'
-                    ),
-                    array(
-                        'name' => 'Docker', 
-                        'icon' => 'ri-container-line', 
-                        'color' => 'blue'
-                    ),
-                    array(
-                        'name' => 'AWS', 
-                        'icon' => 'ri-cloud-line', 
-                        'color' => 'orange'
-                    ),
-                    array(
-                        'name' => 'Git', 
-                        'icon' => 'ri-git-branch-line', 
-                        'color' => 'red'
-                    ),
-                    array(
-                        'name' => 'Database', 
-                        'icon' => 'ri-database-2-line', 
-                        'color' => 'purple'
-                    )
-                );
-                
-                foreach ($skills as $skill) : 
-                    // データの存在確認とサニタイズ
-                    if (!isset($skill['name']) || !isset($skill['icon']) || !isset($skill['color'])) {
-                        continue;
+                // portfolio.jsonからスキルデータを取得
+                if ($has_skills) {
+                    // スキルアイコンと色のマッピング
+                    $skill_icons = array(
+                        'Java' => array('icon' => 'ri-code-line', 'color' => 'red'),
+                        'Spring Boot' => array('icon' => 'ri-leaf-line', 'color' => 'green'),
+                        'Python' => array('icon' => 'ri-code-line', 'color' => 'blue'),
+                        'JavaScript' => array('icon' => 'ri-javascript-line', 'color' => 'yellow'),
+                        'Vue.js' => array('icon' => 'ri-vuejs-line', 'color' => 'green'),
+                        'React' => array('icon' => 'ri-reactjs-line', 'color' => 'cyan'),
+                        'Node.js' => array('icon' => 'ri-nodejs-line', 'color' => 'green'),
+                        'Docker' => array('icon' => 'ri-container-line', 'color' => 'blue'),
+                        'AWS' => array('icon' => 'ri-cloud-line', 'color' => 'orange'),
+                        'Git' => array('icon' => 'ri-git-branch-line', 'color' => 'red'),
+                        'SQL' => array('icon' => 'ri-database-2-line', 'color' => 'purple'),
+                        'HTML5' => array('icon' => 'ri-html5-line', 'color' => 'orange'),
+                        'CSS3' => array('icon' => 'ri-css3-line', 'color' => 'blue'),
+                        'PHP' => array('icon' => 'ri-code-line', 'color' => 'purple'),
+                        'Ruby' => array('icon' => 'ri-code-line', 'color' => 'red')
+                    );
+                    
+                    // 全カテゴリのスキルから最初の8個を表示
+                    $display_skills = array();
+                    if (isset($skills_data['backend']) && is_array($skills_data['backend'])) {
+                        $display_skills = array_merge($display_skills, array_slice($skills_data['backend'], 0, 4));
                     }
-                    ?>
-                    <div class="bg-white rounded-xl p-6 text-center hover:shadow-md transition-shadow">
-                        <div class="w-12 h-12 flex items-center justify-center mx-auto mb-3 bg-<?php echo esc_attr($skill['color']); ?>-100 rounded-lg">
-                            <i class="<?php echo esc_attr($skill['icon']); ?> text-<?php echo esc_attr($skill['color']); ?>-600 text-xl"></i>
+                    if (isset($skills_data['frontend']) && is_array($skills_data['frontend'])) {
+                        $display_skills = array_merge($display_skills, array_slice($skills_data['frontend'], 0, 4));
+                    }
+                    
+                    $display_skills = array_slice($display_skills, 0, 8);
+                    
+                    foreach ($display_skills as $skill_name) : 
+                        if (!is_string($skill_name) || empty($skill_name)) continue;
+                        
+                        $icon_data = isset($skill_icons[$skill_name]) ? 
+                            $skill_icons[$skill_name] : 
+                            array('icon' => 'ri-code-line', 'color' => 'gray');
+                        ?>
+                        <div class="bg-white rounded-xl p-6 text-center hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 flex items-center justify-center mx-auto mb-3 bg-<?php echo esc_attr($icon_data['color']); ?>-100 rounded-lg">
+                                <i class="<?php echo esc_attr($icon_data['icon']); ?> text-<?php echo esc_attr($icon_data['color']); ?>-600 text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-800"><?php echo esc_html($skill_name); ?></h4>
                         </div>
-                        <h4 class="font-semibold text-gray-800"><?php echo esc_html($skill['name']); ?></h4>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach;
+                } else {
+                    // フォールバック: portfolio.jsonが利用できない場合のデフォルトスキル
+                    $default_skills = array(
+                        array('name' => 'Java', 'icon' => 'ri-code-line', 'color' => 'red'),
+                        array('name' => 'JavaScript', 'icon' => 'ri-javascript-line', 'color' => 'yellow'),
+                        array('name' => 'Python', 'icon' => 'ri-code-line', 'color' => 'blue'),
+                        array('name' => 'React', 'icon' => 'ri-reactjs-line', 'color' => 'cyan')
+                    );
+                    
+                    foreach ($default_skills as $skill) : ?>
+                        <div class="bg-white rounded-xl p-6 text-center hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 flex items-center justify-center mx-auto mb-3 bg-<?php echo esc_attr($skill['color']); ?>-100 rounded-lg">
+                                <i class="<?php echo esc_attr($skill['icon']); ?> text-<?php echo esc_attr($skill['color']); ?>-600 text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold text-gray-800"><?php echo esc_html($skill['name']); ?></h4>
+                        </div>
+                    <?php endforeach;
+                }
+                ?>
             </div>
             
             <div class="text-center">
@@ -179,12 +211,12 @@ get_header(); ?>
         </div>
     </section>
 
-    <!-- Portfolio Preview Section -->
+    <!-- Latest Projects Section -->
     <section class="py-20 bg-white">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                    制作実績
+                    最新の制作実績
                 </h2>
                 <p class="text-lg text-gray-600">
                     これまでに開発した代表的なプロジェクトをご紹介します
@@ -193,54 +225,100 @@ get_header(); ?>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 <?php
-                // プロジェクトデータ - セキュリティを考慮してサニタイズ済み
-                $projects = array(
-                    array(
-                        'title' => 'データ処理自動化ツール',
-                        'description' => 'Excel作業を自動化し、作業時間を90%短縮',
-                        'tech' => 'Python, Pandas',
-                        'image' => 'https://readdy.ai/api/search-image?query=Modern%20data%20processing%20dashboard%20with%20clean%20interface%20showing%20automated%20Excel%20processing%20workflows%2C%20charts%20and%20graphs%20on%20computer%20screen%20with%20professional%20blue%20and%20green%20color%20scheme&width=400&height=300&seq=data-automation&orientation=landscape'
-                    ),
-                    array(
-                        'title' => 'Webスクレイピングシステム',
-                        'description' => '競合サイトの価格情報を定期的に収集・分析',
-                        'tech' => 'Python, BeautifulSoup',
-                        'image' => 'https://readdy.ai/api/search-image?query=Web%20scraping%20visualization%20dashboard%20showing%20data%20collection%20from%20multiple%20websites%20with%20modern%20interface%20design%2C%20featuring%20clean%20charts%20and%20data%20flows%20in%20blue%20and%20green%20theme&width=400&height=300&seq=web-scraping&orientation=landscape'
-                    ),
-                    array(
-                        'title' => 'チャットボット開発',
-                        'description' => '顧客対応を自動化し、応答速度を大幅改善',
-                        'tech' => 'Node.js, AI API',
-                        'image' => 'https://readdy.ai/api/search-image?query=Modern%20chatbot%20interface%20design%20with%20clean%20conversation%20bubbles%20and%20AI%20assistant%20graphics%2C%20professional%20blue%20and%20green%20color%20scheme%20with%20minimalist%20design&width=400&height=300&seq=chatbot&orientation=landscape'
-                    )
-                );
-                
-                foreach ($projects as $project) : 
-                    // データの存在確認とサニタイズ
-                    if (!isset($project['title']) || !isset($project['description']) || 
-                        !isset($project['tech']) || !isset($project['image'])) {
-                        continue;
-                    }
-                    ?>
-                    <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
-                        <img 
-                            src="<?php echo esc_url($project['image']); ?>" 
-                            alt="<?php echo esc_attr($project['title']); ?>"
-                            class="w-full h-48 object-cover object-top"
-                            loading="lazy"
-                        />
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2"><?php echo esc_html($project['title']); ?></h3>
-                            <p class="text-gray-600 mb-4"><?php echo esc_html($project['description']); ?></p>
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
-                                    <?php echo esc_html($project['tech']); ?>
-                                </span>
-                                <i class="ri-external-link-line text-gray-400"></i>
+                if ($has_projects && !empty($latest_projects)) {
+                    foreach ($latest_projects as $project) : 
+                        if (!isset($project['title']) || !isset($project['description'])) {
+                            continue;
+                        }
+                        
+                        // 技術スタックの抽出
+                        $tech_stack = '';
+                        if (isset($project['technologies']) && is_array($project['technologies'])) {
+                            $tech_names = array();
+                            foreach (array_slice($project['technologies'], 0, 3) as $tech) {
+                                if (is_array($tech) && isset($tech['name'])) {
+                                    $tech_names[] = $tech['name'];
+                                } elseif (is_string($tech)) {
+                                    $tech_names[] = $tech;
+                                }
+                            }
+                            $tech_stack = implode(', ', $tech_names);
+                        }
+                        
+                        // プロジェクト期間の表示
+                        $period_display = '';
+                        if (isset($project['period']['start']) && isset($project['period']['end'])) {
+                            $period_display = esc_html($project['period']['start']) . ' - ' . esc_html($project['period']['end']);
+                        }
+                        ?>
+                        <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
+                            <div class="h-48 bg-gradient-to-br from-blue-100 to-green-100 flex items-center justify-center">
+                                <div class="text-center p-4">
+                                    <i class="ri-code-s-slash-line text-4xl text-blue-600 mb-2"></i>
+                                    <?php if ($period_display) : ?>
+                                        <p class="text-sm text-gray-600"><?php echo $period_display; ?></p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2"><?php echo esc_html($project['title']); ?></h3>
+                                <?php 
+                                // 説明文の最初の100文字を抽出
+                                $description = strip_tags($project['description']);
+                                $short_description = mb_strlen($description) > 100 ? mb_substr($description, 0, 100) . '...' : $description;
+                                ?>
+                                <p class="text-gray-600 mb-4"><?php echo esc_html($short_description); ?></p>
+                                <div class="flex items-center justify-between">
+                                    <?php if ($tech_stack) : ?>
+                                        <span class="text-sm text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
+                                            <?php echo esc_html($tech_stack); ?>
+                                        </span>
+                                    <?php endif; ?>
+                                    <?php if (isset($project['role'])) : ?>
+                                        <span class="text-xs text-gray-500"><?php echo esc_html($project['role']); ?></span>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach;
+                } else {
+                    // フォールバック用のデフォルトプロジェクト
+                    $default_projects = array(
+                        array(
+                            'title' => '通信会社向けWebサイト開発',
+                            'description' => 'Spring Boot移行後の技術文書整備とプロセス改善',
+                            'tech' => 'Java, Spring Boot'
+                        ),
+                        array(
+                            'title' => '料理レシピ投稿サイト開発',
+                            'description' => 'ユーザー・管理者機能の改修と品質向上',
+                            'tech' => 'Python, PHP, Vue.js'
+                        ),
+                        array(
+                            'title' => 'PSNサーバーサイド開発',
+                            'description' => 'ログイン管理機能とテスト品質向上',
+                            'tech' => 'Java, AWS, JUnit'
+                        )
+                    );
+                    
+                    foreach ($default_projects as $project) : ?>
+                        <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
+                            <div class="h-48 bg-gradient-to-br from-blue-100 to-green-100 flex items-center justify-center">
+                                <i class="ri-code-s-slash-line text-4xl text-blue-600"></i>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-2"><?php echo esc_html($project['title']); ?></h3>
+                                <p class="text-gray-600 mb-4"><?php echo esc_html($project['description']); ?></p>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-sm text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
+                                        <?php echo esc_html($project['tech']); ?>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach;
+                }
+                ?>
             </div>
             
             <div class="text-center">
@@ -251,6 +329,61 @@ get_header(); ?>
             </div>
         </div>
     </section>
+
+    <!-- In Progress Projects Section -->
+    <?php if ($has_in_progress && !empty($in_progress_projects)) : ?>
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    進行中のプロジェクト
+                </h2>
+                <p class="text-lg text-gray-600">
+                    現在開発中のプロジェクトをご紹介します
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <?php foreach ($in_progress_projects as $project) : 
+                    if (!isset($project['title']) || !isset($project['description'])) {
+                        continue;
+                    }
+                    
+                    // 技術スタックの抽出
+                    $tech_stack = '';
+                    if (isset($project['technologies']) && is_array($project['technologies'])) {
+                        $tech_stack = implode(', ', array_slice($project['technologies'], 0, 3));
+                    }
+                    ?>
+                    <div class="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-shadow border-l-4 border-green-500">
+                        <div class="h-48 bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center">
+                            <div class="text-center p-4">
+                                <i class="ri-settings-3-line text-4xl text-green-600 mb-2 animate-spin-slow"></i>
+                                <span class="inline-block bg-green-500 text-white text-xs px-2 py-1 rounded-full">進行中</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2"><?php echo esc_html($project['title']); ?></h3>
+                            <p class="text-gray-600 mb-4"><?php echo esc_html($project['description']); ?></p>
+                            <div class="flex items-center justify-between">
+                                <?php if ($tech_stack) : ?>
+                                    <span class="text-sm text-green-600 bg-green-100 px-3 py-1 rounded-full">
+                                        <?php echo esc_html($tech_stack); ?>
+                                    </span>
+                                <?php endif; ?>
+                                <?php if (isset($project['url']) && !empty($project['url'])) : ?>
+                                    <a href="<?php echo esc_url($project['url']); ?>" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-600">
+                                        <i class="ri-external-link-line"></i>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+    <?php endif; ?>
 
     <!-- CTA Section -->
     <section class="py-20 bg-gradient-to-r from-blue-600 to-green-600">

@@ -5,7 +5,17 @@
  * @package Kei_Portfolio
  */
 
-get_header(); ?>
+get_header(); 
+
+// Portfolio_Dataクラスのインスタンスを取得
+$portfolio_data = Portfolio_Data::get_instance();
+$skills_data = $portfolio_data->get_skills_data();
+$summary_data = $portfolio_data->get_summary_data();
+
+// エラーハンドリング
+$has_skills = !is_wp_error($skills_data);
+$has_summary = !is_wp_error($summary_data);
+?>
 
     <main id="main" class="site-main">
         <div class="max-w-6xl mx-auto px-4 py-12">
@@ -21,7 +31,11 @@ get_header(); ?>
                             <?php echo esc_html( get_the_title() ); ?>
                         </h1>
                         <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                            10年以上のシステム開発で培った技術スキルをご紹介します
+                            <?php if ($has_summary && isset($summary_data['totalExperience'])) : ?>
+                                <?php echo esc_html($summary_data['totalExperience']); ?>のシステム開発で培った技術スキルをご紹介します
+                            <?php else : ?>
+                                10年以上のシステム開発で培った技術スキルをご紹介します
+                            <?php endif; ?>
                         </p>
                     </header>
 
@@ -30,108 +44,127 @@ get_header(); ?>
                         <?php the_content(); ?>
                     </div>
 
-                    <!-- プログラミング言語 -->
+                    <!-- フロントエンドスキル -->
+                    <?php if ($has_skills && isset($skills_data['frontend']) && !empty($skills_data['frontend'])) : ?>
                     <section class="mb-16">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Programming Languages</h2>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Frontend Skills</h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                            
                             <?php
-                            $programming_languages = array(
-                                array( 'name' => 'Java', 'level' => 95, 'icon' => 'ri-file-code-line', 'color' => 'bg-red-500' ),
-                                array( 'name' => 'JavaScript', 'level' => 90, 'icon' => 'ri-javascript-line', 'color' => 'bg-yellow-500' ),
-                                array( 'name' => 'TypeScript', 'level' => 85, 'icon' => 'ri-code-s-slash-line', 'color' => 'bg-blue-600' ),
-                                array( 'name' => 'PHP', 'level' => 80, 'icon' => 'ri-code-line', 'color' => 'bg-purple-600' ),
-                                array( 'name' => 'Python', 'level' => 75, 'icon' => 'ri-file-code-line', 'color' => 'bg-green-600' ),
-                                array( 'name' => 'Go', 'level' => 70, 'icon' => 'ri-code-line', 'color' => 'bg-cyan-500' ),
-                                array( 'name' => 'SQL', 'level' => 85, 'icon' => 'ri-database-2-line', 'color' => 'bg-gray-600' ),
-                                array( 'name' => 'Shell', 'level' => 80, 'icon' => 'ri-terminal-line', 'color' => 'bg-black' ),
+                            // スキルアイコンと色のマッピング
+                            $skill_mapping = array(
+                                'JavaScript' => array('level' => 90, 'icon' => 'ri-javascript-line', 'color' => 'bg-yellow-500'),
+                                'Vue.js' => array('level' => 85, 'icon' => 'ri-vuejs-line', 'color' => 'bg-green-500'),
+                                'React' => array('level' => 80, 'icon' => 'ri-reactjs-line', 'color' => 'bg-blue-500'),
+                                'HTML5' => array('level' => 95, 'icon' => 'ri-html5-line', 'color' => 'bg-orange-500'),
+                                'CSS3' => array('level' => 90, 'icon' => 'ri-css3-line', 'color' => 'bg-blue-600'),
+                                'JSP' => array('level' => 85, 'icon' => 'ri-file-code-line', 'color' => 'bg-red-500'),
+                                'FullCalendar' => array('level' => 75, 'icon' => 'ri-calendar-line', 'color' => 'bg-purple-500')
                             );
 
-                            foreach ( $programming_languages as $lang ) :
+                            foreach ($skills_data['frontend'] as $skill_name) : 
+                                if (!is_string($skill_name) || empty($skill_name)) continue;
+                                
+                                $skill_data = isset($skill_mapping[$skill_name]) ? 
+                                    $skill_mapping[$skill_name] : 
+                                    array('level' => 70, 'icon' => 'ri-code-line', 'color' => 'bg-gray-500');
                             ?>
                                 <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 text-center">
-                                    <div class="flex items-center justify-center w-12 h-12 <?php echo esc_attr( $lang['color'] ); ?> rounded-lg mx-auto mb-3">
-                                        <i class="<?php echo esc_attr( $lang['icon'] ); ?> text-white text-xl"></i>
+                                    <div class="flex items-center justify-center w-12 h-12 <?php echo esc_attr($skill_data['color']); ?> rounded-lg mx-auto mb-3">
+                                        <i class="<?php echo esc_attr($skill_data['icon']); ?> text-white text-xl"></i>
                                     </div>
-                                    <h3 class="font-semibold text-gray-800 mb-2"><?php echo esc_html( $lang['name'] ); ?></h3>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="<?php echo esc_attr( $lang['color'] ); ?> h-2 rounded-full" style="width: <?php echo esc_attr( $lang['level'] ); ?>%"></div>
+                                    <h3 class="font-semibold text-gray-800 mb-2"><?php echo esc_html($skill_name); ?></h3>
+                                    <div class="w-full bg-gray-200 rounded-full h-2" role="progressbar" aria-valuenow="<?php echo esc_attr($skill_data['level']); ?>" aria-valuemin="0" aria-valuemax="100" aria-label="<?php echo esc_attr($skill_name); ?> スキルレベル">
+                                        <div class="<?php echo esc_attr($skill_data['color']); ?> h-2 rounded-full transition-all duration-1000 ease-out" 
+                                             style="width: <?php echo esc_attr($skill_data['level']); ?>%"></div>
                                     </div>
-                                    <span class="text-xs text-gray-600 mt-1 block"><?php echo esc_html( $lang['level'] ); ?>%</span>
+                                    <span class="text-xs text-gray-600 mt-1 block"><?php echo esc_html($skill_data['level']); ?>%</span>
                                 </div>
                             <?php endforeach; ?>
                         </div>
                     </section>
+                    <?php endif; ?>
 
-                    <!-- フレームワーク・ライブラリ -->
+                    <!-- バックエンドスキル -->
+                    <?php if ($has_skills && isset($skills_data['backend']) && !empty($skills_data['backend'])) : ?>
                     <section class="mb-16">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Frameworks & Libraries</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Backend Skills</h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             <?php
-                            $frameworks = array(
-                                array( 'name' => 'Spring Boot', 'category' => 'Backend', 'icon' => 'ri-leaf-line', 'color' => 'bg-green-500' ),
-                                array( 'name' => 'React', 'category' => 'Frontend', 'icon' => 'ri-reactjs-line', 'color' => 'bg-blue-500' ),
-                                array( 'name' => 'Next.js', 'category' => 'Frontend', 'icon' => 'ri-window-line', 'color' => 'bg-black' ),
-                                array( 'name' => 'Node.js', 'category' => 'Backend', 'icon' => 'ri-nodejs-line', 'color' => 'bg-green-600' ),
-                                array( 'name' => 'Express.js', 'category' => 'Backend', 'icon' => 'ri-server-line', 'color' => 'bg-gray-700' ),
-                                array( 'name' => 'WordPress', 'category' => 'CMS', 'icon' => 'ri-wordpress-line', 'color' => 'bg-blue-600' ),
-                                array( 'name' => 'Laravel', 'category' => 'Backend', 'icon' => 'ri-code-s-slash-line', 'color' => 'bg-red-500' ),
-                                array( 'name' => 'Vue.js', 'category' => 'Frontend', 'icon' => 'ri-vuejs-line', 'color' => 'bg-green-500' ),
-                                array( 'name' => 'Tailwind CSS', 'category' => 'Frontend', 'icon' => 'ri-palette-line', 'color' => 'bg-cyan-500' ),
+                            // バックエンドスキルのマッピング
+                            $backend_mapping = array(
+                                'Java' => array('level' => 95, 'icon' => 'ri-file-code-line', 'color' => 'bg-red-500'),
+                                'Spring Boot' => array('level' => 90, 'icon' => 'ri-leaf-line', 'color' => 'bg-green-500'),
+                                'Python' => array('level' => 85, 'icon' => 'ri-file-code-line', 'color' => 'bg-blue-600'),
+                                'SQL' => array('level' => 90, 'icon' => 'ri-database-2-line', 'color' => 'bg-gray-600'),
+                                'Node.js' => array('level' => 80, 'icon' => 'ri-nodejs-line', 'color' => 'bg-green-600'),
+                                'COBOL' => array('level' => 70, 'icon' => 'ri-code-line', 'color' => 'bg-blue-800'),
+                                'Ruby' => array('level' => 75, 'icon' => 'ri-code-line', 'color' => 'bg-red-600'),
+                                'PHP' => array('level' => 80, 'icon' => 'ri-code-line', 'color' => 'bg-purple-600')
                             );
 
-                            foreach ( $frameworks as $framework ) :
+                            foreach ($skills_data['backend'] as $skill_name) : 
+                                if (!is_string($skill_name) || empty($skill_name)) continue;
+                                
+                                $skill_data = isset($backend_mapping[$skill_name]) ? 
+                                    $backend_mapping[$skill_name] : 
+                                    array('level' => 70, 'icon' => 'ri-code-line', 'color' => 'bg-gray-500');
+                            ?>
+                                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 text-center">
+                                    <div class="flex items-center justify-center w-12 h-12 <?php echo esc_attr($skill_data['color']); ?> rounded-lg mx-auto mb-3">
+                                        <i class="<?php echo esc_attr($skill_data['icon']); ?> text-white text-xl"></i>
+                                    </div>
+                                    <h3 class="font-semibold text-gray-800 mb-2"><?php echo esc_html($skill_name); ?></h3>
+                                    <div class="w-full bg-gray-200 rounded-full h-2" role="progressbar" aria-valuenow="<?php echo esc_attr($skill_data['level']); ?>" aria-valuemin="0" aria-valuemax="100" aria-label="<?php echo esc_attr($skill_name); ?> スキルレベル">
+                                        <div class="<?php echo esc_attr($skill_data['color']); ?> h-2 rounded-full transition-all duration-1000 ease-out" 
+                                             style="width: <?php echo esc_attr($skill_data['level']); ?>%"></div>
+                                    </div>
+                                    <span class="text-xs text-gray-600 mt-1 block"><?php echo esc_html($skill_data['level']); ?>%</span>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </section>
+                    <?php endif; ?>
+
+                    <!-- その他のスキル -->
+                    <?php if ($has_skills && isset($skills_data['other']) && !empty($skills_data['other'])) : ?>
+                    <section class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Tools & Infrastructure</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <?php
+                            // その他のスキルのマッピング
+                            $other_mapping = array(
+                                'Git' => array('category' => 'Version Control', 'icon' => 'ri-git-branch-line', 'color' => 'bg-red-500'),
+                                'AWS' => array('category' => 'Cloud Platform', 'icon' => 'ri-cloud-line', 'color' => 'bg-orange-500'),
+                                'Docker' => array('category' => 'Containerization', 'icon' => 'ri-ship-line', 'color' => 'bg-blue-500'),
+                                'Gradle' => array('category' => 'Build Tool', 'icon' => 'ri-settings-3-line', 'color' => 'bg-green-600'),
+                                'JUnit' => array('category' => 'Testing', 'icon' => 'ri-test-tube-line', 'color' => 'bg-red-600'),
+                                'Maven' => array('category' => 'Build Tool', 'icon' => 'ri-hammer-line', 'color' => 'bg-blue-600'),
+                                'SVN' => array('category' => 'Version Control', 'icon' => 'ri-git-repository-line', 'color' => 'bg-gray-600'),
+                                'e2e' => array('category' => 'Testing', 'icon' => 'ri-checkbox-multiple-line', 'color' => 'bg-purple-600')
+                            );
+
+                            foreach ($skills_data['other'] as $skill_name) : 
+                                if (!is_string($skill_name) || empty($skill_name)) continue;
+                                
+                                $skill_data = isset($other_mapping[$skill_name]) ? 
+                                    $other_mapping[$skill_name] : 
+                                    array('category' => 'Tool', 'icon' => 'ri-tools-line', 'color' => 'bg-gray-500');
                             ?>
                                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
                                     <div class="flex items-center space-x-4">
-                                        <div class="flex items-center justify-center w-12 h-12 <?php echo esc_attr( $framework['color'] ); ?> rounded-lg">
-                                            <i class="<?php echo esc_attr( $framework['icon'] ); ?> text-white text-xl"></i>
+                                        <div class="flex items-center justify-center w-12 h-12 <?php echo esc_attr($skill_data['color']); ?> rounded-lg">
+                                            <i class="<?php echo esc_attr($skill_data['icon']); ?> text-white text-xl"></i>
                                         </div>
                                         <div>
-                                            <h3 class="font-semibold text-gray-800"><?php echo esc_html( $framework['name'] ); ?></h3>
-                                            <span class="text-sm text-gray-600"><?php echo esc_html( $framework['category'] ); ?></span>
+                                            <h3 class="font-semibold text-gray-800"><?php echo esc_html($skill_name); ?></h3>
+                                            <span class="text-sm text-gray-600"><?php echo esc_html($skill_data['category']); ?></span>
                                         </div>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>
                     </section>
-
-                    <!-- データベース・インフラ -->
-                    <section class="mb-16">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Database & Infrastructure</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            
-                            <?php
-                            $infrastructure = array(
-                                array( 'name' => 'MySQL', 'category' => 'Database', 'icon' => 'ri-database-2-line', 'color' => 'bg-blue-600' ),
-                                array( 'name' => 'PostgreSQL', 'category' => 'Database', 'icon' => 'ri-database-2-line', 'color' => 'bg-blue-500' ),
-                                array( 'name' => 'MongoDB', 'category' => 'NoSQL', 'icon' => 'ri-database-line', 'color' => 'bg-green-600' ),
-                                array( 'name' => 'Redis', 'category' => 'Cache', 'icon' => 'ri-database-line', 'color' => 'bg-red-500' ),
-                                array( 'name' => 'Docker', 'category' => 'Container', 'icon' => 'ri-ship-line', 'color' => 'bg-blue-500' ),
-                                array( 'name' => 'AWS', 'category' => 'Cloud', 'icon' => 'ri-cloud-line', 'color' => 'bg-orange-500' ),
-                                array( 'name' => 'Git', 'category' => 'Version Control', 'icon' => 'ri-git-branch-line', 'color' => 'bg-gray-700' ),
-                                array( 'name' => 'GitHub', 'category' => 'Platform', 'icon' => 'ri-github-line', 'color' => 'bg-black' ),
-                                array( 'name' => 'Linux', 'category' => 'OS', 'icon' => 'ri-terminal-line', 'color' => 'bg-yellow-600' ),
-                            );
-
-                            foreach ( $infrastructure as $infra ) :
-                            ?>
-                                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="flex items-center justify-center w-12 h-12 <?php echo esc_attr( $infra['color'] ); ?> rounded-lg">
-                                            <i class="<?php echo esc_attr( $infra['icon'] ); ?> text-white text-xl"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="font-semibold text-gray-800"><?php echo esc_html( $infra['name'] ); ?></h3>
-                                            <span class="text-sm text-gray-600"><?php echo esc_html( $infra['category'] ); ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </section>
+                    <?php endif; ?>
 
                     <!-- 学習アプローチ -->
                     <section class="mb-16">

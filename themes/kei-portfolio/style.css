@@ -355,6 +355,15 @@ img {
     overflow: hidden;
 }
 
+/* フロントページのヒーローセクション */
+.hero-section {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(16, 185, 129, 0.1)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="cycling-pattern" patternUnits="userSpaceOnUse" width="200" height="100"><circle cx="50" cy="50" r="2" fill="%23e0e7ff" opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23cycling-pattern)"/></svg>');
+    background-size: cover, 200px 100px;
+    background-position: center, center;
+    background-attachment: fixed, scroll;
+}
+
 .hero-content {
     position: relative;
     z-index: 1;
@@ -526,3 +535,213 @@ img {
 .text-purple-600 { color: #9333ea; }
 .bg-orange-100 { background-color: #fed7aa; }
 .text-orange-600 { color: #ea580c; }
+
+/* ==========================================================================
+   Portfolio Data Dynamic Display Styles
+   ========================================================================== */
+
+/* プログレスバーアニメーション */
+.progress-bar {
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-bar-container {
+    overflow: hidden;
+    border-radius: 9999px;
+    background-color: #e5e7eb;
+}
+
+.progress-bar-fill {
+    height: 8px;
+    border-radius: 9999px;
+    transition: width 1.5s ease-out;
+    transform-origin: left;
+}
+
+/* 進行中プロジェクト用アニメーション */
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+}
+
+/* プロジェクトカードのホバーエフェクト */
+.project-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.project-card.in-progress {
+    border-left: 4px solid #10b981;
+    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+}
+
+/* スキルカードのアニメーション */
+.skill-card {
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* コア技術セクションのプログレスバー */
+.core-tech-progress {
+    background: #e5e7eb;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.core-tech-progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.core-tech-progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+    
+    .hero-section p {
+        font-size: 1.125rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .core-tech-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-section p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .card-padding {
+        padding: 1rem;
+    }
+    
+    .progress-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+/* 高解像度ディスプレイ対応 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .skill-icon {
+        image-rendering: -webkit-optimize-contrast;
+    }
+    
+    .progress-bar-fill {
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+}
+
+/* プリント対応 */
+@media print {
+    .progress-bar-fill {
+        background: #000 !important;
+    }
+    
+    .project-card {
+        break-inside: avoid;
+        margin-bottom: 1rem;
+    }
+    
+    .animate-spin-slow {
+        animation: none;
+    }
+}
+
+/* ダークモード対応（将来的な拡張用） */
+@media (prefers-color-scheme: dark) {
+    .progress-bar-container {
+        background-color: #374151;
+    }
+    
+    .project-card.in-progress {
+        background: linear-gradient(135deg, #1f2937 0%, #065f46 100%);
+    }
+}
+
+/* アクセシビリティ: 動きを好まないユーザー向け */
+@media (prefers-reduced-motion: reduce) {
+    .progress-bar,
+    .progress-bar-fill,
+    .animate-spin-slow,
+    .project-card,
+    .skill-card {
+        transition: none;
+        animation: none;
+    }
+}
+
+/* パフォーマンス最適化 */
+.will-change-transform {
+    will-change: transform;
+}
+
+.gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
