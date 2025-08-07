@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+    bootstrap="tests/test-bootstrap.php"
+    backupGlobals="false"
+    backupStaticAttributes="false"
+    colors="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    processIsolation="false"
+    stopOnFailure="false"
+    verbose="true"
+    testdox="true">
+
+    <!-- 構文チェック専用テストスイート -->
+    <testsuites>
+        <testsuite name="syntax">
+            <file>tests/SyntaxTest.php</file>
+            <file>tests/PhpStandardTest.php</file>
+        </testsuite>
+        
+        <testsuite name="static-analysis">
+            <file>tests/SyntaxTest.php</file>
+            <file>tests/PhpStandardTest.php</file>
+        </testsuite>
+    </testsuites>
+
+    <!-- PHP設定 -->
+    <php>
+        <!-- テスト環境設定 -->
+        <env name="TEST_ENV" value="true"/>
+        <env name="CI" value="false"/>
+        
+        <!-- PHPUnit設定 -->
+        <ini name="memory_limit" value="1024M"/>
+        <ini name="error_reporting" value="E_ALL"/>
+        <ini name="display_errors" value="On"/>
+        <ini name="display_startup_errors" value="On"/>
+    </php>
+</phpunit>

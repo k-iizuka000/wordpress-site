@@ -1,7 +1,7 @@
 # WordPressテーマ「kei-portfolio」の包括的テスト実施プロンプト
 
 ## 背景情報
-- **対象ディレクトリ**: `@wordpress/wp-content/themes/kei-portfolio/`
+- **対象ディレクトリ**: `@themes/kei-portfolio/`
 - **テーマ名**: kei-portfolio
 - **目的**: WordPressテーマの全機能が正常に動作することを確認するための包括的なテスト
 
@@ -198,7 +198,7 @@ Taskツールを使用して、複数のwordpress-fullstack-developerエージ�
 
 【全グループ共通の基本セットアップ】
 1. テストディレクトリ構造:
-   - @wordpress/wp-content/themes/kei-portfolio/tests/ ディレクトリを作成
+   - @themes/kei-portfolio/tests/ ディレクトリを作成
    - bootstrap.phpファイルを作成（WordPressテスト環境のセットアップ）
    - phpunit.xml.distファイルを作成（PHPUnit設定）
 
@@ -479,7 +479,7 @@ Docker環境を使用して、Taskツールで複数のtest-executorエージェ
    - コーディング規約チェック
 
 2. テスト自動化スクリプトの作成:
-   @wordpress/wp-content/themes/kei-portfolio/run-tests.sh として:
+   @themes/kei-portfolio/run-tests.sh として:
    - 全テストを順番に実行
    - 結果をレポートとして出力
 

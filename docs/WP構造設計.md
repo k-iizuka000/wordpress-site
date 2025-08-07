@@ -3,7 +3,7 @@
 ## 1. テーマディレクトリ構造
 
 ```
-wordpress/wp-content/themes/kei-portfolio/
+themes/kei-portfolio/
 ├── assets/
 │   ├── css/
 │   │   ├── tailwind.css        # Tailwindベース

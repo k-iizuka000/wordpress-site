@@ -162,7 +162,7 @@ docker-compose -f docker-compose.test.yml --profile linting up
 テーマファイルはホストマシンで編集可能です：
 
 ```
-wordpress/wp-content/themes/kei-portfolio/
+themes/kei-portfolio/
 ├── functions.php
 ├── style.css
 ├── assets/
@@ -242,7 +242,7 @@ ports:
 #### 2. パーミッションエラー
 ```bash
 # ファイル権限の修正
-sudo chown -R $USER:$USER wordpress/wp-content/themes/kei-portfolio
+sudo chown -R $USER:$USER themes/kei-portfolio
 
 # Docker内での権限確認
 docker-compose exec wordpress ls -la /var/www/html/wp-content/themes/
@@ -321,7 +321,7 @@ macOSでの高速化：
 ```yaml
 # docker-compose.yml
 volumes:
-  - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:cached
+  - ./themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:cached
 ```
 
 ### 2. メモリ割り当ての調整

@@ -1,0 +1,268 @@
+{
+    "timestamp": "2025-08-07 12:55:48",
+    "page_results": [
+        {
+            "page": "メインページ",
+            "url": "http:\/\/localhost:8090\/",
+            "checks": {
+                "viewport_meta": {
+                    "status": "OK",
+                    "description": "viewportメタタグの存在確認"
+                },
+                "css_loading": {
+                    "status": "OK",
+                    "count": 4,
+                    "description": "CSSファイルの読み込み確認"
+                },
+                "js_loading": {
+                    "status": "OK",
+                    "count": 3,
+                    "description": "JavaScriptファイルの読み込み確認"
+                },
+                "image_alt": {
+                    "status": "OK",
+                    "with_alt": 3,
+                    "total": 3,
+                    "description": "画像のalt属性設定確認"
+                },
+                "semantic_html": {
+                    "status": "OK",
+                    "elements": [
+                        "header",
+                        "nav",
+                        "main",
+                        "section",
+                        "footer"
+                    ],
+                    "count": 5,
+                    "description": "セマンティックHTML要素の使用確認"
+                },
+                "form_labels": {
+                    "status": "N\/A",
+                    "inputs": 0,
+                    "labels": 0,
+                    "description": "フォーム要素のラベル設定確認"
+                },
+                "html_structure": {
+                    "status": "OK",
+                    "errors": [],
+                    "description": "HTML基本構造の確認"
+                }
+            }
+        },
+        {
+            "page": "アバウト",
+            "url": "http:\/\/localhost:8090\/about\/",
+            "checks": {
+                "viewport_meta": {
+                    "status": "OK",
+                    "description": "viewportメタタグの存在確認"
+                },
+                "css_loading": {
+                    "status": "OK",
+                    "count": 4,
+                    "description": "CSSファイルの読み込み確認"
+                },
+                "js_loading": {
+                    "status": "OK",
+                    "count": 3,
+                    "description": "JavaScriptファイルの読み込み確認"
+                },
+                "image_alt": {
+                    "status": "N\/A",
+                    "with_alt": 0,
+                    "total": 0,
+                    "description": "画像のalt属性設定確認"
+                },
+                "semantic_html": {
+                    "status": "OK",
+                    "elements": [
+                        "header",
+                        "nav",
+                        "main",
+                        "article",
+                        "section",
+                        "footer"
+                    ],
+                    "count": 6,
+                    "description": "セマンティックHTML要素の使用確認"
+                },
+                "form_labels": {
+                    "status": "N\/A",
+                    "inputs": 0,
+                    "labels": 0,
+                    "description": "フォーム要素のラベル設定確認"
+                },
+                "html_structure": {
+                    "status": "OK",
+                    "errors": [],
+                    "description": "HTML基本構造の確認"
+                }
+            }
+        },
+        {
+            "page": "スキル",
+            "url": "http:\/\/localhost:8090\/skills\/",
+            "checks": {
+                "viewport_meta": {
+                    "status": "OK",
+                    "description": "viewportメタタグの存在確認"
+                },
+                "css_loading": {
+                    "status": "OK",
+                    "count": 4,
+                    "description": "CSSファイルの読み込み確認"
+                },
+                "js_loading": {
+                    "status": "OK",
+                    "count": 3,
+                    "description": "JavaScriptファイルの読み込み確認"
+                },
+                "image_alt": {
+                    "status": "N\/A",
+                    "with_alt": 0,
+                    "total": 0,
+                    "description": "画像のalt属性設定確認"
+                },
+                "semantic_html": {
+                    "status": "OK",
+                    "elements": [
+                        "header",
+                        "nav",
+                        "main",
+                        "article",
+                        "section",
+                        "footer"
+                    ],
+                    "count": 6,
+                    "description": "セマンティックHTML要素の使用確認"
+                },
+                "form_labels": {
+                    "status": "N\/A",
+                    "inputs": 0,
+                    "labels": 0,
+                    "description": "フォーム要素のラベル設定確認"
+                },
+                "html_structure": {
+                    "status": "OK",
+                    "errors": [],
+                    "description": "HTML基本構造の確認"
+                }
+            }
+        },
+        {
+            "page": "コンタクト",
+            "url": "http:\/\/localhost:8090\/contact\/",
+            "checks": {
+                "viewport_meta": {
+                    "status": "OK",
+                    "description": "viewportメタタグの存在確認"
+                },
+                "css_loading": {
+                    "status": "OK",
+                    "count": 4,
+                    "description": "CSSファイルの読み込み確認"
+                },
+                "js_loading": {
+                    "status": "OK",
+                    "count": 3,
+                    "description": "JavaScriptファイルの読み込み確認"
+                },
+                "image_alt": {
+                    "status": "N\/A",
+                    "with_alt": 0,
+                    "total": 0,
+                    "description": "画像のalt属性設定確認"
+                },
+                "semantic_html": {
+                    "status": "OK",
+                    "elements": [
+                        "header",
+                        "nav",
+                        "main",
+                        "article",
+                        "footer"
+                    ],
+                    "count": 5,
+                    "description": "セマンティックHTML要素の使用確認"
+                },
+                "form_labels": {
+                    "status": "OK",
+                    "inputs": 5,
+                    "labels": 5,
+                    "description": "フォーム要素のラベル設定確認"
+                },
+                "html_structure": {
+                    "status": "OK",
+                    "errors": [],
+                    "description": "HTML基本構造の確認"
+                }
+            }
+        },
+        {
+            "page": "ポートフォリオ",
+            "url": "http:\/\/localhost:8090\/portfolio\/",
+            "checks": {
+                "viewport_meta": {
+                    "status": "OK",
+                    "description": "viewportメタタグの存在確認"
+                },
+                "css_loading": {
+                    "status": "OK",
+                    "count": 4,
+                    "description": "CSSファイルの読み込み確認"
+                },
+                "js_loading": {
+                    "status": "OK",
+                    "count": 3,
+                    "description": "JavaScriptファイルの読み込み確認"
+                },
+                "image_alt": {
+                    "status": "N\/A",
+                    "with_alt": 0,
+                    "total": 0,
+                    "description": "画像のalt属性設定確認"
+                },
+                "semantic_html": {
+                    "status": "OK",
+                    "elements": [
+                        "header",
+                        "nav",
+                        "main",
+                        "article",
+                        "section",
+                        "footer"
+                    ],
+                    "count": 6,
+                    "description": "セマンティックHTML要素の使用確認"
+                },
+                "form_labels": {
+                    "status": "N\/A",
+                    "inputs": 0,
+                    "labels": 0,
+                    "description": "フォーム要素のラベル設定確認"
+                },
+                "html_structure": {
+                    "status": "OK",
+                    "errors": [],
+                    "description": "HTML基本構造の確認"
+                }
+            }
+        }
+    ],
+    "css_analysis": {
+        "media_queries": [
+            "max-width: 768px",
+            "max-width: 1024px",
+            "max-width: 768px"
+        ],
+        "responsive_keywords": [
+            "flex",
+            "grid",
+            "max-width",
+            "rem",
+            "em",
+            "%"
+        ]
+    }
+}
