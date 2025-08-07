@@ -19,7 +19,7 @@ services:
       - "8080:80"
     volumes:
       # ホットリロード用のボリュームマウント（パフォーマンス改善）
-      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:cached
+      - ./themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:cached
       - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads:delegated
       - wordpress_data:/var/www/html
     environment:

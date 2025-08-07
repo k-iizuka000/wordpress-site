@@ -18,7 +18,8 @@ wp-config-local.php
 
 # テーマ（外部テーマは除外、自作のみ管理）
 /wordpress/wp-content/themes/*
-!/wordpress/wp-content/themes/kei-portfolio/
+# 旧テーマディレクトリ（移動済み）
+/wordpress/wp-content/themes/kei-portfolio/
 
 # アップロードファイル・メディア
 /wordpress/wp-content/uploads/

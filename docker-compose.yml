@@ -17,7 +17,7 @@ services:
       - "8090:80"
     volumes:
       # ホットリロード用のボリュームマウント
-      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:cached
+      - ./themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:cached
       - ./wordpress/wp-content/uploads:/var/www/html/wp-content/uploads:delegated
     environment:
       WORDPRESS_DB_HOST: db:3306

@@ -12,7 +12,7 @@ services:
       target: testing
     container_name: kei-portfolio-test
     volumes:
-      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
+      - ./themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
       - ./tests:/var/www/html/tests:delegated
       - test_coverage:/var/www/html/coverage
     environment:
@@ -71,7 +71,7 @@ services:
       target: testing
     container_name: kei-portfolio-phpunit
     volumes:
-      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
+      - ./themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
       - test_coverage:/var/www/html/coverage
     environment:
       WP_TESTS_DB_HOST: db-test:3306
@@ -95,7 +95,7 @@ services:
     container_name: kei-portfolio-jest
     working_dir: /app
     volumes:
-      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+      - ./themes/kei-portfolio:/app:delegated
       - test_coverage:/app/coverage
     environment:
       NODE_ENV: test
@@ -112,7 +112,7 @@ services:
     container_name: kei-portfolio-eslint
     working_dir: /app
     volumes:
-      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+      - ./themes/kei-portfolio:/app:delegated
     command: npm run lint:js
     networks:
       - kei-portfolio-test-network
@@ -125,7 +125,7 @@ services:
     container_name: kei-portfolio-stylelint
     working_dir: /app
     volumes:
-      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+      - ./themes/kei-portfolio:/app:delegated
     command: npm run lint:css
     networks:
       - kei-portfolio-test-network
@@ -139,7 +139,7 @@ services:
       target: testing
     container_name: kei-portfolio-phpcs
     volumes:
-      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
+      - ./themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
     working_dir: /var/www/html/wp-content/themes/kei-portfolio
     command: ["composer", "run", "lint:php"]
     networks:
@@ -154,7 +154,7 @@ services:
       target: testing
     container_name: kei-portfolio-phpstan
     volumes:
-      - ./wordpress/wp-content/themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
+      - ./themes/kei-portfolio:/var/www/html/wp-content/themes/kei-portfolio:delegated
     working_dir: /var/www/html/wp-content/themes/kei-portfolio
     command: ["composer", "run", "analyze"]
     networks:
@@ -189,7 +189,7 @@ services:
     container_name: kei-portfolio-axe
     working_dir: /app
     volumes:
-      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+      - ./themes/kei-portfolio:/app:delegated
       - axe_reports:/app/reports
     environment:
       TEST_URL: http://wordpress-test/
@@ -207,7 +207,7 @@ services:
     container_name: kei-portfolio-pa11y
     working_dir: /app
     volumes:
-      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+      - ./themes/kei-portfolio:/app:delegated
       - pa11y_reports:/app/reports
     environment:
       TEST_URL: http://wordpress-test/
@@ -225,7 +225,7 @@ services:
     container_name: kei-portfolio-reports
     working_dir: /app
     volumes:
-      - ./wordpress/wp-content/themes/kei-portfolio:/app:delegated
+      - ./themes/kei-portfolio:/app:delegated
       - test_coverage:/app/coverage
       - lighthouse_reports:/app/reports/lighthouse
       - axe_reports:/app/reports/axe

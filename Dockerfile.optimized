@@ -85,7 +85,7 @@ WORKDIR /var/www/html
 COPY wp-config.docker.php ./wp-config.php
 
 # テーマファイルのコピー（開発用）
-COPY wordpress/wp-content/themes/kei-portfolio/ ./wp-content/themes/kei-portfolio/
+COPY themes/kei-portfolio/ ./wp-content/themes/kei-portfolio/
 
 # 権限設定
 RUN chown -R www-data:www-data /var/www/html/wp-content \
@@ -118,7 +118,7 @@ WORKDIR /var/www/html
 COPY wp-config.docker.php ./wp-config.php
 
 # テーマファイルのコピー
-COPY wordpress/wp-content/themes/kei-portfolio/ ./wp-content/themes/kei-portfolio/
+COPY themes/kei-portfolio/ ./wp-content/themes/kei-portfolio/
 
 # 本番環境用の権限設定（より厳格）
 RUN chown -R www-data:www-data /var/www/html \
