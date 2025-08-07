@@ -1,6 +1,6 @@
 ---
 name: code-review-post-implementation
-description: Use this agent when you need to review code that has just been implemented or modified. This agent should be called after completing a logical chunk of code, implementing a new feature, fixing a bug, or making significant changes to existing code. The agent will analyze the recently written code for quality, security, best practices, and potential improvements.\n\nExamples:\n<example>\nContext: The user wants code review after implementing a new function\nuser: "ユーザー認証機能を実装して"\nassistant: "認証機能を実装しました。以下が実装内容です："\n<function implementation details omitted>\n<commentary>\nSince a new feature has been implemented, use the Task tool to launch the code-review-post-implementation agent to review the recently written code.\n</commentary>\nassistant: "実装が完了したので、code-review-post-implementationエージェントを使用してコードレビューを実行します"\n</example>\n\n<example>\nContext: The user wants review after bug fix\nuser: "バグを修正して"\nassistant: "バグを修正しました。修正内容は以下の通りです："\n<bug fix details omitted>\n<commentary>\nAfter fixing the bug, proactively use the code-review-post-implementation agent to ensure the fix is proper and doesn't introduce new issues.\n</commentary>\nassistant: "修正が完了したので、レビューエージェントで確認します"\n</example>
+description: use PROACTIVELY after any code changes to review for bugs and issues
 tools: Glob, Grep, LS, Read, WebFetch, TodoWrite, WebSearch
 model: opus
 color: blue
