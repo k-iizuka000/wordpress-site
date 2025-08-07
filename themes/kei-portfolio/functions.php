@@ -13,3 +13,5 @@ require_once get_template_directory() . '/inc/widgets.php';
 require_once get_template_directory() . '/inc/customizer.php';
 require_once get_template_directory() . '/inc/ajax-handlers.php';
 require_once get_template_directory() . '/inc/optimizations.php';
+require_once get_template_directory() . '/inc/page-creator.php';
+require_once get_template_directory() . '/inc/sample-data.php';

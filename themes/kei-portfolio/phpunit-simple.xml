@@ -166,7 +166,8 @@
         <ini name="display_startup_errors" value="On"/>
     </php>
 
-    <!-- テストリスナー -->
+    <!-- テストリスナーは一時的にコメントアウト -->
+    <!--
     <listeners>
         <listener class="SpeedTrapListener">
             <arguments>
@@ -181,10 +182,12 @@
             </arguments>
         </listener>
     </listeners>
+    -->
 
-    <!-- 拡張機能 -->
+    <!-- 拡張機能は一時的にコメントアウト -->
+    <!--
     <extensions>
-        <!-- PHPUnit Polyfills -->
         <extension class="Yoast\PHPUnitPolyfills\PHPUnitPolyfills"/>
     </extensions>
+    -->
 </phpunit>

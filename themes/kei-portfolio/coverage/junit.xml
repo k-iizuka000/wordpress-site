@@ -1,0 +1,2760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" tests="284" assertions="1127" errors="141" warnings="0" failures="1" skipped="0" time="2.245356">
+    <testsuite name="SyntaxTest::testPhpSyntax" tests="47" assertions="94" errors="0" warnings="0" failures="0" skipped="0" time="2.230133">
+      <testcase name="testPhpSyntax with data set #0" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.053563"/>
+      <testcase name="testPhpSyntax with data set #1" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042506"/>
+      <testcase name="testPhpSyntax with data set #2" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.044415"/>
+      <testcase name="testPhpSyntax with data set #3" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.053224"/>
+      <testcase name="testPhpSyntax with data set #4" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042476"/>
+      <testcase name="testPhpSyntax with data set #5" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.045984"/>
+      <testcase name="testPhpSyntax with data set #6" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.053065"/>
+      <testcase name="testPhpSyntax with data set #7" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.050128"/>
+      <testcase name="testPhpSyntax with data set #8" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.112883"/>
+      <testcase name="testPhpSyntax with data set #9" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.051464"/>
+      <testcase name="testPhpSyntax with data set #10" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.046283"/>
+      <testcase name="testPhpSyntax with data set #11" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.044144"/>
+      <testcase name="testPhpSyntax with data set #12" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.043757"/>
+      <testcase name="testPhpSyntax with data set #13" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.043058"/>
+      <testcase name="testPhpSyntax with data set #14" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.047152"/>
+      <testcase name="testPhpSyntax with data set #15" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.043866"/>
+      <testcase name="testPhpSyntax with data set #16" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.053667"/>
+      <testcase name="testPhpSyntax with data set #17" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042366"/>
+      <testcase name="testPhpSyntax with data set #18" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.044657"/>
+      <testcase name="testPhpSyntax with data set #19" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.043600"/>
+      <testcase name="testPhpSyntax with data set #20" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.045256"/>
+      <testcase name="testPhpSyntax with data set #21" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.044247"/>
+      <testcase name="testPhpSyntax with data set #22" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.046361"/>
+      <testcase name="testPhpSyntax with data set #23" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.044055"/>
+      <testcase name="testPhpSyntax with data set #24" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.045650"/>
+      <testcase name="testPhpSyntax with data set #25" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.047709"/>
+      <testcase name="testPhpSyntax with data set #26" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042728"/>
+      <testcase name="testPhpSyntax with data set #27" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042964"/>
+      <testcase name="testPhpSyntax with data set #28" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042184"/>
+      <testcase name="testPhpSyntax with data set #29" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.044599"/>
+      <testcase name="testPhpSyntax with data set #30" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.043713"/>
+      <testcase name="testPhpSyntax with data set #31" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.050100"/>
+      <testcase name="testPhpSyntax with data set #32" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.044986"/>
+      <testcase name="testPhpSyntax with data set #33" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.051085"/>
+      <testcase name="testPhpSyntax with data set #34" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.047782"/>
+      <testcase name="testPhpSyntax with data set #35" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042479"/>
+      <testcase name="testPhpSyntax with data set #36" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.043362"/>
+      <testcase name="testPhpSyntax with data set #37" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042849"/>
+      <testcase name="testPhpSyntax with data set #38" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.054832"/>
+      <testcase name="testPhpSyntax with data set #39" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042886"/>
+      <testcase name="testPhpSyntax with data set #40" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.048338"/>
+      <testcase name="testPhpSyntax with data set #41" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.050231"/>
+      <testcase name="testPhpSyntax with data set #42" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042334"/>
+      <testcase name="testPhpSyntax with data set #43" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042528"/>
+      <testcase name="testPhpSyntax with data set #44" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.043770"/>
+      <testcase name="testPhpSyntax with data set #45" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.042285"/>
+      <testcase name="testPhpSyntax with data set #46" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="41" assertions="2" time="0.048560"/>
+    </testsuite>
+    <testcase name="testCriticalFilesExist" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="68" assertions="80" time="0.001690"/>
+    <testsuite name="SyntaxTest::testCommonSyntaxIssues" tests="47" assertions="59" errors="47" warnings="0" failures="0" skipped="0" time="0.005688">
+      <testcase name="testCommonSyntaxIssues with data set #0" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.001294">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #0 ('/Users/kei/work/wordpress-sit...ns.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #1" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000081">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #1 ('/Users/kei/work/wordpress-sit...04.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #2" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.000120">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #2 ('/Users/kei/work/wordpress-sit...ts.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #3" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.000087">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #3 ('/Users/kei/work/wordpress-sit...ts.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #4" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.000251">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #4 ('/Users/kei/work/wordpress-sit...ta.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #5" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000069">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #5 ('/Users/kei/work/wordpress-sit...ue.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #6" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.000095">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #6 ('/Users/kei/work/wordpress-sit...er.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #7" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.000140">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #7 ('/Users/kei/work/wordpress-sit...or.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #8" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000083">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #8 ('/Users/kei/work/wordpress-sit...up.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #9" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.000071">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #9 ('/Users/kei/work/wordpress-sit...rs.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #10" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.000109">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #10 ('/Users/kei/work/wordpress-sit...es.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #11" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.000043">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #11 ('/Users/kei/work/wordpress-sit...ns.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #12" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000100">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #12 ('/Users/kei/work/wordpress-sit...ct.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #13" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000083">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #13 ('/Users/kei/work/wordpress-sit...ct.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #14" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000105">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #14 ('/Users/kei/work/wordpress-sit...ex.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #15" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000101">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #15 ('/Users/kei/work/wordpress-sit...io.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #16" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000156">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #16 ('/Users/kei/work/wordpress-sit...ls.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #17" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000049">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #17 ('/Users/kei/work/wordpress-sit...er.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #18" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000041">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #18 ('/Users/kei/work/wordpress-sit...ct.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #19" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000038">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #19 ('/Users/kei/work/wordpress-sit...io.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #20" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000037">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #20 ('/Users/kei/work/wordpress-sit...ls.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #21" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000069">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #21 ('/Users/kei/work/wordpress-sit...ut.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #22" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000036">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #22 ('/Users/kei/work/wordpress-sit...ut.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #23" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000072">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #23 ('/Users/kei/work/wordpress-sit...fo.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #24" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000044">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #24 ('/Users/kei/work/wordpress-sit...ro.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #25" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000062">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #25 ('/Users/kei/work/wordpress-sit...rm.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #26" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000061">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #26 ('/Users/kei/work/wordpress-sit...on.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #27" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000044">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #27 ('/Users/kei/work/wordpress-sit...ro.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #28" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000063">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #28 ('/Users/kei/work/wordpress-sit...ry.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #29" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000065">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #29 ('/Users/kei/work/wordpress-sit...on.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #30" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000107">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #30 ('/Users/kei/work/wordpress-sit...ts.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #31" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000100">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #31 ('/Users/kei/work/wordpress-sit...ts.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #32" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000070">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #32 ('/Users/kei/work/wordpress-sit...ch.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #33" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000051">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #33 ('/Users/kei/work/wordpress-sit...ro.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #34" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000075">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #34 ('/Users/kei/work/wordpress-sit...es.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #35" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000091">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #35 ('/Users/kei/work/wordpress-sit...ch.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #36" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000084">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #36 ('/Users/kei/work/wordpress-sit...ls.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #37" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000106">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #37 ('/Users/kei/work/wordpress-sit...ls.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #38" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000037">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #38 ('/Users/kei/work/wordpress-sit...ro.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #39" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.000057">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #39 ('/Users/kei/work/wordpress-sit...ap.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #40" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000055">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #40 ('/Users/kei/work/wordpress-sit...er.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #41" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.000141">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #41 ('/Users/kei/work/wordpress-sit...er.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #42" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000045">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #42 ('/Users/kei/work/wordpress-sit...ge.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #43" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="2" time="0.000736">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #43 ('/Users/kei/work/wordpress-sit...up.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #44" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000085">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #44 ('/Users/kei/work/wordpress-sit...ge.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #45" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000060">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #45 ('/Users/kei/work/wordpress-sit...ut.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+      <testcase name="testCommonSyntaxIssues with data set #46" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="124" assertions="1" time="0.000116">
+        <error type="Error">SyntaxTest::testCommonSyntaxIssues with data set #46 ('/Users/kei/work/wordpress-sit...ct.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:145</error>
+      </testcase>
+    </testsuite>
+    <testsuite name="SyntaxTest::testPhpVersionCompatibility" tests="47" assertions="0" errors="47" warnings="0" failures="0" skipped="0" time="0.001521">
+      <testcase name="testPhpVersionCompatibility with data set #0" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000056">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #0 ('/Users/kei/work/wordpress-sit...ns.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #1" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000060">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #1 ('/Users/kei/work/wordpress-sit...04.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #2" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000047">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #2 ('/Users/kei/work/wordpress-sit...ts.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #3" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000035">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #3 ('/Users/kei/work/wordpress-sit...ts.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #4" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000038">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #4 ('/Users/kei/work/wordpress-sit...ta.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #5" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000064">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #5 ('/Users/kei/work/wordpress-sit...ue.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #6" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000036">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #6 ('/Users/kei/work/wordpress-sit...er.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #7" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000034">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #7 ('/Users/kei/work/wordpress-sit...or.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #8" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000031">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #8 ('/Users/kei/work/wordpress-sit...up.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #9" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000027">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #9 ('/Users/kei/work/wordpress-sit...rs.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #10" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000029">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #10 ('/Users/kei/work/wordpress-sit...es.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #11" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000026">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #11 ('/Users/kei/work/wordpress-sit...ns.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #12" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000032">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #12 ('/Users/kei/work/wordpress-sit...ct.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #13" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000032">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #13 ('/Users/kei/work/wordpress-sit...ct.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #14" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000025">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #14 ('/Users/kei/work/wordpress-sit...ex.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #15" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000034">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #15 ('/Users/kei/work/wordpress-sit...io.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #16" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000030">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #16 ('/Users/kei/work/wordpress-sit...ls.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #17" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000026">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #17 ('/Users/kei/work/wordpress-sit...er.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #18" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000025">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #18 ('/Users/kei/work/wordpress-sit...ct.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #19" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000025">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #19 ('/Users/kei/work/wordpress-sit...io.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #20" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000026">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #20 ('/Users/kei/work/wordpress-sit...ls.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #21" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000030">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #21 ('/Users/kei/work/wordpress-sit...ut.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #22" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000025">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #22 ('/Users/kei/work/wordpress-sit...ut.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #23" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000027">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #23 ('/Users/kei/work/wordpress-sit...fo.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #24" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000025">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #24 ('/Users/kei/work/wordpress-sit...ro.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #25" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000032">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #25 ('/Users/kei/work/wordpress-sit...rm.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #26" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000026">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #26 ('/Users/kei/work/wordpress-sit...on.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #27" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000027">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #27 ('/Users/kei/work/wordpress-sit...ro.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #28" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000026">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #28 ('/Users/kei/work/wordpress-sit...ry.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #29" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000028">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #29 ('/Users/kei/work/wordpress-sit...on.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #30" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000032">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #30 ('/Users/kei/work/wordpress-sit...ts.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #31" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000030">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #31 ('/Users/kei/work/wordpress-sit...ts.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #32" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000030">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #32 ('/Users/kei/work/wordpress-sit...ch.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #33" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000026">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #33 ('/Users/kei/work/wordpress-sit...ro.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #34" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000029">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #34 ('/Users/kei/work/wordpress-sit...es.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #35" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000029">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #35 ('/Users/kei/work/wordpress-sit...ch.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #36" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000027">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #36 ('/Users/kei/work/wordpress-sit...ls.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #37" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000029">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #37 ('/Users/kei/work/wordpress-sit...ls.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #38" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000025">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #38 ('/Users/kei/work/wordpress-sit...ro.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #39" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000024">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #39 ('/Users/kei/work/wordpress-sit...ap.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #40" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000027">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #40 ('/Users/kei/work/wordpress-sit...er.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #41" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000029">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #41 ('/Users/kei/work/wordpress-sit...er.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #42" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000025">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #42 ('/Users/kei/work/wordpress-sit...ge.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #43" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000081">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #43 ('/Users/kei/work/wordpress-sit...up.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #44" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000032">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #44 ('/Users/kei/work/wordpress-sit...ge.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #45" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000027">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #45 ('/Users/kei/work/wordpress-sit...ut.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+      <testcase name="testPhpVersionCompatibility with data set #46" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="157" assertions="0" time="0.000032">
+        <error type="PHPUnit\Framework\RiskyTestError">SyntaxTest::testPhpVersionCompatibility with data set #46 ('/Users/kei/work/wordpress-sit...ct.php')
+This test did not perform any assertions
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:157</error>
+      </testcase>
+    </testsuite>
+    <testsuite name="SyntaxTest::testNoDebugCode" tests="47" assertions="329" errors="0" warnings="0" failures="1" skipped="0" time="0.002414">
+      <testcase name="testNoDebugCode with data set #0" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000062"/>
+      <testcase name="testNoDebugCode with data set #1" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000035"/>
+      <testcase name="testNoDebugCode with data set #2" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000035"/>
+      <testcase name="testNoDebugCode with data set #3" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000033"/>
+      <testcase name="testNoDebugCode with data set #4" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000053"/>
+      <testcase name="testNoDebugCode with data set #5" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000034"/>
+      <testcase name="testNoDebugCode with data set #6" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000036"/>
+      <testcase name="testNoDebugCode with data set #7" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000041"/>
+      <testcase name="testNoDebugCode with data set #8" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000035"/>
+      <testcase name="testNoDebugCode with data set #9" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000031"/>
+      <testcase name="testNoDebugCode with data set #10" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000034"/>
+      <testcase name="testNoDebugCode with data set #11" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000034"/>
+      <testcase name="testNoDebugCode with data set #12" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000051"/>
+      <testcase name="testNoDebugCode with data set #13" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000052"/>
+      <testcase name="testNoDebugCode with data set #14" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000031"/>
+      <testcase name="testNoDebugCode with data set #15" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000052"/>
+      <testcase name="testNoDebugCode with data set #16" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000055"/>
+      <testcase name="testNoDebugCode with data set #17" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000033"/>
+      <testcase name="testNoDebugCode with data set #18" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000027"/>
+      <testcase name="testNoDebugCode with data set #19" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000028"/>
+      <testcase name="testNoDebugCode with data set #20" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000028"/>
+      <testcase name="testNoDebugCode with data set #21" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000044"/>
+      <testcase name="testNoDebugCode with data set #22" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000027"/>
+      <testcase name="testNoDebugCode with data set #23" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000035"/>
+      <testcase name="testNoDebugCode with data set #24" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000034"/>
+      <testcase name="testNoDebugCode with data set #25" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000043"/>
+      <testcase name="testNoDebugCode with data set #26" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000037"/>
+      <testcase name="testNoDebugCode with data set #27" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000038"/>
+      <testcase name="testNoDebugCode with data set #28" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000037"/>
+      <testcase name="testNoDebugCode with data set #29" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000033"/>
+      <testcase name="testNoDebugCode with data set #30" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000046"/>
+      <testcase name="testNoDebugCode with data set #31" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000044"/>
+      <testcase name="testNoDebugCode with data set #32" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000048"/>
+      <testcase name="testNoDebugCode with data set #33" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000034"/>
+      <testcase name="testNoDebugCode with data set #34" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000038"/>
+      <testcase name="testNoDebugCode with data set #35" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000049"/>
+      <testcase name="testNoDebugCode with data set #36" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000046"/>
+      <testcase name="testNoDebugCode with data set #37" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000044"/>
+      <testcase name="testNoDebugCode with data set #38" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000030"/>
+      <testcase name="testNoDebugCode with data set #39" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000029"/>
+      <testcase name="testNoDebugCode with data set #40" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000035"/>
+      <testcase name="testNoDebugCode with data set #41" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000038"/>
+      <testcase name="testNoDebugCode with data set #42" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000030"/>
+      <testcase name="testNoDebugCode with data set #43" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000578">
+        <failure type="PHPUnit\Framework\ExpectationFailedException">SyntaxTest::testNoDebugCode with data set #43 ('/Users/kei/work/wordpress-sit...up.php')
+Display errors setting found in: /Users/kei/work/wordpress-site/themes/kei-portfolio/composer-setup.php
+Failed asserting that '&lt;?php\n
+\n
+/*\n
+ * This file is part of Composer.\n
+ *\n
+ * (c) Nils Adermann &lt;naderman@naderman.de&gt;\n
+ *     Jordi Boggiano &lt;j.boggiano@seld.be&gt;\n
+ *\n
+ * For the full copyright and license information, please view the LICENSE\n
+ * file that was distributed with this source code.\n
+ */\n
+\n
+setupEnvironment();\n
+process(is_array($argv) ? $argv : array());\n
+\n
+/**\n
+ * Initializes various values\n
+ *\n
+ * @throws RuntimeException If uopz extension prevents exit calls\n
+ */\n
+function setupEnvironment()\n
+{\n
+    ini_set('display_errors', 1);\n
+\n
+    if (extension_loaded('uopz') &amp;&amp; !(ini_get('uopz.disable') || ini_get('uopz.exit'))) {\n
+        // uopz works at opcode level and disables exit calls\n
+        if (function_exists('uopz_allow_exit')) {\n
+            @uopz_allow_exit(true);\n
+        } else {\n
+            throw new RuntimeException('The uopz extension ignores exit calls and breaks this installer.');\n
+        }\n
+    }\n
+\n
+    $installer = 'ComposerInstaller';\n
+\n
+    if (defined('PHP_WINDOWS_VERSION_MAJOR')) {\n
+        if ($version = getenv('COMPOSERSETUP')) {\n
+            $installer = sprintf('Composer-Setup.exe/%s', $version);\n
+        }\n
+    }\n
+\n
+    define('COMPOSER_INSTALLER', $installer);\n
+}\n
+\n
+/**\n
+ * Processes the installer\n
+ */\n
+function process($argv)\n
+{\n
+    // Determine ANSI output from --ansi and --no-ansi flags\n
+    setUseAnsi($argv);\n
+\n
+    $help = in_array('--help', $argv) || in_array('-h', $argv);\n
+    if ($help) {\n
+        displayHelp();\n
+        exit(0);\n
+    }\n
+\n
+    $check      = in_array('--check', $argv);\n
+    $force      = in_array('--force', $argv);\n
+    $quiet      = in_array('--quiet', $argv);\n
+    $channel    = 'stable';\n
+    if (in_array('--snapshot', $argv)) {\n
+        $channel = 'snapshot';\n
+    } elseif (in_array('--preview', $argv)) {\n
+        $channel = 'preview';\n
+    } elseif (in_array('--1', $argv)) {\n
+        $channel = '1';\n
+    } elseif (in_array('--2', $argv)) {\n
+        $channel = '2';\n
+    } elseif (in_array('--2.2', $argv)) {\n
+        $channel = '2.2';\n
+    }\n
+    $disableTls = in_array('--disable-tls', $argv);\n
+    $installDir = getOptValue('--install-dir', $argv, false);\n
+    $version    = getOptValue('--version', $argv, false);\n
+    $filename   = getOptValue('--filename', $argv, 'composer.phar');\n
+    $cafile     = getOptValue('--cafile', $argv, false);\n
+\n
+    if (!checkParams($installDir, $version, $cafile)) {\n
+        exit(1);\n
+    }\n
+\n
+    $ok = checkPlatform($warnings, $quiet, $disableTls, true);\n
+\n
+    if ($check) {\n
+        // Only show warnings if we haven't output any errors\n
+        if ($ok) {\n
+            showWarnings($warnings);\n
+            showSecurityWarning($disableTls);\n
+        }\n
+        exit($ok ? 0 : 1);\n
+    }\n
+\n
+    if ($ok || $force) {\n
+        if ($channel === '1' &amp;&amp; !$quiet) {\n
+            out('Warning: You forced the install of Composer 1.x via --1, but Composer 2.x is the latest stable version. Updating to it via composer self-update --stable is recommended.', 'error');\n
+        }\n
+\n
+        $installer = new Installer($quiet, $disableTls, $cafile);\n
+        if ($installer-&gt;run($version, $installDir, $filename, $channel)) {\n
+            showWarnings($warnings);\n
+            showSecurityWarning($disableTls);\n
+            exit(0);\n
+        }\n
+    }\n
+\n
+    exit(1);\n
+}\n
+\n
+/**\n
+ * Displays the help\n
+ */\n
+function displayHelp()\n
+{\n
+    echo &lt;&lt;&lt;EOF\n
+Composer Installer\n
+------------------\n
+Options\n
+--help               this help\n
+--check              for checking environment only\n
+--force              forces the installation\n
+--ansi               force ANSI color output\n
+--no-ansi            disable ANSI color output\n
+--quiet              do not output unimportant messages\n
+--install-dir="..."  accepts a target installation directory\n
+--preview            install the latest version from the preview (alpha/beta/rc) channel instead of stable\n
+--snapshot           install the latest version from the snapshot (dev builds) channel instead of stable\n
+--1                  install the latest stable Composer 1.x (EOL) version\n
+--2                  install the latest stable Composer 2.x version\n
+--2.2                install the latest stable Composer 2.2.x (LTS) version\n
+--version="..."      accepts a specific version to install instead of the latest\n
+--filename="..."     accepts a target filename (default: composer.phar)\n
+--disable-tls        disable SSL/TLS security for file downloads\n
+--cafile="..."       accepts a path to a Certificate Authority (CA) certificate file for SSL/TLS verification\n
+\n
+EOF;\n
+}\n
+\n
+/**\n
+ * Sets the USE_ANSI define for colorizing output\n
+ *\n
+ * @param array $argv Command-line arguments\n
+ */\n
+function setUseAnsi($argv)\n
+{\n
+    // --no-ansi wins over --ansi\n
+    if (in_array('--no-ansi', $argv)) {\n
+        define('USE_ANSI', false);\n
+    } elseif (in_array('--ansi', $argv)) {\n
+        define('USE_ANSI', true);\n
+    } else {\n
+        define('USE_ANSI', outputSupportsColor());\n
+    }\n
+}\n
+\n
+/**\n
+ * Returns whether color output is supported\n
+ *\n
+ * @return bool\n
+ */\n
+function outputSupportsColor()\n
+{\n
+    if (false !== getenv('NO_COLOR') || !defined('STDOUT')) {\n
+        return false;\n
+    }\n
+\n
+    if ('Hyper' === getenv('TERM_PROGRAM')) {\n
+        return true;\n
+    }\n
+\n
+    if (defined('PHP_WINDOWS_VERSION_BUILD')) {\n
+        return (function_exists('sapi_windows_vt100_support')\n
+            &amp;&amp; sapi_windows_vt100_support(STDOUT))\n
+            || false !== getenv('ANSICON')\n
+            || 'ON' === getenv('ConEmuANSI')\n
+            || 'xterm' === getenv('TERM');\n
+    }\n
+\n
+    if (function_exists('stream_isatty')) {\n
+        return stream_isatty(STDOUT);\n
+    }\n
+\n
+    if (function_exists('posix_isatty')) {\n
+        return posix_isatty(STDOUT);\n
+    }\n
+\n
+    $stat = fstat(STDOUT);\n
+    // Check if formatted mode is S_IFCHR\n
+    return $stat ? 0020000 === ($stat['mode'] &amp; 0170000) : false;\n
+}\n
+\n
+/**\n
+ * Returns the value of a command-line option\n
+ *\n
+ * @param string $opt The command-line option to check\n
+ * @param array $argv Command-line arguments\n
+ * @param mixed $default Default value to be returned\n
+ *\n
+ * @return mixed The command-line value or the default\n
+ */\n
+function getOptValue($opt, $argv, $default)\n
+{\n
+    $optLength = strlen($opt);\n
+\n
+    foreach ($argv as $key =&gt; $value) {\n
+        $next = $key + 1;\n
+        if (0 === strpos($value, $opt)) {\n
+            if ($optLength === strlen($value) &amp;&amp; isset($argv[$next])) {\n
+                return trim($argv[$next]);\n
+            } else {\n
+                return trim(substr($value, $optLength + 1));\n
+            }\n
+        }\n
+    }\n
+\n
+    return $default;\n
+}\n
+\n
+/**\n
+ * Checks that user-supplied params are valid\n
+ *\n
+ * @param mixed $installDir The required istallation directory\n
+ * @param mixed $version The required composer version to install\n
+ * @param mixed $cafile Certificate Authority file\n
+ *\n
+ * @return bool True if the supplied params are okay\n
+ */\n
+function checkParams($installDir, $version, $cafile)\n
+{\n
+    $result = true;\n
+\n
+    if (false !== $installDir &amp;&amp; !is_dir($installDir)) {\n
+        out("The defined install dir ({$installDir}) does not exist.", 'info');\n
+        $result = false;\n
+    }\n
+\n
+    if (false !== $version &amp;&amp; 1 !== preg_match('/^\d+\.\d+\.\d+(\-(alpha|beta|RC)\d*)*$/', $version)) {\n
+        out("The defined install version ({$version}) does not match release pattern.", 'info');\n
+        $result = false;\n
+    }\n
+\n
+    if (false !== $cafile &amp;&amp; (!file_exists($cafile) || !is_readable($cafile))) {\n
+        out("The defined Certificate Authority (CA) cert file ({$cafile}) does not exist or is not readable.", 'info');\n
+        $result = false;\n
+    }\n
+    return $result;\n
+}\n
+\n
+/**\n
+ * Checks the platform for possible issues running Composer\n
+ *\n
+ * Errors are written to the output, warnings are saved for later display.\n
+ *\n
+ * @param array $warnings Populated by method, to be shown later\n
+ * @param bool $quiet Quiet mode\n
+ * @param bool $disableTls Bypass tls\n
+ * @param bool $install If we are installing, rather than diagnosing\n
+ *\n
+ * @return bool True if there are no errors\n
+ */\n
+function checkPlatform(&amp;$warnings, $quiet, $disableTls, $install)\n
+{\n
+    getPlatformIssues($errors, $warnings, $install);\n
+\n
+    // Make openssl warning an error if tls has not been specifically disabled\n
+    if (isset($warnings['openssl']) &amp;&amp; !$disableTls) {\n
+        $errors['openssl'] = $warnings['openssl'];\n
+        unset($warnings['openssl']);\n
+    }\n
+\n
+    if (!empty($errors)) {\n
+        // Composer-Setup.exe uses "Some settings" to flag platform errors\n
+        out('Some settings on your machine make Composer unable to work properly.', 'error');\n
+        out('Make sure that you fix the issues listed below and run this script again:', 'error');\n
+        outputIssues($errors);\n
+        return false;\n
+    }\n
+\n
+    if (empty($warnings) &amp;&amp; !$quiet) {\n
+        out('All settings correct for using Composer', 'success');\n
+    }\n
+    return true;\n
+}\n
+\n
+/**\n
+ * Checks platform configuration for common incompatibility issues\n
+ *\n
+ * @param array $errors Populated by method\n
+ * @param array $warnings Populated by method\n
+ * @param bool $install If we are installing, rather than diagnosing\n
+ *\n
+ * @return bool If any errors or warnings have been found\n
+ */\n
+function getPlatformIssues(&amp;$errors, &amp;$warnings, $install)\n
+{\n
+    $errors = array();\n
+    $warnings = array();\n
+\n
+    if ($iniPath = php_ini_loaded_file()) {\n
+        $iniMessage = PHP_EOL.'The php.ini used by your command-line PHP is: ' . $iniPath;\n
+    } else {\n
+        $iniMessage = PHP_EOL.'A php.ini file does not exist. You will have to create one.';\n
+    }\n
+    $iniMessage .= PHP_EOL.'If you can not modify the ini file, you can also run `php -d option=value` to modify ini values on the fly. You can use -d multiple times.';\n
+\n
+    if (ini_get('detect_unicode')) {\n
+        $errors['unicode'] = array(\n
+            'The detect_unicode setting must be disabled.',\n
+            'Add the following to the end of your `php.ini`:',\n
+            '    detect_unicode = Off',\n
+            $iniMessage\n
+        );\n
+    }\n
+\n
+    if (extension_loaded('suhosin')) {\n
+        $suhosin = ini_get('suhosin.executor.include.whitelist');\n
+        $suhosinBlacklist = ini_get('suhosin.executor.include.blacklist');\n
+        if (false === stripos($suhosin, 'phar') &amp;&amp; (!$suhosinBlacklist || false !== stripos($suhosinBlacklist, 'phar'))) {\n
+            $errors['suhosin'] = array(\n
+                'The suhosin.executor.include.whitelist setting is incorrect.',\n
+                'Add the following to the end of your `php.ini` or suhosin.ini (Example path [for Debian]: /etc/php5/cli/conf.d/suhosin.ini):',\n
+                '    suhosin.executor.include.whitelist = phar '.$suhosin,\n
+                $iniMessage\n
+            );\n
+        }\n
+    }\n
+\n
+    if (!function_exists('json_decode')) {\n
+        $errors['json'] = array(\n
+            'The json extension is missing.',\n
+            'Install it or recompile php without --disable-json'\n
+        );\n
+    }\n
+\n
+    if (!extension_loaded('Phar')) {\n
+        $errors['phar'] = array(\n
+            'The phar extension is missing.',\n
+            'Install it or recompile php without --disable-phar'\n
+        );\n
+    }\n
+\n
+    if (!extension_loaded('filter')) {\n
+        $errors['filter'] = array(\n
+            'The filter extension is missing.',\n
+            'Install it or recompile php without --disable-filter'\n
+        );\n
+    }\n
+\n
+    if (!extension_loaded('hash')) {\n
+        $errors['hash'] = array(\n
+            'The hash extension is missing.',\n
+            'Install it or recompile php without --disable-hash'\n
+        );\n
+    }\n
+\n
+    if (!extension_loaded('iconv') &amp;&amp; !extension_loaded('mbstring')) {\n
+        $errors['iconv_mbstring'] = array(\n
+            'The iconv OR mbstring extension is required and both are missing.',\n
+            'Install either of them or recompile php without --disable-iconv'\n
+        );\n
+    }\n
+\n
+    if (!ini_get('allow_url_fopen')) {\n
+        $errors['allow_url_fopen'] = array(\n
+            'The allow_url_fopen setting is incorrect.',\n
+            'Add the following to the end of your `php.ini`:',\n
+            '    allow_url_fopen = On',\n
+            $iniMessage\n
+        );\n
+    }\n
+\n
+    if (extension_loaded('ionCube Loader') &amp;&amp; ioncube_loader_iversion() &lt; 40009) {\n
+        $ioncube = ioncube_loader_version();\n
+        $errors['ioncube'] = array(\n
+            'Your ionCube Loader extension ('.$ioncube.') is incompatible with Phar files.',\n
+            'Upgrade to ionCube 4.0.9 or higher or remove this line (path may be different) from your `php.ini` to disable it:',\n
+            '    zend_extension = /usr/lib/php5/20090626+lfs/ioncube_loader_lin_5.3.so',\n
+            $iniMessage\n
+        );\n
+    }\n
+\n
+    if (version_compare(PHP_VERSION, '5.3.2', '&lt;')) {\n
+        $errors['php'] = array(\n
+            'Your PHP ('.PHP_VERSION.') is too old, you must upgrade to PHP 5.3.2 or higher.'\n
+        );\n
+    }\n
+\n
+    if (version_compare(PHP_VERSION, '5.3.4', '&lt;')) {\n
+        $warnings['php'] = array(\n
+            'Your PHP ('.PHP_VERSION.') is quite old, upgrading to PHP 5.3.4 or higher is recommended.',\n
+            'Composer works with 5.3.2+ for most people, but there might be edge case issues.'\n
+        );\n
+    }\n
+\n
+    if (!extension_loaded('openssl')) {\n
+        $warnings['openssl'] = array(\n
+            'The openssl extension is missing, which means that secure HTTPS transfers are impossible.',\n
+            'If possible you should enable it or recompile php with --with-openssl'\n
+        );\n
+    }\n
+\n
+    if (extension_loaded('openssl') &amp;&amp; OPENSSL_VERSION_NUMBER &lt; 0x1000100f) {\n
+        // Attempt to parse version number out, fallback to whole string value.\n
+        $opensslVersion = trim(strstr(OPENSSL_VERSION_TEXT, ' '));\n
+        $opensslVersion = substr($opensslVersion, 0, strpos($opensslVersion, ' '));\n
+        $opensslVersion = $opensslVersion ? $opensslVersion : OPENSSL_VERSION_TEXT;\n
+\n
+        $warnings['openssl_version'] = array(\n
+            'The OpenSSL library ('.$opensslVersion.') used by PHP does not support TLSv1.2 or TLSv1.1.',\n
+            'If possible you should upgrade OpenSSL to version 1.0.1 or above.'\n
+        );\n
+    }\n
+\n
+    if (!defined('HHVM_VERSION') &amp;&amp; !extension_loaded('apcu') &amp;&amp; ini_get('apc.enable_cli')) {\n
+        $warnings['apc_cli'] = array(\n
+            'The apc.enable_cli setting is incorrect.',\n
+            'Add the following to the end of your `php.ini`:',\n
+            '    apc.enable_cli = Off',\n
+            $iniMessage\n
+        );\n
+    }\n
+\n
+    if (!$install &amp;&amp; extension_loaded('xdebug')) {\n
+        $warnings['xdebug_loaded'] = array(\n
+            'The xdebug extension is loaded, this can slow down Composer a little.',\n
+            'Disabling it when using Composer is recommended.'\n
+        );\n
+\n
+        if (ini_get('xdebug.profiler_enabled')) {\n
+            $warnings['xdebug_profile'] = array(\n
+                'The xdebug.profiler_enabled setting is enabled, this can slow down Composer a lot.',\n
+                'Add the following to the end of your `php.ini` to disable it:',\n
+                '    xdebug.profiler_enabled = 0',\n
+                $iniMessage\n
+            );\n
+        }\n
+    }\n
+\n
+    if (!extension_loaded('zlib')) {\n
+        $warnings['zlib'] = array(\n
+            'The zlib extension is not loaded, this can slow down Composer a lot.',\n
+            'If possible, install it or recompile php with --with-zlib',\n
+            $iniMessage\n
+        );\n
+    }\n
+\n
+    if (defined('PHP_WINDOWS_VERSION_BUILD')\n
+        &amp;&amp; (version_compare(PHP_VERSION, '7.2.23', '&lt;')\n
+        || (version_compare(PHP_VERSION, '7.3.0', '&gt;=')\n
+        &amp;&amp; version_compare(PHP_VERSION, '7.3.10', '&lt;')))) {\n
+        $warnings['onedrive'] = array(\n
+            'The Windows OneDrive folder is not supported on PHP versions below 7.2.23 and 7.3.10.',\n
+            'Upgrade your PHP ('.PHP_VERSION.') to use this location with Composer.'\n
+        );\n
+    }\n
+\n
+    if (extension_loaded('uopz') &amp;&amp; !(ini_get('uopz.disable') || ini_get('uopz.exit'))) {\n
+        $warnings['uopz'] = array(\n
+            'The uopz extension ignores exit calls and may not work with all Composer commands.',\n
+            'Disabling it when using Composer is recommended.'\n
+        );\n
+    }\n
+\n
+    ob_start();\n
+    phpinfo(INFO_GENERAL);\n
+    $phpinfo = ob_get_clean();\n
+    if (preg_match('{Configure Command(?: *&lt;/td&gt;&lt;td class="v"&gt;| *=&gt; *)(.*?)(?:&lt;/td&gt;|$)}m', $phpinfo, $match)) {\n
+        $configure = $match[1];\n
+\n
+        if (false !== strpos($configure, '--enable-sigchild')) {\n
+            $warnings['sigchild'] = array(\n
+                'PHP was compiled with --enable-sigchild which can cause issues on some platforms.',\n
+                'Recompile it without this flag if possible, see also:',\n
+                '    https://bugs.php.net/bug.php?id=22999'\n
+            );\n
+        }\n
+\n
+        if (false !== strpos($configure, '--with-curlwrappers')) {\n
+            $warnings['curlwrappers'] = array(\n
+                'PHP was compiled with --with-curlwrappers which will cause issues with HTTP authentication and GitHub.',\n
+                'Recompile it without this flag if possible'\n
+            );\n
+        }\n
+    }\n
+\n
+    // Stringify the message arrays\n
+    foreach ($errors as $key =&gt; $value) {\n
+        $errors[$key] = PHP_EOL.implode(PHP_EOL, $value);\n
+    }\n
+\n
+    foreach ($warnings as $key =&gt; $value) {\n
+        $warnings[$key] = PHP_EOL.implode(PHP_EOL, $value);\n
+    }\n
+\n
+    return !empty($errors) || !empty($warnings);\n
+}\n
+\n
+\n
+/**\n
+ * Outputs an array of issues\n
+ *\n
+ * @param array $issues\n
+ */\n
+function outputIssues($issues)\n
+{\n
+    foreach ($issues as $issue) {\n
+        out($issue, 'info');\n
+    }\n
+    out('');\n
+}\n
+\n
+/**\n
+ * Outputs any warnings found\n
+ *\n
+ * @param array $warnings\n
+ */\n
+function showWarnings($warnings)\n
+{\n
+    if (!empty($warnings)) {\n
+        out('Some settings on your machine may cause stability issues with Composer.', 'error');\n
+        out('If you encounter issues, try to change the following:', 'error');\n
+        outputIssues($warnings);\n
+    }\n
+}\n
+\n
+/**\n
+ * Outputs an end of process warning if tls has been bypassed\n
+ *\n
+ * @param bool $disableTls Bypass tls\n
+ */\n
+function showSecurityWarning($disableTls)\n
+{\n
+    if ($disableTls) {\n
+        out('You have instructed the Installer not to enforce SSL/TLS security on remote HTTPS requests.', 'info');\n
+        out('This will leave all downloads during installation vulnerable to Man-In-The-Middle (MITM) attacks', 'info');\n
+    }\n
+}\n
+\n
+/**\n
+ * colorize output\n
+ */\n
+function out($text, $color = null, $newLine = true)\n
+{\n
+    $styles = array(\n
+        'success' =&gt; "\033[0;32m%s\033[0m",\n
+        'error' =&gt; "\033[31;31m%s\033[0m",\n
+        'info' =&gt; "\033[33;33m%s\033[0m"\n
+    );\n
+\n
+    $format = '%s';\n
+\n
+    if (isset($styles[$color]) &amp;&amp; USE_ANSI) {\n
+        $format = $styles[$color];\n
+    }\n
+\n
+    if ($newLine) {\n
+        $format .= PHP_EOL;\n
+    }\n
+\n
+    printf($format, $text);\n
+}\n
+\n
+/**\n
+ * Returns the system-dependent Composer home location, which may not exist\n
+ *\n
+ * @return string\n
+ */\n
+function getHomeDir()\n
+{\n
+    $home = getenv('COMPOSER_HOME');\n
+    if ($home) {\n
+        return $home;\n
+    }\n
+\n
+    $userDir = getUserDir();\n
+\n
+    if (defined('PHP_WINDOWS_VERSION_MAJOR')) {\n
+        return $userDir.'/Composer';\n
+    }\n
+\n
+    $dirs = array();\n
+\n
+    if (useXdg()) {\n
+        // XDG Base Directory Specifications\n
+        $xdgConfig = getenv('XDG_CONFIG_HOME');\n
+        if (!$xdgConfig) {\n
+            $xdgConfig = $userDir . '/.config';\n
+        }\n
+\n
+        $dirs[] = $xdgConfig . '/composer';\n
+    }\n
+\n
+    $dirs[] = $userDir . '/.composer';\n
+\n
+    // select first dir which exists of: $XDG_CONFIG_HOME/composer or ~/.composer\n
+    foreach ($dirs as $dir) {\n
+        if (is_dir($dir)) {\n
+            return $dir;\n
+        }\n
+    }\n
+\n
+    // if none exists, we default to first defined one (XDG one if system uses it, or ~/.composer otherwise)\n
+    return $dirs[0];\n
+}\n
+\n
+/**\n
+ * Returns the location of the user directory from the environment\n
+ * @throws RuntimeException If the environment value does not exists\n
+ *\n
+ * @return string\n
+ */\n
+function getUserDir()\n
+{\n
+    $userEnv = defined('PHP_WINDOWS_VERSION_MAJOR') ? 'APPDATA' : 'HOME';\n
+    $userDir = getenv($userEnv);\n
+\n
+    if (!$userDir) {\n
+        throw new RuntimeException('The '.$userEnv.' or COMPOSER_HOME environment variable must be set for composer to run correctly');\n
+    }\n
+\n
+    return rtrim(strtr($userDir, '\\', '/'), '/');\n
+}\n
+\n
+/**\n
+ * @return bool\n
+ */\n
+function useXdg()\n
+{\n
+    foreach (array_keys($_SERVER) as $key) {\n
+        if (strpos($key, 'XDG_') === 0) {\n
+            return true;\n
+        }\n
+    }\n
+\n
+    if (is_dir('/etc/xdg')) {\n
+        return true;\n
+    }\n
+\n
+    return false;\n
+}\n
+\n
+function validateCaFile($contents)\n
+{\n
+    // assume the CA is valid if php is vulnerable to\n
+    // https://www.sektioneins.de/advisories/advisory-012013-php-openssl_x509_parse-memory-corruption-vulnerability.html\n
+    if (\n
+        PHP_VERSION_ID &lt;= 50327\n
+        || (PHP_VERSION_ID &gt;= 50400 &amp;&amp; PHP_VERSION_ID &lt; 50422)\n
+        || (PHP_VERSION_ID &gt;= 50500 &amp;&amp; PHP_VERSION_ID &lt; 50506)\n
+    ) {\n
+        return !empty($contents);\n
+    }\n
+\n
+    return (bool) openssl_x509_parse($contents);\n
+}\n
+\n
+class Installer\n
+{\n
+    private $quiet;\n
+    private $disableTls;\n
+    private $cafile;\n
+    private $displayPath;\n
+    private $target;\n
+    private $tmpFile;\n
+    private $tmpCafile;\n
+    private $baseUrl;\n
+    private $algo;\n
+    private $errHandler;\n
+    private $httpClient;\n
+    private $pubKeys = array();\n
+    private $installs = array();\n
+\n
+    /**\n
+     * Constructor - must not do anything that throws an exception\n
+     *\n
+     * @param bool $quiet Quiet mode\n
+     * @param bool $disableTls Bypass tls\n
+     * @param mixed $cafile Path to CA bundle, or false\n
+     */\n
+    public function __construct($quiet, $disableTls, $caFile)\n
+    {\n
+        if (($this-&gt;quiet = $quiet)) {\n
+            ob_start();\n
+        }\n
+        $this-&gt;disableTls = $disableTls;\n
+        $this-&gt;cafile = $caFile;\n
+        $this-&gt;errHandler = new ErrorHandler();\n
+    }\n
+\n
+    /**\n
+     * Runs the installer\n
+     *\n
+     * @param mixed $version Specific version to install, or false\n
+     * @param mixed $installDir Specific installation directory, or false\n
+     * @param string $filename Specific filename to save to, or composer.phar\n
+     * @param string $channel Specific version channel to use\n
+     * @throws Exception If anything other than a RuntimeException is caught\n
+     *\n
+     * @return bool If the installation succeeded\n
+     */\n
+    public function run($version, $installDir, $filename, $channel)\n
+    {\n
+        try {\n
+            $this-&gt;initTargets($installDir, $filename);\n
+            $this-&gt;initTls();\n
+            $this-&gt;httpClient = new HttpClient($this-&gt;disableTls, $this-&gt;cafile);\n
+            $result = $this-&gt;install($version, $channel);\n
+\n
+            // in case --1 or --2 is passed, we leave the default channel for next self-update to stable\n
+            if (1 === preg_match('{^\d+$}D', $channel)) {\n
+                $channel = 'stable';\n
+            }\n
+\n
+            if ($result &amp;&amp; $channel !== 'stable' &amp;&amp; !$version &amp;&amp; defined('PHP_BINARY')) {\n
+                $null = (defined('PHP_WINDOWS_VERSION_MAJOR') ? 'NUL' : '/dev/null');\n
+                @exec(escapeshellarg(PHP_BINARY) .' '.escapeshellarg($this-&gt;target).' self-update --'.$channel.' --set-channel-only -q &gt; '.$null.' 2&gt; '.$null, $output);\n
+            }\n
+        } catch (Exception $e) {\n
+            $result = false;\n
+        }\n
+\n
+        // Always clean up\n
+        $this-&gt;cleanUp($result);\n
+\n
+        if (isset($e)) {\n
+            // Rethrow anything that is not a RuntimeException\n
+            if (!$e instanceof RuntimeException) {\n
+                throw $e;\n
+            }\n
+            out($e-&gt;getMessage(), 'error');\n
+        }\n
+        return $result;\n
+    }\n
+\n
+    /**\n
+     * Initialization methods to set the required filenames and composer url\n
+     *\n
+     * @param mixed $installDir Specific installation directory, or false\n
+     * @param string $filename Specific filename to save to, or composer.phar\n
+     * @throws RuntimeException If the installation directory is not writable\n
+     */\n
+    protected function initTargets($installDir, $filename)\n
+    {\n
+        $this-&gt;displayPath = ($installDir ? rtrim($installDir, '/').'/' : '').$filename;\n
+        $installDir = $installDir ? realpath($installDir) : getcwd();\n
+\n
+        if (!is_writeable($installDir)) {\n
+            throw new RuntimeException('The installation directory "'.$installDir.'" is not writable');\n
+        }\n
+\n
+        $this-&gt;target = $installDir.DIRECTORY_SEPARATOR.$filename;\n
+        $this-&gt;tmpFile = $installDir.DIRECTORY_SEPARATOR.basename($this-&gt;target, '.phar').'-temp.phar';\n
+\n
+        $uriScheme = $this-&gt;disableTls ? 'http' : 'https';\n
+        $this-&gt;baseUrl = $uriScheme.'://getcomposer.org';\n
+    }\n
+\n
+    /**\n
+     * A wrapper around methods to check tls and write public keys\n
+     * @throws RuntimeException If SHA384 is not supported\n
+     */\n
+    protected function initTls()\n
+    {\n
+        if ($this-&gt;disableTls) {\n
+            return;\n
+        }\n
+\n
+        if (!in_array('sha384', array_map('strtolower', openssl_get_md_methods()))) {\n
+            throw new RuntimeException('SHA384 is not supported by your openssl extension');\n
+        }\n
+\n
+        $this-&gt;algo = defined('OPENSSL_ALGO_SHA384') ? OPENSSL_ALGO_SHA384 : 'SHA384';\n
+        $home = $this-&gt;getComposerHome();\n
+\n
+        $this-&gt;pubKeys = array(\n
+            'dev' =&gt; $this-&gt;installKey(self::getPKDev(), $home, 'keys.dev.pub'),\n
+            'tags' =&gt; $this-&gt;installKey(self::getPKTags(), $home, 'keys.tags.pub')\n
+        );\n
+\n
+        if (empty($this-&gt;cafile) &amp;&amp; !HttpClient::getSystemCaRootBundlePath()) {\n
+            $this-&gt;cafile = $this-&gt;tmpCafile = $this-&gt;installKey(HttpClient::getPackagedCaFile(), $home, 'cacert-temp.pem');\n
+        }\n
+    }\n
+\n
+    /**\n
+     * Returns the Composer home directory, creating it if required\n
+     * @throws RuntimeException If the directory cannot be created\n
+     *\n
+     * @return string\n
+     */\n
+    protected function getComposerHome()\n
+    {\n
+        $home = getHomeDir();\n
+\n
+        if (!is_dir($home)) {\n
+            $this-&gt;errHandler-&gt;start();\n
+\n
+            if (!mkdir($home, 0777, true)) {\n
+                throw new RuntimeException(sprintf(\n
+                    'Unable to create Composer home directory "%s": %s',\n
+                    $home,\n
+                    $this-&gt;errHandler-&gt;message\n
+                ));\n
+            }\n
+            $this-&gt;installs[] = $home;\n
+            $this-&gt;errHandler-&gt;stop();\n
+        }\n
+        return $home;\n
+    }\n
+\n
+    /**\n
+     * Writes public key data to disc\n
+     *\n
+     * @param string $data The public key(s) in pem format\n
+     * @param string $path The directory to write to\n
+     * @param string $filename The name of the file\n
+     * @throws RuntimeException If the file cannot be written\n
+     *\n
+     * @return string The path to the saved data\n
+     */\n
+    protected function installKey($data, $path, $filename)\n
+    {\n
+        $this-&gt;errHandler-&gt;start();\n
+\n
+        $target = $path.DIRECTORY_SEPARATOR.$filename;\n
+        $installed = file_exists($target);\n
+        $write = file_put_contents($target, $data, LOCK_EX);\n
+        @chmod($target, 0644);\n
+\n
+        $this-&gt;errHandler-&gt;stop();\n
+\n
+        if (!$write) {\n
+            throw new RuntimeException(sprintf('Unable to write %s to: %s', $filename, $path));\n
+        }\n
+\n
+        if (!$installed) {\n
+            $this-&gt;installs[] = $target;\n
+        }\n
+\n
+        return $target;\n
+    }\n
+\n
+    /**\n
+     * The main install function\n
+     *\n
+     * @param mixed $version Specific version to install, or false\n
+     * @param string $channel Version channel to use\n
+     *\n
+     * @return bool If the installation succeeded\n
+     */\n
+    protected function install($version, $channel)\n
+    {\n
+        $retries = 3;\n
+        $result = false;\n
+        $infoMsg = 'Downloading...';\n
+        $infoType = 'info';\n
+\n
+        while ($retries--) {\n
+            if (!$this-&gt;quiet) {\n
+                out($infoMsg, $infoType);\n
+                $infoMsg = 'Retrying...';\n
+                $infoType = 'error';\n
+            }\n
+\n
+            if (!$this-&gt;getVersion($channel, $version, $url, $error)) {\n
+                out($error, 'error');\n
+                continue;\n
+            }\n
+\n
+            if (!$this-&gt;downloadToTmp($url, $signature, $error)) {\n
+                out($error, 'error');\n
+                continue;\n
+            }\n
+\n
+            if (!$this-&gt;verifyAndSave($version, $signature, $error)) {\n
+                out($error, 'error');\n
+                continue;\n
+            }\n
+\n
+            $result = true;\n
+            break;\n
+        }\n
+\n
+        if (!$this-&gt;quiet) {\n
+            if ($result) {\n
+                out(PHP_EOL."Composer (version {$version}) successfully installed to: {$this-&gt;target}", 'success');\n
+                out("Use it: php {$this-&gt;displayPath}", 'info');\n
+                out('');\n
+            } else {\n
+                out('The download failed repeatedly, aborting.', 'error');\n
+            }\n
+        }\n
+        return $result;\n
+    }\n
+\n
+    /**\n
+     * Sets the version url, downloading version data if required\n
+     *\n
+     * @param string $channel Version channel to use\n
+     * @param false|string $version Version to install, or set by method\n
+     * @param null|string $url The versioned url, set by method\n
+     * @param null|string $error Set by method on failure\n
+     *\n
+     * @return bool If the operation succeeded\n
+     */\n
+    protected function getVersion($channel, &amp;$version, &amp;$url, &amp;$error)\n
+    {\n
+        $error = '';\n
+\n
+        if ($version) {\n
+            if (empty($url)) {\n
+                $url = $this-&gt;baseUrl."/download/{$version}/composer.phar";\n
+            }\n
+            return true;\n
+        }\n
+\n
+        $this-&gt;errHandler-&gt;start();\n
+\n
+        if ($this-&gt;downloadVersionData($data, $error)) {\n
+            $this-&gt;parseVersionData($data, $channel, $version, $url);\n
+        }\n
+\n
+        $this-&gt;errHandler-&gt;stop();\n
+        return empty($error);\n
+    }\n
+\n
+    /**\n
+     * Downloads and json-decodes version data\n
+     *\n
+     * @param null|array $data Downloaded version data, set by method\n
+     * @param null|string $error Set by method on failure\n
+     *\n
+     * @return bool If the operation succeeded\n
+     */\n
+    protected function downloadVersionData(&amp;$data, &amp;$error)\n
+    {\n
+        $url = $this-&gt;baseUrl.'/versions';\n
+        $errFmt = 'The "%s" file could not be %s: %s';\n
+\n
+        if (!$json = $this-&gt;httpClient-&gt;get($url)) {\n
+            $error = sprintf($errFmt, $url, 'downloaded', $this-&gt;errHandler-&gt;message);\n
+            return false;\n
+        }\n
+\n
+        if (!$data = json_decode($json, true)) {\n
+            $error = sprintf($errFmt, $url, 'json-decoded', $this-&gt;getJsonError());\n
+            return false;\n
+        }\n
+        return true;\n
+    }\n
+\n
+    /**\n
+     * A wrapper around the methods needed to download and save the phar\n
+     *\n
+     * @param string $url The versioned download url\n
+     * @param null|string $signature Set by method on successful download\n
+     * @param null|string $error Set by method on failure\n
+     *\n
+     * @return bool If the operation succeeded\n
+     */\n
+    protected function downloadToTmp($url, &amp;$signature, &amp;$error)\n
+    {\n
+        $error = '';\n
+        $errFmt = 'The "%s" file could not be downloaded: %s';\n
+        $sigUrl = $url.'.sig';\n
+        $this-&gt;errHandler-&gt;start();\n
+\n
+        if (!$fh = fopen($this-&gt;tmpFile, 'w')) {\n
+            $error = sprintf('Could not create file "%s": %s', $this-&gt;tmpFile, $this-&gt;errHandler-&gt;message);\n
+\n
+        } elseif (!$this-&gt;getSignature($sigUrl, $signature)) {\n
+            $error = sprintf($errFmt, $sigUrl, $this-&gt;errHandler-&gt;message);\n
+\n
+        } elseif (!fwrite($fh, $this-&gt;httpClient-&gt;get($url))) {\n
+            $error = sprintf($errFmt, $url, $this-&gt;errHandler-&gt;message);\n
+        }\n
+\n
+        if (is_resource($fh)) {\n
+            fclose($fh);\n
+        }\n
+        $this-&gt;errHandler-&gt;stop();\n
+        return empty($error);\n
+    }\n
+\n
+    /**\n
+     * Verifies the downloaded file and saves it to the target location\n
+     *\n
+     * @param string $version The composer version downloaded\n
+     * @param string $signature The digital signature to check\n
+     * @param null|string $error Set by method on failure\n
+     *\n
+     * @return bool If the operation succeeded\n
+     */\n
+    protected function verifyAndSave($version, $signature, &amp;$error)\n
+    {\n
+        $error = '';\n
+\n
+        if (!$this-&gt;validatePhar($this-&gt;tmpFile, $pharError)) {\n
+            $error = 'The download is corrupt: '.$pharError;\n
+\n
+        } elseif (!$this-&gt;verifySignature($version, $signature, $this-&gt;tmpFile)) {\n
+            $error = 'Signature mismatch, could not verify the phar file integrity';\n
+\n
+        } else {\n
+            $this-&gt;errHandler-&gt;start();\n
+\n
+            if (!rename($this-&gt;tmpFile, $this-&gt;target)) {\n
+                $error = sprintf('Could not write to file "%s": %s', $this-&gt;target, $this-&gt;errHandler-&gt;message);\n
+            }\n
+            chmod($this-&gt;target, 0755);\n
+            $this-&gt;errHandler-&gt;stop();\n
+        }\n
+\n
+        return empty($error);\n
+    }\n
+\n
+    /**\n
+     * Parses an array of version data to match the required channel\n
+     *\n
+     * @param array $data Downloaded version data\n
+     * @param mixed $channel Version channel to use\n
+     * @param false|string $version Set by method\n
+     * @param mixed $url The versioned url, set by method\n
+     */\n
+    protected function parseVersionData(array $data, $channel, &amp;$version, &amp;$url)\n
+    {\n
+        foreach ($data[$channel] as $candidate) {\n
+            if ($candidate['min-php'] &lt;= PHP_VERSION_ID) {\n
+                $version = $candidate['version'];\n
+                $url = $this-&gt;baseUrl.$candidate['path'];\n
+                break;\n
+            }\n
+        }\n
+\n
+        if (!$version) {\n
+            $error = sprintf(\n
+                'None of the %d %s version(s) of Composer matches your PHP version (%s / ID: %d)',\n
+                count($data[$channel]),\n
+                $channel,\n
+                PHP_VERSION,\n
+                PHP_VERSION_ID\n
+            );\n
+            throw new RuntimeException($error);\n
+        }\n
+    }\n
+\n
+    /**\n
+     * Downloads the digital signature of required phar file\n
+     *\n
+     * @param string $url The signature url\n
+     * @param null|string $signature Set by method on success\n
+     *\n
+     * @return bool If the download succeeded\n
+     */\n
+    protected function getSignature($url, &amp;$signature)\n
+    {\n
+        if (!$result = $this-&gt;disableTls) {\n
+            $signature = $this-&gt;httpClient-&gt;get($url);\n
+\n
+            if ($signature) {\n
+                $signature = json_decode($signature, true);\n
+                $signature = base64_decode($signature['sha384']);\n
+                $result = true;\n
+            }\n
+        }\n
+\n
+        return $result;\n
+    }\n
+\n
+    /**\n
+     * Verifies the signature of the downloaded phar\n
+     *\n
+     * @param string $version The composer versione\n
+     * @param string $signature The downloaded digital signature\n
+     * @param string $file The temp phar file\n
+     *\n
+     * @return bool If the operation succeeded\n
+     */\n
+    protected function verifySignature($version, $signature, $file)\n
+    {\n
+        if (!$result = $this-&gt;disableTls) {\n
+            $path = preg_match('{^[0-9a-f]{40}$}', $version) ? $this-&gt;pubKeys['dev'] : $this-&gt;pubKeys['tags'];\n
+            $pubkeyid = openssl_pkey_get_public('file://'.$path);\n
+\n
+            $result = 1 === openssl_verify(\n
+                file_get_contents($file),\n
+                $signature,\n
+                $pubkeyid,\n
+                $this-&gt;algo\n
+            );\n
+\n
+            // PHP 8 automatically frees the key instance and deprecates the function\n
+            if (PHP_VERSION_ID &lt; 80000) {\n
+                openssl_free_key($pubkeyid);\n
+            }\n
+        }\n
+\n
+        return $result;\n
+    }\n
+\n
+    /**\n
+     * Validates the downloaded phar file\n
+     *\n
+     * @param string $pharFile The temp phar file\n
+     * @param null|string $error Set by method on failure\n
+     *\n
+     * @return bool If the operation succeeded\n
+     */\n
+    protected function validatePhar($pharFile, &amp;$error)\n
+    {\n
+        if (ini_get('phar.readonly')) {\n
+            return true;\n
+        }\n
+\n
+        try {\n
+            // Test the phar validity\n
+            $phar = new Phar($pharFile);\n
+            // Free the variable to unlock the file\n
+            unset($phar);\n
+            $result = true;\n
+\n
+        } catch (Exception $e) {\n
+            if (!$e instanceof UnexpectedValueException &amp;&amp; !$e instanceof PharException) {\n
+                throw $e;\n
+            }\n
+            $error = $e-&gt;getMessage();\n
+            $result = false;\n
+        }\n
+        return $result;\n
+    }\n
+\n
+    /**\n
+     * Returns a string representation of the last json error\n
+     *\n
+     * @return string The error string or code\n
+     */\n
+    protected function getJsonError()\n
+    {\n
+        if (function_exists('json_last_error_msg')) {\n
+            return json_last_error_msg();\n
+        } else {\n
+            return 'json_last_error = '.json_last_error();\n
+        }\n
+    }\n
+\n
+    /**\n
+     * Cleans up resources at the end of the installation\n
+     *\n
+     * @param bool $result If the installation succeeded\n
+     */\n
+    protected function cleanUp($result)\n
+    {\n
+        if (!$result) {\n
+            // Output buffered errors\n
+            if ($this-&gt;quiet) {\n
+                $this-&gt;outputErrors();\n
+            }\n
+            // Clean up stuff we created\n
+            $this-&gt;uninstall();\n
+        } elseif ($this-&gt;tmpCafile) {\n
+            @unlink($this-&gt;tmpCafile);\n
+        }\n
+    }\n
+\n
+    /**\n
+     * Outputs unique errors when in quiet mode\n
+     *\n
+     */\n
+    protected function outputErrors()\n
+    {\n
+        $errors = explode(PHP_EOL, ob_get_clean());\n
+        $shown = array();\n
+\n
+        foreach ($errors as $error) {\n
+            if ($error &amp;&amp; !in_array($error, $shown)) {\n
+                out($error, 'error');\n
+                $shown[] = $error;\n
+            }\n
+        }\n
+    }\n
+\n
+    /**\n
+     * Uninstalls newly-created files and directories on failure\n
+     *\n
+     */\n
+    protected function uninstall()\n
+    {\n
+        foreach (array_reverse($this-&gt;installs) as $target) {\n
+            if (is_file($target)) {\n
+                @unlink($target);\n
+            } elseif (is_dir($target)) {\n
+                @rmdir($target);\n
+            }\n
+        }\n
+\n
+        if ($this-&gt;tmpFile !== null &amp;&amp; file_exists($this-&gt;tmpFile)) {\n
+            @unlink($this-&gt;tmpFile);\n
+        }\n
+    }\n
+\n
+    public static function getPKDev()\n
+    {\n
+        return &lt;&lt;&lt;PKDEV\n
+-----BEGIN PUBLIC KEY-----\n
+MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAnBDHjZS6e0ZMoK3xTD7f\n
+FNCzlXjX/Aie2dit8QXA03pSrOTbaMnxON3hUL47Lz3g1SC6YJEMVHr0zYq4elWi\n
+i3ecFEgzLcj+pZM5X6qWu2Ozz4vWx3JYo1/a/HYdOuW9e3lwS8VtS0AVJA+U8X0A\n
+hZnBmGpltHhO8hPKHgkJtkTUxCheTcbqn4wGHl8Z2SediDcPTLwqezWKUfrYzu1f\n
+o/j3WFwFs6GtK4wdYtiXr+yspBZHO3y1udf8eFFGcb2V3EaLOrtfur6XQVizjOuk\n
+8lw5zzse1Qp/klHqbDRsjSzJ6iL6F4aynBc6Euqt/8ccNAIz0rLjLhOraeyj4eNn\n
+8iokwMKiXpcrQLTKH+RH1JCuOVxQ436bJwbSsp1VwiqftPQieN+tzqy+EiHJJmGf\n
+TBAbWcncicCk9q2md+AmhNbvHO4PWbbz9TzC7HJb460jyWeuMEvw3gNIpEo2jYa9\n
+pMV6cVqnSa+wOc0D7pC9a6bne0bvLcm3S+w6I5iDB3lZsb3A9UtRiSP7aGSo7D72\n
+8tC8+cIgZcI7k9vjvOqH+d7sdOU2yPCnRY6wFh62/g8bDnUpr56nZN1G89GwM4d4\n
+r/TU7BQQIzsZgAiqOGXvVklIgAMiV0iucgf3rNBLjjeNEwNSTTG9F0CtQ+7JLwaE\n
+wSEuAuRm+pRqi8BRnQ/GKUcCAwEAAQ==\n
+-----END PUBLIC KEY-----\n
+PKDEV;\n
+    }\n
+\n
+    public static function getPKTags()\n
+    {\n
+        return &lt;&lt;&lt;PKTAGS\n
+-----BEGIN PUBLIC KEY-----\n
+MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA0Vi/2K6apCVj76nCnCl2\n
+MQUPdK+A9eqkYBacXo2wQBYmyVlXm2/n/ZsX6pCLYPQTHyr5jXbkQzBw8SKqPdlh\n
+vA7NpbMeNCz7wP/AobvUXM8xQuXKbMDTY2uZ4O7sM+PfGbptKPBGLe8Z8d2sUnTO\n
+bXtX6Lrj13wkRto7st/w/Yp33RHe9SlqkiiS4MsH1jBkcIkEHsRaveZzedUaxY0M\n
+mba0uPhGUInpPzEHwrYqBBEtWvP97t2vtfx8I5qv28kh0Y6t+jnjL1Urid2iuQZf\n
+noCMFIOu4vksK5HxJxxrN0GOmGmwVQjOOtxkwikNiotZGPR4KsVj8NnBrLX7oGuM\n
+nQvGciiu+KoC2r3HDBrpDeBVdOWxDzT5R4iI0KoLzFh2pKqwbY+obNPS2bj+2dgJ\n
+rV3V5Jjry42QOCBN3c88wU1PKftOLj2ECpewY6vnE478IipiEu7EAdK8Zwj2LmTr\n
+RKQUSa9k7ggBkYZWAeO/2Ag0ey3g2bg7eqk+sHEq5ynIXd5lhv6tC5PBdHlWipDK\n
+tl2IxiEnejnOmAzGVivE1YGduYBjN+mjxDVy8KGBrjnz1JPgAvgdwJ2dYw4Rsc/e\n
+TzCFWGk/HM6a4f0IzBWbJ5ot0PIi4amk07IotBXDWwqDiQTwyuGCym5EqWQ2BD95\n
+RGv89BPD+2DLnJysngsvVaUCAwEAAQ==\n
+-----END PUBLIC KEY-----\n
+PKTAGS;\n
+    }\n
+}\n
+\n
+class ErrorHandler\n
+{\n
+    public $message;\n
+    protected $active;\n
+\n
+    /**\n
+     * Handle php errors\n
+     *\n
+     * @param mixed $code The error code\n
+     * @param mixed $msg The error message\n
+     */\n
+    public function handleError($code, $msg)\n
+    {\n
+        if ($this-&gt;message) {\n
+            $this-&gt;message .= PHP_EOL;\n
+        }\n
+        $this-&gt;message .= preg_replace('{^file_get_contents\(.*?\): }', '', $msg);\n
+    }\n
+\n
+    /**\n
+     * Starts error-handling if not already active\n
+     *\n
+     * Any message is cleared\n
+     */\n
+    public function start()\n
+    {\n
+        if (!$this-&gt;active) {\n
+            set_error_handler(array($this, 'handleError'));\n
+            $this-&gt;active = true;\n
+        }\n
+        $this-&gt;message = '';\n
+    }\n
+\n
+    /**\n
+     * Stops error-handling if active\n
+     *\n
+     * Any message is preserved until the next call to start()\n
+     */\n
+    public function stop()\n
+    {\n
+        if ($this-&gt;active) {\n
+            restore_error_handler();\n
+            $this-&gt;active = false;\n
+        }\n
+    }\n
+}\n
+\n
+class NoProxyPattern\n
+{\n
+    private $composerInNoProxy = false;\n
+    private $rulePorts = array();\n
+\n
+    public function __construct($pattern)\n
+    {\n
+        $rules = preg_split('{[\s,]+}', $pattern, null, PREG_SPLIT_NO_EMPTY);\n
+\n
+        if ($matches = preg_grep('{getcomposer\.org(?::\d+)?}i', $rules)) {\n
+            $this-&gt;composerInNoProxy = true;\n
+\n
+            foreach ($matches as $match) {\n
+                if (strpos($match, ':') !== false) {\n
+                    list(, $port) = explode(':', $match);\n
+                    $this-&gt;rulePorts[] = (int) $port;\n
+                }\n
+            }\n
+        }\n
+    }\n
+\n
+    /**\n
+     * Returns true if NO_PROXY does not contain getcomposer.org\n
+     *\n
+     * @param string $url http(s)://getcomposer.org\n
+     *\n
+     * @return bool\n
+     */\n
+    public function test($url)\n
+    {\n
+        if (!$this-&gt;composerInNoProxy) {\n
+            return false;\n
+        }\n
+\n
+        if (empty($this-&gt;rulePorts)) {\n
+            return true;\n
+        }\n
+\n
+        if (strpos($url, 'http://') === 0) {\n
+            $port = 80;\n
+        } else {\n
+            $port = 443;\n
+        }\n
+\n
+        return in_array($port, $this-&gt;rulePorts);\n
+    }\n
+}\n
+\n
+class HttpClient {\n
+\n
+    /** @var null|string */\n
+    private static $caPath;\n
+\n
+    private $options = array('http' =&gt; array());\n
+    private $disableTls = false;\n
+\n
+    public function __construct($disableTls = false, $cafile = false)\n
+    {\n
+        $this-&gt;disableTls = $disableTls;\n
+        if ($this-&gt;disableTls === false) {\n
+            if (!empty($cafile) &amp;&amp; !is_dir($cafile)) {\n
+                if (!is_readable($cafile) || !validateCaFile(file_get_contents($cafile))) {\n
+                    throw new RuntimeException('The configured cafile (' .$cafile. ') was not valid or could not be read.');\n
+                }\n
+            }\n
+            $options = $this-&gt;getTlsStreamContextDefaults($cafile);\n
+            $this-&gt;options = array_replace_recursive($this-&gt;options, $options);\n
+        }\n
+    }\n
+\n
+    public function get($url)\n
+    {\n
+        $context = $this-&gt;getStreamContext($url);\n
+        $result = file_get_contents($url, false, $context);\n
+\n
+        if ($result &amp;&amp; extension_loaded('zlib')) {\n
+            $decode = false;\n
+            foreach ($http_response_header as $header) {\n
+                if (preg_match('{^content-encoding: *gzip *$}i', $header)) {\n
+                    $decode = true;\n
+                    continue;\n
+                } elseif (preg_match('{^HTTP/}i', $header)) {\n
+                    $decode = false;\n
+                }\n
+            }\n
+\n
+            if ($decode) {\n
+                if (version_compare(PHP_VERSION, '5.4.0', '&gt;=')) {\n
+                    $result = zlib_decode($result);\n
+                } else {\n
+                    // work around issue with gzuncompress &amp; co that do not work with all gzip checksums\n
+                    $result = file_get_contents('compress.zlib://data:application/octet-stream;base64,'.base64_encode($result));\n
+                }\n
+\n
+                if (!$result) {\n
+                    throw new RuntimeException('Failed to decode zlib stream');\n
+                }\n
+            }\n
+        }\n
+\n
+        return $result;\n
+    }\n
+\n
+    protected function getStreamContext($url)\n
+    {\n
+        if ($this-&gt;disableTls === false) {\n
+            if (PHP_VERSION_ID &lt; 50600) {\n
+                $this-&gt;options['ssl']['SNI_server_name'] = parse_url($url, PHP_URL_HOST);\n
+            }\n
+        }\n
+        // Keeping the above mostly isolated from the code copied from Composer.\n
+        return $this-&gt;getMergedStreamContext($url);\n
+    }\n
+\n
+    protected function getTlsStreamContextDefaults($cafile)\n
+    {\n
+        $ciphers = implode(':', array(\n
+            'ECDHE-RSA-AES128-GCM-SHA256',\n
+            'ECDHE-ECDSA-AES128-GCM-SHA256',\n
+            'ECDHE-RSA-AES256-GCM-SHA384',\n
+            'ECDHE-ECDSA-AES256-GCM-SHA384',\n
+            'DHE-RSA-AES128-GCM-SHA256',\n
+            'DHE-DSS-AES128-GCM-SHA256',\n
+            'kEDH+AESGCM',\n
+            'ECDHE-RSA-AES128-SHA256',\n
+            'ECDHE-ECDSA-AES128-SHA256',\n
+            'ECDHE-RSA-AES128-SHA',\n
+            'ECDHE-ECDSA-AES128-SHA',\n
+            'ECDHE-RSA-AES256-SHA384',\n
+            'ECDHE-ECDSA-AES256-SHA384',\n
+            'ECDHE-RSA-AES256-SHA',\n
+            'ECDHE-ECDSA-AES256-SHA',\n
+            'DHE-RSA-AES128-SHA256',\n
+            'DHE-RSA-AES128-SHA',\n
+            'DHE-DSS-AES128-SHA256',\n
+            'DHE-RSA-AES256-SHA256',\n
+            'DHE-DSS-AES256-SHA',\n
+            'DHE-RSA-AES256-SHA',\n
+            'AES128-GCM-SHA256',\n
+            'AES256-GCM-SHA384',\n
+            'AES128-SHA256',\n
+            'AES256-SHA256',\n
+            'AES128-SHA',\n
+            'AES256-SHA',\n
+            'AES',\n
+            'CAMELLIA',\n
+            'DES-CBC3-SHA',\n
+            '!aNULL',\n
+            '!eNULL',\n
+            '!EXPORT',\n
+            '!DES',\n
+            '!RC4',\n
+            '!MD5',\n
+            '!PSK',\n
+            '!aECDH',\n
+            '!EDH-DSS-DES-CBC3-SHA',\n
+            '!EDH-RSA-DES-CBC3-SHA',\n
+            '!KRB5-DES-CBC3-SHA',\n
+        ));\n
+\n
+        /**\n
+         * CN_match and SNI_server_name are only known once a URL is passed.\n
+         * They will be set in the getOptionsForUrl() method which receives a URL.\n
+         *\n
+         * cafile or capath can be overridden by passing in those options to constructor.\n
+         */\n
+        $options = array(\n
+            'ssl' =&gt; array(\n
+                'ciphers' =&gt; $ciphers,\n
+                'verify_peer' =&gt; true,\n
+                'verify_depth' =&gt; 7,\n
+                'SNI_enabled' =&gt; true,\n
+            )\n
+        );\n
+\n
+        /**\n
+         * Attempt to find a local cafile or throw an exception.\n
+         * The user may go download one if this occurs.\n
+         */\n
+        if (!$cafile) {\n
+            $cafile = self::getSystemCaRootBundlePath();\n
+        }\n
+        if (is_dir($cafile)) {\n
+            $options['ssl']['capath'] = $cafile;\n
+        } elseif ($cafile) {\n
+            $options['ssl']['cafile'] = $cafile;\n
+        } else {\n
+            throw new RuntimeException('A valid cafile could not be located automatically.');\n
+        }\n
+\n
+        /**\n
+         * Disable TLS compression to prevent CRIME attacks where supported.\n
+         */\n
+        if (version_compare(PHP_VERSION, '5.4.13') &gt;= 0) {\n
+            $options['ssl']['disable_compression'] = true;\n
+        }\n
+\n
+        return $options;\n
+    }\n
+\n
+    /**\n
+     * function copied from Composer\Util\StreamContextFactory::initOptions\n
+     *\n
+     * Any changes should be applied there as well, or backported here.\n
+     *\n
+     * @param string $url URL the context is to be used for\n
+     * @return resource Default context\n
+     * @throws \RuntimeException if https proxy required and OpenSSL uninstalled\n
+     */\n
+    protected function getMergedStreamContext($url)\n
+    {\n
+        $options = $this-&gt;options;\n
+\n
+        // Handle HTTP_PROXY/http_proxy on CLI only for security reasons\n
+        if ((PHP_SAPI === 'cli' || PHP_SAPI === 'phpdbg') &amp;&amp; (!empty($_SERVER['HTTP_PROXY']) || !empty($_SERVER['http_proxy']))) {\n
+            $proxy = parse_url(!empty($_SERVER['http_proxy']) ? $_SERVER['http_proxy'] : $_SERVER['HTTP_PROXY']);\n
+        }\n
+\n
+        // Prefer CGI_HTTP_PROXY if available\n
+        if (!empty($_SERVER['CGI_HTTP_PROXY'])) {\n
+            $proxy = parse_url($_SERVER['CGI_HTTP_PROXY']);\n
+        }\n
+\n
+        // Override with HTTPS proxy if present and URL is https\n
+        if (preg_match('{^https://}i', $url) &amp;&amp; (!empty($_SERVER['HTTPS_PROXY']) || !empty($_SERVER['https_proxy']))) {\n
+            $proxy = parse_url(!empty($_SERVER['https_proxy']) ? $_SERVER['https_proxy'] : $_SERVER['HTTPS_PROXY']);\n
+        }\n
+\n
+        // Remove proxy if URL matches no_proxy directive\n
+        if (!empty($_SERVER['NO_PROXY']) || !empty($_SERVER['no_proxy']) &amp;&amp; parse_url($url, PHP_URL_HOST)) {\n
+            $pattern = new NoProxyPattern(!empty($_SERVER['no_proxy']) ? $_SERVER['no_proxy'] : $_SERVER['NO_PROXY']);\n
+            if ($pattern-&gt;test($url)) {\n
+                unset($proxy);\n
+            }\n
+        }\n
+\n
+        if (!empty($proxy)) {\n
+            $proxyURL = isset($proxy['scheme']) ? $proxy['scheme'] . '://' : '';\n
+            $proxyURL .= isset($proxy['host']) ? $proxy['host'] : '';\n
+\n
+            if (isset($proxy['port'])) {\n
+                $proxyURL .= ":" . $proxy['port'];\n
+            } elseif (strpos($proxyURL, 'http://') === 0) {\n
+                $proxyURL .= ":80";\n
+            } elseif (strpos($proxyURL, 'https://') === 0) {\n
+                $proxyURL .= ":443";\n
+            }\n
+\n
+            // check for a secure proxy\n
+            if (strpos($proxyURL, 'https://') === 0) {\n
+                if (!extension_loaded('openssl')) {\n
+                    throw new RuntimeException('You must enable the openssl extension to use a secure proxy.');\n
+                }\n
+                if (strpos($url, 'https://') === 0) {\n
+                    throw new RuntimeException('PHP does not support https requests through a secure proxy.');\n
+                }\n
+            }\n
+\n
+            // http(s):// is not supported in proxy\n
+            $proxyURL = str_replace(array('http://', 'https://'), array('tcp://', 'ssl://'), $proxyURL);\n
+\n
+            $options['http'] = array(\n
+                'proxy' =&gt; $proxyURL,\n
+            );\n
+\n
+            // add request_fulluri for http requests\n
+            if ('http' === parse_url($url, PHP_URL_SCHEME)) {\n
+                $options['http']['request_fulluri'] = true;\n
+            }\n
+\n
+            // handle proxy auth if present\n
+            if (isset($proxy['user'])) {\n
+                $auth = rawurldecode($proxy['user']);\n
+                if (isset($proxy['pass'])) {\n
+                    $auth .= ':' . rawurldecode($proxy['pass']);\n
+                }\n
+                $auth = base64_encode($auth);\n
+\n
+                $options['http']['header'] = "Proxy-Authorization: Basic {$auth}\r\n";\n
+            }\n
+        }\n
+\n
+        if (isset($options['http']['header'])) {\n
+            $options['http']['header'] .= "Connection: close\r\n";\n
+        } else {\n
+            $options['http']['header'] = "Connection: close\r\n";\n
+        }\n
+        if (extension_loaded('zlib')) {\n
+            $options['http']['header'] .= "Accept-Encoding: gzip\r\n";\n
+        }\n
+        $options['http']['header'] .= "User-Agent: ".COMPOSER_INSTALLER."\r\n";\n
+        $options['http']['protocol_version'] = 1.1;\n
+        $options['http']['timeout'] = 600;\n
+\n
+        return stream_context_create($options);\n
+    }\n
+\n
+    /**\n
+    * This method was adapted from Sslurp.\n
+    * https://github.com/EvanDotPro/Sslurp\n
+    *\n
+    * (c) Evan Coury &lt;me@evancoury.com&gt;\n
+    *\n
+    * For the full copyright and license information, please see below:\n
+    *\n
+    * Copyright (c) 2013, Evan Coury\n
+    * All rights reserved.\n
+    *\n
+    * Redistribution and use in source and binary forms, with or without modification,\n
+    * are permitted provided that the following conditions are met:\n
+    *\n
+    *     * Redistributions of source code must retain the above copyright notice,\n
+    *       this list of conditions and the following disclaimer.\n
+    *\n
+    *     * Redistributions in binary form must reproduce the above copyright notice,\n
+    *       this list of conditions and the following disclaimer in the documentation\n
+    *       and/or other materials provided with the distribution.\n
+    *\n
+    * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND\n
+    * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\n
+    * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n
+    * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR\n
+    * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n
+    * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n
+    * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\n
+    * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n
+    * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n
+    * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n
+    */\n
+    public static function getSystemCaRootBundlePath()\n
+    {\n
+        if (self::$caPath !== null) {\n
+            return self::$caPath;\n
+        }\n
+\n
+        // If SSL_CERT_FILE env variable points to a valid certificate/bundle, use that.\n
+        // This mimics how OpenSSL uses the SSL_CERT_FILE env variable.\n
+        $envCertFile = getenv('SSL_CERT_FILE');\n
+        if ($envCertFile &amp;&amp; is_readable($envCertFile) &amp;&amp; validateCaFile(file_get_contents($envCertFile))) {\n
+            return self::$caPath = $envCertFile;\n
+        }\n
+\n
+        // If SSL_CERT_DIR env variable points to a valid certificate/bundle, use that.\n
+        // This mimics how OpenSSL uses the SSL_CERT_FILE env variable.\n
+        $envCertDir = getenv('SSL_CERT_DIR');\n
+        if ($envCertDir &amp;&amp; is_dir($envCertDir) &amp;&amp; is_readable($envCertDir)) {\n
+            return self::$caPath = $envCertDir;\n
+        }\n
+\n
+        $configured = ini_get('openssl.cafile');\n
+        if ($configured &amp;&amp; strlen($configured) &gt; 0 &amp;&amp; is_readable($configured) &amp;&amp; validateCaFile(file_get_contents($configured))) {\n
+            return self::$caPath = $configured;\n
+        }\n
+\n
+        $configured = ini_get('openssl.capath');\n
+        if ($configured &amp;&amp; is_dir($configured) &amp;&amp; is_readable($configured)) {\n
+            return self::$caPath = $configured;\n
+        }\n
+\n
+        $caBundlePaths = array(\n
+            '/etc/pki/tls/certs/ca-bundle.crt', // Fedora, RHEL, CentOS (ca-certificates package)\n
+            '/etc/ssl/certs/ca-certificates.crt', // Debian, Ubuntu, Gentoo, Arch Linux (ca-certificates package)\n
+            '/etc/ssl/ca-bundle.pem', // SUSE, openSUSE (ca-certificates package)\n
+            '/usr/local/share/certs/ca-root-nss.crt', // FreeBSD (ca_root_nss_package)\n
+            '/usr/ssl/certs/ca-bundle.crt', // Cygwin\n
+            '/opt/local/share/curl/curl-ca-bundle.crt', // OS X macports, curl-ca-bundle package\n
+            '/usr/local/share/curl/curl-ca-bundle.crt', // Default cURL CA bunde path (without --with-ca-bundle option)\n
+            '/usr/share/ssl/certs/ca-bundle.crt', // Really old RedHat?\n
+            '/etc/ssl/cert.pem', // OpenBSD\n
+            '/usr/local/etc/ssl/cert.pem', // FreeBSD 10.x\n
+            '/usr/local/etc/openssl/cert.pem', // OS X homebrew, openssl package\n
+            '/usr/local/etc/openssl@1.1/cert.pem', // OS X homebrew, openssl@1.1 package\n
+            '/opt/homebrew/etc/openssl@3/cert.pem', // macOS silicon homebrew, openssl@3 package\n
+            '/opt/homebrew/etc/openssl@1.1/cert.pem', // macOS silicon homebrew, openssl@1.1 package\n
+        );\n
+\n
+        foreach ($caBundlePaths as $caBundle) {\n
+            if (@is_readable($caBundle) &amp;&amp; validateCaFile(file_get_contents($caBundle))) {\n
+                return self::$caPath = $caBundle;\n
+            }\n
+        }\n
+\n
+        foreach ($caBundlePaths as $caBundle) {\n
+            $caBundle = dirname($caBundle);\n
+            if (is_dir($caBundle) &amp;&amp; glob($caBundle.'/*')) {\n
+                return self::$caPath = $caBundle;\n
+            }\n
+        }\n
+\n
+        return self::$caPath = false;\n
+    }\n
+\n
+    public static function getPackagedCaFile()\n
+    {\n
+        return &lt;&lt;&lt;CACERT\n
+##\n
+## Bundle of CA Root Certificates for Let's Encrypt\n
+##\n
+## See https://letsencrypt.org/certificates/#root-certificates\n
+##\n
+## ISRG Root X1 (RSA 4096) expires Jun 04 11:04:38 2035 GMT\n
+## ISRG Root X2 (ECDSA P-384) expires Sep 17 16:00:00 2040 GMT\n
+##\n
+## Both these are self-signed CA root certificates\n
+##\n
+\n
+ISRG Root X1\n
+============\n
+-----BEGIN CERTIFICATE-----\n
+MIIFazCCA1OgAwIBAgIRAIIQz7DSQONZRGPgu2OCiwAwDQYJKoZIhvcNAQELBQAw\n
+TzELMAkGA1UEBhMCVVMxKTAnBgNVBAoTIEludGVybmV0IFNlY3VyaXR5IFJlc2Vh\n
+cmNoIEdyb3VwMRUwEwYDVQQDEwxJU1JHIFJvb3QgWDEwHhcNMTUwNjA0MTEwNDM4\n
+WhcNMzUwNjA0MTEwNDM4WjBPMQswCQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJu\n
+ZXQgU2VjdXJpdHkgUmVzZWFyY2ggR3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBY\n
+MTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBAK3oJHP0FDfzm54rVygc\n
+h77ct984kIxuPOZXoHj3dcKi/vVqbvYATyjb3miGbESTtrFj/RQSa78f0uoxmyF+\n
+0TM8ukj13Xnfs7j/EvEhmkvBioZxaUpmZmyPfjxwv60pIgbz5MDmgK7iS4+3mX6U\n
+A5/TR5d8mUgjU+g4rk8Kb4Mu0UlXjIB0ttov0DiNewNwIRt18jA8+o+u3dpjq+sW\n
+T8KOEUt+zwvo/7V3LvSye0rgTBIlDHCNAymg4VMk7BPZ7hm/ELNKjD+Jo2FR3qyH\n
+B5T0Y3HsLuJvW5iB4YlcNHlsdu87kGJ55tukmi8mxdAQ4Q7e2RCOFvu396j3x+UC\n
+B5iPNgiV5+I3lg02dZ77DnKxHZu8A/lJBdiB3QW0KtZB6awBdpUKD9jf1b0SHzUv\n
+KBds0pjBqAlkd25HN7rOrFleaJ1/ctaJxQZBKT5ZPt0m9STJEadao0xAH0ahmbWn\n
+OlFuhjuefXKnEgV4We0+UXgVCwOPjdAvBbI+e0ocS3MFEvzG6uBQE3xDk3SzynTn\n
+jh8BCNAw1FtxNrQHusEwMFxIt4I7mKZ9YIqioymCzLq9gwQbooMDQaHWBfEbwrbw\n
+qHyGO0aoSCqI3Haadr8faqU9GY/rOPNk3sgrDQoo//fb4hVC1CLQJ13hef4Y53CI\n
+rU7m2Ys6xt0nUW7/vGT1M0NPAgMBAAGjQjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNV\n
+HRMBAf8EBTADAQH/MB0GA1UdDgQWBBR5tFnme7bl5AFzgAiIyBpY9umbbjANBgkq\n
+hkiG9w0BAQsFAAOCAgEAVR9YqbyyqFDQDLHYGmkgJykIrGF1XIpu+ILlaS/V9lZL\n
+ubhzEFnTIZd+50xx+7LSYK05qAvqFyFWhfFQDlnrzuBZ6brJFe+GnY+EgPbk6ZGQ\n
+3BebYhtF8GaV0nxvwuo77x/Py9auJ/GpsMiu/X1+mvoiBOv/2X/qkSsisRcOj/KK\n
+NFtY2PwByVS5uCbMiogziUwthDyC3+6WVwW6LLv3xLfHTjuCvjHIInNzktHCgKQ5\n
+ORAzI4JMPJ+GslWYHb4phowim57iaztXOoJwTdwJx4nLCgdNbOhdjsnvzqvHu7Ur\n
+TkXWStAmzOVyyghqpZXjFaH3pO3JLF+l+/+sKAIuvtd7u+Nxe5AW0wdeRlN8NwdC\n
+jNPElpzVmbUq4JUagEiuTDkHzsxHpFKVK7q4+63SM1N95R1NbdWhscdCb+ZAJzVc\n
+oyi3B43njTOQ5yOf+1CceWxG1bQVs5ZufpsMljq4Ui0/1lvh+wjChP4kqKOJ2qxq\n
+4RgqsahDYVvTH9w7jXbyLeiNdd8XM2w9U/t7y0Ff/9yi0GE44Za4rF2LN9d11TPA\n
+mRGunUHBcnWEvgJBQl9nJEiU0Zsnvgc/ubhPgXRR4Xq37Z0j4r7g1SgEEzwxA57d\n
+emyPxgcYxn/eR44/KJ4EBs+lVDR3veyJm+kXQ99b21/+jh5Xos1AnX5iItreGCc=\n
+-----END CERTIFICATE-----\n
+\n
+ISRG Root X2\n
+============\n
+-----BEGIN CERTIFICATE-----\n
+MIICGzCCAaGgAwIBAgIQQdKd0XLq7qeAwSxs6S+HUjAKBggqhkjOPQQDAzBPMQsw\n
+CQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJuZXQgU2VjdXJpdHkgUmVzZWFyY2gg\n
+R3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBYMjAeFw0yMDA5MDQwMDAwMDBaFw00\n
+MDA5MTcxNjAwMDBaME8xCzAJBgNVBAYTAlVTMSkwJwYDVQQKEyBJbnRlcm5ldCBT\n
+ZWN1cml0eSBSZXNlYXJjaCBHcm91cDEVMBMGA1UEAxMMSVNSRyBSb290IFgyMHYw\n
+EAYHKoZIzj0CAQYFK4EEACIDYgAEzZvVn4CDCuwJSvMWSj5cz3es3mcFDR0HttwW\n
++1qLFNvicWDEukWVEYmO6gbf9yoWHKS5xcUy4APgHoIYOIvXRdgKam7mAHf7AlF9\n
+ItgKbppbd9/w+kHsOdx1ymgHDB/qo0IwQDAOBgNVHQ8BAf8EBAMCAQYwDwYDVR0T\n
+AQH/BAUwAwEB/zAdBgNVHQ4EFgQUfEKWrt5LSDv6kviejM9ti6lyN5UwCgYIKoZI\n
+zj0EAwMDaAAwZQIwe3lORlCEwkSHRhtFcP9Ymd70/aTSVaYgLXTWNLxBo1BfASdW\n
+tL4ndQavEi51mI38AjEAi/V3bNTIZargCyzuFJ0nN6T5U6VR5CmD1/iQMVtCnwr1\n
+/q4AaOeMSQ+2b1tbFfLn\n
+-----END CERTIFICATE-----\n
+CACERT;\n
+    }\n
+}\n
+' does not contain "ini_set('display_errors'".
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:212</failure>
+      </testcase>
+      <testcase name="testNoDebugCode with data set #44" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000071"/>
+      <testcase name="testNoDebugCode with data set #45" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000049"/>
+      <testcase name="testNoDebugCode with data set #46" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="185" assertions="7" time="0.000057"/>
+    </testsuite>
+    <testsuite name="SyntaxTest::testNoDeprecatedFunctions" tests="47" assertions="517" errors="0" warnings="0" failures="0" skipped="0" time="0.002150">
+      <testcase name="testNoDeprecatedFunctions with data set #0" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000041"/>
+      <testcase name="testNoDeprecatedFunctions with data set #1" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000039"/>
+      <testcase name="testNoDeprecatedFunctions with data set #2" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000040"/>
+      <testcase name="testNoDeprecatedFunctions with data set #3" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000035"/>
+      <testcase name="testNoDeprecatedFunctions with data set #4" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000063"/>
+      <testcase name="testNoDeprecatedFunctions with data set #5" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000039"/>
+      <testcase name="testNoDeprecatedFunctions with data set #6" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000040"/>
+      <testcase name="testNoDeprecatedFunctions with data set #7" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000049"/>
+      <testcase name="testNoDeprecatedFunctions with data set #8" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000041"/>
+      <testcase name="testNoDeprecatedFunctions with data set #9" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000036"/>
+      <testcase name="testNoDeprecatedFunctions with data set #10" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000040"/>
+      <testcase name="testNoDeprecatedFunctions with data set #11" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000031"/>
+      <testcase name="testNoDeprecatedFunctions with data set #12" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000058"/>
+      <testcase name="testNoDeprecatedFunctions with data set #13" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000065"/>
+      <testcase name="testNoDeprecatedFunctions with data set #14" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000037"/>
+      <testcase name="testNoDeprecatedFunctions with data set #15" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000064"/>
+      <testcase name="testNoDeprecatedFunctions with data set #16" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000059"/>
+      <testcase name="testNoDeprecatedFunctions with data set #17" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000038"/>
+      <testcase name="testNoDeprecatedFunctions with data set #18" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000031"/>
+      <testcase name="testNoDeprecatedFunctions with data set #19" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000032"/>
+      <testcase name="testNoDeprecatedFunctions with data set #20" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000032"/>
+      <testcase name="testNoDeprecatedFunctions with data set #21" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000059"/>
+      <testcase name="testNoDeprecatedFunctions with data set #22" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000031"/>
+      <testcase name="testNoDeprecatedFunctions with data set #23" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000043"/>
+      <testcase name="testNoDeprecatedFunctions with data set #24" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000037"/>
+      <testcase name="testNoDeprecatedFunctions with data set #25" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000049"/>
+      <testcase name="testNoDeprecatedFunctions with data set #26" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000045"/>
+      <testcase name="testNoDeprecatedFunctions with data set #27" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000036"/>
+      <testcase name="testNoDeprecatedFunctions with data set #28" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000039"/>
+      <testcase name="testNoDeprecatedFunctions with data set #29" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000038"/>
+      <testcase name="testNoDeprecatedFunctions with data set #30" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000053"/>
+      <testcase name="testNoDeprecatedFunctions with data set #31" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000053"/>
+      <testcase name="testNoDeprecatedFunctions with data set #32" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000045"/>
+      <testcase name="testNoDeprecatedFunctions with data set #33" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000035"/>
+      <testcase name="testNoDeprecatedFunctions with data set #34" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000041"/>
+      <testcase name="testNoDeprecatedFunctions with data set #35" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000054"/>
+      <testcase name="testNoDeprecatedFunctions with data set #36" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000048"/>
+      <testcase name="testNoDeprecatedFunctions with data set #37" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000045"/>
+      <testcase name="testNoDeprecatedFunctions with data set #38" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000033"/>
+      <testcase name="testNoDeprecatedFunctions with data set #39" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000031"/>
+      <testcase name="testNoDeprecatedFunctions with data set #40" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000040"/>
+      <testcase name="testNoDeprecatedFunctions with data set #41" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000044"/>
+      <testcase name="testNoDeprecatedFunctions with data set #42" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000033"/>
+      <testcase name="testNoDeprecatedFunctions with data set #43" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000149"/>
+      <testcase name="testNoDeprecatedFunctions with data set #44" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000056"/>
+      <testcase name="testNoDeprecatedFunctions with data set #45" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000045"/>
+      <testcase name="testNoDeprecatedFunctions with data set #46" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="224" assertions="11" time="0.000060"/>
+    </testsuite>
+    <testcase name="testTemplatePartsExist" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="254" assertions="48" time="0.000120"/>
+    <testsuite name="SyntaxTest::testFileEncoding" tests="47" assertions="0" errors="47" warnings="0" failures="0" skipped="0" time="0.001639">
+      <testcase name="testFileEncoding with data set #0" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000039">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #0 ('/Users/kei/work/wordpress-sit...ns.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #1" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000031">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #1 ('/Users/kei/work/wordpress-sit...04.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #2" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000029">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #2 ('/Users/kei/work/wordpress-sit...ts.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #3" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000029">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #3 ('/Users/kei/work/wordpress-sit...ts.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #4" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000029">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #4 ('/Users/kei/work/wordpress-sit...ta.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #5" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000104">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #5 ('/Users/kei/work/wordpress-sit...ue.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #6" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000045">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #6 ('/Users/kei/work/wordpress-sit...er.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #7" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000101">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #7 ('/Users/kei/work/wordpress-sit...or.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #8" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000039">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #8 ('/Users/kei/work/wordpress-sit...up.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #9" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000032">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #9 ('/Users/kei/work/wordpress-sit...rs.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #10" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000041">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #10 ('/Users/kei/work/wordpress-sit...es.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #11" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000039">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #11 ('/Users/kei/work/wordpress-sit...ns.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #12" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000046">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #12 ('/Users/kei/work/wordpress-sit...ct.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #13" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000035">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #13 ('/Users/kei/work/wordpress-sit...ct.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #14" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000027">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #14 ('/Users/kei/work/wordpress-sit...ex.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #15" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000028">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #15 ('/Users/kei/work/wordpress-sit...io.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #16" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000030">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #16 ('/Users/kei/work/wordpress-sit...ls.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #17" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000029">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #17 ('/Users/kei/work/wordpress-sit...er.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #18" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000030">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #18 ('/Users/kei/work/wordpress-sit...ct.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #19" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000028">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #19 ('/Users/kei/work/wordpress-sit...io.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #20" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000029">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #20 ('/Users/kei/work/wordpress-sit...ls.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #21" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000029">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #21 ('/Users/kei/work/wordpress-sit...ut.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #22" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000032">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #22 ('/Users/kei/work/wordpress-sit...ut.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #23" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000029">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #23 ('/Users/kei/work/wordpress-sit...fo.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #24" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000027">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #24 ('/Users/kei/work/wordpress-sit...ro.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #25" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000027">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #25 ('/Users/kei/work/wordpress-sit...rm.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #26" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000032">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #26 ('/Users/kei/work/wordpress-sit...on.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #27" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000026">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #27 ('/Users/kei/work/wordpress-sit...ro.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #28" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000035">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #28 ('/Users/kei/work/wordpress-sit...ry.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #29" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000029">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #29 ('/Users/kei/work/wordpress-sit...on.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #30" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000029">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #30 ('/Users/kei/work/wordpress-sit...ts.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #31" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000028">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #31 ('/Users/kei/work/wordpress-sit...ts.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #32" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000031">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #32 ('/Users/kei/work/wordpress-sit...ch.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #33" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000032">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #33 ('/Users/kei/work/wordpress-sit...ro.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #34" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000031">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #34 ('/Users/kei/work/wordpress-sit...es.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #35" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000032">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #35 ('/Users/kei/work/wordpress-sit...ch.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #36" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000034">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #36 ('/Users/kei/work/wordpress-sit...ls.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #37" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000037">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #37 ('/Users/kei/work/wordpress-sit...ls.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #38" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000029">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #38 ('/Users/kei/work/wordpress-sit...ro.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #39" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000033">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #39 ('/Users/kei/work/wordpress-sit...ap.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #40" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000027">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #40 ('/Users/kei/work/wordpress-sit...er.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #41" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000031">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #41 ('/Users/kei/work/wordpress-sit...er.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #42" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000033">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #42 ('/Users/kei/work/wordpress-sit...ge.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #43" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000036">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #43 ('/Users/kei/work/wordpress-sit...up.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #44" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000035">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #44 ('/Users/kei/work/wordpress-sit...ge.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #45" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000027">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #45 ('/Users/kei/work/wordpress-sit...ut.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+      <testcase name="testFileEncoding with data set #46" class="SyntaxTest" classname="SyntaxTest" file="/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php" line="301" assertions="0" time="0.000030">
+        <error type="Error">SyntaxTest::testFileEncoding with data set #46 ('/Users/kei/work/wordpress-sit...ct.php')
+Error: Call to undefined method SyntaxTest::assertStringNotStartsWith()
+
+/Users/kei/work/wordpress-site/themes/kei-portfolio/tests/SyntaxTest.php:305</error>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>

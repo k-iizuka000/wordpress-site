@@ -1,0 +1,142 @@
+{
+    "performance": [
+        {
+            "page": "メインページ",
+            "url": "http:\/\/localhost:8090\/",
+            "http_code": 200,
+            "response_time_ms": 32.01,
+            "curl_total_time": 31.89,
+            "connect_time_ms": 0.18,
+            "download_size_bytes": 38449,
+            "download_size_kb": 37.55,
+            "performance_rating": "Excellent"
+        },
+        {
+            "page": "アバウト",
+            "url": "http:\/\/localhost:8090\/about\/",
+            "http_code": 200,
+            "response_time_ms": 19.29,
+            "curl_total_time": 19.21,
+            "connect_time_ms": 0.17,
+            "download_size_bytes": 29397,
+            "download_size_kb": 28.71,
+            "performance_rating": "Excellent"
+        },
+        {
+            "page": "スキル",
+            "url": "http:\/\/localhost:8090\/skills\/",
+            "http_code": 200,
+            "response_time_ms": 18.3,
+            "curl_total_time": 18.19,
+            "connect_time_ms": 0.4,
+            "download_size_bytes": 49902,
+            "download_size_kb": 48.73,
+            "performance_rating": "Excellent"
+        },
+        {
+            "page": "コンタクト",
+            "url": "http:\/\/localhost:8090\/contact\/",
+            "http_code": 200,
+            "response_time_ms": 17.65,
+            "curl_total_time": 17.56,
+            "connect_time_ms": 0.18,
+            "download_size_bytes": 38906,
+            "download_size_kb": 37.99,
+            "performance_rating": "Excellent"
+        },
+        {
+            "page": "ポートフォリオ",
+            "url": "http:\/\/localhost:8090\/portfolio\/",
+            "http_code": 200,
+            "response_time_ms": 16.75,
+            "curl_total_time": 16.6,
+            "connect_time_ms": 0.23,
+            "download_size_bytes": 48713,
+            "download_size_kb": 47.57,
+            "performance_rating": "Excellent"
+        }
+    ],
+    "security": [
+        {
+            "page": "メインページ",
+            "url": "http:\/\/localhost:8090\/",
+            "headers": {
+                "X-Frame-Options": true,
+                "X-Content-Type-Options": true,
+                "X-XSS-Protection": true,
+                "Strict-Transport-Security": false,
+                "Content-Security-Policy": false,
+                "Referrer-Policy": false
+            },
+            "security_issues": [
+                "PHPバージョンが露出している可能性"
+            ],
+            "security_score": 50
+        },
+        {
+            "page": "アバウト",
+            "url": "http:\/\/localhost:8090\/about\/",
+            "headers": {
+                "X-Frame-Options": true,
+                "X-Content-Type-Options": true,
+                "X-XSS-Protection": true,
+                "Strict-Transport-Security": false,
+                "Content-Security-Policy": false,
+                "Referrer-Policy": false
+            },
+            "security_issues": [
+                "PHPバージョンが露出している可能性"
+            ],
+            "security_score": 50
+        },
+        {
+            "page": "スキル",
+            "url": "http:\/\/localhost:8090\/skills\/",
+            "headers": {
+                "X-Frame-Options": true,
+                "X-Content-Type-Options": true,
+                "X-XSS-Protection": true,
+                "Strict-Transport-Security": false,
+                "Content-Security-Policy": false,
+                "Referrer-Policy": false
+            },
+            "security_issues": [
+                "PHPバージョンが露出している可能性"
+            ],
+            "security_score": 50
+        },
+        {
+            "page": "コンタクト",
+            "url": "http:\/\/localhost:8090\/contact\/",
+            "headers": {
+                "X-Frame-Options": true,
+                "X-Content-Type-Options": true,
+                "X-XSS-Protection": true,
+                "Strict-Transport-Security": false,
+                "Content-Security-Policy": false,
+                "Referrer-Policy": false
+            },
+            "security_issues": [
+                "PHPバージョンが露出している可能性"
+            ],
+            "security_score": 50
+        },
+        {
+            "page": "ポートフォリオ",
+            "url": "http:\/\/localhost:8090\/portfolio\/",
+            "headers": {
+                "X-Frame-Options": true,
+                "X-Content-Type-Options": true,
+                "X-XSS-Protection": true,
+                "Strict-Transport-Security": false,
+                "Content-Security-Policy": false,
+                "Referrer-Policy": false
+            },
+            "security_issues": [
+                "PHPバージョンが露出している可能性"
+            ],
+            "security_score": 50
+        }
+    ],
+    "timestamp": "2025-08-07 12:58:55"
+}

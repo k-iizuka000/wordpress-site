@@ -10,21 +10,19 @@
  */
 function kei_portfolio_handle_contact_form() {
     // Nonce verification
-    if ( ! wp_verify_nonce( $_POST['contact_nonce'], 'kei_portfolio_contact_nonce' ) ) {
+    if ( ! wp_verify_nonce( $_POST['contact_nonce'], 'kei_portfolio_contact' ) ) {
         wp_send_json_error( 'セキュリティエラーが発生しました。' );
     }
 
     // Sanitize form data
-    $name = sanitize_text_field( $_POST['name'] );
-    $email = sanitize_email( $_POST['email'] );
-    $company = sanitize_text_field( $_POST['company'] );
-    $project_type = sanitize_text_field( $_POST['project_type'] );
-    $budget = sanitize_text_field( $_POST['budget'] );
-    $timeline = sanitize_text_field( $_POST['timeline'] );
-    $message = sanitize_textarea_field( $_POST['message'] );
+    $name = sanitize_text_field( $_POST['contact_name'] );
+    $email = sanitize_email( $_POST['contact_email'] );
+    $subject = sanitize_text_field( $_POST['contact_subject'] );
+    $message = sanitize_textarea_field( $_POST['contact_message'] );
+    $privacy_agreement = isset( $_POST['privacy_agreement'] ) ? true : false;
 
     // Basic validation
-    if ( empty( $name ) || empty( $email ) || empty( $message ) ) {
+    if ( empty( $name ) || empty( $email ) || empty( $subject ) || empty( $message ) ) {
         wp_send_json_error( '必須項目が入力されていません。' );
     }
 
@@ -32,22 +30,23 @@ function kei_portfolio_handle_contact_form() {
         wp_send_json_error( 'メールアドレスの形式が正しくありません。' );
     }
 
-    if ( strlen( $message ) > 500 ) {
-        wp_send_json_error( 'メッセージは500文字以内で入力してください。' );
+    if ( ! $privacy_agreement ) {
+        wp_send_json_error( 'プライバシーポリシーへの同意が必要です。' );
+    }
+
+    if ( strlen( $message ) > 2000 ) {
+        wp_send_json_error( 'メッセージは2000文字以内で入力してください。' );
     }
 
     // Prepare email content
     $admin_email = get_option( 'admin_email' );
     $site_name = get_bloginfo( 'name' );
-    $subject = sprintf( '[%s] お問い合わせ: %s様より', $site_name, $name );
+    $email_subject = sprintf( '[%s] お問い合わせ: %s', $site_name, $subject );
     
     $email_message = "お問い合わせフォームからメッセージが送信されました。\n\n";
     $email_message .= "お名前: " . $name . "\n";
     $email_message .= "メールアドレス: " . $email . "\n";
-    $email_message .= "会社名・組織名: " . ( ! empty( $company ) ? $company : '未記入' ) . "\n";
-    $email_message .= "プロジェクトの種類: " . ( ! empty( $project_type ) ? $project_type : '未選択' ) . "\n";
-    $email_message .= "ご予算: " . ( ! empty( $budget ) ? $budget : '未選択' ) . "\n";
-    $email_message .= "希望納期: " . ( ! empty( $timeline ) ? $timeline : '未選択' ) . "\n";
+    $email_message .= "件名: " . $subject . "\n";
     $email_message .= "メッセージ:\n" . $message . "\n\n";
     $email_message .= "送信日時: " . current_time( 'Y-m-d H:i:s' ) . "\n";
     $email_message .= "送信者IP: " . $_SERVER['REMOTE_ADDR'] . "\n";
@@ -59,11 +58,11 @@ function kei_portfolio_handle_contact_form() {
     );
 
     // Send email
-    $mail_sent = wp_mail( $admin_email, $subject, $email_message, $headers );
+    $mail_sent = wp_mail( $admin_email, $email_subject, $email_message, $headers );
 
     if ( $mail_sent ) {
         // Log successful submission (optional)
-        error_log( "Contact form submission from: " . $email );
+        error_log( "Contact form submission from: " . $email . " - Subject: " . $subject );
         
         wp_send_json_success( 'お問い合わせを受け付けました。24時間以内にご返信いたします。' );
     } else {
