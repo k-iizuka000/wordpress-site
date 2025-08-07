@@ -61,8 +61,6 @@ yarn-error.log
 *.bak
 *.tmp
 /temp/
-@docs/*
-docs/*
 review/*
 old/*
 
