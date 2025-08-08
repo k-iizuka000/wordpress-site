@@ -147,6 +147,26 @@ function kei_portfolio_pro_schema_person() {
 add_action( 'wp_head', 'kei_portfolio_pro_schema_person' );
 
 /**
+ * テーマ有効化時のリライトルールフラッシュ用フラグ設定
+ */
+function kei_portfolio_set_flush_rewrite_flag() {
+    update_option('kei_portfolio_flush_rewrite', true);
+}
+add_action('after_switch_theme', 'kei_portfolio_set_flush_rewrite_flag');
+
+/**
+ * initフックで条件付きフラッシュ
+ * CPT/Taxonomy登録後に確実に実行される
+ */
+function kei_portfolio_conditional_flush_rewrite() {
+    if (get_option('kei_portfolio_flush_rewrite')) {
+        flush_rewrite_rules();
+        delete_option('kei_portfolio_flush_rewrite');
+    }
+}
+add_action('init', 'kei_portfolio_conditional_flush_rewrite', 999);
+
+/**
  * portfolio.jsonデータのインポート関数（管理画面で使用）
  */
 function kei_portfolio_import_json_data() {
@@ -165,3 +185,81 @@ function kei_portfolio_import_json_data() {
     
     return $portfolio_data;
 }
+
+/**
+ * フォールバック: CPT(project)のリライトルールが欠落している場合、1回だけフラッシュする
+ * 既に有効化済みで after_switch_theme が発火していないケースの救済用
+ */
+function kei_portfolio_maybe_flush_rewrite_for_projects() {
+    // 1回だけの安全弁（再起動や有効化時に本来のフラッシュが動作する前提）
+    if (get_option('kei_portfolio_projects_rewrite_checked')) {
+        return;
+    }
+
+    $structure = get_option('permalink_structure');
+    $ready = !empty($structure) && post_type_exists('project');
+    if (!$ready) {
+        // まだ準備が整っていない（初期インストール直後など）。次回に再評価する
+        return;
+    }
+
+    $rules = get_option('rewrite_rules');
+    $has_projects = false;
+    if (is_array($rules)) {
+        foreach ($rules as $pattern => $_dest) {
+            if (strpos($pattern, 'projects') !== false) {
+                $has_projects = true;
+                break;
+            }
+        }
+    }
+    if (!$has_projects) {
+        flush_rewrite_rules();
+    }
+
+    // ここまで来たらルールは存在するか、フラッシュ済みのはずなのでチェック済み扱い
+    update_option('kei_portfolio_projects_rewrite_checked', time());
+}
+add_action('init', 'kei_portfolio_maybe_flush_rewrite_for_projects', 1000);
+
+/**
+ * フォールバック: 開発環境で固定ページが未作成の場合に1度だけ作成
+ * 既に有効化済みで after_switch_theme が発火していないケースの救済用
+ */
+function kei_portfolio_maybe_create_core_pages() {
+    if (!is_admin()) {
+        return;
+    }
+    // 既に作成済みなら何もしない（冪等）
+    if (get_option('kei_portfolio_pages_created')) {
+        return;
+    }
+    if (function_exists('kei_portfolio_ensure_core_pages_published')) {
+        kei_portfolio_ensure_core_pages_published();
+    } elseif (function_exists('kei_portfolio_create_all_pages')) {
+        // フォールバック
+        kei_portfolio_create_all_pages();
+    }
+}
+add_action('admin_init', 'kei_portfolio_maybe_create_core_pages');
+
+/**
+ * 追加フォールバック: フロント側アクセスでも必須固定ページを一度だけ生成
+ * - 開発環境のみ
+ * - 既に作成済み、または一度自動生成済みの場合は実行しない
+ */
+function kei_portfolio_front_bootstrap_core_pages() {
+    if (is_admin()) {
+        return;
+    }
+    // 既に作成済みなら何もしない（冪等）
+    if (get_option('kei_portfolio_pages_created')) {
+        return;
+    }
+    if (function_exists('kei_portfolio_ensure_core_pages_published')) {
+        kei_portfolio_ensure_core_pages_published();
+    } elseif (function_exists('kei_portfolio_create_all_pages')) {
+        kei_portfolio_create_all_pages();
+    }
+}
+add_action('init', 'kei_portfolio_front_bootstrap_core_pages', 1001);

@@ -137,6 +137,87 @@ function kei_portfolio_create_all_pages() {
 }
 
 /**
+ * 必須固定ページ（about/skills/contact/portfolio）を「公開」状態で確実に存在させる
+ * - 既存が下書き/非公開/ゴミ箱でも公開へ更新
+ * - 存在しなければ作成
+ * - 冪等
+ *
+ * @return array 確認・作成・更新の結果
+ */
+function kei_portfolio_ensure_core_pages_published() {
+    $required = kei_portfolio_get_page_configurations();
+    $results = array(
+        'ensured' => array(),
+        'updated' => array(),
+        'created' => array(),
+        'errors'  => array(),
+    );
+
+    foreach ($required as $key => $config) {
+        $slug = $config['slug'];
+
+        // まずは通常の取得
+        $page = get_page_by_path($slug);
+
+        // 見つからない場合は全ステータスから検索
+        if (!$page) {
+            $found = get_posts(array(
+                'name'        => $slug,
+                'post_type'   => 'page',
+                'post_status' => 'any',
+                'numberposts' => 1,
+            ));
+            if (!empty($found)) {
+                $page = $found[0];
+            }
+        }
+
+        if ($page) {
+            // ゴミ箱なら復元、公開でなければ公開へ更新
+            if ($page->post_status === 'trash') {
+                wp_untrash_post($page->ID);
+                $page->post_status = 'draft'; // 復元直後は念のため下書き扱い
+            }
+            if ($page->post_status !== 'publish') {
+                $update = array(
+                    'ID'          => $page->ID,
+                    'post_status' => 'publish',
+                );
+                $updated_id = wp_update_post($update, true);
+                if (is_wp_error($updated_id)) {
+                    $results['errors'][$slug] = $updated_id->get_error_message();
+                } else {
+                    $results['updated'][] = $slug;
+                }
+            }
+            $results['ensured'][] = $slug;
+            continue;
+        }
+
+        // 不在なら新規作成
+        $new_id = kei_portfolio_create_page($config);
+        if (is_wp_error($new_id)) {
+            $results['errors'][$slug] = $new_id->get_error_message();
+        } else {
+            $results['created'][] = $slug;
+        }
+    }
+
+    // 実行ログを保持（デバッグ用）
+    update_option('kei_portfolio_core_pages_last_ensure', array(
+        'timestamp' => current_time('mysql'),
+        'results'   => $results,
+    ));
+
+    // すべて公開で揃っていればページ作成済みフラグも立てる
+    if (count($results['errors']) === 0) {
+        update_option('kei_portfolio_pages_created', true);
+    }
+
+    return $results;
+}
+
+/**
  * Primary Navigationメニューにページを追加
  *
  * @param array $page_results 作成されたページの情報

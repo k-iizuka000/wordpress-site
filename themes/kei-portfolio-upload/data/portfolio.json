@@ -1,0 +1,188 @@
+{
+    "about": {
+      "title": "About Me",
+      "description": "10年以上のシステム開発経験を持つソフトウェアエンジニア。\n主にJava/SQLをベースとした業務システム開発に従事。\nフロントエンドからバックエンドまでの幅広い技術スタックを活用し、レガシーシステムからクラウド環境まで対応。\n直近では通信会社向けWebサイト開発のリーダーとして、Spring Boot移行後の技術文書整備やプロセス改善を推進し、チーム全体の生産性向上に貢献。"
+    },
+    "skills": {
+      "frontend": [
+        "JavaScript",
+        "Vue.js",
+        "React",
+        "HTML5",
+        "CSS3",
+        "JSP",
+        "FullCalendar"
+      ],
+      "backend": [
+        "Java",
+        "Spring Boot",
+        "Python",
+        "SQL",
+        "Node.js",
+        "COBOL",
+        "Ruby",
+        "PHP"
+      ],
+      "other": [
+        "Git",
+        "AWS",
+        "Docker",
+        "Gradle",
+        "JUnit",
+        "Maven",
+        "SVN",
+        "e2e"
+      ]
+    },
+    "summary": {
+      "totalExperience": "10年以上",
+      "highlights": [
+        "フロントエンド(Vue/React)からバックエンド(Java/Python/PHP)まで、要件定義から一貫して担当できるフルスタック開発能力",
+        "開発リーダーとして、プロセス改善やメンバー育成を通じてチームの生産性を最大化した経験",
+        "既存システムの課題分析から改善提案、実装までを一貫して行い、継続的なサービス品質向上に貢献",
+        "品質保証への強い意識を持ち、JUnit/E2Eテストの拡充やコードレビュー文化の醸成を主導"
+      ],
+      "coreTechnologies": [
+        {
+          "name": "Java/Spring",
+          "years": 8,
+          "level": "エキスパート"
+        },
+        {
+          "name": "JavaScript/HTML/css",
+          "years": 6,
+          "level": "上級"
+        },
+        {
+          "name": "Python",
+          "years": 5,
+          "level": "中級"
+        },
+        {
+          "name": "Ruby",
+          "years": 3,
+          "level": "中級"
+        },
+        {
+          "name": "PHP",
+          "years": 3,
+          "level": "中級"
+        }
+      ]
+    },
+    "projects": [
+      {
+        "id": 1,
+        "title": "通信会社向けWebサイト開発",
+        "period": {
+          "start": "2024-01",
+          "end": "2025-09"
+        },
+        "teamSize": 8,
+        "role": "開発リーダー",
+        "description": "【成果】\n・Spring Boot移行後の技術文書整備とナレッジ共有体制の確立\n・若手エンジニアの教育とコードレビュー体制の確立\n・リリース管理プロセスの改善やPRテンプレートの導入",
+        "technologies": [
+          {
+            "name": "Python(pypika)",
+            "role": "バックエンド開発"
+          },
+          {
+            "name": "Java(Spring)",
+            "role": "メインフレームワーク"
+          },
+          {
+            "name": "JavaScript",
+            "role": "フロントエンド開発"
+          },
+          {
+            "name": "JSP",
+            "role": "画面開発"
+          },
+          {
+            "name": "Git",
+            "role": "バージョン管理"
+          }
+        ],
+        "github": ""
+      },
+      {
+        "id": 2,
+        "title": "料理レシピ投稿サイト開発",
+        "description": "【期間】2022/10 - 2023/12\n【役割】SE（詳細設計～試験）\n\n【成果】\n・ユーザー側・管理者側の既存機能の改修\n・課題一覧に基づく機能改善と品質向上\n・複数言語・フレームワークが混在する環境での開発",
+        "technologies": ["Python(pypika)", "PHP(FuelPHP)", "Java(Spring)", "JavaScript(Vue.js)"],
+        "github": ""
+      },
+      {
+        "id": 3,
+        "title": "PSNサーバーサイド開発・運用",
+        "description": "【期間】2021/04 - 2022/09\n【役割】SE（詳細設計～運用・保守）\n\n【成果】\n・ユーザーログイン管理機能の開発・運用\n・JUnitとE2Eテストの拡充によるテスト品質向上\n・AWS CloudWatchを用いたメトリクス監視と障害対応",
+        "technologies": ["Java(Spring)", "AWS", "JUnit", "E2E", "Git", "Maven"],
+        "github": ""
+      },
+      {
+        "id": 4,
+        "title": "バッチ機能改修",
+        "description": "【期間】2020/04 - 2021/03\n【役割】リーダー（要件定義～試験）\n\n【成果】\n・S3やDBのユーザー情報・広告情報のKVSインポート処理改善\n・他チームとの調整を含めた単独でのプロジェクト推進",
+        "technologies": ["Java(Spring)", "Git", "Gradle", "AWS"],
+        "github": ""
+      },
+      {
+        "id": 5,
+        "title": "Push通知機能開発",
+        "description": "【期間】2019/10 - 2020/03\n【役割】SE（詳細設計～製造・試験）\n\n【成果】\n・PCやスマホへのPush通知機能の新規開発\n・フロントエンドからバックエンドまでの一貫した開発",
+        "technologies": ["Docker", "Ruby on Rails", "Vue.js", "Git"],
+        "github": ""
+      },
+      {
+        "id": 6,
+        "title": "従業員向けシフト表作成アプリ",
+        "description": "【期間】2018/04 - 2019/09\n【役割】SE（要件定義～製造）\n\n【成果】\n・カレンダー画面や従業員情報管理画面の開発\n・シフト表画面UI・機能の実装",
+        "technologies": ["Java(Spring)", "JavaScript(FullCalendar)", "Git", "SVN"],
+        "github": ""
+      },
+      {
+        "id": 7,
+        "title": "銀行システム（一般ユーザー向け）",
+        "description": "【期間】2017/10 - 2018/03\n【役割】SE（要件定義～保守、障害対応）\n\n【成果】\n・カート・購入履歴画面の開発\n・購入履歴表示などの画面改修",
+        "technologies": ["Java(Spring)", "JavaScript(Vue.js)"],
+        "github": ""
+      },
+      {
+        "id": 8,
+        "title": "COBOLシステムのJava移行",
+        "description": "【期間】2016/10 - 2017/09\n【役割】SE（要件定義～製造）\n\n【成果】\n・区役所向け勤怠管理システムのモダン化\n・レガシーシステムの分析と新システムの要件定義から実装",
+        "technologies": ["COBOL", "Java(JavaEE)"],
+        "github": ""
+      },
+      {
+        "id": 9,
+        "title": "公社向け賃貸管理システム／区役所向け勤怠管理システム",
+        "description": "【期間】2015/09 - 2017/09\n【役割】SE（要件定義～製造）\n\n【成果】\n・パッケージソフトのバージョンアップ対応\n・勤務表画面の実装",
+        "technologies": ["Java(JavaEE)", "JavaScript"],
+        "github": ""
+      }
+    ],
+    "inProgress": [
+      {
+        "id": 1,
+        "title": "防衛日報の決済システムの構築",
+        "description": "防衛日報サイトへのpay.jpを使用した決済システムの実装。Javaを使用した決済機能の開発とAPIの実装により、安全で効率的な支払いプロセスを構築。",
+        "technologies": ["Java", "pay.jp API", "Spring Boot"],
+        "url": "https://dailydefense.jp/"
+      },
+      {
+        "id": 2,
+        "title": "レンタカー予約システムの構築",
+        "description": "グアムのレンタカー予約システムのモダン化。PHP/JavaScriptで構築された既存システムをAstroへ移行（約40画面）。多言語対応と全画面のバリデーション機能を実装。",
+        "technologies": ["PHP", "JavaScript", "Astro"],
+        "url": "https://guam-rentacar.com/"
+      },
+      {
+        "id": 3,
+        "title": "自動note投稿システムの構築",
+        "description": "AIを活用した自動記事生成・投稿システムの開発。現在のトレンドを分析し、最適化されたコンテンツを自動生成。Playwrightを使用して自動投稿。",
+        "technologies": ["AI/LLM", "Note API", "Python", "ワークフロー自動化"],
+        "url": "https://note.com/kei8217"
+      }
+    ]
+}
