@@ -25,9 +25,7 @@ function kei_portfolio_pro_scripts() {
         null 
     );
 
-    // Tailwind CSS CDN（修正: JavaScript版として読み込み）
-    // 修正前（2025-08-07）:
-    // wp_enqueue_style( 'tailwindcss', 'https://cdn.tailwindcss.com', array(), '3.4.0' );
+    // Tailwind CSS CDN（JavaScript版として読み込み、優先度高）
     wp_enqueue_script( 
         'tailwindcss', 
         'https://cdn.tailwindcss.com', 
@@ -77,11 +75,13 @@ add_action( 'wp_enqueue_scripts', 'kei_portfolio_pro_scripts' );
 
 /**
  * Tailwind CSS基本設定の追加（フェーズ2実装）
+ * エラーハンドリング付きで安全に設定
  */
 function kei_portfolio_tailwind_config() {
     ?>
     <script>
-        tailwind.config = {
+        // Tailwind設定をグローバルに定義（CDN読み込み前でも安全）
+        window.tailwindConfig = {
             theme: {
                 extend: {
                     colors: {
@@ -118,11 +118,55 @@ function kei_portfolio_tailwind_config() {
                     },
                 }
             }
+        };
+
+        // Tailwindの存在確認とエラーハンドリング
+        function applyTailwindConfig() {
+            if (typeof tailwind !== 'undefined' && tailwind.config) {
+                try {
+                    tailwind.config = window.tailwindConfig;
+                    console.log('Tailwind CSS config applied successfully');
+                    return true;
+                } catch (error) {
+                    console.warn('Failed to apply Tailwind config:', error);
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        // 即座に試行
+        if (!applyTailwindConfig()) {
+            // DOMContentLoaded後に再試行
+            document.addEventListener('DOMContentLoaded', function() {
+                let attempts = 0;
+                const maxAttempts = 50; // 最大5秒間待機
+                
+                function retryConfig() {
+                    if (applyTailwindConfig()) {
+                        return; // 成功した場合は終了
+                    }
+                    
+                    if (attempts < maxAttempts) {
+                        attempts++;
+                        setTimeout(retryConfig, 100);
+                    } else {
+                        console.warn('Tailwind CSS not found after maximum attempts. Using fallback styles.');
+                    }
+                }
+                
+                retryConfig();
+            });
         }
     </script>
     <?php
 }
-add_action( 'wp_head', 'kei_portfolio_tailwind_config', 5 );
+add_action( 'wp_head', 'kei_portfolio_tailwind_config', 15 );
+
+/**
+ * TailwindスクリプトはSynchronous読み込みのまま（設定適用の確実性のため）
+ * 代わりにconfig設定を確実に後で実行する
+ */
 
 /**
  * Enqueue Contact Form Scripts
