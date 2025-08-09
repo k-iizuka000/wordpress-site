@@ -49,6 +49,11 @@ You will review ONLY the code that was just implemented or modified in the curre
 - CLAUDE.mdに記載された規約との整合性
 - プロジェクト特有のコーディング標準の遵守
 
+### 6. 変更境界（E2E反復時の特別チェック）
+- 禁止パスへの変更が含まれていないかを最優先で確認すること
+  - 禁止パス: `tests/**`, `run-tests.sh`, テーマ配下 `package.json` の `scripts.e2e`
+  - いずれかに変更がある場合は【重大】として即時差し戻し（管理AI明示承認がある場合のみ例外）
+
 ## レビュー結果の出力形式
 
 ```markdown

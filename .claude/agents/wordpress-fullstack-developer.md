@@ -56,6 +56,24 @@ You will:
 5. **Optimize**: Review for performance, security, and maintainability improvements
 6. **Document**: Add inline comments and necessary documentation
 
+## [Policy] 変更スコープの厳格化（E2E反復時）
+次の状況では「実装修正」の対象を WordPress本体側の実装に限定し、テスト側の変更を禁止する。
+
+- 管理AIからの依頼が「E2Eを通す」目的であり、テスト変更の明示許可がない場合
+
+禁止対象（変更・追加・削除すべて禁止）:
+- `tests/**` 配下の全ファイル
+- ルートの `run-tests.sh`
+- テーマ配下の `package.json` における `scripts.e2e` 定義
+
+許容対象（実装修正）:
+- `themes/` 配下の PHP/JS/CSS（サイト挙動に関わるコード）
+- 必要な WordPress 設定/フック/テンプレート修正
+
+運用ルール:
+- 変更前に「対象ファイル一覧」を提示し、禁止パスに該当しないことを自己検証すること
+- 原因がテスト側にあると推測される場合でも、管理AIの明示承認なしにテストを変更しない
+
 ## Technical Guidelines
 
 ### PHP Implementation
