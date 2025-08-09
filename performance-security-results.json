@@ -4,55 +4,55 @@
             "page": "メインページ",
             "url": "http:\/\/localhost:8090\/",
             "http_code": 200,
-            "response_time_ms": 32.01,
-            "curl_total_time": 31.89,
-            "connect_time_ms": 0.18,
-            "download_size_bytes": 38449,
-            "download_size_kb": 37.55,
+            "response_time_ms": 31.74,
+            "curl_total_time": 31.63,
+            "connect_time_ms": 0.26,
+            "download_size_bytes": 58210,
+            "download_size_kb": 56.85,
             "performance_rating": "Excellent"
         },
         {
             "page": "アバウト",
             "url": "http:\/\/localhost:8090\/about\/",
             "http_code": 200,
-            "response_time_ms": 19.29,
-            "curl_total_time": 19.21,
-            "connect_time_ms": 0.17,
-            "download_size_bytes": 29397,
-            "download_size_kb": 28.71,
+            "response_time_ms": 16.98,
+            "curl_total_time": 16.89,
+            "connect_time_ms": 0.19,
+            "download_size_bytes": 44409,
+            "download_size_kb": 43.37,
             "performance_rating": "Excellent"
         },
         {
             "page": "スキル",
             "url": "http:\/\/localhost:8090\/skills\/",
             "http_code": 200,
-            "response_time_ms": 18.3,
-            "curl_total_time": 18.19,
-            "connect_time_ms": 0.4,
-            "download_size_bytes": 49902,
-            "download_size_kb": 48.73,
+            "response_time_ms": 17.04,
+            "curl_total_time": 16.97,
+            "connect_time_ms": 0.13,
+            "download_size_bytes": 55719,
+            "download_size_kb": 54.41,
             "performance_rating": "Excellent"
         },
         {
             "page": "コンタクト",
             "url": "http:\/\/localhost:8090\/contact\/",
             "http_code": 200,
-            "response_time_ms": 17.65,
-            "curl_total_time": 17.56,
-            "connect_time_ms": 0.18,
-            "download_size_bytes": 38906,
-            "download_size_kb": 37.99,
+            "response_time_ms": 15.18,
+            "curl_total_time": 15.1,
+            "connect_time_ms": 0.14,
+            "download_size_bytes": 43949,
+            "download_size_kb": 42.92,
             "performance_rating": "Excellent"
         },
         {
             "page": "ポートフォリオ",
             "url": "http:\/\/localhost:8090\/portfolio\/",
             "http_code": 200,
-            "response_time_ms": 16.75,
-            "curl_total_time": 16.6,
-            "connect_time_ms": 0.23,
-            "download_size_bytes": 48713,
-            "download_size_kb": 47.57,
+            "response_time_ms": 15.59,
+            "curl_total_time": 15.49,
+            "connect_time_ms": 0.13,
+            "download_size_bytes": 53755,
+            "download_size_kb": 52.5,
             "performance_rating": "Excellent"
         }
     ],
@@ -64,14 +64,14 @@
                 "X-Frame-Options": true,
                 "X-Content-Type-Options": true,
                 "X-XSS-Protection": true,
-                "Strict-Transport-Security": false,
-                "Content-Security-Policy": false,
-                "Referrer-Policy": false
+                "Strict-Transport-Security": true,
+                "Content-Security-Policy": true,
+                "Referrer-Policy": true
             },
             "security_issues": [
                 "PHPバージョンが露出している可能性"
             ],
-            "security_score": 50
+            "security_score": 100
         },
         {
             "page": "アバウト",
@@ -80,14 +80,14 @@
                 "X-Frame-Options": true,
                 "X-Content-Type-Options": true,
                 "X-XSS-Protection": true,
-                "Strict-Transport-Security": false,
-                "Content-Security-Policy": false,
-                "Referrer-Policy": false
+                "Strict-Transport-Security": true,
+                "Content-Security-Policy": true,
+                "Referrer-Policy": true
             },
             "security_issues": [
                 "PHPバージョンが露出している可能性"
             ],
-            "security_score": 50
+            "security_score": 100
         },
         {
             "page": "スキル",
@@ -96,14 +96,14 @@
                 "X-Frame-Options": true,
                 "X-Content-Type-Options": true,
                 "X-XSS-Protection": true,
-                "Strict-Transport-Security": false,
-                "Content-Security-Policy": false,
-                "Referrer-Policy": false
+                "Strict-Transport-Security": true,
+                "Content-Security-Policy": true,
+                "Referrer-Policy": true
             },
             "security_issues": [
                 "PHPバージョンが露出している可能性"
             ],
-            "security_score": 50
+            "security_score": 100
         },
         {
             "page": "コンタクト",
@@ -112,14 +112,14 @@
                 "X-Frame-Options": true,
                 "X-Content-Type-Options": true,
                 "X-XSS-Protection": true,
-                "Strict-Transport-Security": false,
-                "Content-Security-Policy": false,
-                "Referrer-Policy": false
+                "Strict-Transport-Security": true,
+                "Content-Security-Policy": true,
+                "Referrer-Policy": true
             },
             "security_issues": [
                 "PHPバージョンが露出している可能性"
             ],
-            "security_score": 50
+            "security_score": 100
         },
         {
             "page": "ポートフォリオ",
@@ -128,15 +128,15 @@
                 "X-Frame-Options": true,
                 "X-Content-Type-Options": true,
                 "X-XSS-Protection": true,
-                "Strict-Transport-Security": false,
-                "Content-Security-Policy": false,
-                "Referrer-Policy": false
+                "Strict-Transport-Security": true,
+                "Content-Security-Policy": true,
+                "Referrer-Policy": true
             },
             "security_issues": [
                 "PHPバージョンが露出している可能性"
             ],
-            "security_score": 50
+            "security_score": 100
         }
     ],
-    "timestamp": "2025-08-07 12:58:55"
+    "timestamp": "2025-08-08 20:33:25"
 }

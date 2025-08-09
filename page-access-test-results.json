@@ -3,45 +3,45 @@
         "name": "メインページ",
         "url": "http:\/\/localhost:8090\/",
         "http_code": 200,
-        "status": "OK",
+        "status": "404エラーページ表示",
         "error": "",
-        "content_length": 38793,
+        "content_length": 59465,
         "title": "Kei Portfolio &#8211; 10年以上の経験を持つフルスタックエンジニアのポートフォリオ"
     },
     {
         "name": "アバウト",
         "url": "http:\/\/localhost:8090\/about\/",
         "http_code": 200,
-        "status": "OK",
+        "status": "404エラーページ表示",
         "error": "",
-        "content_length": 29887,
+        "content_length": 45810,
         "title": "About &#8211; Kei Portfolio"
     },
     {
         "name": "スキル",
         "url": "http:\/\/localhost:8090\/skills\/",
         "http_code": 200,
-        "status": "OK",
+        "status": "404エラーページ表示",
         "error": "",
-        "content_length": 50392,
+        "content_length": 57121,
         "title": "Skills &#8211; Kei Portfolio"
     },
     {
         "name": "コンタクト",
         "url": "http:\/\/localhost:8090\/contact\/",
         "http_code": 200,
-        "status": "OK",
+        "status": "404エラーページ表示",
         "error": "",
-        "content_length": 39396,
+        "content_length": 45351,
         "title": "Contact &#8211; Kei Portfolio"
     },
     {
         "name": "ポートフォリオ",
         "url": "http:\/\/localhost:8090\/portfolio\/",
         "http_code": 200,
-        "status": "OK",
+        "status": "404エラーページ表示",
         "error": "",
-        "content_length": 49203,
+        "content_length": 55158,
         "title": "Portfolio &#8211; Kei Portfolio"
     }
 ]

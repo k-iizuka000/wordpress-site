@@ -41,6 +41,9 @@
                     <a href="<?php echo esc_url( home_url( '/skills' ) ); ?>" class="text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap cursor-pointer">
                         スキル一覧
                     </a>
+                    <a href="<?php echo esc_url( home_url( '/blog' ) ); ?>" class="text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap cursor-pointer">
+                        ブログ
+                    </a>
                     <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap cursor-pointer">
                         お問い合わせ
                     </a>
@@ -71,6 +74,9 @@
                     </a>
                     <a href="<?php echo esc_url( home_url( '/skills' ) ); ?>" class="text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap cursor-pointer">
                         スキル一覧
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/blog' ) ); ?>" class="text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap cursor-pointer">
+                        ブログ
                     </a>
                     <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap cursor-pointer">
                         お問い合わせ

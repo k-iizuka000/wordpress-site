@@ -3,10 +3,14 @@
  * Test Helper Functions
  * 
  * テスト用の共通ヘルパー関数とモック関数を提供
+ * 新しいTestHelperClassと連携して動作します
  * 
  * @package KeiPortfolio
  * @subpackage Tests
  */
+
+// 新しいテストヘルパークラスを読み込み
+require_once dirname(__FILE__) . '/TestHelperClass.php';
 
 /**
  * WordPress関数のモック実装
@@ -414,7 +418,7 @@ function is_wordpress_available() {
 }
 
 /**
- * テスト環境情報の出力
+ * テスト環境情報の出力（改善版）
  */
 function display_test_environment_info() {
     echo "\n=== Test Environment Info ===\n";
@@ -423,5 +427,19 @@ function display_test_environment_info() {
     echo "WordPress Available: " . ( is_wordpress_available() ? 'Yes' : 'No' ) . "\n";
     echo "PHP Version: " . PHP_VERSION . "\n";
     echo "PHPUnit Bootstrap: " . ( defined( 'WP_TESTS_PHPUNIT_BOOTSTRAP' ) ? 'Yes' : 'No' ) . "\n";
+    
+    // 新しいヘルパークラスの環境検証
+    $validation = TestHelperClass::validateTestEnvironment();
+    if ($validation === true) {
+        echo "Test Environment: Valid\n";
+    } else {
+        echo "Test Environment Issues: \n";
+        foreach ($validation as $issue) {
+            echo "  - {$issue}\n";
+        }
+    }
+    
+    echo "Memory Limit: " . ini_get('memory_limit') . "\n";
+    echo "Max Execution Time: " . ini_get('max_execution_time') . "s\n";
     echo "==============================\n\n";
 }

@@ -1,0 +1,788 @@
+/**
+ * ブログ機能 メインCSS
+ * 
+ * レスポンシブデザイン対応、アクセシビリティ配慮、モダンな見た目
+ * Tailwind CSSとの併用を前提
+ * 
+ * @package Kei_Portfolio
+ * @since 1.0.0
+ */
+
+/* ===== CSS変数定義 ===== */
+:root {
+  /* カラーパレット */
+  --color-white: #ffffff;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  
+  --color-indigo-100: #e0e7ff;
+  
+  --color-slate-50: #f8fafc;
+  
+  /* プライマリカラー */
+  --color-primary-main: #3b82f6;
+  --color-primary-dark: #1d4ed8;
+  --color-primary-light: #60a5fa;
+  
+  /* 背景色 */
+  --color-background: #ffffff;
+  --color-background-alt: #f8fafc;
+  --color-background-secondary: #f3f4f6;
+  
+  /* テキストカラー */
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: #4b5563;
+  
+  /* ボーダーカラー */
+  --color-border: #e5e7eb;
+  --color-border-light: #d1d5db;
+  
+  /* シャドウ */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* トランジション */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.6s ease-out;
+  
+  /* ボーダーラジウス */
+  --border-radius: 8px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 12px;
+  --border-radius-full: 9999px;
+  
+  /* Z-index管理 */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+  
+  /* フォントサイズ */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  
+  /* フォントウェイト */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* ソーシャルメディア色 */
+  --color-twitter: #1da1f2;
+  --color-twitter-hover: #1a91da;
+  --color-facebook: #4267b2;
+  --color-facebook-hover: #365899;
+  --color-linkedin: #0077b5;
+  --color-linkedin-hover: #00669c;
+  
+  /* スペーシング変数 */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* コンテナ幅 */
+  --container-max-width: 1200px;
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+
+/* ===== ブログ全体のレイアウト ===== */
+.blog-container {
+    max-width: var(--container-max-width, 1200px);
+    margin: 0 auto;
+    padding: var(--spacing-xl, 2rem);
+    min-height: calc(100vh - 200px);
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-xl, 2rem);
+    margin-top: var(--spacing-xl, 2rem);
+}
+
+/* ===== ブログカード ===== */
+.post-card {
+    background: var(--color-background, #ffffff);
+    border-radius: var(--border-radius-md, 12px);
+    box-shadow: var(--shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+    overflow: hidden;
+    transition: all var(--transition-base, 0.3s ease);
+    border: 1px solid var(--color-border, #e5e7eb);
+    will-change: transform, box-shadow;
+}
+
+.post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl, 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04));
+}
+
+.post-card:focus-within {
+    outline: 2px solid var(--color-primary-main, #3b82f6);
+    outline-offset: 2px;
+}
+
+.post-thumbnail {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.post-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+    will-change: transform;
+}
+
+.post-card:hover .post-thumbnail img {
+    transform: scale(1.05);
+}
+
+.post-content {
+    padding: var(--spacing-lg, 1.5rem);
+}
+
+.post-title {
+    font-size: var(--font-size-xl, 1.25rem);
+    font-weight: var(--font-weight-semibold, 600);
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-primary, #1f2937);
+}
+
+.post-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.post-title a:hover {
+    color: var(--color-primary-main, #3b82f6);
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md, 1rem);
+    font-size: var(--font-size-sm, 0.875rem);
+    color: var(--color-text-secondary, #6b7280);
+    margin-bottom: var(--spacing-md, 1rem);
+}
+
+.post-excerpt {
+    color: var(--color-text-muted, #4b5563);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md, 1rem);
+}
+
+.post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.tag-link {
+    background: var(--color-background-secondary);
+    color: var(--color-text-muted);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-xs);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    will-change: background-color, color;
+}
+
+.tag-link:hover {
+    background: var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.read-more {
+    color: var(--color-primary-main);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color var(--transition-fast);
+}
+
+.read-more:hover {
+    color: var(--color-primary-dark);
+}
+
+/* ===== 個別記事ページ ===== */
+.blog-single-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+}
+
+.article-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.article-categories {
+    margin-bottom: var(--spacing-md);
+}
+
+.article-title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-xl);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.article-thumbnail {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.article-thumbnail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+}
+
+.article-content {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    color: var(--color-text-muted);
+}
+
+.article-content h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-top: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 3px solid var(--color-primary-main);
+    padding-bottom: var(--spacing-sm);
+}
+
+.article-content h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-top: calc(var(--spacing-xl) + var(--spacing-sm));
+    margin-bottom: var(--spacing-md);
+}
+
+.article-content p {
+    margin-bottom: var(--spacing-lg);
+}
+
+.article-content ul,
+.article-content ol {
+    margin-bottom: var(--spacing-lg);
+    padding-left: var(--spacing-xl);
+}
+
+.article-content li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.article-content blockquote {
+    border-left: 4px solid var(--color-primary-main);
+    padding-left: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+    font-style: italic;
+    color: var(--color-text-muted);
+    background: var(--color-background-alt);
+    padding: var(--spacing-lg);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.article-content code {
+    background: var(--color-background-secondary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: var(--font-size-sm);
+}
+
+.article-content pre {
+    background: var(--color-gray-800);
+    color: var(--color-gray-50);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    margin: var(--spacing-lg) 0;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}
+
+.article-content pre code {
+    background: transparent;
+    padding: 0;
+    color: inherit;
+}
+
+.article-tags {
+    padding: var(--spacing-lg) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* ===== 著者情報 ===== */
+.author-bio {
+    background: var(--color-background-alt);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+    border: 1px solid var(--color-border);
+}
+
+.author-avatar img {
+    border-radius: 50%;
+}
+
+/* ===== ソーシャルシェアボタン ===== */
+.social-share-section {
+    background: var(--color-background-alt);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+    text-align: center;
+    border: 1px solid var(--color-border);
+}
+
+.share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.share-button {
+    display: inline-flex;
+    align-items: center;
+    padding: calc(var(--spacing-sm) + var(--spacing-xs)) var(--spacing-lg);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-fast);
+    border: none;
+    cursor: pointer;
+    will-change: transform, box-shadow;
+}
+
+.share-button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.twitter-share {
+    background: var(--color-twitter);
+    color: var(--color-white);
+}
+
+.twitter-share:hover {
+    background: var(--color-twitter-hover);
+}
+
+.facebook-share {
+    background: var(--color-facebook);
+    color: var(--color-white);
+}
+
+.facebook-share:hover {
+    background: var(--color-facebook-hover);
+}
+
+.linkedin-share {
+    background: var(--color-linkedin);
+    color: var(--color-white);
+}
+
+.linkedin-share:hover {
+    background: var(--color-linkedin-hover);
+}
+
+/* ===== 関連記事 ===== */
+.related-posts {
+    background: var(--color-background-alt);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-xl);
+    margin: var(--spacing-2xl) 0;
+    border: 1px solid var(--color-border);
+}
+
+.related-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.related-post-card {
+    background: var(--color-background);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: all var(--transition-base);
+    border: 1px solid var(--color-border);
+    will-change: transform, box-shadow;
+}
+
+.related-post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.related-post-thumbnail {
+    height: 150px;
+    overflow: hidden;
+}
+
+.related-post-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.related-post-card:hover .related-post-thumbnail img {
+    transform: scale(1.05);
+}
+
+.related-post-content {
+    padding: var(--spacing-lg);
+}
+
+/* ===== サイドバー ===== */
+.blog-sidebar {
+    position: sticky;
+    top: var(--spacing-xl);
+    height: fit-content;
+    z-index: var(--z-sticky);
+}
+
+.sidebar-widget {
+    background: var(--color-background);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--color-border);
+}
+
+.widget-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.recent-posts-list,
+.categories-list,
+.archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recent-post-item,
+.category-item,
+.archive-item {
+    margin-bottom: calc(var(--spacing-sm) + var(--spacing-xs));
+}
+
+.recent-post-item:last-child,
+.category-item:last-child,
+.archive-item:last-child {
+    margin-bottom: 0;
+}
+
+.search-field {
+    width: 100%;
+    padding: calc(var(--spacing-sm) + var(--spacing-xs));
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    transition: border-color var(--transition-fast);
+}
+
+.search-field:focus {
+    outline: none;
+    border-color: var(--color-primary-main);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ===== ページネーション ===== */
+.blog-pagination {
+    margin-top: var(--spacing-2xl);
+    text-align: center;
+}
+
+.pagination-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.pagination-link,
+.pagination-current,
+.pagination-nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--spacing-sm) + var(--spacing-xs)) var(--spacing-md);
+    border: 1px solid var(--color-border-light);
+    text-decoration: none;
+    color: var(--color-text-muted);
+    background: var(--color-background);
+    border-radius: var(--border-radius);
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-fast);
+    min-width: 44px;
+    will-change: background-color, border-color, color;
+}
+
+.pagination-link:hover {
+    background: var(--color-background-secondary);
+    border-color: var(--color-gray-400);
+    color: var(--color-text-primary);
+}
+
+.pagination-current {
+    background: var(--color-primary-main);
+    color: var(--color-white);
+    border-color: var(--color-primary-main);
+}
+
+.pagination-nav-link {
+    padding: calc(var(--spacing-sm) + var(--spacing-xs)) var(--spacing-lg);
+}
+
+.pagination-nav-link:hover {
+    background: var(--color-blue-50);
+    border-color: var(--color-primary-main);
+    color: var(--color-primary-dark);
+}
+
+/* ===== ヒーローセクション ===== */
+.blog-hero {
+    background: linear-gradient(135deg, var(--color-blue-100) 0%, var(--color-indigo-100) 100%);
+    border-radius: 16px;
+    padding: var(--spacing-2xl) var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+.blog-search .search-form {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.popular-categories {
+    margin-top: var(--spacing-xl);
+}
+
+.popular-categories h3 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+/* ===== ユーティリティクラス ===== */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ===== アニメーション ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp var(--transition-slow);
+}
+
+/* ===== レスポンシブデザイン ===== */
+/* ベースデスクトップスタイル（1024px以上） */
+@media (min-width: 1024px) {
+    .blog-container {
+        padding: var(--spacing-2xl);
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-2xl);
+    }
+    
+    .post-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-2xl);
+    }
+}
+
+/* タブレット横向き（768px - 1023px） */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .blog-container {
+        padding: var(--spacing-xl);
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+}
+
+/* タブレット縦向き（640px - 767px） */
+@media (min-width: 640px) and (max-width: 767px) {
+    .blog-container {
+        padding: var(--spacing-lg);
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+}
+
+/* モバイル（639px以下）- blog-mobile.cssで詳細管理 */
+@media (max-width: 639px) {
+    .article-content {
+        font-size: var(--font-size-base);
+    }
+    
+    .pagination-link,
+    .pagination-nav-link {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* ===== ダークモード対応 ===== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: #1f2937;
+        --color-background-alt: #374151;
+        --color-background-secondary: #4b5563;
+        --color-text-primary: #f9fafb;
+        --color-text-secondary: #d1d5db;
+        --color-text-muted: #e5e7eb;
+        --color-border: #4b5563;
+        --color-border-light: #6b7280;
+        --color-primary-light: #60a5fa;
+    }
+}
+
+/* ===== プリント用スタイル ===== */
+@media print {
+    .blog-sidebar,
+    .social-share-section,
+    .related-posts,
+    .pagination-links {
+        display: none;
+    }
+    
+    .article-content {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+    }
+    
+    .article-title {
+        font-size: 18pt;
+        color: #000;
+    }
+    
+    .post-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+    
+    * {
+        background: white !important;
+        color: black !important;
+    }
+}

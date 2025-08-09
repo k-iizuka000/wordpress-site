@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript パフォーマンステスト - Kei Portfolio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .test-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background 0.3s;
+        }
+        .test-btn:hover {
+            background: #45a049;
+        }
+        .test-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .clear-btn {
+            background: #f44336;
+        }
+        .clear-btn:hover {
+            background: #da190b;
+        }
+        #console-output {
+            background: #1e1e1e;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            padding: 15px;
+            border-radius: 5px;
+            height: 500px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .status-ready { background-color: #4CAF50; }
+        .status-running { background-color: #FF9800; }
+        .status-error { background-color: #f44336; }
+        .results-container {
+            display: none;
+            background: #e8f5e8;
+            border: 1px solid #4CAF50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .metric-card {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .metric-label {
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 JavaScript パフォーマンステスト</h1>
+        <p>Kei Portfolio - Utils クラス性能検証</p>
+    </div>
+
+    <div class="test-container">
+        <h2>📊 テスト状況</h2>
+        <p>
+            <span id="status-indicator" class="status-indicator status-ready"></span>
+            <span id="status-text">準備完了</span>
+        </p>
+        
+        <div class="button-container">
+            <button id="run-tests-btn" class="test-btn" onclick="runTests()">
+                🧪 テスト実行
+            </button>
+            <button id="clear-console-btn" class="test-btn clear-btn" onclick="clearConsole()">
+                🧹 コンソールクリア
+            </button>
+            <button id="export-results-btn" class="test-btn" onclick="exportResults()" disabled>
+                📤 結果エクスポート
+            </button>
+        </div>
+
+        <div id="results-container" class="results-container">
+            <h3>📈 パフォーマンス結果</h3>
+            <div id="performance-metrics" class="performance-metrics">
+                <!-- 動的に生成される -->
+            </div>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>🖥️ コンソール出力</h2>
+        <div id="console-output">テストを実行してください...\n</div>
+    </div>
+
+    <!-- Utils クラスの読み込み -->
+    <script src="../assets/js/utils.js"></script>
+    
+    <!-- パフォーマンステストの読み込み -->
+    <script src="js-performance-test.js"></script>
+    
+    <script>
+        let isTestRunning = false;
+        let testResults = null;
+
+        // コンソール出力をキャプチャ
+        const consoleOutput = document.getElementById('console-output');
+        const originalConsoleLog = console.log;
+        const originalConsoleError = console.error;
+        const originalConsoleWarn = console.warn;
+
+        function logToUI(message, type = 'log') {
+            const timestamp = new Date().toLocaleTimeString();
+            let prefix = '';
+            switch (type) {
+                case 'error':
+                    prefix = '❌ ';
+                    break;
+                case 'warn':
+                    prefix = '⚠️  ';
+                    break;
+                default:
+                    prefix = '';
+            }
+            consoleOutput.innerHTML += `[${timestamp}] ${prefix}${message}\n`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        // コンソール出力をオーバーライド
+        console.log = function(...args) {
+            originalConsoleLog.apply(console, args);
+            logToUI(args.join(' '));
+        };
+
+        console.error = function(...args) {
+            originalConsoleError.apply(console, args);
+            logToUI(args.join(' '), 'error');
+        };
+
+        console.warn = function(...args) {
+            originalConsoleWarn.apply(console, args);
+            logToUI(args.join(' '), 'warn');
+        };
+
+        // UI状態更新
+        function updateStatus(status, text) {
+            const indicator = document.getElementById('status-indicator');
+            const statusText = document.getElementById('status-text');
+            
+            indicator.className = `status-indicator status-${status}`;
+            statusText.textContent = text;
+        }
+
+        // テスト実行
+        async function runTests() {
+            if (isTestRunning) return;
+            
+            isTestRunning = true;
+            updateStatus('running', 'テスト実行中...');
+            
+            document.getElementById('run-tests-btn').disabled = true;
+            document.getElementById('export-results-btn').disabled = true;
+            
+            try {
+                const testSuite = new PerformanceTestSuite();
+                await testSuite.runAllTests();
+                
+                testResults = window.performanceTestResults;
+                updateStatus('ready', 'テスト完了');
+                document.getElementById('export-results-btn').disabled = false;
+                
+                showResults();
+                
+            } catch (error) {
+                console.error('テスト実行エラー:', error);
+                updateStatus('error', 'テスト失敗');
+            } finally {
+                isTestRunning = false;
+                document.getElementById('run-tests-btn').disabled = false;
+            }
+        }
+
+        // 結果表示
+        function showResults() {
+            if (!testResults) return;
+            
+            const resultsContainer = document.getElementById('results-container');
+            const metricsContainer = document.getElementById('performance-metrics');
+            
+            // メトリクス表示
+            metricsContainer.innerHTML = '';
+            
+            if (testResults.debounce.creationTime) {
+                addMetricCard('デバウンス作成時間', `${testResults.debounce.creationTime.toFixed(2)}ms`);
+            }
+            
+            if (testResults.throttle.creationTime) {
+                addMetricCard('スロットル作成時間', `${testResults.throttle.creationTime.toFixed(2)}ms`);
+            }
+            
+            if (testResults.memory.creationTime) {
+                addMetricCard('メモリ作成時間', `${testResults.memory.creationTime.toFixed(2)}ms`);
+            }
+            
+            if (testResults.memory.cleanupTime) {
+                addMetricCard('クリーンアップ時間', `${testResults.memory.cleanupTime.toFixed(2)}ms`);
+            }
+            
+            if (testResults.performance.ajax) {
+                addMetricCard('Ajax平均実行時間', `${testResults.performance.ajax.averageExecutionTime.toFixed(2)}ms`);
+            }
+            
+            if (testResults.performance.integration) {
+                addMetricCard('統合テスト時間', `${testResults.performance.integration.executionTime.toFixed(2)}ms`);
+            }
+            
+            const errorCount = testResults.errors ? testResults.errors.length : 0;
+            addMetricCard('エラー数', errorCount.toString(), errorCount > 0 ? '#f44336' : '#4CAF50');
+            
+            resultsContainer.style.display = 'block';
+        }
+
+        // メトリクスカード追加
+        function addMetricCard(label, value, color = '#333') {
+            const card = document.createElement('div');
+            card.className = 'metric-card';
+            card.innerHTML = `
+                <div class="metric-value" style="color: ${color}">${value}</div>
+                <div class="metric-label">${label}</div>
+            `;
+            document.getElementById('performance-metrics').appendChild(card);
+        }
+
+        // コンソールクリア
+        function clearConsole() {
+            consoleOutput.innerHTML = 'コンソールをクリアしました...\n';
+        }
+
+        // 結果エクスポート
+        function exportResults() {
+            if (!testResults) {
+                alert('テスト結果がありません');
+                return;
+            }
+            
+            const dataStr = JSON.stringify(testResults, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = `performance-test-results-${new Date().toISOString().slice(0,19).replace(/:/g, '-')}.json`;
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+        }
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('JavaScript パフォーマンステストページが読み込まれました');
+            console.log('Utils クラスの状態:', typeof Utils !== 'undefined' ? '✅ 利用可能' : '❌ 利用不可');
+        });
+    </script>
+</body>
+</html>

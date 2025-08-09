@@ -457,6 +457,74 @@ class SecurityTest extends WP_UnitTestCase {
         // Test content security policy helpers
         $this->assertTrue( function_exists( 'wp_kses_post' ), 'wp_kses_post should be available' );
         $this->assertTrue( function_exists( 'wp_kses_data' ), 'wp_kses_data should be available' );
+        
+        // Test our custom security functions
+        $this->assertTrue( function_exists( 'kei_portfolio_send_security_headers' ), 'Security headers function should exist' );
+        $this->assertTrue( function_exists( 'kei_portfolio_dev_csp_policy' ), 'CSP policy filter function should exist' );
+        $this->assertTrue( function_exists( 'kei_portfolio_log_security_event' ), 'Security logging function should exist' );
+    }
+    
+    /**
+     * Test CSP policy configuration
+     * 
+     * @test
+     */
+    public function test_csp_policy_configuration() {
+        // Test default CSP policy structure
+        $default_policy = [
+            "default-src 'self'",
+            "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com",
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net",
+            "img-src 'self' data: https: http:",
+            "font-src 'self' data: https://fonts.gstatic.com",
+            "connect-src 'self' https://www.google-analytics.com",
+            "object-src 'none'",
+            "base-uri 'self'",
+            "frame-ancestors 'self'",
+            "form-action 'self'"
+        ];
+        
+        // Apply our filter
+        $filtered_policy = apply_filters( 'kei_portfolio_csp_policy', $default_policy );
+        $this->assertIsArray( $filtered_policy, 'CSP policy should be an array' );
+        $this->assertNotEmpty( $filtered_policy, 'CSP policy should not be empty' );
+        
+        // Check if essential policies are present
+        $policy_string = implode( '; ', $filtered_policy );
+        $this->assertStringContainsString( "default-src 'self'", $policy_string, 'Default-src policy should be present' );
+        $this->assertStringContainsString( "object-src 'none'", $policy_string, 'Object-src policy should prevent dangerous objects' );
+        $this->assertStringContainsString( "base-uri 'self'", $policy_string, 'Base-uri policy should be restricted' );
+    }
+    
+    /**
+     * Test memory manager bug fix
+     * 
+     * @test
+     */
+    public function test_memory_manager_calculation() {
+        // Test if MemoryManager class exists and works correctly
+        if ( class_exists( '\KeiPortfolio\Performance\MemoryManager' ) ) {
+            $memory_manager = \KeiPortfolio\Performance\MemoryManager::get_instance();
+            $this->assertInstanceOf( '\KeiPortfolio\Performance\MemoryManager', $memory_manager, 'MemoryManager should be instantiable' );
+            
+            // Test memory limit parsing (if method is public or we can access it through reflection)
+            if ( method_exists( $memory_manager, 'parse_memory_limit' ) ) {
+                $reflection = new ReflectionClass( $memory_manager );
+                $method = $reflection->getMethod( 'parse_memory_limit' );
+                $method->setAccessible( true );
+                
+                // Test different memory limit formats
+                $this->assertEquals( 1073741824, $method->invoke( $memory_manager, '1G' ), '1G should equal 1073741824 bytes' );
+                $this->assertEquals( 134217728, $method->invoke( $memory_manager, '128M' ), '128M should equal 134217728 bytes' );
+                $this->assertEquals( 1024, $method->invoke( $memory_manager, '1K' ), '1K should equal 1024 bytes' );
+                
+                // Test that the calculation doesn't cascade (bug fix verification)
+                $this->assertEquals( 2147483648, $method->invoke( $memory_manager, '2G' ), '2G should equal 2147483648 bytes' );
+                $this->assertNotEquals( 2097152, $method->invoke( $memory_manager, '2G' ), '2G should not be calculated as 2*1024*1024*1024*1024' );
+            }
+        } else {
+            $this->markTestSkipped( 'MemoryManager class not available' );
+        }
     }
     
     /**

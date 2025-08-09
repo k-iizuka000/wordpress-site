@@ -60,6 +60,141 @@ function kei_portfolio_pro_scripts() {
         true 
     );
 
+    // ブログ用スタイルシートの条件付き読み込み
+    if ( is_home() || is_archive() || is_single() || is_category() || is_tag() || is_date() || is_author() || is_search() ) {
+        // ブログ基本スタイル
+        wp_enqueue_style( 
+            'kei-portfolio-blog', 
+            get_template_directory_uri() . '/assets/css/blog.css', 
+            array( 'kei-portfolio-style' ), 
+            wp_get_theme()->get( 'Version' ) 
+        );
+
+        // ブログモバイル最適化スタイル
+        wp_enqueue_style( 
+            'kei-portfolio-blog-mobile', 
+            get_template_directory_uri() . '/assets/css/blog-mobile.css', 
+            array( 'kei-portfolio-blog' ), 
+            wp_get_theme()->get( 'Version' ) 
+        );
+
+        // ブログメイン機能 JavaScript
+        wp_enqueue_script( 
+            'kei-portfolio-blog', 
+            get_template_directory_uri() . '/assets/js/blog.js', 
+            array( 'jquery', 'kei-portfolio-script' ), 
+            wp_get_theme()->get( 'Version' ), 
+            true 
+        );
+
+        // 共通ユーティリティクラス（依存関係の最上位）
+        wp_enqueue_script( 
+            'kei-portfolio-utils', 
+            get_template_directory_uri() . '/assets/js/utils.js', 
+            array(), 
+            wp_get_theme()->get( 'Version' ), 
+            true 
+        );
+
+        // ブログAjax機能 JavaScript
+        wp_enqueue_script( 
+            'kei-portfolio-blog-ajax', 
+            get_template_directory_uri() . '/assets/js/blog-ajax.js', 
+            array( 'jquery', 'kei-portfolio-blog', 'kei-portfolio-utils' ), 
+            wp_get_theme()->get( 'Version' ), 
+            true 
+        );
+
+        // セキュアブログマネージャー JavaScript
+        wp_enqueue_script( 
+            'secure-blog', 
+            get_template_directory_uri() . '/assets/js/secure-blog.js', 
+            array( 'kei-portfolio-blog-ajax', 'kei-portfolio-utils' ), 
+            wp_get_theme()->get( 'Version' ), 
+            true 
+        );
+
+        // ブログ機能共通のローカライズデータ
+        $blog_localize_data = array(
+            'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+            'nonce'   => wp_create_nonce( 'kei_portfolio_ajax' ),
+            'loadMoreNonce' => wp_create_nonce( 'load_more_posts' ),
+            'current_page' => get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1,
+            'max_pages' => $GLOBALS['wp_query']->max_num_pages ?? 1,
+            // Ajax リトライ設定（フィルターフックでカスタマイズ可能）
+            'retryConfig' => array(
+                'maxRetries' => apply_filters('kei_portfolio_ajax_max_retries', 3),
+                'retryDelay' => apply_filters('kei_portfolio_ajax_retry_delay', 1000),
+                'exponentialBackoff' => apply_filters('kei_portfolio_ajax_exponential_backoff', true),
+                'timeoutMs' => apply_filters('kei_portfolio_ajax_timeout', 15000),
+            ),
+            // パフォーマンス設定
+            'performance' => array(
+                'memoryOptimization' => apply_filters('kei_portfolio_memory_optimization', true),
+                'debounceDelay' => apply_filters('kei_portfolio_debounce_delay', 300),
+                'throttleLimit' => apply_filters('kei_portfolio_throttle_limit', 100),
+                'cleanupInterval' => apply_filters('kei_portfolio_cleanup_interval', 300000), // 5分
+            ),
+            'security' => array(
+                'enabled' => true,
+                'xssProtection' => true,
+                'csrfProtection' => true,
+                'inputValidation' => true
+            ),
+            'texts' => array(
+                'loading' => __('読み込み中...', 'kei-portfolio'),
+                'error' => __('エラーが発生しました', 'kei-portfolio'),
+                'success' => __('処理が完了しました', 'kei-portfolio'),
+                'invalidInput' => __('入力内容に誤りがあります', 'kei-portfolio'),
+                'securityError' => __('セキュリティエラーが発生しました', 'kei-portfolio'),
+                'noMorePosts' => __('これ以上の投稿はありません', 'kei-portfolio'),
+                'loadMore' => __('さらに読み込む', 'kei-portfolio'),
+                'retry' => __('再試行', 'kei-portfolio')
+            )
+        );
+
+        // 各スクリプトにローカライズデータを設定
+        wp_localize_script( 'kei-portfolio-blog', 'blogAjax', $blog_localize_data );
+        wp_localize_script( 'kei-portfolio-blog-ajax', 'blogAjax', $blog_localize_data );
+        wp_localize_script( 'secure-blog', 'keiPortfolioAjax', $blog_localize_data );
+        
+        // 検索ページ専用のスタイルとスクリプト
+        if ( is_search() ) {
+            // 検索ページ用スタイル
+            wp_enqueue_style( 
+                'kei-portfolio-search-styles', 
+                get_template_directory_uri() . '/assets/css/search.css', 
+                array( 'kei-portfolio-blog' ), 
+                wp_get_theme()->get( 'Version' ) 
+            );
+            
+            // 検索ページ用JavaScript
+            wp_enqueue_script( 
+                'kei-portfolio-search', 
+                get_template_directory_uri() . '/assets/js/search.js', 
+                array( 'kei-portfolio-script' ), 
+                wp_get_theme()->get( 'Version' ), 
+                true 
+            );
+            
+            // 検索ページ用のローカライズデータ
+            wp_localize_script( 'kei-portfolio-search', 'keiSearchData', array(
+                'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+                'nonce'   => wp_create_nonce( 'kei-search-nonce' ),
+                'searchQuery' => get_search_query(),
+                'resultsCount' => $GLOBALS['wp_query']->found_posts ?? 0,
+                'currentView' => isset($_GET['view']) && in_array($_GET['view'], ['grid', 'list']) ? $_GET['view'] : 'list',
+                'texts' => array(
+                    'searching' => __('検索中...', 'kei-portfolio'),
+                    'loading' => __('読み込み中...', 'kei-portfolio'),
+                    'noQuery' => __('検索キーワードを入力してください', 'kei-portfolio'),
+                    'historyCleared' => __('検索履歴をクリアしました', 'kei-portfolio'),
+                    'historyFailed' => __('検索履歴のクリアに失敗しました', 'kei-portfolio')
+                )
+            ));
+        }
+    }
+
     // ローカライズ（AJAXなど用）
     wp_localize_script( 'kei-portfolio-script', 'keiPortfolio', array(
         'ajaxUrl' => admin_url( 'admin-ajax.php' ),
