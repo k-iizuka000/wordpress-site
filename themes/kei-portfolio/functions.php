@@ -8,10 +8,16 @@
 // 環境設定の読み込み（最優先）
 require_once get_template_directory() . '/inc/environment-config.php';
 
+// E2Eテストモード検出（早期実行が必要）
+require_once get_template_directory() . '/inc/e2e-test-mode.php';
+
 // 緊急修正パッチの読み込み（環境に応じて）
 if (kei_portfolio_get_env_config()->can_use_emergency_fixes()) {
     require_once get_template_directory() . '/emergency-fix.php';
 }
+
+// アセットフォールバックハンドラー（403エラー対策）
+require_once get_template_directory() . '/inc/asset-fallback.php';
 
 // テーマファイルの分割読み込み
 require_once get_template_directory() . '/inc/setup.php';
@@ -27,6 +33,9 @@ require_once get_template_directory() . '/inc/class-portfolio-data.php';
 require_once get_template_directory() . '/inc/class-blog-data.php';
 require_once get_template_directory() . '/inc/class-optimized-blog-data.php';
 require_once get_template_directory() . '/inc/create-blog-page.php';
+
+// ログ管理クラス（セキュリティ機能より先に読み込み）
+require_once get_template_directory() . '/inc/log-manager.php';
 
 // セキュリティ機能クラスの読み込み
 require_once get_template_directory() . '/inc/security.php';
@@ -830,30 +839,52 @@ add_action('wp_ajax_nopriv_track_share', 'handle_track_share');
 
 /**
  * ブログ関連スタイル・スクリプトのエンキュー
+ * 注意: enqueue.phpと重複するため一時的に無効化 (2025-08-09)
  */
-add_action('wp_enqueue_scripts', 'kei_portfolio_enqueue_blog_assets');
+// add_action('wp_enqueue_scripts', 'kei_portfolio_enqueue_blog_assets');
 
 function kei_portfolio_enqueue_blog_assets() {
     // ブログページでのみ読み込み
     if (is_home() || is_single() || is_archive() || is_search() || is_category() || is_tag() || is_author() || is_date()) {
         
+        // ファイル存在チェックのキャッシュ
+        static $file_exists_cache = array();
+        
+        $template_dir = get_template_directory();
+        $template_uri = get_template_directory_uri();
+        
+        // ファイルパスとURI
+        $files = array(
+            'blog_css' => $template_dir . '/assets/css/blog.css',
+            'blog_mobile_css' => $template_dir . '/assets/css/blog-mobile.css',
+            'blog_print_css' => $template_dir . '/assets/css/blog-print.css',
+            'blog_js' => $template_dir . '/assets/js/blog.js',
+            'blog_ajax_js' => $template_dir . '/assets/js/blog-ajax.js',
+            'blog_search_js' => $template_dir . '/assets/js/blog-search.js'
+        );
+        
+        // ファイル存在チェックをキャッシュ
+        foreach ($files as $key => $path) {
+            if (!isset($file_exists_cache[$path])) {
+                $file_exists_cache[$path] = file_exists($path);
+            }
+        }
+        
         // ブログ用CSS（ファイル存在チェック付き）
-        $blog_css = get_template_directory() . '/assets/css/blog.css';
-        if (file_exists($blog_css)) {
+        if ($file_exists_cache[$files['blog_css']]) {
             wp_enqueue_style(
                 'kei-portfolio-blog',
-                get_template_directory_uri() . '/assets/css/blog.css',
+                $template_uri . '/assets/css/blog.css',
                 array('kei-portfolio-style'),
                 wp_get_theme()->get('Version')
             );
         }
         
         // モバイル用CSS（ファイル存在チェック付き）
-        $blog_mobile_css = get_template_directory() . '/assets/css/blog-mobile.css';
-        if (file_exists($blog_mobile_css)) {
+        if ($file_exists_cache[$files['blog_mobile_css']]) {
             wp_enqueue_style(
                 'kei-portfolio-blog-mobile',
-                get_template_directory_uri() . '/assets/css/blog-mobile.css',
+                $template_uri . '/assets/css/blog-mobile.css',
                 array('kei-portfolio-blog'),
                 wp_get_theme()->get('Version'),
                 '(max-width: 768px)'
@@ -861,11 +892,10 @@ function kei_portfolio_enqueue_blog_assets() {
         }
         
         // プリント用CSS（ファイル存在チェック付き）
-        $blog_print_css = get_template_directory() . '/assets/css/blog-print.css';
-        if (file_exists($blog_print_css)) {
+        if ($file_exists_cache[$files['blog_print_css']]) {
             wp_enqueue_style(
                 'kei-portfolio-blog-print',
-                get_template_directory_uri() . '/assets/css/blog-print.css',
+                $template_uri . '/assets/css/blog-print.css',
                 array('kei-portfolio-blog'),
                 wp_get_theme()->get('Version'),
                 'print'
@@ -873,11 +903,10 @@ function kei_portfolio_enqueue_blog_assets() {
         }
         
         // ブログ用JavaScript（ファイル存在チェック付き）
-        $blog_js = get_template_directory() . '/assets/js/blog.js';
-        if (file_exists($blog_js)) {
+        if ($file_exists_cache[$files['blog_js']]) {
             wp_enqueue_script(
                 'kei-portfolio-blog',
-                get_template_directory_uri() . '/assets/js/blog.js',
+                $template_uri . '/assets/js/blog.js',
                 array('jquery'),
                 wp_get_theme()->get('Version'),
                 true
@@ -886,11 +915,10 @@ function kei_portfolio_enqueue_blog_assets() {
         
         // AJAX用JavaScript（検索・フィルタリング）
         if (is_home() || is_archive()) {
-            $blog_ajax_js = get_template_directory() . '/assets/js/blog-ajax.js';
-            if (file_exists($blog_ajax_js)) {
+            if ($file_exists_cache[$files['blog_ajax_js']]) {
                 wp_enqueue_script(
                     'kei-portfolio-blog-ajax',
-                    get_template_directory_uri() . '/assets/js/blog-ajax.js',
+                    $template_uri . '/assets/js/blog-ajax.js',
                     array('jquery', 'kei-portfolio-blog'),
                     wp_get_theme()->get('Version'),
                     true
@@ -936,11 +964,10 @@ function kei_portfolio_enqueue_blog_assets() {
         
         // 検索ページ用JavaScript
         if (is_search()) {
-            $blog_search_js = get_template_directory() . '/assets/js/blog-search.js';
-            if (file_exists($blog_search_js)) {
+            if ($file_exists_cache[$files['blog_search_js']]) {
                 wp_enqueue_script(
                     'kei-portfolio-blog-search',
-                    get_template_directory_uri() . '/assets/js/blog-search.js',
+                    $template_uri . '/assets/js/blog-search.js',
                     array('jquery'),
                     wp_get_theme()->get('Version'),
                     true

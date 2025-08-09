@@ -9,6 +9,10 @@
  * スクリプトとスタイルの登録・エンキュー
  */
 function kei_portfolio_pro_scripts() {
+    // テンプレートディレクトリパス取得
+    $template_directory = get_template_directory();
+    $template_directory_uri = get_template_directory_uri();
+    
     // メインスタイルシート
     wp_enqueue_style( 
         'kei-portfolio-style', 
@@ -43,76 +47,135 @@ function kei_portfolio_pro_scripts() {
     );
 
     // ナビゲーションJavaScript（ReactのuseStateから変換）
-    wp_enqueue_script( 
-        'kei-portfolio-navigation', 
-        get_template_directory_uri() . '/assets/js/navigation.js', 
-        array(), 
-        wp_get_theme()->get( 'Version' ), 
-        true 
-    );
-
-    // メインJavaScript
-    wp_enqueue_script( 
-        'kei-portfolio-script', 
-        get_template_directory_uri() . '/assets/js/main.js', 
-        array('kei-portfolio-navigation'), 
-        wp_get_theme()->get( 'Version' ), 
-        true 
-    );
-
-    // ブログ用スタイルシートの条件付き読み込み
-    if ( is_home() || is_archive() || is_single() || is_category() || is_tag() || is_date() || is_author() || is_search() ) {
-        // ブログ基本スタイル
-        wp_enqueue_style( 
-            'kei-portfolio-blog', 
-            get_template_directory_uri() . '/assets/css/blog.css', 
-            array( 'kei-portfolio-style' ), 
-            wp_get_theme()->get( 'Version' ) 
-        );
-
-        // ブログモバイル最適化スタイル
-        wp_enqueue_style( 
-            'kei-portfolio-blog-mobile', 
-            get_template_directory_uri() . '/assets/css/blog-mobile.css', 
-            array( 'kei-portfolio-blog' ), 
-            wp_get_theme()->get( 'Version' ) 
-        );
-
-        // ブログメイン機能 JavaScript
+    $navigation_js_path = $template_directory . '/assets/js/navigation.js';
+    if ( file_exists( $navigation_js_path ) ) {
         wp_enqueue_script( 
-            'kei-portfolio-blog', 
-            get_template_directory_uri() . '/assets/js/blog.js', 
-            array( 'jquery', 'kei-portfolio-script' ), 
-            wp_get_theme()->get( 'Version' ), 
-            true 
-        );
-
-        // 共通ユーティリティクラス（依存関係の最上位）
-        wp_enqueue_script( 
-            'kei-portfolio-utils', 
-            get_template_directory_uri() . '/assets/js/utils.js', 
+            'kei-portfolio-navigation', 
+            $template_directory_uri . '/assets/js/navigation.js', 
             array(), 
             wp_get_theme()->get( 'Version' ), 
             true 
         );
+    }
+
+    // メインJavaScript
+    $main_js_path = $template_directory . '/assets/js/main.js';
+    $main_js_deps = ( file_exists( $navigation_js_path ) ) ? array('kei-portfolio-navigation') : array();
+    if ( file_exists( $main_js_path ) ) {
+        wp_enqueue_script( 
+            'kei-portfolio-script', 
+            $template_directory_uri . '/assets/js/main.js', 
+            $main_js_deps, 
+            wp_get_theme()->get( 'Version' ), 
+            true 
+        );
+    }
+
+    // ブログ用スタイルシートの条件付き読み込み
+    // フロントページは除外（ブログ機能を使用していないため）
+    if ( (is_home() && !is_front_page()) || is_archive() || is_single() || is_category() || is_tag() || is_date() || is_author() || is_search() ) {
+        // ファイル存在チェックのキャッシュ
+        static $blog_file_exists_cache = array();
+        
+        // ファイル存在チェック用のパス定義
+        $blog_files = array(
+            'blog_css' => $template_directory . '/assets/css/blog.css',
+            'blog_mobile_css' => $template_directory . '/assets/css/blog-mobile.css',
+            'blog_js' => $template_directory . '/assets/js/blog.js',
+            'utils_js' => $template_directory . '/assets/js/utils.js',
+            'blog_ajax_js' => $template_directory . '/assets/js/blog-ajax.js',
+            'secure_blog_js' => $template_directory . '/assets/js/secure-blog.js'
+        );
+        
+        // ファイル存在チェックをキャッシュ
+        foreach ( $blog_files as $key => $path ) {
+            if ( ! isset( $blog_file_exists_cache[ $path ] ) ) {
+                $blog_file_exists_cache[ $path ] = file_exists( $path );
+            }
+        }
+        
+        // ブログ基本スタイル
+        if ( $blog_file_exists_cache[ $blog_files['blog_css'] ] ) {
+            wp_enqueue_style( 
+                'kei-portfolio-blog', 
+                $template_directory_uri . '/assets/css/blog.css', 
+                array( 'kei-portfolio-style' ), 
+                wp_get_theme()->get( 'Version' ) 
+            );
+        }
+
+        // ブログモバイル最適化スタイル
+        $blog_mobile_deps = $blog_file_exists_cache[ $blog_files['blog_css'] ] ? array( 'kei-portfolio-blog' ) : array( 'kei-portfolio-style' );
+        if ( $blog_file_exists_cache[ $blog_files['blog_mobile_css'] ] ) {
+            wp_enqueue_style( 
+                'kei-portfolio-blog-mobile', 
+                $template_directory_uri . '/assets/css/blog-mobile.css', 
+                $blog_mobile_deps, 
+                wp_get_theme()->get( 'Version' ) 
+            );
+        }
+
+        // 共通ユーティリティクラス（依存関係の最上位）
+        if ( $blog_file_exists_cache[ $blog_files['utils_js'] ] ) {
+            wp_enqueue_script( 
+                'kei-portfolio-utils', 
+                $template_directory_uri . '/assets/js/utils.js', 
+                array(), 
+                wp_get_theme()->get( 'Version' ), 
+                true 
+            );
+        }
+
+        // ブログメイン機能 JavaScript
+        $blog_js_deps = array( 'jquery' );
+        if ( file_exists( $main_js_path ) ) {
+            $blog_js_deps[] = 'kei-portfolio-script';
+        }
+        if ( $blog_file_exists_cache[ $blog_files['blog_js'] ] ) {
+            wp_enqueue_script( 
+                'kei-portfolio-blog', 
+                $template_directory_uri . '/assets/js/blog.js', 
+                $blog_js_deps, 
+                wp_get_theme()->get( 'Version' ), 
+                true 
+            );
+        }
 
         // ブログAjax機能 JavaScript
-        wp_enqueue_script( 
-            'kei-portfolio-blog-ajax', 
-            get_template_directory_uri() . '/assets/js/blog-ajax.js', 
-            array( 'jquery', 'kei-portfolio-blog', 'kei-portfolio-utils' ), 
-            wp_get_theme()->get( 'Version' ), 
-            true 
-        );
+        $blog_ajax_deps = array( 'jquery' );
+        if ( $blog_file_exists_cache[ $blog_files['blog_js'] ] ) {
+            $blog_ajax_deps[] = 'kei-portfolio-blog';
+        }
+        if ( $blog_file_exists_cache[ $blog_files['utils_js'] ] ) {
+            $blog_ajax_deps[] = 'kei-portfolio-utils';
+        }
+        if ( $blog_file_exists_cache[ $blog_files['blog_ajax_js'] ] ) {
+            wp_enqueue_script( 
+                'kei-portfolio-blog-ajax', 
+                $template_directory_uri . '/assets/js/blog-ajax.js', 
+                $blog_ajax_deps, 
+                wp_get_theme()->get( 'Version' ), 
+                true 
+            );
+        }
 
         // セキュアブログマネージャー JavaScript
-        wp_enqueue_script( 
-            'secure-blog', 
-            get_template_directory_uri() . '/assets/js/secure-blog.js', 
-            array( 'kei-portfolio-blog-ajax', 'kei-portfolio-utils' ), 
-            wp_get_theme()->get( 'Version' ), 
-            true 
-        );
+        $secure_blog_deps = array();
+        if ( $blog_file_exists_cache[ $blog_files['blog_ajax_js'] ] ) {
+            $secure_blog_deps[] = 'kei-portfolio-blog-ajax';
+        }
+        if ( $blog_file_exists_cache[ $blog_files['utils_js'] ] ) {
+            $secure_blog_deps[] = 'kei-portfolio-utils';
+        }
+        if ( $blog_file_exists_cache[ $blog_files['secure_blog_js'] ] && ! empty( $secure_blog_deps ) ) {
+            wp_enqueue_script( 
+                'secure-blog', 
+                $template_directory_uri . '/assets/js/secure-blog.js', 
+                $secure_blog_deps, 
+                wp_get_theme()->get( 'Version' ), 
+                true 
+            );
+        }
 
         // ブログ機能共通のローカライズデータ
         $blog_localize_data = array(
@@ -153,53 +216,88 @@ function kei_portfolio_pro_scripts() {
             )
         );
 
-        // 各スクリプトにローカライズデータを設定
-        wp_localize_script( 'kei-portfolio-blog', 'blogAjax', $blog_localize_data );
-        wp_localize_script( 'kei-portfolio-blog-ajax', 'blogAjax', $blog_localize_data );
-        wp_localize_script( 'secure-blog', 'keiPortfolioAjax', $blog_localize_data );
+        // 各スクリプトにローカライズデータを設定（キャッシュを使用）
+        if ( $blog_file_exists_cache[ $blog_files['blog_js'] ] ) {
+            wp_localize_script( 'kei-portfolio-blog', 'blogAjax', $blog_localize_data );
+        }
+        if ( $blog_file_exists_cache[ $blog_files['blog_ajax_js'] ] ) {
+            wp_localize_script( 'kei-portfolio-blog-ajax', 'blogAjax', $blog_localize_data );
+        }
+        if ( $blog_file_exists_cache[ $blog_files['secure_blog_js'] ] && ! empty( $secure_blog_deps ) ) {
+            wp_localize_script( 'secure-blog', 'keiPortfolioAjax', $blog_localize_data );
+        }
         
         // 検索ページ専用のスタイルとスクリプト
         if ( is_search() ) {
-            // 検索ページ用スタイル
-            wp_enqueue_style( 
-                'kei-portfolio-search-styles', 
-                get_template_directory_uri() . '/assets/css/search.css', 
-                array( 'kei-portfolio-blog' ), 
-                wp_get_theme()->get( 'Version' ) 
+            // 検索ページ用ファイルのキャッシュ
+            $search_files = array(
+                'search_css' => $template_directory . '/assets/css/search.css',
+                'search_js' => $template_directory . '/assets/js/search.js'
             );
+            
+            foreach ( $search_files as $key => $path ) {
+                if ( ! isset( $blog_file_exists_cache[ $path ] ) ) {
+                    $blog_file_exists_cache[ $path ] = file_exists( $path );
+                }
+            }
+            
+            // 検索ページ用スタイル
+            $search_css_deps = $blog_file_exists_cache[ $blog_files['blog_css'] ] ? array( 'kei-portfolio-blog' ) : array( 'kei-portfolio-style' );
+            if ( $blog_file_exists_cache[ $search_files['search_css'] ] ) {
+                wp_enqueue_style( 
+                    'kei-portfolio-search-styles', 
+                    $template_directory_uri . '/assets/css/search.css', 
+                    $search_css_deps, 
+                    wp_get_theme()->get( 'Version' ) 
+                );
+            }
             
             // 検索ページ用JavaScript
-            wp_enqueue_script( 
-                'kei-portfolio-search', 
-                get_template_directory_uri() . '/assets/js/search.js', 
-                array( 'kei-portfolio-script' ), 
-                wp_get_theme()->get( 'Version' ), 
-                true 
-            );
-            
-            // 検索ページ用のローカライズデータ
-            wp_localize_script( 'kei-portfolio-search', 'keiSearchData', array(
-                'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-                'nonce'   => wp_create_nonce( 'kei-search-nonce' ),
-                'searchQuery' => get_search_query(),
-                'resultsCount' => $GLOBALS['wp_query']->found_posts ?? 0,
-                'currentView' => isset($_GET['view']) && in_array($_GET['view'], ['grid', 'list']) ? $_GET['view'] : 'list',
-                'texts' => array(
-                    'searching' => __('検索中...', 'kei-portfolio'),
-                    'loading' => __('読み込み中...', 'kei-portfolio'),
-                    'noQuery' => __('検索キーワードを入力してください', 'kei-portfolio'),
-                    'historyCleared' => __('検索履歴をクリアしました', 'kei-portfolio'),
-                    'historyFailed' => __('検索履歴のクリアに失敗しました', 'kei-portfolio')
-                )
-            ));
+            $search_js_deps = array();
+            if ( file_exists( $main_js_path ) ) {
+                $search_js_deps[] = 'kei-portfolio-script';
+            }
+            if ( $blog_file_exists_cache[ $search_files['search_js'] ] ) {
+                wp_enqueue_script( 
+                    'kei-portfolio-search', 
+                    $template_directory_uri . '/assets/js/search.js', 
+                    $search_js_deps, 
+                    wp_get_theme()->get( 'Version' ), 
+                    true 
+                );
+                
+                // 検索ページ用のローカライズデータ
+                wp_localize_script( 'kei-portfolio-search', 'keiSearchData', array(
+                    'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+                    'nonce'   => wp_create_nonce( 'kei-search-nonce' ),
+                    'searchQuery' => get_search_query(),
+                    'resultsCount' => $GLOBALS['wp_query']->found_posts ?? 0,
+                    'currentView' => isset($_GET['view']) && in_array($_GET['view'], ['grid', 'list']) ? $_GET['view'] : 'list',
+                    'texts' => array(
+                        'searching' => __('検索中...', 'kei-portfolio'),
+                        'loading' => __('読み込み中...', 'kei-portfolio'),
+                        'noQuery' => __('検索キーワードを入力してください', 'kei-portfolio'),
+                        'historyCleared' => __('検索履歴をクリアしました', 'kei-portfolio'),
+                        'historyFailed' => __('検索履歴のクリアに失敗しました', 'kei-portfolio')
+                    )
+                ));
+            }
         }
     }
 
     // ローカライズ（AJAXなど用）
-    wp_localize_script( 'kei-portfolio-script', 'keiPortfolio', array(
-        'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-        'nonce'   => wp_create_nonce( 'kei-portfolio-nonce' ),
-    ) );
+    // キャッシュにない場合のみチェック
+    static $main_js_exists_cache = null;
+    if ( $main_js_exists_cache === null ) {
+        $main_js_exists_cache = file_exists( $main_js_path );
+    }
+    
+    if ( $main_js_exists_cache ) {
+        wp_localize_script( 'kei-portfolio-script', 'keiPortfolio', array(
+            'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+            'nonce'   => wp_create_nonce( 'kei-portfolio-nonce' ),
+        ) );
+    }
 
     // コメント返信スクリプト
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -207,6 +305,27 @@ function kei_portfolio_pro_scripts() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'kei_portfolio_pro_scripts' );
+
+/**
+ * グローバルAjax設定 - 全ページで基本的なAjax機能を提供
+ */
+function kei_portfolio_global_ajax_setup() {
+    // グローバル設定用のJavaScriptファイルを作成（存在しない場合は空でもOK）
+    wp_add_inline_script( 'jquery', '
+        // グローバルAjax設定のフォールバック
+        window.keiPortfolioGlobal = window.keiPortfolioGlobal || {};
+    ', 'before' );
+    
+    // jQuery依存のグローバル設定
+    wp_localize_script( 'jquery', 'keiPortfolioGlobal', array(
+        'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+        'restUrl' => rest_url( 'wp/v2/' ),
+        'nonce'   => wp_create_nonce( 'kei_portfolio_ajax' ),
+        'siteUrl' => home_url(),
+        'themeUrl' => get_template_directory_uri(),
+    ));
+}
+add_action( 'wp_enqueue_scripts', 'kei_portfolio_global_ajax_setup', 5 );
 
 /**
  * Tailwind CSS基本設定の追加（フェーズ2実装）

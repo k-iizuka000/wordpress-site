@@ -89,10 +89,26 @@ function kei_portfolio_dev_csp_policy($csp_policy) {
 /**
  * Ajax非同期リクエストの検証強化
  */
-add_action('wp_ajax_*', 'kei_portfolio_verify_ajax_request', 1);
-add_action('wp_ajax_nopriv_*', 'kei_portfolio_verify_ajax_request', 1);
+// Ajax検証をinitフックで実行
+add_action('init', function() {
+    if (defined('DOING_AJAX') && DOING_AJAX) {
+        kei_portfolio_verify_ajax_request();
+    }
+}, 1);
 
 function kei_portfolio_verify_ajax_request() {
+    // アセットファイル（CSS、JS、画像等）へのリクエストは除外
+    $request_uri = $_SERVER['REQUEST_URI'] ?? '';
+    if (preg_match('/\.(css|js|jpg|jpeg|png|gif|svg|webp|woff|woff2|ttf|eot|ico)(\?.*)?$/i', $request_uri)) {
+        return;
+    }
+    
+    // admin-ajax.php以外へのリクエストは除外
+    if (!isset($_SERVER['REQUEST_URI']) || 
+        strpos($_SERVER['REQUEST_URI'], 'admin-ajax.php') === false) {
+        return;
+    }
+    
     // REST APIリクエストは除外
     if (defined('REST_REQUEST') && REST_REQUEST) {
         return;

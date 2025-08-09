@@ -13,6 +13,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// emergency-fix.phpを一時的に無効化
+return;
+
 // 本番環境での実行を防止
 if (defined('WP_ENVIRONMENT_TYPE') && WP_ENVIRONMENT_TYPE === 'production') {
     http_response_code(404);

@@ -76,19 +76,51 @@ async function crawlAndCheck() {
   for (const u of sitemapUrls) queue.push(u);
   for (const p of START_PATHS) queue.push(new URL(p, origin).href);
 
+  const isMac = process.platform === 'darwin';
+  const isLinux = process.platform === 'linux';
+  const args = [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-gpu',
+    '--disable-dev-shm-usage',
+    '--no-first-run',
+    '--no-default-browser-check',
+  ];
+  // Linux/Docker向けの安定化フラグはmacOSでは不安定なため付与しない
+  if (isLinux) {
+    args.push('--single-process', '--no-zygote');
+  }
+
   const launchOpts = {
-    headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-gpu',
-      '--disable-dev-shm-usage',
-      '--single-process',
-      '--no-zygote',
-      '--no-first-run',
-      '--no-default-browser-check',
-    ],
+    headless: 'new',
+    args,
   };
+  // 実行ファイルの自動検出（環境変数が無い場合のみ）
+  if (!process.env.PUPPETEER_EXECUTABLE_PATH) {
+    const candidates = [];
+    if (isMac) {
+      candidates.push(
+        '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+        '/Applications/Chromium.app/Contents/MacOS/Chromium'
+      );
+    } else if (isLinux) {
+      candidates.push(
+        '/usr/bin/google-chrome',
+        '/usr/bin/chromium',
+        '/usr/bin/chromium-browser'
+      );
+    }
+    for (const p of candidates) {
+      try {
+        if (fs.existsSync(p)) {
+          launchOpts.executablePath = p;
+          break;
+        }
+      } catch (_) {}
+    }
+  } else {
+    launchOpts.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+  }
   if (process.env.PUPPETEER_EXECUTABLE_PATH) {
     launchOpts.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
   }

@@ -23,10 +23,28 @@ if (!defined('KEI_BLOG_CACHE_TTL')) {
 class Blog_Optimizations {
     
     /**
+     * ファイル存在チェックキャッシュ
+     * @var array
+     */
+    private $file_exists_cache = array();
+    
+    /**
      * コンストラクタ
      */
     public function __construct() {
         $this->init_hooks();
+    }
+    
+    /**
+     * キャッシュ付きfile_existsチェック
+     * @param string $path ファイルパス
+     * @return bool ファイルの存在
+     */
+    private function file_exists_cached($path) {
+        if (!isset($this->file_exists_cache[$path])) {
+            $this->file_exists_cache[$path] = file_exists($path);
+        }
+        return $this->file_exists_cache[$path];
     }
     
     /**
@@ -61,7 +79,8 @@ class Blog_Optimizations {
         add_filter('wp_generate_attachment_metadata', [$this, 'generate_next_gen_images'], 10, 2);
         
         // Service Worker for caching
-        add_action('wp_head', [$this, 'add_service_worker']);
+        // 一時的に無効化: Service Worker 404エラー対策 (2025-08-09)
+        // add_action('wp_head', [$this, 'add_service_worker']);
         
         // Critical CSS inline
         add_action('wp_head', [$this, 'inline_critical_css'], 1);
@@ -263,9 +282,12 @@ class Blog_Optimizations {
         // Preconnect to critical origins
         echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
         
-        // Module preload for modern browsers
+        // Module preload for modern browsers（存在チェック付き）
         if ($this->supports_es_modules()) {
-            echo '<link rel="modulepreload" href="' . get_template_directory_uri() . '/assets/js/modules/blog.js">' . "\n";
+            $module_path = get_template_directory() . '/assets/js/modules/blog.js';
+            if (file_exists($module_path)) {
+                echo '<link rel="modulepreload" href="' . get_template_directory_uri() . '/assets/js/modules/blog.js">' . "\n";
+            }
         }
     }
     
@@ -409,17 +431,19 @@ class Blog_Optimizations {
             return;
         }
         
-        // 非クリティカルなスクリプトの遅延読み込み
-        wp_enqueue_script(
-            'kei-portfolio-blog-lazy',
-            get_template_directory_uri() . '/assets/js/blog-lazy.js',
-            [],
-            wp_get_theme()->get('Version'),
-            true
-        );
-        
-        // Service Workerの登録
-        wp_add_inline_script('kei-portfolio-blog-lazy', $this->get_service_worker_script());
+        // 非クリティカルなスクリプトの遅延読み込み（存在チェック付き）
+        $lazy_js_path = get_template_directory() . '/assets/js/blog-lazy.js';
+        if (file_exists($lazy_js_path)) {
+            wp_enqueue_script(
+                'kei-portfolio-blog-lazy',
+                get_template_directory_uri() . '/assets/js/blog-lazy.js',
+                [],
+                wp_get_theme()->get('Version'),
+                true
+            );
+            // Service Workerの登録（ハンドルが存在する場合のみ）
+            wp_add_inline_script('kei-portfolio-blog-lazy', $this->get_service_worker_script());
+        }
     }
     
     /**
@@ -483,7 +507,7 @@ class Blog_Optimizations {
     private function convert_to_webp($file_path) {
         $webp_path = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $file_path);
         
-        if (file_exists($webp_path)) {
+        if ($this->file_exists_cached($webp_path)) {
             return; // 既に存在する
         }
         
@@ -520,7 +544,7 @@ class Blog_Optimizations {
         
         $avif_path = preg_replace('/\.(jpg|jpeg|png)$/i', '.avif', $file_path);
         
-        if (file_exists($avif_path)) {
+        if ($this->file_exists_cached($avif_path)) {
             return;
         }
         
@@ -591,7 +615,7 @@ class Blog_Optimizations {
         
         $critical_css_file = get_template_directory() . '/assets/css/critical.css';
         
-        if (file_exists($critical_css_file)) {
+        if ($this->file_exists_cached($critical_css_file)) {
             echo '<style id="critical-css">';
             include $critical_css_file;
             echo '</style>';

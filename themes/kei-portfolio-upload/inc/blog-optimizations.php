@@ -23,10 +23,28 @@ if (!defined('KEI_BLOG_CACHE_TTL')) {
 class Blog_Optimizations {
     
     /**
+     * ファイル存在チェックキャッシュ
+     * @var array
+     */
+    private $file_exists_cache = array();
+    
+    /**
      * コンストラクタ
      */
     public function __construct() {
         $this->init_hooks();
+    }
+    
+    /**
+     * キャッシュ付きfile_existsチェック
+     * @param string $path ファイルパス
+     * @return bool ファイルの存在
+     */
+    private function file_exists_cached($path) {
+        if (!isset($this->file_exists_cache[$path])) {
+            $this->file_exists_cache[$path] = file_exists($path);
+        }
+        return $this->file_exists_cache[$path];
     }
     
     /**
@@ -483,7 +501,7 @@ class Blog_Optimizations {
     private function convert_to_webp($file_path) {
         $webp_path = preg_replace('/\.(jpg|jpeg|png)$/i', '.webp', $file_path);
         
-        if (file_exists($webp_path)) {
+        if ($this->file_exists_cached($webp_path)) {
             return; // 既に存在する
         }
         
@@ -520,7 +538,7 @@ class Blog_Optimizations {
         
         $avif_path = preg_replace('/\.(jpg|jpeg|png)$/i', '.avif', $file_path);
         
-        if (file_exists($avif_path)) {
+        if ($this->file_exists_cached($avif_path)) {
             return;
         }
         
@@ -591,7 +609,7 @@ class Blog_Optimizations {
         
         $critical_css_file = get_template_directory() . '/assets/css/critical.css';
         
-        if (file_exists($critical_css_file)) {
+        if ($this->file_exists_cached($critical_css_file)) {
             echo '<style id="critical-css">';
             include $critical_css_file;
             echo '</style>';

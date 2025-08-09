@@ -92,9 +92,16 @@ RUN chown -R www-data:www-data /var/www/html/wp-content \
     && find /var/www/html/wp-content -type d -exec chmod 755 {} \; \
     && find /var/www/html/wp-content -type f -exec chmod 644 {} \;
 
+# カスタムエントリーポイントスクリプトのコピー
+COPY docker-entrypoint-custom.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint-custom.sh
+
 # ヘルスチェック設定
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
     CMD curl -f http://localhost/wp-admin/install.php || exit 1
+
+# カスタムエントリーポイントを使用
+ENTRYPOINT ["docker-entrypoint-custom.sh"]
 
 EXPOSE 80
 

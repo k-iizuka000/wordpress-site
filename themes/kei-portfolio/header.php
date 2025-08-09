@@ -12,6 +12,28 @@
     <link rel="profile" href="https://gmpg.org/xfn/11">
     
     <?php wp_head(); ?>
+    
+    <!-- Service Workerエラー対策: 既存のService Worker登録を削除 -->
+    <script>
+    // Service Worker 404エラーを防ぐため、既存の登録をクリア
+    if ('serviceWorker' in navigator) {
+        // 既存のすべてのService Worker登録を取得して削除
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for(let registration of registrations) {
+                // 現在のサイトのService Workerのみ削除
+                if (registration.scope.indexOf(window.location.origin) === 0) {
+                    registration.unregister().then(function(success) {
+                        if (success) {
+                            console.log('Service Worker unregistered:', registration.scope);
+                        }
+                    });
+                }
+            }
+        }).catch(function(error) {
+            console.log('Service Worker クリアエラー:', error);
+        });
+    }
+    </script>
 </head>
 
 <body <?php body_class(); ?>>
