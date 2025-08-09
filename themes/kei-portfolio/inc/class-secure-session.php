@@ -60,15 +60,12 @@ class SecureSession {
         if (session_status() === PHP_SESSION_NONE) {
             // セッション設定
             $session_config = [
-                'cookie_lifetime' => 0,
-                'cookie_path' => defined('COOKIEPATH') ? COOKIEPATH : '/',
-                'cookie_domain' => defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN : '',
-                'cookie_secure' => function_exists('is_ssl') ? is_ssl() : false,
-                'cookie_httponly' => true,
-                'cookie_samesite' => 'Lax',
-                'use_strict_mode' => true,
-                'use_cookies' => true,
-                'use_only_cookies' => true
+                'lifetime' => 0,
+                'path' => defined('COOKIEPATH') ? COOKIEPATH : '/',
+                'domain' => defined('COOKIE_DOMAIN') ? COOKIE_DOMAIN : '',
+                'secure' => function_exists('is_ssl') ? is_ssl() : false,
+                'httponly' => true,
+                'samesite' => 'Lax'
             ];
             
             // PHP 7.3以上の場合
@@ -77,11 +74,11 @@ class SecureSession {
             } else {
                 // 旧バージョン対応
                 session_set_cookie_params(
-                    $session_config['cookie_lifetime'],
-                    $session_config['cookie_path'],
-                    $session_config['cookie_domain'],
-                    $session_config['cookie_secure'],
-                    $session_config['cookie_httponly']
+                    $session_config['lifetime'],
+                    $session_config['path'],
+                    $session_config['domain'],
+                    $session_config['secure'],
+                    $session_config['httponly']
                 );
             }
             

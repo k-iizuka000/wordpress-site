@@ -46,6 +46,18 @@ define( 'SCRIPT_DEBUG', true );
 define( 'WP_ENVIRONMENT_TYPE', 'development' );
 
 /**
+ * 環境固有の設定
+ */
+// テストファイルのアクセス許可（開発環境のみ）
+define( 'KEI_PORTFOLIO_TEST_ACCESS', true );
+// 緊急修正パッチの有効化（開発環境のみ）
+define( 'KEI_PORTFOLIO_EMERGENCY_FIXES', true );
+// デバッグログの詳細レベル
+define( 'KEI_PORTFOLIO_LOG_LEVEL', 'debug' );
+// セキュリティ制限の緩和（開発環境のみ）
+define( 'KEI_PORTFOLIO_STRICT_SECURITY', false );
+
+/**
  * メモリ制限
  */
 define( 'WP_MEMORY_LIMIT', '256M' );

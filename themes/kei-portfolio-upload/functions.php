@@ -26,6 +26,7 @@ require_once get_template_directory() . '/inc/create-blog-page.php';
 // セキュリティ機能クラスの読み込み
 require_once get_template_directory() . '/inc/security.php';
 require_once get_template_directory() . '/inc/rest-api-permissions.php';
+require_once get_template_directory() . '/inc/secure-nonce-handler.php';
 require_once get_template_directory() . '/inc/class-security-helper.php';
 require_once get_template_directory() . '/inc/class-security-logger.php';
 require_once get_template_directory() . '/inc/class-rate-limiter.php';
@@ -394,25 +395,39 @@ function kei_portfolio_register_blog_widgets() {
 function kei_portfolio_enqueue_scripts() {
     // 既存のスクリプト読み込み処理
     
-    // Nonce情報をJavaScriptに渡す（統一設定）
+    // 包括的なNonce情報をJavaScriptに渡す（統一設定）
+    $nonces = array(
+        'default' => wp_create_nonce('kei_portfolio_ajax'),
+        'blog' => wp_create_nonce('blog_ajax_action'),
+        'search' => wp_create_nonce('search_ajax_action'),
+        'loadMore' => wp_create_nonce('load_more_posts'),
+        'share' => wp_create_nonce('track_share'),
+        'instantSearch' => wp_create_nonce('blog_instant_search'),
+        'cache' => wp_create_nonce('kei_portfolio_cache_nonce'),
+        // REST API用のNonce
+        'wpRest' => wp_create_nonce('wp_rest'),
+        'restApi' => wp_create_nonce('wp_rest'),
+        // Gutenberg用のNonce
+        'gutenberg' => wp_create_nonce('wp_rest'),
+        'blockEditor' => wp_create_nonce('wp_rest'),
+        // 投稿関連のNonce  
+        'posts' => wp_create_nonce('wp_rest'),
+        'postSave' => wp_create_nonce('wp_rest'),
+        'postPublish' => wp_create_nonce('wp_rest')
+    );
+    
     wp_localize_script('jquery', 'keiPortfolioAjax', array(
         'ajaxUrl' => admin_url('admin-ajax.php'),
-        'nonces' => array(
-            'default' => wp_create_nonce('kei_portfolio_ajax'),
-            'blog' => wp_create_nonce('blog_ajax_action'),
-            'search' => wp_create_nonce('search_ajax_action'),
-            'loadMore' => wp_create_nonce('load_more_posts'),
-            'share' => wp_create_nonce('track_share'),
-            'instantSearch' => wp_create_nonce('blog_instant_search'),
-            'cache' => wp_create_nonce('kei_portfolio_cache_nonce')
-        ),
+        'restUrl' => rest_url('wp/v2/'),
+        'nonces' => $nonces,
         // 後方互換性のため個別プロパティも維持（削除予定）
-        'nonce' => wp_create_nonce('kei_portfolio_ajax'),
-        'blogNonce' => wp_create_nonce('blog_ajax_action'),
-        'searchNonce' => wp_create_nonce('search_ajax_action'),
-        'loadMoreNonce' => wp_create_nonce('load_more_posts'),
-        'shareNonce' => wp_create_nonce('track_share'),
-        'instantSearchNonce' => wp_create_nonce('blog_instant_search')
+        'nonce' => $nonces['default'],
+        'blogNonce' => $nonces['blog'],
+        'searchNonce' => $nonces['search'],
+        'loadMoreNonce' => $nonces['loadMore'],
+        'shareNonce' => $nonces['share'],
+        'instantSearchNonce' => $nonces['instantSearch'],
+        'restNonce' => $nonces['wpRest']
     ));
 }
 add_action('wp_enqueue_scripts', 'kei_portfolio_enqueue_scripts', 5);
@@ -432,6 +447,194 @@ function kei_portfolio_verify_nonce($action, $nonce_field = 'nonce') {
     }
     
     return true;
+}
+
+/**
+ * REST API用のNonce検証強化
+ */
+add_action('rest_api_init', 'kei_portfolio_setup_rest_nonce_validation');
+
+function kei_portfolio_setup_rest_nonce_validation() {
+    // WordPress標準のNonce検証を拡張
+    add_filter('determine_current_user', 'kei_portfolio_rest_nonce_authentication', 20);
+}
+
+/**
+ * REST APIでのNonce認証の処理
+ */
+function kei_portfolio_rest_nonce_authentication($user_id) {
+    // 既にユーザーが認証されている場合はそのまま返す
+    if ($user_id) {
+        return $user_id;
+    }
+    
+    // REST APIリクエストでない場合は処理しない
+    if (!defined('REST_REQUEST') || !REST_REQUEST) {
+        return $user_id;
+    }
+    
+    // Nonce検証（複数のヘッダーをチェック）
+    $nonce = null;
+    
+    // X-WP-Nonce ヘッダーをチェック
+    if (isset($_SERVER['HTTP_X_WP_NONCE'])) {
+        $nonce = $_SERVER['HTTP_X_WP_NONCE'];
+    }
+    // Authorization ヘッダーをチェック
+    elseif (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+        $auth_header = $_SERVER['HTTP_AUTHORIZATION'];
+        if (strpos($auth_header, 'Bearer ') === 0) {
+            $nonce = substr($auth_header, 7);
+        }
+    }
+    // _wpnonce パラメータをチェック
+    elseif (isset($_REQUEST['_wpnonce'])) {
+        $nonce = $_REQUEST['_wpnonce'];
+    }
+    
+    if ($nonce) {
+        // wp_rest nonceの検証
+        if (wp_verify_nonce($nonce, 'wp_rest')) {
+            // Cookie認証を試行
+            $user_id = wp_validate_auth_cookie('', 'logged_in');
+            
+            if ($user_id) {
+                // デバッグログ記録
+                if (defined('WP_DEBUG') && WP_DEBUG) {
+                    error_log("Kei Portfolio: REST API nonce authentication successful for user {$user_id}");
+                }
+                return $user_id;
+            }
+        }
+        
+        // デバッグログ記録
+        if (defined('WP_DEBUG') && WP_DEBUG) {
+            error_log("Kei Portfolio: REST API nonce authentication failed");
+        }
+    }
+    
+    return $user_id;
+}
+
+/**
+ *管理画面でのNonce設定の追加
+ */
+add_action('admin_enqueue_scripts', 'kei_portfolio_admin_nonce_setup');
+
+function kei_portfolio_admin_nonce_setup() {
+    // Gutenbergエディター用のNonce設定
+    wp_localize_script('wp-blocks', 'keiPortfolioAdminAjax', array(
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+        'restUrl' => rest_url('wp/v2/'),
+        'restNonce' => wp_create_nonce('wp_rest'),
+        'userId' => get_current_user_id(),
+        'canEdit' => current_user_can('edit_posts'),
+        'canPublish' => current_user_can('publish_posts')
+    ));
+    
+    // wp-editor用のNonce設定
+    wp_localize_script('wp-editor', 'keiPortfolioAdminAjax', array(
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+        'restUrl' => rest_url('wp/v2/'),
+        'restNonce' => wp_create_nonce('wp_rest'),
+        'userId' => get_current_user_id(),
+        'canEdit' => current_user_can('edit_posts'),
+        'canPublish' => current_user_can('publish_posts')
+    ));
+}
+
+/**
+ * Gutenbergエディター用の権限と設定の強化
+ */
+add_action('enqueue_block_editor_assets', 'kei_portfolio_enhance_gutenberg_permissions');
+
+function kei_portfolio_enhance_gutenberg_permissions() {
+    // 現在のユーザーの権限を確認
+    $user = wp_get_current_user();
+    $user_can_edit = current_user_can('edit_posts');
+    $user_can_publish = current_user_can('publish_posts');
+    
+    // Gutenberg用の包括的なNonce設定
+    $gutenberg_data = array(
+        'restUrl' => rest_url('wp/v2/'),
+        'restNonce' => wp_create_nonce('wp_rest'),
+        'apiNonce' => wp_create_nonce('wp_rest'),
+        'userId' => get_current_user_id(),
+        'userLogin' => $user->user_login,
+        'userRoles' => $user->roles,
+        'canEdit' => $user_can_edit,
+        'canPublish' => $user_can_publish,
+        'canEditOthers' => current_user_can('edit_others_posts'),
+        'canDeletePosts' => current_user_can('delete_posts'),
+        'canUploadFiles' => current_user_can('upload_files'),
+        'permissions' => array(
+            'posts' => array(
+                'create' => $user_can_edit,
+                'edit' => $user_can_edit,
+                'publish' => $user_can_publish,
+                'delete' => current_user_can('delete_posts')
+            ),
+            'blocks' => array(
+                'patterns' => true,
+                'widgets' => current_user_can('edit_theme_options'),
+                'templates' => current_user_can('edit_theme_options')
+            )
+        )
+    );
+    
+    // wp-editor スクリプトが存在する場合に localize
+    global $wp_scripts;
+    if (isset($wp_scripts->registered['wp-editor'])) {
+        wp_localize_script('wp-editor', 'keiPortfolioGutenberg', $gutenberg_data);
+    }
+    
+    // wp-blocks スクリプトが存在する場合にも localize
+    if (isset($wp_scripts->registered['wp-blocks'])) {
+        wp_localize_script('wp-blocks', 'keiPortfolioGutenberg', $gutenberg_data);
+    }
+    
+    // デバッグ情報の出力
+    if (defined('WP_DEBUG') && WP_DEBUG) {
+        wp_add_inline_script('wp-editor', '
+            console.log("Kei Portfolio: Gutenberg permissions data", window.keiPortfolioGutenberg);
+            
+            // REST API エラーハンドリング
+            window.addEventListener("unhandledrejection", function(event) {
+                if (event.reason && event.reason.message && event.reason.message.includes("403")) {
+                    console.warn("Kei Portfolio: 403 error detected", event.reason);
+                }
+            });
+        ', 'after');
+    }
+}
+
+/**
+ * REST API用のCookie認証の強化
+ */
+add_filter('rest_cookie_check_errors', 'kei_portfolio_enhance_rest_cookie_auth', 10, 2);
+
+function kei_portfolio_enhance_rest_cookie_auth($result, $request) {
+    // 既にエラーがある場合はそのまま返す
+    if (is_wp_error($result)) {
+        return $result;
+    }
+    
+    // ログインユーザーで適切な権限がある場合はCookie認証を許可
+    if (is_user_logged_in()) {
+        $route = $request->get_route();
+        
+        // 投稿関連エンドポイントの場合
+        if (preg_match('/\/wp\/v2\/(posts|block-patterns)/', $route)) {
+            if (current_user_can('edit_posts')) {
+                return true;
+            }
+        }
+        
+        // その他のエンドポイントは既定の認証チェックを使用
+        return $result;
+    }
+    
+    return $result;
 }
 
 /**
