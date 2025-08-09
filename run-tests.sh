@@ -8,7 +8,14 @@ set -euo pipefail
 
 # スクリプトのディレクトリを取得
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-THEME_DIR="/var/www/html/wp-content/themes/kei-portfolio"
+# コンテナ内とローカルの両方に対応したテーマディレクトリ解決
+DEFAULT_THEME_DIR="/var/www/html/wp-content/themes/kei-portfolio"
+LOCAL_THEME_DIR="$SCRIPT_DIR/themes/kei-portfolio"
+if [ -d "$DEFAULT_THEME_DIR" ]; then
+  THEME_DIR="$DEFAULT_THEME_DIR"
+else
+  THEME_DIR="$LOCAL_THEME_DIR"
+fi
 WP_TESTS_DIR="/tmp/wordpress-tests-lib"
 WP_CORE_DIR="/tmp/wordpress/"
 
@@ -32,6 +39,7 @@ WordPress テーマ kei-portfolio テスト実行スクリプト
     js          Jestテストのみ実行
     lint        リンターのみ実行
     coverage    カバレッジレポート生成
+    e2e         ブラウザE2E（全画面とコンソール/ログ検証）
     performance パフォーマンステスト
     a11y        アクセシビリティテスト
     ajax        AJAX/API通信テスト
@@ -312,6 +320,30 @@ run_ajax_tests() {
     log_success "AJAX/API通信テスト完了"
 }
 
+# ブラウザE2Eテスト実行（Puppeteer）
+run_e2e_tests() {
+    log_info "E2E（Puppeteer）を実行中..."
+
+    cd "$THEME_DIR" || exit 1
+
+    # npm 依存関係のインストール
+    if [ -f package.json ]; then
+        log_info "npm 依存関係をインストール中..."
+        # サブディレクトリでは .git 不在のため husky の prepare を抑止
+        HUSKY=0 npm ci --silent
+    fi
+
+    # BASE_URL は呼び出し側で上書き可能。既定は 8080
+    local BASE_URL_ENV=${BASE_URL:-http://localhost:8080}
+    log_info "BASE_URL=${BASE_URL_ENV} で実行"
+    BASE_URL="$BASE_URL_ENV" npm run e2e || {
+        log_error "E2E テスト失敗"
+        return 1
+    }
+
+    log_success "E2E テスト完了"
+}
+
 # すべてのテスト実行
 run_all_tests() {
     log_info "すべてのテストを実行中..."
@@ -349,7 +381,7 @@ main() {
                 SETUP_ONLY=true
                 shift
                 ;;
-            all|php|js|lint|coverage|performance|a11y|ajax)
+            all|php|js|lint|coverage|e2e|performance|a11y|ajax)
                 TEST_TYPE=$1
                 shift
                 ;;
@@ -367,7 +399,7 @@ main() {
     fi
     
     # WordPress テストスイートのセットアップ
-    if [ "$TEST_TYPE" != "js" ] && [ "$TEST_TYPE" != "lint" ]; then
+    if [ "$TEST_TYPE" != "js" ] && [ "$TEST_TYPE" != "lint" ] && [ "$TEST_TYPE" != "e2e" ]; then
         setup_wp_test_suite
     fi
     
@@ -392,6 +424,9 @@ main() {
             ;;
         coverage)
             run_coverage
+            ;;
+        e2e)
+            run_e2e_tests
             ;;
         performance)
             run_performance_tests

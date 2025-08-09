@@ -66,7 +66,8 @@
     "precommit": "lint-staged",
     "prepare": "husky install",
     "start": "npm run dev",
-    "ci": "npm run lint:js-check && npm run lint:css-check && npm run test:ci && npm run build"
+    "ci": "npm run lint:js-check && npm run lint:css-check && npm run test:ci && npm run build",
+    "e2e": "node tests/e2e/crawl-and-check.js"
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",
@@ -106,9 +107,7 @@
     "sass": "^1.69.0",
     "sass-loader": "^13.3.0",
     "style-loader": "^3.3.0",
-    "stylelint": "^15.11.0",
-    "stylelint-config-prettier": "^9.0.0",
-    "stylelint-config-standard": "^34.0.0",
+    "stylelint": "^14.16.1",
     "terser-webpack-plugin": "^5.3.0",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.0",
