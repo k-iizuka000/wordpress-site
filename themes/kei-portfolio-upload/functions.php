@@ -21,13 +21,20 @@ require_once get_template_directory() . '/inc/sample-data.php';
 require_once get_template_directory() . '/inc/class-portfolio-data.php';
 require_once get_template_directory() . '/inc/class-blog-data.php';
 require_once get_template_directory() . '/inc/class-optimized-blog-data.php';
+require_once get_template_directory() . '/inc/create-blog-page.php';
 
 // セキュリティ機能クラスの読み込み
 require_once get_template_directory() . '/inc/security.php';
+require_once get_template_directory() . '/inc/rest-api-permissions.php';
 require_once get_template_directory() . '/inc/class-security-helper.php';
 require_once get_template_directory() . '/inc/class-security-logger.php';
 require_once get_template_directory() . '/inc/class-rate-limiter.php';
 require_once get_template_directory() . '/inc/class-secure-session.php';
+
+// デバッグモードの時のみREST APIデバッグツールを読み込み
+if (defined('WP_DEBUG') && WP_DEBUG) {
+    require_once get_template_directory() . '/inc/debug-rest-api.php';
+}
 
 // パフォーマンス監視クラス
 require_once get_template_directory() . '/inc/class-memory-manager.php';

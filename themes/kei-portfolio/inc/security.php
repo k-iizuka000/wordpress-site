@@ -93,6 +93,18 @@ add_action('wp_ajax_*', 'kei_portfolio_verify_ajax_request', 1);
 add_action('wp_ajax_nopriv_*', 'kei_portfolio_verify_ajax_request', 1);
 
 function kei_portfolio_verify_ajax_request() {
+    // REST APIリクエストは除外
+    if (defined('REST_REQUEST') && REST_REQUEST) {
+        return;
+    }
+    
+    // Gutenbergエディターのリクエストは除外
+    $current_action = current_action();
+    if (strpos($current_action, 'wp_ajax_heartbeat') !== false || 
+        strpos($current_action, 'wp_ajax_rest-nonce') !== false) {
+        return;
+    }
+    
     // リファラーの検証
     if (!wp_get_referer()) {
         wp_die(__('不正なリクエストです。', 'kei-portfolio'), 403);
@@ -103,12 +115,16 @@ function kei_portfolio_verify_ajax_request() {
         wp_die(__('不正なリクエストです。', 'kei-portfolio'), 403);
     }
 
-    // X-Requested-Withヘッダーの確認（Ajax判定）
+    // X-Requested-Withヘッダーの確認（Ajax判定）- REST APIは除外
     if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) || 
         $_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest') {
         // kei-portfolio独自のヘッダーも確認
         if (!isset($_SERVER['HTTP_X_KEIPORTFOLIO_REQUEST'])) {
-            wp_die(__('Ajax以外のアクセスは許可されていません。', 'kei-portfolio'), 403);
+            // REST APIリクエストでない場合のみ拒否
+            if (!isset($_SERVER['REQUEST_URI']) || 
+                strpos($_SERVER['REQUEST_URI'], '/wp-json/') === false) {
+                wp_die(__('Ajax以外のアクセスは許可されていません。', 'kei-portfolio'), 403);
+            }
         }
     }
 }
