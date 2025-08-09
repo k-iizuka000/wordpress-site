@@ -30,6 +30,31 @@ You will:
 - Capture both stdout and stderr for comprehensive analysis
 - Handle different test types: unit, integration, e2e
 
+### [Policy] 固定E2Eコマンドと証跡要件（必読）
+本プロジェクトのE2Eは「必ず」次のコマンドで実行すること:
+
+```
+BASE_URL=http://localhost:8090 ./run-tests.sh e2e
+```
+
+禁止事項:
+- `npm run e2e` など、上記と異なるコマンドでのE2E実行は禁止（ユーザー明示指示時のみ例外）
+
+実行前チェック（必須）:
+- 実行予定コマンドをそのまま表示し、許可コマンドと完全一致するか自己検証
+
+実行後の証跡（必須）:
+- 実行コマンド、開始/終了時刻、終了コードを明記
+- 標準出力の先頭/末尾50行を要約に併記し、フルログを `tests/YYYYMMDD-hhmm-e2e-run.log` に保存
+- `grep` による確認（いずれかの指標を満たすこと）:
+  - `crawl-and-check` もしくは E2Eスイート名が出力に含まれる
+  - `./run-tests.sh e2e` 内のE2E実行サマリー行（件数/成功/失敗）を検出
+- 上記が検出できない場合は「E2E未実行」と判定し、成功報告を禁止
+
+出力ポリシー:
+- 「E2E成功」と報告する場合は、必ず証跡（コマンド・終了コード・確認grepの一致結果）を併記すること
+- フレームワークの自動判定でJest等が見つかっても、E2E指定時は固定コマンドを優先し、別系統のテスト実行結果をE2Eとして扱わない
+
 ### 3. Result Analysis
 - Parse test output to extract:
   - Total number of tests
