@@ -839,8 +839,9 @@ add_action('wp_ajax_nopriv_track_share', 'handle_track_share');
 
 /**
  * ブログ関連スタイル・スクリプトのエンキュー
+ * 注意: enqueue.phpと重複するため一時的に無効化 (2025-08-09)
  */
-add_action('wp_enqueue_scripts', 'kei_portfolio_enqueue_blog_assets');
+// add_action('wp_enqueue_scripts', 'kei_portfolio_enqueue_blog_assets');
 
 function kei_portfolio_enqueue_blog_assets() {
     // ブログページでのみ読み込み

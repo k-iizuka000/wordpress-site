@@ -95,8 +95,25 @@
         isAjaxSupported() {
             // blogAjax オブジェクトの存在確認（統一されたオブジェクト）
             if (typeof blogAjax === 'undefined') {
-                console.error('BlogAjax: blogAjax オブジェクトが定義されていません');
-                return false;
+                // グローバルオブジェクトをフォールバックとして使用
+                if (typeof keiPortfolioGlobal !== 'undefined' && keiPortfolioGlobal.ajaxUrl) {
+                    window.blogAjax = {
+                        ajaxUrl: keiPortfolioGlobal.ajaxUrl,
+                        loadMoreNonce: keiPortfolioGlobal.nonce,
+                        current_page: 1,
+                        max_pages: 1,
+                        retryConfig: {
+                            maxRetries: 3,
+                            retryDelay: 1000,
+                            exponentialBackoff: true,
+                            timeoutMs: 15000
+                        }
+                    };
+                    console.log('BlogAjax: Using global fallback configuration');
+                } else {
+                    console.warn('BlogAjax: Ajax configuration not available on this page');
+                    return false;
+                }
             }
             
             // 必須プロパティの存在確認
@@ -106,8 +123,13 @@
             }
             
             if (!blogAjax.loadMoreNonce) {
-                console.error('BlogAjax: loadMoreNonce が定義されていません');
-                return false;
+                console.warn('BlogAjax: loadMoreNonce が定義されていません - フォールバック使用');
+                // グローバルnonceをフォールバックとして使用
+                if (typeof keiPortfolioGlobal !== 'undefined' && keiPortfolioGlobal.nonce) {
+                    blogAjax.loadMoreNonce = keiPortfolioGlobal.nonce;
+                } else {
+                    return false;
+                }
             }
             
             // jQuery Ajax の存在確認

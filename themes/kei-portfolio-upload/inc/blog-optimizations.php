@@ -79,7 +79,8 @@ class Blog_Optimizations {
         add_filter('wp_generate_attachment_metadata', [$this, 'generate_next_gen_images'], 10, 2);
         
         // Service Worker for caching
-        add_action('wp_head', [$this, 'add_service_worker']);
+        // 一時的に無効化: Service Worker 404エラー対策 (2025-08-09)
+        // add_action('wp_head', [$this, 'add_service_worker']);
         
         // Critical CSS inline
         add_action('wp_head', [$this, 'inline_critical_css'], 1);
@@ -281,9 +282,12 @@ class Blog_Optimizations {
         // Preconnect to critical origins
         echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
         
-        // Module preload for modern browsers
+        // Module preload for modern browsers（存在チェック付き）
         if ($this->supports_es_modules()) {
-            echo '<link rel="modulepreload" href="' . get_template_directory_uri() . '/assets/js/modules/blog.js">' . "\n";
+            $module_path = get_template_directory() . '/assets/js/modules/blog.js';
+            if (file_exists($module_path)) {
+                echo '<link rel="modulepreload" href="' . get_template_directory_uri() . '/assets/js/modules/blog.js">' . "\n";
+            }
         }
     }
     
@@ -427,17 +431,19 @@ class Blog_Optimizations {
             return;
         }
         
-        // 非クリティカルなスクリプトの遅延読み込み
-        wp_enqueue_script(
-            'kei-portfolio-blog-lazy',
-            get_template_directory_uri() . '/assets/js/blog-lazy.js',
-            [],
-            wp_get_theme()->get('Version'),
-            true
-        );
-        
-        // Service Workerの登録
-        wp_add_inline_script('kei-portfolio-blog-lazy', $this->get_service_worker_script());
+        // 非クリティカルなスクリプトの遅延読み込み（存在チェック付き）
+        $lazy_js_path = get_template_directory() . '/assets/js/blog-lazy.js';
+        if (file_exists($lazy_js_path)) {
+            wp_enqueue_script(
+                'kei-portfolio-blog-lazy',
+                get_template_directory_uri() . '/assets/js/blog-lazy.js',
+                [],
+                wp_get_theme()->get('Version'),
+                true
+            );
+            // Service Workerの登録（ハンドルが存在する場合のみ）
+            wp_add_inline_script('kei-portfolio-blog-lazy', $this->get_service_worker_script());
+        }
     }
     
     /**

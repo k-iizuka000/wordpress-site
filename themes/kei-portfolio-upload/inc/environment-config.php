@@ -191,30 +191,40 @@ class Kei_Portfolio_Environment_Config {
      */
     public function enqueue_environment_assets() {
         if ($this->is_development) {
-            // 開発環境専用のスタイル・スクリプト
-            wp_enqueue_style(
-                'kei-portfolio-dev-style',
-                get_template_directory_uri() . '/assets/css/dev-debug.css',
-                array(),
-                time() // キャッシュ無効化
-            );
-            
-            // デバッグ用JavaScript
-            wp_enqueue_script(
-                'kei-portfolio-dev-script',
-                get_template_directory_uri() . '/assets/js/dev-debug.js',
-                array('jquery'),
-                time(),
-                true
-            );
-            
-            // 開発環境情報をJavaScriptに渡す
-            wp_localize_script('kei-portfolio-dev-script', 'keiPortfolioDev', array(
-                'environment' => $this->environment_type,
-                'debug' => $this->get_config('debug_enabled'),
-                'ajaxUrl' => admin_url('admin-ajax.php'),
-                'nonce' => wp_create_nonce('kei_portfolio_dev_nonce')
-            ));
+            // 開発環境専用のスタイル・スクリプト（存在チェック付き）
+            $dev_css_path = get_template_directory() . '/assets/css/dev-debug.css';
+            $dev_js_path  = get_template_directory() . '/assets/js/dev-debug.js';
+
+            if (file_exists($dev_css_path)) {
+                wp_enqueue_style(
+                    'kei-portfolio-dev-style',
+                    get_template_directory_uri() . '/assets/css/dev-debug.css',
+                    array(),
+                    time() // キャッシュ無効化
+                );
+            }
+
+            $dev_js_enqueued = false;
+            if (file_exists($dev_js_path)) {
+                wp_enqueue_script(
+                    'kei-portfolio-dev-script',
+                    get_template_directory_uri() . '/assets/js/dev-debug.js',
+                    array('jquery'),
+                    time(),
+                    true
+                );
+                $dev_js_enqueued = true;
+            }
+
+            // 開発環境情報をJavaScriptに渡す（スクリプトが存在する場合のみ）
+            if ($dev_js_enqueued) {
+                wp_localize_script('kei-portfolio-dev-script', 'keiPortfolioDev', array(
+                    'environment' => $this->environment_type,
+                    'debug' => $this->get_config('debug_enabled'),
+                    'ajaxUrl' => admin_url('admin-ajax.php'),
+                    'nonce' => wp_create_nonce('kei_portfolio_dev_nonce')
+                ));
+            }
         }
     }
     

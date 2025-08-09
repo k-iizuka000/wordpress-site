@@ -72,7 +72,8 @@ function kei_portfolio_pro_scripts() {
     }
 
     // ブログ用スタイルシートの条件付き読み込み
-    if ( is_home() || is_archive() || is_single() || is_category() || is_tag() || is_date() || is_author() || is_search() ) {
+    // フロントページは除外（ブログ機能を使用していないため）
+    if ( (is_home() && !is_front_page()) || is_archive() || is_single() || is_category() || is_tag() || is_date() || is_author() || is_search() ) {
         // ファイル存在チェックのキャッシュ
         static $blog_file_exists_cache = array();
         
@@ -304,6 +305,27 @@ function kei_portfolio_pro_scripts() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'kei_portfolio_pro_scripts' );
+
+/**
+ * グローバルAjax設定 - 全ページで基本的なAjax機能を提供
+ */
+function kei_portfolio_global_ajax_setup() {
+    // グローバル設定用のJavaScriptファイルを作成（存在しない場合は空でもOK）
+    wp_add_inline_script( 'jquery', '
+        // グローバルAjax設定のフォールバック
+        window.keiPortfolioGlobal = window.keiPortfolioGlobal || {};
+    ', 'before' );
+    
+    // jQuery依存のグローバル設定
+    wp_localize_script( 'jquery', 'keiPortfolioGlobal', array(
+        'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+        'restUrl' => rest_url( 'wp/v2/' ),
+        'nonce'   => wp_create_nonce( 'kei_portfolio_ajax' ),
+        'siteUrl' => home_url(),
+        'themeUrl' => get_template_directory_uri(),
+    ));
+}
+add_action( 'wp_enqueue_scripts', 'kei_portfolio_global_ajax_setup', 5 );
 
 /**
  * Tailwind CSS基本設定の追加（フェーズ2実装）
