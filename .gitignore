@@ -67,3 +67,7 @@ old/*
 
 site-exports/*
 2bbc0f61-e79d-4b52-8d58-797a775552ed_5/*
+
+# テスト関連（E2Eテスト用）
+tests/e2e/*
+themes/kei-portfolio/tests/e2e/*
