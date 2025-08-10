@@ -40,6 +40,7 @@ require_once get_template_directory() . '/inc/log-manager.php';
 // セキュリティ機能クラスの読み込み
 require_once get_template_directory() . '/inc/security.php';
 require_once get_template_directory() . '/inc/rest-api-permissions.php';
+require_once get_template_directory() . '/inc/rest-api-compat.php';
 require_once get_template_directory() . '/inc/secure-nonce-handler.php';
 require_once get_template_directory() . '/inc/class-security-helper.php';
 require_once get_template_directory() . '/inc/class-security-logger.php';

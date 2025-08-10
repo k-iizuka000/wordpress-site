@@ -113,6 +113,11 @@ function kei_portfolio_verify_ajax_request() {
     if (defined('REST_REQUEST') && REST_REQUEST) {
         return;
     }
+
+    // テーマ内RESTプロキシ（admin-ajax）の例外
+    if (isset($_REQUEST['action']) && $_REQUEST['action'] === 'kei_rest_proxy') {
+        return;
+    }
     
     // Gutenbergエディターのリクエストは除外
     $current_action = current_action();
