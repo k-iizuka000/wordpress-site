@@ -155,7 +155,7 @@ $has_core_tech = !is_wp_error($core_technologies);
                     </section>
 
                     <!-- コア技術セクション -->
-                    <?php if ($has_core_tech && !empty($core_technologies)) : ?>
+                    <!-- <?php if ($has_core_tech && !empty($core_technologies)) : ?>
                     <section class="mb-16">
                         <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Core Technologies</h2>
                         <div class="bg-white rounded-lg shadow-sm border border-gray-100 p-8">
@@ -212,7 +212,7 @@ $has_core_tech = !is_wp_error($core_technologies);
                             </div>
                         </div>
                     </section>
-                    <?php endif; ?>
+                    <?php endif; ?> -->
 
                     <!-- CTA セクション -->
                     <section class="text-center bg-gradient-to-r from-blue-50 to-indigo-50 py-16 px-6 rounded-lg">
