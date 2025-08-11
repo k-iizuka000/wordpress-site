@@ -320,10 +320,10 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                    進行中のプロジェクト
+                    個人受注プロジェクト
                 </h2>
                 <p class="text-lg text-gray-600">
-                    現在開発中のプロジェクトをご紹介します
+                    過去受注した案件をご紹介します
                 </p>
             </div>
             
