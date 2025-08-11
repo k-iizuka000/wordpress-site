@@ -24,6 +24,18 @@ class Portfolio_Data {
      * Transient キャッシュキー
      */
     const CACHE_KEY = 'portfolio_data_cache';
+    /**
+     * ポートフォリオデータのファイル更新時刻キャッシュキー
+     */
+    const CACHE_MTIME_KEY = 'portfolio_data_mtime';
+    /**
+     * スキル統計キャッシュキー
+     */
+    const SKILLS_CACHE_KEY = 'portfolio_skills_statistics';
+    /**
+     * スキル統計の元データ更新時刻キャッシュキー
+     */
+    const SKILLS_CACHE_MTIME_KEY = 'portfolio_skills_statistics_mtime';
     
     /**
      * デフォルトプロジェクト表示数
@@ -73,9 +85,13 @@ class Portfolio_Data {
      * @return array|WP_Error ポートフォリオデータまたはエラーオブジェクト
      */
     public function get_portfolio_data() {
-        // Transient キャッシュから取得を試行
+        // JSONの更新時刻を取得
+        $current_mtime = file_exists($this->json_file_path) ? filemtime($this->json_file_path) : 0;
+
+        // Transient キャッシュから取得を試行（mtime一致時のみ使用）
         $cached_data = get_transient(self::CACHE_KEY);
-        if ($cached_data !== false) {
+        $cached_mtime = get_transient(self::CACHE_MTIME_KEY);
+        if ($cached_data !== false && $cached_mtime && (int)$cached_mtime === (int)$current_mtime) {
             $this->portfolio_data = $cached_data;
             return $cached_data;
         }
@@ -143,8 +159,11 @@ class Portfolio_Data {
         // メモリキャッシュに保存
         $this->portfolio_data = $data;
         
-        // Transient キャッシュに保存
+        // Transient キャッシュに保存（データとmtime）
         set_transient(self::CACHE_KEY, $data, self::CACHE_DURATION);
+        if ($current_mtime) {
+            set_transient(self::CACHE_MTIME_KEY, $current_mtime, self::CACHE_DURATION);
+        }
         
         // エラーログ機能追加
         $this->log_data_load_success();
@@ -242,6 +261,190 @@ class Portfolio_Data {
         
         return isset($data['inProgress']) ? $data['inProgress'] : array();
     }
+
+    /**
+     * スキルごとの統計情報を取得
+     * - 使用回数（projects + inProgress）
+     * - 使用期間（periodがあるprojectsのみ集計）
+     * - 表示名、カテゴリ、レベルを付与
+     *
+     * @return array スキル統計情報の連想配列
+     */
+    public function get_skills_statistics() {
+        // 元データのmtime取得
+        $current_mtime = file_exists($this->json_file_path) ? filemtime($this->json_file_path) : 0;
+
+        // キャッシュ確認（mtime一致時のみ）
+        $cached = get_transient(self::SKILLS_CACHE_KEY);
+        $cached_stats_mtime = get_transient(self::SKILLS_CACHE_MTIME_KEY);
+        if ($cached !== false && $cached_stats_mtime && (int)$cached_stats_mtime === (int)$current_mtime) {
+            return $cached;
+        }
+
+        $projects = $this->get_projects_data(0);
+        $in_progress = $this->get_in_progress_projects();
+
+        if (is_wp_error($projects)) {
+            return array();
+        }
+        if (is_wp_error($in_progress)) {
+            $in_progress = array();
+        }
+
+        $all_projects = array_merge($projects, $in_progress);
+
+        $skill_stats = array();
+
+        foreach ($all_projects as $project) {
+            if (!isset($project['technologies'])) {
+                continue;
+            }
+
+            $techs = $project['technologies'];
+            if (!is_array($techs)) {
+                continue;
+            }
+
+            // 期間（あれば集計対象）
+            $start_ts = null;
+            $end_ts = null;
+            if (isset($project['period']) && is_array($project['period'])) {
+                $start_ts = isset($project['period']['start']) ? strtotime($project['period']['start']) : null;
+                $end_ts = isset($project['period']['end']) ? strtotime($project['period']['end']) : null;
+            }
+
+            foreach ($techs as $tech) {
+                $name = null;
+                if (is_string($tech)) {
+                    $name = $tech;
+                } elseif (is_array($tech) && isset($tech['name'])) {
+                    $name = $tech['name'];
+                }
+                if (!$name) {
+                    continue;
+                }
+
+                $normalized = $this->normalize_skill_name($name);
+                if (!isset($skill_stats[$normalized])) {
+                    $skill_stats[$normalized] = array(
+                        'name' => $normalized,
+                        'display_name' => $this->get_display_name($normalized),
+                        'projects' => array(),
+                        'first_used' => null,
+                        'last_used' => null,
+                        'usage_count' => 0,
+                        'category' => $this->determine_skill_category($normalized),
+                    );
+                }
+
+                $skill_stats[$normalized]['usage_count']++;
+
+                // プロジェクトレコードを保存
+                $skill_stats[$normalized]['projects'][] = array(
+                    'title' => isset($project['title']) ? $project['title'] : '',
+                    'start' => $start_ts,
+                    'end' => $end_ts,
+                );
+
+                // 期間の最小/最大を更新（periodがある場合のみ）
+                if ($start_ts && (!$skill_stats[$normalized]['first_used'] || $start_ts < $skill_stats[$normalized]['first_used'])) {
+                    $skill_stats[$normalized]['first_used'] = $start_ts;
+                }
+                if ($end_ts && (!$skill_stats[$normalized]['last_used'] || $end_ts > $skill_stats[$normalized]['last_used'])) {
+                    $skill_stats[$normalized]['last_used'] = $end_ts;
+                }
+            }
+        }
+
+        // 期間とレベルを計算
+        foreach ($skill_stats as &$s) {
+            $s['duration_years'] = $this->calculate_duration_years($s['first_used'], $s['last_used']);
+            $s['level'] = $this->calculate_skill_level($s);
+        }
+        unset($s);
+
+        // キャッシュ（1時間）
+        set_transient(self::SKILLS_CACHE_KEY, $skill_stats, self::CACHE_DURATION);
+        if ($current_mtime) {
+            set_transient(self::SKILLS_CACHE_MTIME_KEY, $current_mtime, self::CACHE_DURATION);
+        }
+
+        return $skill_stats;
+    }
+
+    /**
+     * スキル名を正規化
+     * 例: "Java(Spring)" → "Java", "PHP(FuelPHP)" → "PHP"
+     */
+    private function normalize_skill_name($name) {
+        if (!is_string($name)) {
+            return '';
+        }
+        $trimmed = trim($name);
+        // 括弧でのバリアントを除去
+        $base = preg_replace('/\s*\(.*\)$/', '', $trimmed);
+        // 一部表記揺れの標準化
+        $map = array(
+            'JavaScript/HTML/css' => 'JavaScript',
+            'Ruby on Rails' => 'Ruby',
+            'E2E' => 'e2e',
+        );
+        if (isset($map[$base])) {
+            $base = $map[$base];
+        }
+        return $base;
+    }
+
+    /**
+     * 表示名を取得（正規化後の人間可読名）
+     */
+    private function get_display_name($normalized) {
+        // 必要に応じて表示名を変換
+        $map = array(
+            'e2e' => 'E2E',
+        );
+        return isset($map[$normalized]) ? $map[$normalized] : $normalized;
+    }
+
+    /**
+     * 年数を計算（端数は四捨五入、期間不明は0）
+     */
+    private function calculate_duration_years($first_ts, $last_ts) {
+        if (!$first_ts || !$last_ts || $last_ts < $first_ts) {
+            return 0;
+        }
+        $seconds = $last_ts - $first_ts;
+        $years = $seconds / (365 * 24 * 60 * 60);
+        return (int) round($years);
+    }
+
+    /**
+     * スキルレベルを簡易計算
+     * usage_count と duration_years から算出（0-100）
+     */
+    private function calculate_skill_level($skill) {
+        $usage = isset($skill['usage_count']) ? (int) $skill['usage_count'] : 0;
+        $years = isset($skill['duration_years']) ? (int) $skill['duration_years'] : 0;
+        // 重み付け: 使用回数×12 + 年数×10、上限100、最低40
+        $score = ($usage * 12) + ($years * 10);
+        $score = max(40, min(100, $score));
+        return $score;
+    }
+
+    /**
+     * スキルカテゴリを判定（frontend/backend/other）
+     */
+    private function determine_skill_category($name) {
+        $frontend = array('JavaScript', 'Vue.js', 'React', 'HTML5', 'CSS3', 'JSP', 'FullCalendar');
+        $backend  = array('Java', 'Spring Boot', 'Python', 'SQL', 'Node.js', 'COBOL', 'Ruby', 'PHP', 'Maven', 'Gradle', 'JUnit');
+        $other    = array('Git', 'AWS', 'Docker', 'SVN', 'e2e', 'AI/LLM', 'Astro', 'pay.jp API', 'Note API', 'ワークフロー自動化');
+
+        if (in_array($name, $frontend, true)) return 'frontend';
+        if (in_array($name, $backend, true)) return 'backend';
+        if (in_array($name, $other, true)) return 'other';
+        // 未知はotherにフォールバック
+        return 'other';
+    }
     
     /**
      * コア技術データを取得
@@ -292,6 +495,9 @@ class Portfolio_Data {
     public function clear_cache() {
         $this->portfolio_data = null;
         delete_transient(self::CACHE_KEY);
+        delete_transient(self::CACHE_MTIME_KEY);
+        delete_transient(self::SKILLS_CACHE_KEY);
+        delete_transient(self::SKILLS_CACHE_MTIME_KEY);
     }
     
     /**
