@@ -370,7 +370,7 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
     <?php endif; ?>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-blue-600 to-green-600">
+    <!-- <section class="py-20 bg-gradient-to-r from-blue-600 to-green-600">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
                 一緒にプロジェクトを始めませんか？
@@ -383,7 +383,7 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
                 無料相談を申し込む
             </a>
         </div>
-    </section>
+    </section> -->
 </main>
 
 <?php get_footer(); ?>

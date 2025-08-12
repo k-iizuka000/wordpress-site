@@ -11,7 +11,14 @@ get_header(); ?>
 // Portfolio JSON 読込とフィルタ用下準備
 $portfolio = Portfolio_Data::get_instance();
 $projects_all = $portfolio->get_projects_data(0);
+$in_progress_all = method_exists($portfolio, 'get_in_progress_projects') ? $portfolio->get_in_progress_projects() : array();
 $use_wp_query_fallback = is_wp_error($projects_all);
+
+// JSONが読める場合のみ、進行中案件も統合
+$in_progress_all = is_wp_error($in_progress_all) ? array() : (array)$in_progress_all;
+$all_projects_json = (!$use_wp_query_fallback && is_array($projects_all))
+    ? array_merge((array)$projects_all, $in_progress_all)
+    : array();
 
 $q = isset($_GET['s']) ? sanitize_text_field(wp_unslash($_GET['s'])) : '';
 $filter_tech = isset($_GET['technology']) ? sanitize_text_field(wp_unslash($_GET['technology'])) : '';
@@ -20,8 +27,8 @@ $orderby = isset($_GET['orderby']) ? sanitize_text_field(wp_unslash($_GET['order
 
 $tech_counts = array();
 $industry_counts = array();
-if (!$use_wp_query_fallback && is_array($projects_all)) {
-    foreach ($projects_all as $p) {
+if (!$use_wp_query_fallback && is_array($all_projects_json)) {
+    foreach ($all_projects_json as $p) {
         if (!empty($p['technologies']) && is_array($p['technologies'])) {
             foreach ($p['technologies'] as $t) {
                 $name = is_array($t) && isset($t['name']) ? (string)$t['name'] : (string)$t;
@@ -58,7 +65,7 @@ if (!$use_wp_query_fallback && is_array($projects_all)) {
     </div>
 
     <!-- フィルター -->
-    <section class="project-filters py-3" style="background-color: var(--color-background-alt); border-bottom: 1px solid var(--color-border);">
+    <!-- <section class="project-filters py-3" style="background-color: var(--color-background-alt); border-bottom: 1px solid var(--color-border);">
         <div class="container">
             <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
                 <?php if ( ! $use_wp_query_fallback ) : ?>
@@ -151,8 +158,8 @@ if (!$use_wp_query_fallback && is_array($projects_all)) {
         <div class="container">
             <?php if ( ! $use_wp_query_fallback ) : ?>
                 <?php
-                // 検索・フィルタ
-                $projects = array_filter($projects_all, function($p) use ($q, $filter_tech, $filter_industry) {
+                // 共通フィルタ関数
+                $filter_fn = function($p) use ($q, $filter_tech, $filter_industry) {
                     if (!is_array($p)) return false;
                     if ($q !== '') {
                         $hay = array();
@@ -186,10 +193,14 @@ if (!$use_wp_query_fallback && is_array($projects_all)) {
                         if ($ind !== $filter_industry) return false;
                     }
                     return true;
-                });
+                };
 
-                // ソート
-                usort($projects, function($a, $b) use ($orderby) {
+                // それぞれをフィルタ
+                $projects = array_values(array_filter((array)$projects_all, $filter_fn));
+                $in_progress = array_values(array_filter((array)$in_progress_all, $filter_fn));
+
+                // ソート関数
+                $sort_fn = function($a, $b) use ($orderby) {
                     $get_ts = function($p) {
                         $end = isset($p['period']['end']) ? strtotime($p['period']['end']) : null;
                         $start = isset($p['period']['start']) ? strtotime($p['period']['start']) : null;
@@ -202,7 +213,10 @@ if (!$use_wp_query_fallback && is_array($projects_all)) {
                     $tb = $get_ts($b);
                     if ($orderby === 'date-asc') return $ta <=> $tb;
                     return $tb <=> $ta; // date-desc
-                });
+                };
+
+                usort($projects, $sort_fn);
+                usort($in_progress, $sort_fn);
                 ?>
                 <?php if (!empty($projects)) : ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -274,7 +288,54 @@ if (!$use_wp_query_fallback && is_array($projects_all)) {
                     </a>
                 </div>
                 <?php endif; ?>
-                
+
+                <?php if (!empty($in_progress)) : ?>
+                <!-- 個人受注プロジェクト -->
+                <section class="py-12 bg-gray-50 mt-12">
+                    <div class="max-w-6xl mx-auto px-4">
+                        <div class="text-center mb-8">
+                            <h2 class="text-2xl font-bold text-gray-800">個人受注プロジェクト</h2>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            <?php foreach ($in_progress as $project) : ?>
+                                <div class="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-shadow border-l-4 border-green-500">
+                                    <div class="h-40 bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center">
+                                        <div class="text-center p-4">
+                                            <i class="ri-settings-3-line text-3xl text-green-600 mb-2 animate-spin-slow"></i>
+                                        </div>
+                                    </div>
+                                    <div class="p-6">
+                                        <h3 class="text-lg font-semibold text-gray-800 mb-2"><?php echo esc_html((string)($project['title'] ?? '')); ?></h3>
+                                        <?php if (!empty($project['description'])) : ?>
+                                            <p class="text-gray-600 mb-4"><?php echo esc_html( wp_trim_words( (string)$project['description'], 28 ) ); ?></p>
+                                        <?php endif; ?>
+                                        <div class="flex items-center justify-between">
+                                            <?php
+                                            $tech_stack = array();
+                                            if (isset($project['technologies']) && is_array($project['technologies'])) {
+                                                foreach ($project['technologies'] as $t) {
+                                                    $tech_stack[] = is_array($t) && isset($t['name']) ? (string)$t['name'] : (string)$t;
+                                                }
+                                            }
+                                            $tech_label = !empty($tech_stack) ? implode(', ', array_slice($tech_stack, 0, 3)) : '';
+                                            ?>
+                                            <?php if ($tech_label) : ?>
+                                                <span class="text-sm text-green-600 bg-green-100 px-3 py-1 rounded-full"><?php echo esc_html($tech_label); ?></span>
+                                            <?php endif; ?>
+                                            <?php if (!empty($project['url'])) : ?>
+                                                <a href="<?php echo esc_url((string)$project['url']); ?>" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-600">
+                                                    <i class="ri-external-link-line"></i>
+                                                </a>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </section>
+                <?php endif; ?>
+
             <?php else : ?>
                 <?php if ( have_posts() ) : ?>
                 <div class="grid grid-3">

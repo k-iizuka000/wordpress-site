@@ -73,7 +73,12 @@ function kei_portfolio_pro_scripts() {
 
     // ブログ用スタイルシートの条件付き読み込み
     // フロントページは除外（ブログ機能を使用していないため）
-    if ( (is_home() && !is_front_page()) || is_archive() || is_single() || is_category() || is_tag() || is_date() || is_author() || is_search() ) {
+    // 注意: is_archive() はカスタム投稿タイプのアーカイブも含むため除外し、
+    // ブログ系（post）のアーカイブ条件だけを明示的に指定する
+    if ( (is_home() && !is_front_page())
+         || is_singular('post')
+         || is_category() || is_tag() || is_date() || is_author()
+         || is_search() ) {
         // ファイル存在チェックのキャッシュ
         static $blog_file_exists_cache = array();
         

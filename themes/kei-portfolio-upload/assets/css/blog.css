@@ -740,17 +740,18 @@
     }
 }
 
-/* ===== ダークモード対応 ===== */
+/* ===== ダークモード対応（ブログは常に白ベースに統一） ===== */
 @media (prefers-color-scheme: dark) {
     :root {
-        --color-background: #1f2937;
-        --color-background-alt: #374151;
-        --color-background-secondary: #4b5563;
-        --color-text-primary: #f9fafb;
-        --color-text-secondary: #d1d5db;
-        --color-text-muted: #e5e7eb;
-        --color-border: #4b5563;
-        --color-border-light: #6b7280;
+        /* ダーク設定時でもライトテーマ値を維持して白背景に固定 */
+        --color-background: #ffffff;
+        --color-background-alt: #f8fafc;
+        --color-background-secondary: #f3f4f6;
+        --color-text-primary: #1f2937;
+        --color-text-secondary: #6b7280;
+        --color-text-muted: #4b5563;
+        --color-border: #e5e7eb;
+        --color-border-light: #d1d5db;
         --color-primary-light: #60a5fa;
     }
 }
