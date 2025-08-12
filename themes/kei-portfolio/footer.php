@@ -28,7 +28,7 @@
                             自己紹介
                         </a>
                         <a href="<?php echo esc_url( get_post_type_archive_link( 'project' ) ); ?>" class="block text-gray-600 hover:text-blue-600 transition-colors cursor-pointer">
-                            制作実績
+                            案件一覧
                         </a>
                         <a href="<?php echo esc_url( home_url( '/skills' ) ); ?>" class="block text-gray-600 hover:text-blue-600 transition-colors cursor-pointer">
                             スキル一覧
@@ -45,7 +45,7 @@
                     <div class="space-y-2">
                         <div class="flex items-center space-x-2">
                             <i class="ri-mail-line text-blue-600"></i>
-                            <span class="text-gray-600"><?php echo esc_html( get_theme_mod( 'contact_email', 'contact@portfolio.com' ) ); ?></span>
+                            <span class="text-gray-600"><?php echo esc_html( get_theme_mod( 'contact_email', 'contact@example.com' ) ); ?></span>
                         </div>
                         <div class="flex items-center space-x-2">
                             <i class="ri-bike-line text-green-600"></i>

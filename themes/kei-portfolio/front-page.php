@@ -36,30 +36,14 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div class="text-white lg:pr-8">
                     <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
-                        <?php if ($has_summary && isset($summary_data['totalExperience'])) : ?>
-                            <?php echo esc_html($summary_data['totalExperience']); ?>の経験で
-                        <?php else : ?>
-                            自動化で
-                        <?php endif; ?>
-                        <span class="text-blue-300">未来</span>を
-                        <br />
-                        創るエンジニア
+                        問題解決と品質向上を得意とするフルスタックエンジニア
                     </h1>
                     <p class="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed">
-                        <?php if ($has_summary && isset($summary_data['highlights']) && !empty($summary_data['highlights'])) : ?>
-                            <?php echo esc_html($summary_data['highlights'][0]); ?><br />
-                            <?php if (count($summary_data['highlights']) > 1) : ?>
-                                <?php echo esc_html($summary_data['highlights'][1]); ?>
-                            <?php endif; ?>
-                        <?php else : ?>
-                            プログラミングの力で効率化を実現し、<br />
-                            ロードバイクのように爽快に駆け抜ける<br />
-                            開発体験をお届けします。
-                        <?php endif; ?>
+                        課題を整理し、最適なソリューションを提案・実装。品質とスピードの両立を追求するエンジニアです。
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="<?php echo esc_url(get_post_type_archive_link('project')); ?>" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all transform hover:scale-105 text-center whitespace-nowrap">
-                            制作実績を見る
+                            案件一覧を見る
                         </a>
                         <a href="<?php echo esc_url(home_url('/contact')); ?>" class="border-2 border-white text-white hover:bg-white hover:text-gray-800 px-8 py-4 rounded-full text-lg font-semibold transition-all text-center whitespace-nowrap">
                             お問い合わせ
@@ -200,7 +184,7 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                    最新の制作実績
+                    最新の案件一覧
                 </h2>
                 <p class="text-lg text-gray-600">
                     これまでに開発した代表的なプロジェクトをご紹介します
@@ -311,7 +295,7 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
             
             <div class="text-center">
                 <a href="<?php echo esc_url(get_post_type_archive_link('project')); ?>" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-lg">
-                    全ての制作実績を見る
+                    全ての案件一覧を見る
                     <i class="ri-arrow-right-line ml-2"></i>
                 </a>
             </div>

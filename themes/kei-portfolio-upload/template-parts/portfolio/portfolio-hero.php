@@ -7,7 +7,7 @@
  */
 
 // Get hero settings from customizer or defaults
-$hero_title = get_theme_mod('portfolio_hero_title', 'これまでの<span class="text-blue-300">制作実績</span>');
+$hero_title = get_theme_mod('portfolio_hero_title', 'これまでの<span class="text-blue-300">案件一覧</span>');
 $hero_description = get_theme_mod('portfolio_hero_description', '自動化の力で業務効率を革新し、お客様の時間を価値ある活動に変える。20社以上のプロジェクトで培った経験と実績をご紹介します。');
 $background_image = get_theme_mod('portfolio_hero_background', 'https://readdy.ai/api/search-image?query=Modern%20developer%20workspace%20with%20multiple%20monitors%20showing%20code%20and%20automated%20systems%2C%20clean%20organized%20desk%20setup%20with%20programming%20tools%2C%20bright%20natural%20lighting%2C%20professional%20software%20development%20environment%20with%20blue%20and%20green%20accent%20colors%2C%20inspiring%20tech%20workspace&width=1920&height=800&seq=portfolio-hero&orientation=landscape');
 

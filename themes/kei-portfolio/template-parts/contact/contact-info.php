@@ -15,7 +15,7 @@ $contact_methods = [
     [
         'title' => 'メール',
         'description' => '一般的なお問い合わせ',
-        'contact' => 'contact@portfolio.com',
+        'contact' => 'contact@example.com',
         'icon' => 'ri-mail-line',
         'color' => 'blue'
     ],

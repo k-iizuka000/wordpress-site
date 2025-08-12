@@ -85,7 +85,7 @@ function kei_portfolio_pro_customize_register( $wp_customize ) {
 
     // コンタクトメール
     $wp_customize->add_setting( 'contact_email', array(
-        'default'           => 'contact@portfolio.com',
+        'default'           => 'contact@example.com',
         'sanitize_callback' => 'sanitize_email',
     ) );
 

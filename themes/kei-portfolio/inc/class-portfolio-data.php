@@ -435,9 +435,9 @@ class Portfolio_Data {
      * スキルカテゴリを判定（frontend/backend/other）
      */
     private function determine_skill_category($name) {
-        $frontend = array('JavaScript', 'Vue.js', 'React', 'HTML5', 'CSS3', 'JSP', 'FullCalendar');
-        $backend  = array('Java', 'Spring Boot', 'Python', 'SQL', 'Node.js', 'COBOL', 'Ruby', 'PHP', 'Maven', 'Gradle', 'JUnit');
-        $other    = array('Git', 'AWS', 'Docker', 'SVN', 'e2e', 'AI/LLM', 'Astro', 'pay.jp API', 'Note API', 'ワークフロー自動化');
+        $frontend = array('JavaScript', 'Vue.js', 'React', 'HTML5', 'CSS3',  'Astro','FullCalendar');
+        $backend  = array('Java', 'Spring', 'Python', 'SQL', 'Node.js', 'COBOL', 'JSP','Ruby', 'PHP', 'Maven', 'Gradle', 'JUnit','selenium_python','selenium_java','Struts2','pypika',);
+        $other    = array('Git', 'AWS', 'Docker', 'SVN', 'E2E', 'AI/LLM', 'Astro', 'pay.jp API', 'Note API', 'ワークフロー自動化');
 
         if (in_array($name, $frontend, true)) return 'frontend';
         if (in_array($name, $backend, true)) return 'backend';

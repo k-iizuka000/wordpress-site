@@ -229,7 +229,7 @@ if (!$use_wp_query_fallback && is_array($all_projects_json)) {
                 ?>
                 <?php if (!empty($projects)) : ?>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <?php foreach ($projects as $p) : ?>
+                    <?php $__proj_idx = 0; foreach ($projects as $p) : $proj_id = 'proj-desc-' . $__proj_idx; ?>
                         <article class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
                             <!-- ヘッダー（アイコン） -->
                             <div class="h-32 bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
@@ -256,16 +256,24 @@ if (!$use_wp_query_fallback && is_array($all_projects_json)) {
                                 <?php endif; ?>
 
                                 <?php if (!empty($p['description'])) : ?>
-                                <p class="text-sm text-gray-700 leading-relaxed mb-4">
-                                    <?php 
-                                    if (function_exists('kei_portfolio_format_description')) {
-                                        $desc_text = kei_portfolio_format_description($p['description'], 'text');
-                                        echo esc_html(wp_trim_words($desc_text, 28));
-                                    } else {
-                                        echo esc_html(wp_trim_words((string)$p['description'], 28));
-                                    }
-                                    ?>
-                                </p>
+                                <div class="mb-4">
+                                    <div id="<?php echo esc_attr($proj_id); ?>" class="text-sm text-gray-700 leading-relaxed js-collapsible clamped-2">
+                                        <?php 
+                                        if (function_exists('kei_portfolio_format_description')) {
+                                            echo wp_kses_post(kei_portfolio_format_description($p['description'], 'html'));
+                                        } else {
+                                            echo esc_html((string)$p['description']);
+                                        }
+                                        ?>
+                                    </div>
+                                    <button type="button"
+                                        class="text-blue-600 text-sm hover:underline js-toggle"
+                                        data-target="<?php echo esc_attr($proj_id); ?>"
+                                        aria-controls="<?php echo esc_attr($proj_id); ?>"
+                                        aria-expanded="false"
+                                        hidden
+                                    >全て表示する</button>
+                                </div>
                                 <?php endif; ?>
 
                                 <?php
@@ -290,7 +298,7 @@ if (!$use_wp_query_fallback && is_array($all_projects_json)) {
                                 <?php endif; ?>
                             </div>
                         </article>
-                    <?php endforeach; ?>
+                    <?php $__proj_idx++; endforeach; ?>
                 </div>
                 <?php else: ?>
                 <div class="no-results text-center py-5">
@@ -323,7 +331,14 @@ if (!$use_wp_query_fallback && is_array($all_projects_json)) {
                                     <div class="p-6">
                                         <h3 class="text-lg font-semibold text-gray-800 mb-2"><?php echo esc_html((string)($project['title'] ?? '')); ?></h3>
                                         <?php if (!empty($project['description'])) : ?>
-                                            <p class="text-gray-600 mb-4"><?php echo esc_html( wp_trim_words( (string)$project['description'], 28 ) ); ?></p>
+                                            <p class="text-gray-600 mb-4"><?php 
+                                                if (function_exists('kei_portfolio_format_description')) {
+                                                    $desc_text = kei_portfolio_format_description($project['description'], 'text');
+                                                    echo esc_html(wp_trim_words($desc_text, 28));
+                                                } else {
+                                                    echo esc_html(wp_trim_words((string)$project['description'], 28));
+                                                }
+                                            ?></p>
                                         <?php endif; ?>
                                         <div class="flex items-center justify-between">
                                             <?php
@@ -545,6 +560,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <style>
 /* アーカイブページ専用スタイル */
+.clamped-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
 .pagination-wrapper {
     display: flex;
     justify-content: center;
@@ -578,5 +599,33 @@ document.addEventListener('DOMContentLoaded', function() {
     font-size: 0.875rem;
 }
 </style>
+
+<script>
+// 説明テキストの「全て表示する/閉じる」アコーディオン
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.js-collapsible').forEach(function(el) {
+        var container = el.parentElement;
+        var toggle = container ? container.querySelector('.js-toggle') : null;
+        if (!toggle) return;
+
+        // 初期判定：2行にクランプした状態で溢れているか
+        var needsToggle = el.scrollHeight > el.clientHeight + 1;
+        toggle.hidden = !needsToggle;
+
+        toggle.addEventListener('click', function() {
+            var expanded = this.getAttribute('aria-expanded') === 'true';
+            if (expanded) {
+                el.classList.add('clamped-2');
+                this.setAttribute('aria-expanded', 'false');
+                this.textContent = '全て表示する';
+            } else {
+                el.classList.remove('clamped-2');
+                this.setAttribute('aria-expanded', 'true');
+                this.textContent = '閉じる';
+            }
+        });
+    });
+});
+</script>
 
 <?php get_footer(); ?>

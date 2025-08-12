@@ -58,7 +58,7 @@
                         自己紹介
                     </a>
                     <a href="<?php echo esc_url( get_post_type_archive_link( 'project' ) ); ?>" class="text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap cursor-pointer">
-                        制作実績
+                        案件一覧
                     </a>
                     <a href="<?php echo esc_url( home_url( '/skills' ) ); ?>" class="text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap cursor-pointer">
                         スキル一覧
@@ -92,7 +92,7 @@
                         自己紹介
                     </a>
                     <a href="<?php echo esc_url( get_post_type_archive_link( 'project' ) ); ?>" class="text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap cursor-pointer">
-                        制作実績
+                        案件一覧
                     </a>
                     <a href="<?php echo esc_url( home_url( '/skills' ) ); ?>" class="text-gray-700 hover:text-blue-600 transition-colors whitespace-nowrap cursor-pointer">
                         スキル一覧

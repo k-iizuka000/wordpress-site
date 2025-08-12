@@ -18,7 +18,7 @@ get_header(); ?>
             ホームページに戻る
         </a>
         <a href="<?php echo esc_url(get_post_type_archive_link('project')); ?>" class="border-2 border-gray-300 text-gray-600 hover:bg-gray-100 px-8 py-4 rounded-full text-lg font-semibold transition-all text-center whitespace-nowrap">
-            制作実績を見る
+            案件一覧を見る
         </a>
     </div>
     

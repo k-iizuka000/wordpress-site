@@ -20,8 +20,11 @@ get_header(); ?>
                         <h1 class="text-5xl font-bold text-gray-800 mb-4">
                             <?php echo esc_html( get_the_title() ); ?>
                         </h1>
-                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        <!-- <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                             お仕事のご相談、お問い合わせはお気軽にどうぞ
+                        </p> -->
+                        <p style="color: #dc2626; font-weight: bold;">
+                            現在このページは機能していません。
                         </p>
                     </header>
 
@@ -148,8 +151,8 @@ get_header(); ?>
                                         </div>
                                         <div>
                                             <h4 class="font-semibold text-gray-800">メールアドレス</h4>
-                                            <a href="mailto:contact@kei-portfolio.com" class="text-blue-600 hover:text-blue-800">
-                                                contact@kei-portfolio.com
+                                            <a href="mailto:contact@example.com" class="text-blue-600 hover:text-blue-800">
+                                                contact@example.com
                                             </a>
                                         </div>
                                     </div>

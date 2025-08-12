@@ -37,10 +37,9 @@
     "summary": {
       "totalExperience": "10年以上",
       "highlights": [
-        "Java/Spring Bootを用いたバックエンド開発が得意",
-        "フロントエンドからバックエンドまでのフルスタック開発経験",
-        "チームリーダーとしてのプロジェクトマネジメント経験",
-        "レガシーシステムモダン化の経験多数"
+        "Java・Python・PHPなど複数言語・フレームワークを横断して開発に従事",
+        "要件定義から設計・実装・テスト・リリース調整まで一貫して担当し、リーダーとしてチームマネジメントや他部署調整を実施",
+        "アジャイル・スクラム開発において技術文書整備や新人教育を推進し、チーム全体のスキル底上げに貢献"
       ],
       "coreTechnologies": [
         {
@@ -81,46 +80,40 @@
           "durationMonths": 21
         },
         "periodCompact": "2024.01–2025.09（21m）",
-        "role": "開発リーダー",
         "team": {
           "size": 8
         },
         "impactSummary": "Spring Boot移行後の技術文書整備・レビュー体制確立・プロセス改善",
-        "topSkills": ["Java(Spring)", "Python(pypika)", "JavaScript", "Git"],
-        "tags": ["リーダーシップ", "プロセス改善", "技術文書", "B2C"],
-        "detailSlug": "telecom-web-2024",
-        "confidential": false,
         "description": {
           "title": "【成果】",
           "items": [
-            "Spring Boot移行後の技術文書整備とナレッジ共有体制の確立",
-            "bobjdjbod",
-            "若手エンジニアの教育とコードレビュー体制の確立",
-            "リリース管理プロセスの改善やPRテンプレートの導入"
+            "・ サービス要件に基づき、調査・設計・実装・テストを一貫して担当",
+            "・ リーダーとしてリリース時期の調整、作業内容の詳細化、技術説明、他ロールとの調整窓口を担当",
+            "・ Struts2からSpring移行後のレガシー残存コードを分析し、移行漏れや混在機能を整理",
+            "・ ドキュメント不足の中、ソース解析や他チーム確認により仕様を正確に把握",
+            "・ 知識依存度の高い作業を標準化し、新規参画者向け資料・環境構築手順・設計書を整備",
+            "・ チーム全体が均一に対応できるよう、ドキュメントを詳細化し生産性向上に貢献",
+            "・ scrum、アジャイル開発"
           ]
         },
-        "technologies": [
-          {
-            "name": "Python(pypika)",
-            "role": "バックエンド開発"
-          },
-          {
-            "name": "Java(Spring)",
-            "role": "メインフレームワーク"
-          },
-          {
-            "name": "JavaScript",
-            "role": "フロントエンド開発"
-          },
-          {
-            "name": "JSP",
-            "role": "画面開発"
-          },
-          {
-            "name": "Git",
-            "role": "バージョン管理"
-          }
-        ],
+        "technologies": ["Python",
+         "selenium_python",
+         "selenium_java",
+         "Java", 
+         "Spring",
+         "Java", 
+         "Struts2",
+         "JUnit", 
+         "JavaScript", 
+         "JSP", 
+         "Git",
+         "SVN",  
+         "AWS", 
+         "Jira",
+         "confluence",
+         "redmine",
+         "Docker",
+         "miro"],
         "github": ""
       },
       {
@@ -133,24 +126,32 @@
           "durationMonths": 15
         },
         "periodCompact": "2022.10–2023.12（15m）",
-        "role": "SE（詳細設計～試験）",
         "team": {
           "size": 5
         },
         "impactSummary": "複数言語・フレームワーク混在環境での機能改修・品質向上",
-        "topSkills": ["Python(pypika)", "PHP(FuelPHP)", "Java(Spring)", "Vue.js"],
-        "tags": ["フルスタック", "機能改修", "品質向上", "B2C"],
-        "detailSlug": "recipe-site-2022",
-        "confidential": false,
         "description": {
           "title": "【成果】",
           "items": [
-            "ユーザー側・管理者側の既存機能の改修",
-            "課題一覧に基づく機能改善と品質向上",
-            "複数言語・フレームワークが混在する環境での開発"
+            "・ API（python）,ユーザー側(java),管理者側(php)の機能開発案件",
+            "・ リリース前の開発段階での参画で要件整理し、チケット単位での詳細設計、実装、テストを担当",
+            "・ 複数言語・フレームワークが混在する環境での開発",
+            "・ アジャイル開発"
           ]
         },
-        "technologies": ["Python(pypika)", "PHP(FuelPHP)", "Java(Spring)", "JavaScript(Vue.js)"],
+        "technologies": [
+          "Python", 
+          "pypika",
+          "PHP", 
+          "FuelPHP",
+          "Java", 
+          "Spring",
+          "JUnit", 
+          "JavaScript",
+          "Vue.js",
+          "Docker",
+          "AWS"
+        ],
         "github": ""
       },
       {
@@ -163,24 +164,31 @@
           "durationMonths": 18
         },
         "periodCompact": "2021.04–2022.09（18m）",
-        "role": "SE（詳細設計～運用・保守）",
         "team": {
           "size": 10
         },
         "impactSummary": "ユーザー認証機能開発・テスト品質向上・AWS監視体制構築",
-        "topSkills": ["Java(Spring)", "AWS", "JUnit", "E2E"],
-        "tags": ["運用保守", "品質改善", "クラウド", "B2C"],
-        "detailSlug": "psn-server-2021",
-        "confidential": false,
         "description": {
           "title": "【成果】",
           "items": [
-            "ユーザーログイン管理機能の開発・運用",
-            "JUnitとE2Eテストの拡充によるテスト品質向上",
-            "AWS CloudWatchを用いたメトリクス監視と障害対応"
+            "・ ユーザーログイン管理機能の開発・運用",
+            "・ 大量ユーザー環境を想定し、処理速度・性能を考慮した開発を経験",
+            "・ JUnitとE2Eテストの拡充によるテスト品質向上",
+            "・ AWS CloudWatchを用いたメトリクス監視と障害対応",
+            "・ scrum、アジャイル開発"
           ]
         },
-        "technologies": ["Java(Spring)", "AWS", "JUnit", "E2E", "Git", "Maven"],
+        "technologies": [
+         "Java",
+         "Spring",
+         "AWS", 
+         "JUnit", 
+         "E2E", 
+         "Git", 
+         "Maven",
+         "Jira",
+         "Docker",
+         "confluence"],
         "github": ""
       },
       {
@@ -193,15 +201,10 @@
           "durationMonths": 12
         },
         "periodCompact": "2020.04–2021.03（12m）",
-        "role": "リーダー（要件定義～試験）",
         "team": {
           "size": 3
         },
         "impactSummary": "S3/DB連携のKVSインポート処理改善・単独プロジェクト推進",
-        "topSkills": ["Java(Spring)", "AWS", "Gradle", "Git"],
-        "tags": ["リーダーシップ", "バッチ処理", "AWS", "B2B"],
-        "detailSlug": "batch-improvement-2020",
-        "confidential": false,
         "description": {
           "title": "【成果】",
           "items": [
@@ -222,15 +225,10 @@
           "durationMonths": 6
         },
         "periodCompact": "2019.10–2020.03（6m）",
-        "role": "SE（詳細設計～製造・試験）",
         "team": {
           "size": 5
         },
         "impactSummary": "マルチデバイス対応Push通知機能の新規開発",
-        "topSkills": ["Ruby on Rails", "Vue.js", "Docker", "Git"],
-        "tags": ["新規開発", "フルスタック", "モバイル対応", "B2C"],
-        "detailSlug": "push-notification-2019",
-        "confidential": false,
         "description": {
           "title": "【成果】",
           "items": [
@@ -251,15 +249,10 @@
           "durationMonths": 18
         },
         "periodCompact": "2018.04–2019.09（18m）",
-        "role": "SE（要件定義～製造）",
         "team": {
           "size": 6
         },
         "impactSummary": "カレンダーUI実装・従業員管理機能開発",
-        "topSkills": ["Java(Spring)", "JavaScript", "FullCalendar", "Git"],
-        "tags": ["業務効率化", "UI/UX", "B2B"],
-        "detailSlug": "shift-management-2018",
-        "confidential": false,
         "description": {
           "title": "【成果】",
           "items": [
@@ -267,7 +260,7 @@
             "シフト表画面UI・機能の実装"
           ]
         },
-        "technologies": ["Java(Spring)", "JavaScript(FullCalendar)", "Git", "SVN"],
+        "technologies": ["Java(Spring)", "JUnit",  "JavaScript(FullCalendar)", "Git", "SVN"],
         "github": ""
       },
       {
@@ -280,15 +273,10 @@
           "durationMonths": 6
         },
         "periodCompact": "2017.10–2018.03（6m）",
-        "role": "SE（要件定義～保守、障害対応）",
         "team": {
           "size": 8
         },
         "impactSummary": "EC機能開発・購入履歴管理・障害対応",
-        "topSkills": ["Java(Spring)", "JavaScript", "Vue.js"],
-        "tags": ["金融", "EC", "保守運用", "B2C"],
-        "detailSlug": "banking-system-2017",
-        "confidential": true,
         "description": {
           "title": "【成果】",
           "items": [
@@ -296,7 +284,7 @@
             "購入履歴表示などの画面改修"
           ]
         },
-        "technologies": ["Java(Spring)", "JavaScript(Vue.js)"],
+        "technologies": ["Java","Spring", "JavaScript(Vue.js)"],
         "github": ""
       },
       {
@@ -309,15 +297,10 @@
           "durationMonths": 12
         },
         "periodCompact": "2016.10–2017.09（12m）",
-        "role": "SE（要件定義～製造）",
         "team": {
           "size": 10
         },
         "impactSummary": "レガシーシステムのモダン化・勤怠管理システム刷新",
-        "topSkills": ["COBOL", "Java(JavaEE)"],
-        "tags": ["モダン化", "移行", "公共", "B2G"],
-        "detailSlug": "cobol-migration-2016",
-        "confidential": false,
         "description": {
           "title": "【成果】",
           "items": [
@@ -338,15 +321,10 @@
           "durationMonths": 25
         },
         "periodCompact": "2015.09–2017.09（25m）",
-        "role": "SE（要件定義～製造）",
         "team": {
           "size": 12
         },
         "impactSummary": "パッケージソフトバージョンアップ・勤務表機能実装",
-        "topSkills": ["Java(JavaEE)", "JavaScript"],
-        "tags": ["公共", "パッケージ開発", "B2G"],
-        "detailSlug": "public-system-2015",
-        "confidential": false,
         "description": {
           "title": "【成果】",
           "items": [
@@ -369,15 +347,10 @@
           "durationMonths": 4
         },
         "periodCompact": "2024.10–2025.01（4m）",
-        "role": "フリーランスエンジニア",
         "team": {
           "size": 2
         },
         "impactSummary": "pay.jp決済システム実装・安全な支払いプロセス構築",
-        "topSkills": ["Java", "Spring Boot", "pay.jp API"],
-        "tags": ["決済システム", "API連携", "セキュリティ", "B2C"],
-        "detailSlug": "defense-payment-2024",
-        "confidential": false,
         "description": {
           "title": "概要",
           "items": [
@@ -386,7 +359,7 @@
             "安全で効率的な支払いプロセスを構築"
           ]
         },
-        "technologies": ["Java", "pay.jp API", "Spring Boot"],
+        "technologies": ["Java", "pay.jp API", "Spring"],
         "url": "https://dailydefense.jp/"
       },
       {
@@ -399,15 +372,10 @@
           "durationMonths": 4
         },
         "periodCompact": "2024.11–2025.02（4m）",
-        "role": "フリーランスエンジニア",
         "team": {
           "size": 3
         },
         "impactSummary": "40画面のAstro移行・多言語対応・バリデーション実装",
-        "topSkills": ["PHP", "JavaScript", "Astro"],
-        "tags": ["モダン化", "多言語対応", "予約システム", "B2C"],
-        "detailSlug": "guam-rentacar-2024",
-        "confidential": false,
         "description": {
           "title": "概要",
           "items": [
@@ -429,24 +397,21 @@
           "durationMonths": 7
         },
         "periodCompact": "2024.09–2025.03（7m）",
-        "role": "フリーランスエンジニア",
         "team": {
           "size": 1
         },
         "impactSummary": "AI記事生成・トレンド分析・自動投稿システム構築",
-        "topSkills": ["Python", "AI/LLM", "Playwright", "Note API"],
-        "tags": ["AI活用", "自動化", "コンテンツ生成", "B2C"],
-        "detailSlug": "auto-note-2024",
-        "confidential": false,
         "description": {
           "title": "概要",
           "items": [
-            "AIを活用した自動記事生成・投稿システムの開発",
-            "現在のトレンドを分析し、最適化されたコンテンツを自動生成",
-            "Playwrightを使用して自動投稿"
+            "生成AIと自動化技術のキャッチアップを目的に、構想から実装まで単独で開発",
+            "AIによる記事生成の仕組みとプロンプト設計の最適化ポイントを習得",
+            "トレンド分析とSEO要素を組み合わせた高精度コンテンツ生成を実現",
+            "Playwrightを活用し、ブラウザ操作の自動化と安定運用のための例外処理を実装",
+            "AI活用時の生成品質・著作権・情報精度など留意点を踏まえた運用設計を経験"
           ]
         },
-        "technologies": ["AI/LLM", "Note API", "Python", "ワークフロー自動化"],
+        "technologies": ["claude", "openAPI", "Python","Playwright"],
         "url": "https://note.com/kei8217"
       }
     ]
