@@ -71,3 +71,8 @@ site-exports/*
 # テスト関連（E2Eテスト用）
 tests/e2e/*
 themes/kei-portfolio/tests/e2e/*
+# 本番ソース
+themes/kei-portfolio-upload/*
+
+
+wp-admin/*

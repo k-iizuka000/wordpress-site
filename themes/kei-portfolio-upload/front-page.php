@@ -14,12 +14,15 @@ $summary_data = $portfolio_data->get_summary_data();
 $latest_projects = $portfolio_data->get_latest_projects();
 $in_progress_projects = $portfolio_data->get_in_progress_projects();
 $skills_data = $portfolio_data->get_skills_data();
+// スキル統計（熟練度計算済み）
+$skill_statistics = method_exists($portfolio_data, 'get_skills_statistics') ? $portfolio_data->get_skills_statistics() : array();
 
 // エラーハンドリング
 $has_summary = !is_wp_error($summary_data);
 $has_projects = !is_wp_error($latest_projects);
 $has_in_progress = !is_wp_error($in_progress_projects);
 $has_skills = !is_wp_error($skills_data);
+$has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
 ?>
 
 <main class="min-h-screen">
@@ -135,50 +138,31 @@ $has_skills = !is_wp_error($skills_data);
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
                 <?php
-                // portfolio.jsonからスキルデータを取得
-                if ($has_skills) {
-                    // スキルアイコンと色のマッピング
-                    $skill_icons = array(
-                        'Java' => array('icon' => 'ri-code-line', 'color' => 'red'),
-                        'Spring Boot' => array('icon' => 'ri-leaf-line', 'color' => 'green'),
-                        'Python' => array('icon' => 'ri-code-line', 'color' => 'blue'),
-                        'JavaScript' => array('icon' => 'ri-javascript-line', 'color' => 'yellow'),
-                        'Vue.js' => array('icon' => 'ri-vuejs-line', 'color' => 'green'),
-                        'React' => array('icon' => 'ri-reactjs-line', 'color' => 'cyan'),
-                        'Node.js' => array('icon' => 'ri-nodejs-line', 'color' => 'green'),
-                        'Docker' => array('icon' => 'ri-container-line', 'color' => 'blue'),
-                        'AWS' => array('icon' => 'ri-cloud-line', 'color' => 'orange'),
-                        'Git' => array('icon' => 'ri-git-branch-line', 'color' => 'red'),
-                        'SQL' => array('icon' => 'ri-database-2-line', 'color' => 'purple'),
-                        'HTML5' => array('icon' => 'ri-html5-line', 'color' => 'orange'),
-                        'CSS3' => array('icon' => 'ri-css3-line', 'color' => 'blue'),
-                        'PHP' => array('icon' => 'ri-code-line', 'color' => 'purple'),
-                        'Ruby' => array('icon' => 'ri-code-line', 'color' => 'red')
-                    );
-                    
-                    // 全カテゴリのスキルから最初の8個を表示
-                    $display_skills = array();
-                    if (isset($skills_data['backend']) && is_array($skills_data['backend'])) {
-                        $display_skills = array_merge($display_skills, array_slice($skills_data['backend'], 0, 4));
-                    }
-                    if (isset($skills_data['frontend']) && is_array($skills_data['frontend'])) {
-                        $display_skills = array_merge($display_skills, array_slice($skills_data['frontend'], 0, 4));
-                    }
-                    
-                    $display_skills = array_slice($display_skills, 0, 8);
-                    
-                    foreach ($display_skills as $skill_name) : 
-                        if (!is_string($skill_name) || empty($skill_name)) continue;
-                        
-                        $icon_data = isset($skill_icons[$skill_name]) ? 
-                            $skill_icons[$skill_name] : 
-                            array('icon' => 'ri-code-line', 'color' => 'gray');
+                // portfolio.jsonの統計から熟練度順に表示
+                if ($has_skill_stats) {
+                    // 配列に詰め替え＆レベル降順でソート
+                    $stats = array_values($skill_statistics);
+                    usort($stats, function($a, $b) {
+                        $la = isset($a['level']) ? (int)$a['level'] : 0;
+                        $lb = isset($b['level']) ? (int)$b['level'] : 0;
+                        return $lb <=> $la;
+                    });
+
+                    // 上位8件を表示
+                    $top = array_slice($stats, 0, 8);
+
+                    foreach ($top as $item) :
+                        if (!isset($item['display_name'])) continue;
+                        $display = $item['display_name'];
+                        $category = isset($item['category']) ? $item['category'] : 'other';
+                        $ui = function_exists('kei_portfolio_get_skill_ui') ? kei_portfolio_get_skill_ui($display, $category) : array('icon' => 'ri-code-line', 'color' => 'bg-gray-500');
+                        $level = isset($item['level']) ? (int)$item['level'] : 0;
                         ?>
                         <div class="bg-white rounded-xl p-6 text-center hover:shadow-md transition-shadow">
-                            <div class="w-12 h-12 flex items-center justify-center mx-auto mb-3 bg-<?php echo esc_attr($icon_data['color']); ?>-100 rounded-lg">
-                                <i class="<?php echo esc_attr($icon_data['icon']); ?> text-<?php echo esc_attr($icon_data['color']); ?>-600 text-xl"></i>
+                            <div class="w-12 h-12 flex items-center justify-center mx-auto mb-3 <?php echo esc_attr($ui['color']); ?> rounded-lg">
+                                <i class="<?php echo esc_attr($ui['icon']); ?> text-white text-xl"></i>
                             </div>
-                            <h4 class="font-semibold text-gray-800"><?php echo esc_html($skill_name); ?></h4>
+                            <h4 class="font-semibold text-gray-800"><?php echo esc_html($display); ?></h4>
                         </div>
                     <?php endforeach;
                 } else {
@@ -336,10 +320,10 @@ $has_skills = !is_wp_error($skills_data);
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                    進行中のプロジェクト
+                    個人受注プロジェクト
                 </h2>
                 <p class="text-lg text-gray-600">
-                    現在開発中のプロジェクトをご紹介します
+                    過去受注した案件をご紹介します
                 </p>
             </div>
             
@@ -386,7 +370,7 @@ $has_skills = !is_wp_error($skills_data);
     <?php endif; ?>
 
     <!-- CTA Section -->
-    <section class="py-20 bg-gradient-to-r from-blue-600 to-green-600">
+    <!-- <section class="py-20 bg-gradient-to-r from-blue-600 to-green-600">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
                 一緒にプロジェクトを始めませんか？
@@ -399,7 +383,7 @@ $has_skills = !is_wp_error($skills_data);
                 無料相談を申し込む
             </a>
         </div>
-    </section>
+    </section> -->
 </main>
 
 <?php get_footer(); ?>

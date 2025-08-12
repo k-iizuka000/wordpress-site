@@ -29,6 +29,7 @@ require_once get_template_directory() . '/inc/ajax-handlers.php';
 require_once get_template_directory() . '/inc/optimizations.php';
 require_once get_template_directory() . '/inc/page-creator.php';
 require_once get_template_directory() . '/inc/sample-data.php';
+require_once get_template_directory() . '/inc/skill-ui.php';
 require_once get_template_directory() . '/inc/class-portfolio-data.php';
 require_once get_template_directory() . '/inc/class-blog-data.php';
 require_once get_template_directory() . '/inc/class-optimized-blog-data.php';
