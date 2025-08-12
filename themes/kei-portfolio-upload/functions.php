@@ -1285,3 +1285,56 @@ function kei_portfolio_blog_customizer($wp_customize) {
         ),
     ));
 }
+
+/**
+ * ポートフォリオのdescriptionを処理するヘルパー関数
+ * 
+ * @param mixed $description 文字列またはオブジェクト形式のdescription
+ * @param string $format 出力形式 ('html' または 'text')
+ * @return string 処理済みのdescription
+ */
+function kei_portfolio_format_description($description, $format = 'html') {
+    if (empty($description)) {
+        return '';
+    }
+    
+    // オブジェクト形式の場合
+    if (is_array($description) && isset($description['items'])) {
+        $title = isset($description['title']) ? $description['title'] : '';
+        $items = isset($description['items']) ? $description['items'] : array();
+        
+        if ($format === 'html') {
+            $output = '';
+            if (!empty($title)) {
+                $output .= '<strong>' . esc_html($title) . '</strong><br>';
+            }
+            if (!empty($items)) {
+                $output .= '<ul class="description-items">';
+                foreach ($items as $item) {
+                    $output .= '<li>' . esc_html($item) . '</li>';
+                }
+                $output .= '</ul>';
+            }
+            return $output;
+        } else {
+            // テキスト形式の場合
+            $output = '';
+            if (!empty($title)) {
+                $output .= $title . "\n";
+            }
+            if (!empty($items)) {
+                foreach ($items as $item) {
+                    $output .= '・' . $item . "\n";
+                }
+            }
+            return trim($output);
+        }
+    }
+    
+    // 文字列形式の場合（後方互換性のため）
+    if ($format === 'html') {
+        return nl2br(esc_html($description));
+    } else {
+        return $description;
+    }
+}

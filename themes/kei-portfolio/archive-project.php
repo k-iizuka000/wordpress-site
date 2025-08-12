@@ -164,7 +164,16 @@ if (!$use_wp_query_fallback && is_array($all_projects_json)) {
                     if ($q !== '') {
                         $hay = array();
                         $hay[] = isset($p['title']) ? (string)$p['title'] : '';
-                        $hay[] = isset($p['description']) ? (string)$p['description'] : '';
+                        // descriptionをテキスト形式で検索用に取得
+                        if (isset($p['description'])) {
+                            if (function_exists('kei_portfolio_format_description')) {
+                                $hay[] = kei_portfolio_format_description($p['description'], 'text');
+                            } else {
+                                $hay[] = is_array($p['description']) ? '' : (string)$p['description'];
+                            }
+                        } else {
+                            $hay[] = '';
+                        }
                         $hay[] = isset($p['impactSummary']) ? (string)$p['impactSummary'] : '';
                         $hay[] = isset($p['industry']) ? (string)$p['industry'] : '';
                         if (!empty($p['technologies']) && is_array($p['technologies'])) {
@@ -248,9 +257,15 @@ if (!$use_wp_query_fallback && is_array($all_projects_json)) {
 
                                 <?php if (!empty($p['description'])) : ?>
                                 <div class="mb-4">
-                                    <p id="<?php echo esc_attr($proj_id); ?>" class="text-sm text-gray-700 leading-relaxed js-collapsible clamped-2">
-                                        <?php echo esc_html( (string)$p['description'] ); ?>
-                                    </p>
+                                    <div id="<?php echo esc_attr($proj_id); ?>" class="text-sm text-gray-700 leading-relaxed js-collapsible clamped-2">
+                                        <?php 
+                                        if (function_exists('kei_portfolio_format_description')) {
+                                            echo wp_kses_post(kei_portfolio_format_description($p['description'], 'html'));
+                                        } else {
+                                            echo esc_html((string)$p['description']);
+                                        }
+                                        ?>
+                                    </div>
                                     <button type="button"
                                         class="text-blue-600 text-sm hover:underline js-toggle"
                                         data-target="<?php echo esc_attr($proj_id); ?>"
@@ -316,7 +331,14 @@ if (!$use_wp_query_fallback && is_array($all_projects_json)) {
                                     <div class="p-6">
                                         <h3 class="text-lg font-semibold text-gray-800 mb-2"><?php echo esc_html((string)($project['title'] ?? '')); ?></h3>
                                         <?php if (!empty($project['description'])) : ?>
-                                            <p class="text-gray-600 mb-4"><?php echo esc_html( wp_trim_words( (string)$project['description'], 28 ) ); ?></p>
+                                            <p class="text-gray-600 mb-4"><?php 
+                                                if (function_exists('kei_portfolio_format_description')) {
+                                                    $desc_text = kei_portfolio_format_description($project['description'], 'text');
+                                                    echo esc_html(wp_trim_words($desc_text, 28));
+                                                } else {
+                                                    echo esc_html(wp_trim_words((string)$project['description'], 28));
+                                                }
+                                            ?></p>
                                         <?php endif; ?>
                                         <div class="flex items-center justify-between">
                                             <?php

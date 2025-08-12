@@ -164,7 +164,16 @@ if (!$use_wp_query_fallback && is_array($all_projects_json)) {
                     if ($q !== '') {
                         $hay = array();
                         $hay[] = isset($p['title']) ? (string)$p['title'] : '';
-                        $hay[] = isset($p['description']) ? (string)$p['description'] : '';
+                        // descriptionをテキスト形式で検索用に取得
+                        if (isset($p['description'])) {
+                            if (function_exists('kei_portfolio_format_description')) {
+                                $hay[] = kei_portfolio_format_description($p['description'], 'text');
+                            } else {
+                                $hay[] = is_array($p['description']) ? '' : (string)$p['description'];
+                            }
+                        } else {
+                            $hay[] = '';
+                        }
                         $hay[] = isset($p['impactSummary']) ? (string)$p['impactSummary'] : '';
                         $hay[] = isset($p['industry']) ? (string)$p['industry'] : '';
                         if (!empty($p['technologies']) && is_array($p['technologies'])) {
@@ -248,7 +257,14 @@ if (!$use_wp_query_fallback && is_array($all_projects_json)) {
 
                                 <?php if (!empty($p['description'])) : ?>
                                 <p class="text-sm text-gray-700 leading-relaxed mb-4">
-                                    <?php echo esc_html( wp_trim_words( (string)$p['description'], 28 ) ); ?>
+                                    <?php 
+                                    if (function_exists('kei_portfolio_format_description')) {
+                                        $desc_text = kei_portfolio_format_description($p['description'], 'text');
+                                        echo esc_html(wp_trim_words($desc_text, 28));
+                                    } else {
+                                        echo esc_html(wp_trim_words((string)$p['description'], 28));
+                                    }
+                                    ?>
                                 </p>
                                 <?php endif; ?>
 

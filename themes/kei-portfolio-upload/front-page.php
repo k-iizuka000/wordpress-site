@@ -248,7 +248,11 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
                                 <h3 class="text-xl font-semibold text-gray-800 mb-2"><?php echo esc_html($project['title']); ?></h3>
                                 <?php 
                                 // 説明文の最初の100文字を抽出
-                                $description = strip_tags($project['description']);
+                                if (function_exists('kei_portfolio_format_description')) {
+                                    $description = kei_portfolio_format_description($project['description'], 'text');
+                                } else {
+                                    $description = is_array($project['description']) ? '' : strip_tags($project['description']);
+                                }
                                 $short_description = mb_strlen($description) > 100 ? mb_substr($description, 0, 100) . '...' : $description;
                                 ?>
                                 <p class="text-gray-600 mb-4"><?php echo esc_html($short_description); ?></p>
@@ -348,7 +352,13 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-gray-800 mb-2"><?php echo esc_html($project['title']); ?></h3>
-                            <p class="text-gray-600 mb-4"><?php echo esc_html($project['description']); ?></p>
+                            <p class="text-gray-600 mb-4"><?php 
+                                if (function_exists('kei_portfolio_format_description')) {
+                                    echo esc_html(kei_portfolio_format_description($project['description'], 'text'));
+                                } else {
+                                    echo esc_html(is_array($project['description']) ? '' : $project['description']);
+                                } 
+                            ?></p>
                             <div class="flex items-center justify-between">
                                 <?php if ($tech_stack) : ?>
                                     <span class="text-sm text-green-600 bg-green-100 px-3 py-1 rounded-full">

@@ -90,7 +90,14 @@
         "tags": ["リーダーシップ", "プロセス改善", "技術文書", "B2C"],
         "detailSlug": "telecom-web-2024",
         "confidential": false,
-        "description": "【成果】\n・Spring Boot移行後の技術文書整備とナレッジ共有体制の確立\n・若手エンジニアの教育とコードレビュー体制の確立\n・リリース管理プロセスの改善やPRテンプレートの導入",
+        "description": {
+          "title": "【成果】",
+          "items": [
+            "aaa Spring Boot移行後の技術文書整備とナレッジ共有体制の確立",
+            "若手エンジニアの教育とコードレビュー体制の確立",
+            "リリース管理プロセスの改善やPRテンプレートの導入"
+          ]
+        },
         "technologies": [
           {
             "name": "Python(pypika)",
@@ -134,7 +141,14 @@
         "tags": ["フルスタック", "機能改修", "品質向上", "B2C"],
         "detailSlug": "recipe-site-2022",
         "confidential": false,
-        "description": "【成果】\n・ユーザー側・管理者側の既存機能の改修\n・課題一覧に基づく機能改善と品質向上\n・複数言語・フレームワークが混在する環境での開発",
+        "description": {
+          "title": "【成果】",
+          "items": [
+            "ユーザー側・管理者側の既存機能の改修",
+            "課題一覧に基づく機能改善と品質向上",
+            "複数言語・フレームワークが混在する環境での開発"
+          ]
+        },
         "technologies": ["Python(pypika)", "PHP(FuelPHP)", "Java(Spring)", "JavaScript(Vue.js)"],
         "github": ""
       },
@@ -157,7 +171,14 @@
         "tags": ["運用保守", "品質改善", "クラウド", "B2C"],
         "detailSlug": "psn-server-2021",
         "confidential": false,
-        "description": "【成果】\n・ユーザーログイン管理機能の開発・運用\n・JUnitとE2Eテストの拡充によるテスト品質向上\n・AWS CloudWatchを用いたメトリクス監視と障害対応",
+        "description": {
+          "title": "【成果】",
+          "items": [
+            "ユーザーログイン管理機能の開発・運用",
+            "JUnitとE2Eテストの拡充によるテスト品質向上",
+            "AWS CloudWatchを用いたメトリクス監視と障害対応"
+          ]
+        },
         "technologies": ["Java(Spring)", "AWS", "JUnit", "E2E", "Git", "Maven"],
         "github": ""
       },
@@ -180,7 +201,13 @@
         "tags": ["リーダーシップ", "バッチ処理", "AWS", "B2B"],
         "detailSlug": "batch-improvement-2020",
         "confidential": false,
-        "description": "【成果】\n・S3やDBのユーザー情報・広告情報のKVSインポート処理改善\n・他チームとの調整を含めた単独でのプロジェクト推進",
+        "description": {
+          "title": "【成果】",
+          "items": [
+            "S3やDBのユーザー情報・広告情報のKVSインポート処理改善",
+            "他チームとの調整を含めた単独でのプロジェクト推進"
+          ]
+        },
         "technologies": ["Java(Spring)", "Git", "Gradle", "AWS"],
         "github": ""
       },
@@ -203,7 +230,13 @@
         "tags": ["新規開発", "フルスタック", "モバイル対応", "B2C"],
         "detailSlug": "push-notification-2019",
         "confidential": false,
-        "description": "【成果】\n・PCやスマホへのPush通知機能の新規開発\n・フロントエンドからバックエンドまでの一貫した開発",
+        "description": {
+          "title": "【成果】",
+          "items": [
+            "PCやスマホへのPush通知機能の新規開発",
+            "フロントエンドからバックエンドまでの一貫した開発"
+          ]
+        },
         "technologies": ["Docker", "Ruby on Rails", "Vue.js", "Git"],
         "github": ""
       },
@@ -226,7 +259,13 @@
         "tags": ["業務効率化", "UI/UX", "B2B"],
         "detailSlug": "shift-management-2018",
         "confidential": false,
-        "description": "【成果】\n・カレンダー画面や従業員情報管理画面の開発\n・シフト表画面UI・機能の実装",
+        "description": {
+          "title": "【成果】",
+          "items": [
+            "カレンダー画面や従業員情報管理画面の開発",
+            "シフト表画面UI・機能の実装"
+          ]
+        },
         "technologies": ["Java(Spring)", "JavaScript(FullCalendar)", "Git", "SVN"],
         "github": ""
       },
@@ -249,7 +288,13 @@
         "tags": ["金融", "EC", "保守運用", "B2C"],
         "detailSlug": "banking-system-2017",
         "confidential": true,
-        "description": "【成果】\n・カート・購入履歴画面の開発\n・購入履歴表示などの画面改修",
+        "description": {
+          "title": "【成果】",
+          "items": [
+            "カート・購入履歴画面の開発",
+            "購入履歴表示などの画面改修"
+          ]
+        },
         "technologies": ["Java(Spring)", "JavaScript(Vue.js)"],
         "github": ""
       },
@@ -272,7 +317,13 @@
         "tags": ["モダン化", "移行", "公共", "B2G"],
         "detailSlug": "cobol-migration-2016",
         "confidential": false,
-        "description": "【成果】\n・区役所向け勤怠管理システムのモダン化\n・レガシーシステムの分析と新システムの要件定義から実装",
+        "description": {
+          "title": "【成果】",
+          "items": [
+            "区役所向け勤怠管理システムのモダン化",
+            "レガシーシステムの分析と新システムの要件定義から実装"
+          ]
+        },
         "technologies": ["COBOL", "Java(JavaEE)"],
         "github": ""
       },
@@ -295,7 +346,13 @@
         "tags": ["公共", "パッケージ開発", "B2G"],
         "detailSlug": "public-system-2015",
         "confidential": false,
-        "description": "【成果】\n・パッケージソフトのバージョンアップ対応\n・勤務表画面の実装",
+        "description": {
+          "title": "【成果】",
+          "items": [
+            "パッケージソフトのバージョンアップ対応",
+            "勤務表画面の実装"
+          ]
+        },
         "technologies": ["Java(JavaEE)", "JavaScript"],
         "github": ""
       }
@@ -320,7 +377,14 @@
         "tags": ["決済システム", "API連携", "セキュリティ", "B2C"],
         "detailSlug": "defense-payment-2024",
         "confidential": false,
-        "description": "防衛日報サイトへのpay.jpを使用した決済システムの実装。Javaを使用した決済機能の開発とAPIの実装により、安全で効率的な支払いプロセスを構築。",
+        "description": {
+          "title": "概要",
+          "items": [
+            "防衛日報サイトへのpay.jpを使用した決済システムの実装",
+            "Javaを使用した決済機能の開発とAPIの実装",
+            "安全で効率的な支払いプロセスを構築"
+          ]
+        },
         "technologies": ["Java", "pay.jp API", "Spring Boot"],
         "url": "https://dailydefense.jp/"
       },
@@ -343,7 +407,14 @@
         "tags": ["モダン化", "多言語対応", "予約システム", "B2C"],
         "detailSlug": "guam-rentacar-2024",
         "confidential": false,
-        "description": "グアムのレンタカー予約システムのモダン化。PHP/JavaScriptで構築された既存システムをAstroへ移行（約40画面）。多言語対応と全画面のバリデーション機能を実装。",
+        "description": {
+          "title": "概要",
+          "items": [
+            "グアムのレンタカー予約システムのモダン化",
+            "PHP/JavaScriptで構築された既存システムをAstroへ移行（約40画面）",
+            "多言語対応と全画面のバリデーション機能を実装"
+          ]
+        },
         "technologies": ["PHP", "JavaScript", "Astro"],
         "url": "https://guam-rentacar.com/"
       },
@@ -366,7 +437,14 @@
         "tags": ["AI活用", "自動化", "コンテンツ生成", "B2C"],
         "detailSlug": "auto-note-2024",
         "confidential": false,
-        "description": "AIを活用した自動記事生成・投稿システムの開発。現在のトレンドを分析し、最適化されたコンテンツを自動生成。Playwrightを使用して自動投稿。",
+        "description": {
+          "title": "概要",
+          "items": [
+            "AIを活用した自動記事生成・投稿システムの開発",
+            "現在のトレンドを分析し、最適化されたコンテンツを自動生成",
+            "Playwrightを使用して自動投稾"
+          ]
+        },
         "technologies": ["AI/LLM", "Note API", "Python", "ワークフロー自動化"],
         "url": "https://note.com/kei8217"
       }
