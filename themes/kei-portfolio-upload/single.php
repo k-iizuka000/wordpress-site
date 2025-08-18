@@ -220,7 +220,7 @@ if (class_exists('\KeiPortfolio\Performance\MemoryManager')) {
                             else :
                                 ?>
                                 <p class="text-gray-600 text-sm leading-relaxed">
-                                    フリーランスエンジニアとして、自動化ツールの開発を中心に活動しています。明るく前向きな姿勢で、お客様の課題解決に取り組みます。
+                                    フリーランスエンジニアとして最新技術のキャッチアップや既存知識の向上を中心に活動しています。明るく前向きな姿勢で、お客様の課題解決に取り組みます。
                                 </p>
                                 <?php
                             endif;

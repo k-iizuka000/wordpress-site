@@ -264,20 +264,29 @@ class Asset_Fallback_Handler {
      * CORSヘッダーの追加
      */
     public function add_cors_headers() {
-        // E2Eテストモードまたは開発環境の場合
-        if ((defined('E2E_TEST_MODE') && E2E_TEST_MODE) || 
-            (defined('WP_DEBUG') && WP_DEBUG)) {
-            
+        // 管理画面配下には一切適用しない
+        $request_uri = $_SERVER['REQUEST_URI'] ?? '';
+        if (is_admin() || strpos($request_uri, '/wp-admin/') === 0 || strpos($request_uri, '/wp-admin') === 0) {
+            return;
+        }
+
+        // テーマアセットへのリクエストのみに限定
+        if (strpos($request_uri, '/wp-content/themes/kei-portfolio/assets/') === false) {
+            return;
+        }
+
+        // E2Eテストモードまたは開発時のみ、必要最小限のCORSを付与
+        if ((defined('E2E_TEST_MODE') && E2E_TEST_MODE) || (defined('WP_DEBUG') && WP_DEBUG)) {
             $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
             if ($this->is_allowed_origin($origin)) {
                 header('Access-Control-Allow-Origin: ' . $origin);
             }
-            
+
             header('Access-Control-Allow-Methods: GET, OPTIONS'); // 読み取り専用
             header('Access-Control-Allow-Headers: Content-Type, X-WP-Nonce, Authorization');
-            
-            // OPTIONSリクエストの処理
-            if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+
+            // OPTIONSリクエストは早期に200で返す
+            if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
                 header('HTTP/1.1 200 OK');
                 exit;
             }

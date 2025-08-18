@@ -58,11 +58,12 @@ class Kei_Portfolio_Environment_Config {
         // ホスト名から推測
         else {
             $host = $_SERVER['HTTP_HOST'] ?? '';
+            // 本番ドメイン(.devなど)が "開発" と誤認されないよう、
+            // ローカル系ホスト名のみを開発判定に使用する
             if (
                 strpos($host, 'localhost') !== false ||
                 strpos($host, '127.0.0.1') !== false ||
                 strpos($host, '.local') !== false ||
-                strpos($host, '.dev') !== false ||
                 strpos($host, '.test') !== false
             ) {
                 $this->environment_type = 'development';

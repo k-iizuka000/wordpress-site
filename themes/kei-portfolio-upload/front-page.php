@@ -194,10 +194,13 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 <?php
                 if ($has_projects && !empty($latest_projects)) {
+                    $latest_project_index = 0;
                     foreach ($latest_projects as $project) : 
                         if (!isset($project['title']) || !isset($project['description'])) {
                             continue;
                         }
+                        
+                        $latest_project_id = 'latest-project-' . $latest_project_index++;
                         
                         // 技術スタックの抽出
                         $tech_stack = '';
@@ -230,16 +233,22 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
                             </div>
                             <div class="p-6">
                                 <h3 class="text-xl font-semibold text-gray-800 mb-2"><?php echo esc_html($project['title']); ?></h3>
-                                <?php 
-                                // 説明文の最初の100文字を抽出
-                                if (function_exists('kei_portfolio_format_description')) {
-                                    $description = kei_portfolio_format_description($project['description'], 'text');
-                                } else {
-                                    $description = is_array($project['description']) ? '' : strip_tags($project['description']);
-                                }
-                                $short_description = mb_strlen($description) > 100 ? mb_substr($description, 0, 100) . '...' : $description;
-                                ?>
-                                <p class="text-gray-600 mb-4"><?php echo esc_html($short_description); ?></p>
+                                <div id="<?php echo esc_attr($latest_project_id); ?>" class="text-gray-600 mb-4 js-collapsible clamped-2">
+                                    <?php 
+                                    if (function_exists('kei_portfolio_format_description')) {
+                                        echo wp_kses_post(kei_portfolio_format_description($project['description'], 'html'));
+                                    } else {
+                                        echo esc_html(is_array($project['description']) ? '' : $project['description']);
+                                    }
+                                    ?>
+                                </div>
+                                <button type="button"
+                                    class="text-blue-600 text-sm hover:underline js-toggle mb-4"
+                                    data-target="<?php echo esc_attr($latest_project_id); ?>"
+                                    aria-controls="<?php echo esc_attr($latest_project_id); ?>"
+                                    aria-expanded="false"
+                                    hidden
+                                >全て表示する</button>
                                 <div class="flex items-center justify-between">
                                     <?php if ($tech_stack) : ?>
                                         <span class="text-sm text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
@@ -273,14 +282,26 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
                         )
                     );
                     
-                    foreach ($default_projects as $project) : ?>
+                    $default_project_index = 0;
+                    foreach ($default_projects as $project) : 
+                        $default_project_id = 'default-project-' . $default_project_index++;
+                        ?>
                         <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow">
                             <div class="h-48 bg-gradient-to-br from-blue-100 to-green-100 flex items-center justify-center">
                                 <i class="ri-code-s-slash-line text-4xl text-blue-600"></i>
                             </div>
                             <div class="p-6">
                                 <h3 class="text-xl font-semibold text-gray-800 mb-2"><?php echo esc_html($project['title']); ?></h3>
-                                <p class="text-gray-600 mb-4"><?php echo esc_html($project['description']); ?></p>
+                                <div id="<?php echo esc_attr($default_project_id); ?>" class="text-gray-600 mb-4 js-collapsible clamped-2">
+                                    <?php echo esc_html($project['description']); ?>
+                                </div>
+                                <button type="button"
+                                    class="text-blue-600 text-sm hover:underline js-toggle mb-4"
+                                    data-target="<?php echo esc_attr($default_project_id); ?>"
+                                    aria-controls="<?php echo esc_attr($default_project_id); ?>"
+                                    aria-expanded="false"
+                                    hidden
+                                >全て表示する</button>
                                 <div class="flex items-center justify-between">
                                     <span class="text-sm text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
                                         <?php echo esc_html($project['tech']); ?>

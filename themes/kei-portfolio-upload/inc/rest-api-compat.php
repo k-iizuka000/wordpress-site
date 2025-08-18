@@ -109,6 +109,20 @@ add_filter('site_status_tests', function ($tests) {
  */
 function kei_portfolio_inject_apifetch_proxy_script() {
     if (!function_exists('wp_add_inline_script')) return;
+    // Google Site Kit 管理画面では干渉を避けるため注入しない
+    if (is_admin()) {
+        // クエリから判定
+        if (isset($_GET['page']) && strpos(sanitize_text_field($_GET['page']), 'googlesitekit') === 0) {
+            return;
+        }
+        // 画面IDから判定
+        if (function_exists('get_current_screen')) {
+            $screen = get_current_screen();
+            if ($screen && (strpos($screen->id, 'googlesitekit') !== false || strpos($screen->base, 'googlesitekit') !== false)) {
+                return;
+            }
+        }
+    }
     // 確実に読み込む
     wp_enqueue_script('wp-api-fetch');
     $inline = <<<JS
