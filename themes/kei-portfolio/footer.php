@@ -13,7 +13,7 @@
                 <div>
                     <h3 class="font-['Pacifico'] text-2xl text-blue-600 mb-4">Portfolio</h3>
                     <p class="text-gray-600 leading-relaxed">
-                        <?php echo esc_html( get_theme_mod( 'footer_description', 'フリーランスエンジニアとして、自動化ツールの開発を中心に活動しています。明るく前向きな姿勢で、お客様の課題解決に取り組みます。' ) ); ?>
+                        <?php echo esc_html( get_theme_mod( 'footer_description', 'フリーランスエンジニアとして最新技術のキャッチアップや既存知識の向上を中心に活動しています。明るく前向きな姿勢で、お客様の課題解決に取り組みます。' ) ); ?>
                     </p>
                 </div>
                 

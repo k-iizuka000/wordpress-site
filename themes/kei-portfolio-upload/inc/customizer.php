@@ -73,7 +73,7 @@ function kei_portfolio_pro_customize_register( $wp_customize ) {
 
     // フッター説明文
     $wp_customize->add_setting( 'footer_description', array(
-        'default'           => __( 'フリーランスエンジニアとして、自動化ツールの開発を中心に活動しています。明るく前向きな姿勢で、お客様の課題解決に取り組みます。', 'kei-portfolio' ),
+        'default'           => __( 'フリーランスエンジニアとして最新技術のキャッチアップや既存知識の向上を中心に活動しています。明るく前向きな姿勢で、お客様の課題解決に取り組みます。', 'kei-portfolio' ),
         'sanitize_callback' => 'sanitize_textarea_field',
     ) );
 

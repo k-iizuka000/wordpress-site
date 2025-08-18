@@ -321,7 +321,11 @@ if (!$use_wp_query_fallback && is_array($all_projects_json)) {
                             <h2 class="text-2xl font-bold text-gray-800">個人受注プロジェクト</h2>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            <?php foreach ($in_progress as $project) : ?>
+                            <?php 
+                            $in_progress_index = 0;
+                            foreach ($in_progress as $project) : 
+                                $project_id = 'in-progress-' . $in_progress_index++;
+                            ?>
                                 <div class="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-shadow border-l-4 border-green-500">
                                     <div class="h-40 bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center">
                                         <div class="text-center p-4">
@@ -331,14 +335,22 @@ if (!$use_wp_query_fallback && is_array($all_projects_json)) {
                                     <div class="p-6">
                                         <h3 class="text-lg font-semibold text-gray-800 mb-2"><?php echo esc_html((string)($project['title'] ?? '')); ?></h3>
                                         <?php if (!empty($project['description'])) : ?>
-                                            <p class="text-gray-600 mb-4"><?php 
+                                            <div id="<?php echo esc_attr($project_id); ?>" class="text-gray-600 mb-4 js-collapsible clamped-2">
+                                                <?php 
                                                 if (function_exists('kei_portfolio_format_description')) {
-                                                    $desc_text = kei_portfolio_format_description($project['description'], 'text');
-                                                    echo esc_html(wp_trim_words($desc_text, 28));
+                                                    echo wp_kses_post(kei_portfolio_format_description($project['description'], 'html'));
                                                 } else {
-                                                    echo esc_html(wp_trim_words((string)$project['description'], 28));
+                                                    echo esc_html((string)$project['description']);
                                                 }
-                                            ?></p>
+                                                ?>
+                                            </div>
+                                            <button type="button"
+                                                class="text-blue-600 text-sm hover:underline js-toggle mb-4"
+                                                data-target="<?php echo esc_attr($project_id); ?>"
+                                                aria-controls="<?php echo esc_attr($project_id); ?>"
+                                                aria-expanded="false"
+                                                hidden
+                                            >全て表示する</button>
                                         <?php endif; ?>
                                         <div class="flex items-center justify-between">
                                             <?php
@@ -566,6 +578,7 @@ document.addEventListener('DOMContentLoaded', function() {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
 .pagination-wrapper {
     display: flex;
     justify-content: center;
@@ -603,6 +616,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 // 説明テキストの「全て表示する/閉じる」アコーディオン
 document.addEventListener('DOMContentLoaded', function() {
+    // 説明テキストのアコーディオン
     document.querySelectorAll('.js-collapsible').forEach(function(el) {
         var container = el.parentElement;
         var toggle = container ? container.querySelector('.js-toggle') : null;
@@ -625,6 +639,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
 });
 </script>
 

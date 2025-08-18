@@ -62,7 +62,7 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
                     明るく前向きなエンジニア
                 </h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    自動化ツール開発を得意とし、ロードバイクで培った持続力と集中力を活かして、
+                    AIや最新技術の活用を得意とし、ロードバイクで培った持続力と集中力を活かして、
                     お客様の課題解決に取り組んでいます。
                 </p>
             </div>
@@ -72,9 +72,9 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
                     <div class="w-16 h-16 flex items-center justify-center mx-auto mb-4 bg-blue-600 rounded-full">
                         <i class="ri-settings-3-line text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">自動化ツール開発</h3>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">AI・最新技術キャッチアップ</h3>
                     <p class="text-gray-600">
-                        繰り返し作業を効率化し、生産性向上を実現するツールを開発します。
+                        AIや最新技術の動向を常に追いかけ、得られた知見を活かして開発や課題解決に取り組みます。
                     </p>
                 </div>
                 
@@ -316,10 +316,14 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <?php foreach ($in_progress_projects as $project) : 
+                <?php 
+                $project_index = 0;
+                foreach ($in_progress_projects as $project) : 
                     if (!isset($project['title']) || !isset($project['description'])) {
                         continue;
                     }
+                    
+                    $project_id = 'home-project-' . $project_index++;
                     
                     // 技術スタックの抽出
                     $tech_stack = '';
@@ -331,18 +335,27 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
                         <div class="h-48 bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center">
                             <div class="text-center p-4">
                                 <i class="ri-settings-3-line text-4xl text-green-600 mb-2 animate-spin-slow"></i>
-                                <span class="inline-block bg-green-500 text-white text-xs px-2 py-1 rounded-full">進行中</span>
+                                
                             </div>
                         </div>
                         <div class="p-6">
                             <h3 class="text-xl font-semibold text-gray-800 mb-2"><?php echo esc_html($project['title']); ?></h3>
-                            <p class="text-gray-600 mb-4"><?php 
+                            <div id="<?php echo esc_attr($project_id); ?>" class="text-gray-600 mb-4 js-collapsible clamped-2">
+                                <?php 
                                 if (function_exists('kei_portfolio_format_description')) {
-                                    echo esc_html(kei_portfolio_format_description($project['description'], 'text'));
+                                    echo wp_kses_post(kei_portfolio_format_description($project['description'], 'html'));
                                 } else {
                                     echo esc_html(is_array($project['description']) ? '' : $project['description']);
                                 } 
-                            ?></p>
+                                ?>
+                            </div>
+                            <button type="button"
+                                class="text-blue-600 text-sm hover:underline js-toggle mb-4"
+                                data-target="<?php echo esc_attr($project_id); ?>"
+                                aria-controls="<?php echo esc_attr($project_id); ?>"
+                                aria-expanded="false"
+                                hidden
+                            >全て表示する</button>
                             <div class="flex items-center justify-between">
                                 <?php if ($tech_stack) : ?>
                                     <span class="text-sm text-green-600 bg-green-100 px-3 py-1 rounded-full">
@@ -379,5 +392,43 @@ $has_skill_stats = is_array($skill_statistics) && !empty($skill_statistics);
         </div>
     </section> -->
 </main>
+
+<style>
+/* アコーディオン用スタイル */
+.clamped-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+</style>
+
+<script>
+// 個別プロジェクトのアコーディオン
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.js-collapsible').forEach(function(el) {
+        var container = el.parentElement;
+        var toggle = container ? container.querySelector('.js-toggle') : null;
+        if (!toggle) return;
+
+        // 初期判定：2行にクランプした状態で溢れているか
+        var needsToggle = el.scrollHeight > el.clientHeight + 1;
+        toggle.hidden = !needsToggle;
+
+        toggle.addEventListener('click', function() {
+            var expanded = this.getAttribute('aria-expanded') === 'true';
+            if (expanded) {
+                el.classList.add('clamped-2');
+                this.setAttribute('aria-expanded', 'false');
+                this.textContent = '全て表示する';
+            } else {
+                el.classList.remove('clamped-2');
+                this.setAttribute('aria-expanded', 'true');
+                this.textContent = '閉じる';
+            }
+        });
+    });
+});
+</script>
 
 <?php get_footer(); ?>

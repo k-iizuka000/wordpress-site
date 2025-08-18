@@ -43,6 +43,7 @@ define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_LOG', true );
 define( 'WP_DEBUG_DISPLAY', false );
 define( 'SCRIPT_DEBUG', true );
+define( 'CONCATENATE_SCRIPTS', false ); // CSS/JS連結処理を無効化（Google Site Kit等のスタイルシート読み込みエラー対策）
 define( 'WP_ENVIRONMENT_TYPE', 'development' );
 
 /**
